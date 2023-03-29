@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/config_margin_5dp"
+    android:layout_marginRight="@dimen/config_margin_5dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="8dp"
+    app:cardUseCompatPadding="true"
+    app:contentPaddingBottom="@dimen/config_padding_10dp"
+    app:contentPaddingLeft="@dimen/config_padding_5dp"
+    app:contentPaddingRight="@dimen/config_padding_5dp"
+    app:contentPaddingTop="@dimen/config_padding_10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/config_margin_5dp"
+            android:layout_marginBottom="@dimen/config_margin_10dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+<!--            <ImageView-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:src="@drawable/radio_yellow" />-->
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/config_margin_10dp"
+                android:text="每日播客" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:src="@drawable/right_gray" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

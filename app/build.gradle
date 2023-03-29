@@ -1,0 +1,198 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "32.0.0"
+
+    defaultConfig {
+        applicationId "com.zhaoxiao.zhiying"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // 自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "ZhiYing_${buildType.name}_v${versionName}_${generateTime()}.apk"
+        }
+    }
+}
+
+//构建时间
+def generateTime() {
+    return new Date().format("yyyy_MM_dd_HH_mm_ss")
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'                 //画图
+//    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.jakewharton:butterknife:10.1.0'                 //ButterKnife
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'              //Retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'        //Gson converter
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'             //状态栏工具
+    implementation  'com.scwang.smart:refresh-header-radar:2.0.1'       //雷达刷新头
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    implementation  'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
+    implementation 'com.yanyusong.y_divideritemdecoration:y_divideritemdecoration:2.0'             //recyclerview分割线
+    implementation 'com.karumi:dividers:1.0.1'
+    implementation 'com.choices.divider:RecyclerView_Divider:1.0.0'
+    implementation 'jp.wasabeef:blurry:4.0.1'                           //毛玻璃
+    implementation 'com.github.tuanhav95:DragView:1.1.0'                //youtube面板
+    implementation 'xyz.doikki.android.dkplayer:dkplayer-java:3.3.7'    //视频播放
+    implementation 'xyz.doikki.android.dkplayer:dkplayer-ui:3.3.7'
+    implementation 'xyz.doikki.android.dkplayer:videocache:3.3.7'
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'xyz.doikki.android.dkplayer:player-exo:3.3.7'
+
+    //XUI
+    implementation 'com.github.xuexiangjys:XUI:1.2.0'
+//    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'   //水平tab
+
+    // 工具类
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-sub:2.0.0'
+    // 切片
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.1.0'
+    // 页面路由
+//    implementation 'com.github.xuexiangjys.XRouter:xrouter-runtime:1.1.0'
+//    annotationProcessor 'com.github.xuexiangjys.XRouter:xrouter-compiler:1.1.0'
+    // XPage页面框架
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.2.0'
+//    annotationProcessor project(':widget_compiler')
+    // ButterKnife
+//    implementation deps.butterknife.runtime
+//    annotationProcessor deps.butterknife.compiler
+    // LeakCanary内存泄漏检测
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
+
+    // 弹性布局
+    implementation 'com.google.android:flexbox:0.3.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    // 悬浮按钮
+    implementation 'com.github.clans:fab:1.6.4'
+    // RxUtil2
+//    implementation deps.rxjava2
+//    implementation deps.rxandroid
+    // RxBinding的sdk
+//    implementation deps.rxbinding
+//    implementation 'com.github.xuexiangjys:RxUtil2:1.2.1'
+    // 任务框架
+    implementation 'com.github.xuexiangjys.XTask:xtask-core:1.0.2'
+
+    // PictureSelector图片选择
+    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
+
+    // 下拉刷新
+//    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
+//    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
+
+    // 列表侧滑菜单
+    implementation 'com.yanzhenjie.recyclerview:support:1.3.2'
+
+    // 预加载占位控件
+    implementation 'me.samlss:broccoli:1.0.0'
+
+//    //XVideo，太大，暂时去除
+//    implementation 'com.github.xuexiangjys:XVideo:1.0.2'
+//    implementation 'com.github.xuexiangjys:NiceVieoPlayer:3.0.3'
+
+    // WebView
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-core:1.0.0'
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-download:1.0.0'//选填
+    implementation 'com.github.xuexiangjys.AgentWeb:agentweb-filechooser:1.0.0'//选填
+
+    // 数据库
+    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.2'
+    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.2'
+
+    // 侧边栏菜单
+    implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
+
+    // XQRCode二维码扫描
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.1'
+    // CityPicker
+    implementation "com.github.xuexiangjys:CityPicker:1.0.2"
+    // XFloatView悬浮窗口
+    implementation 'com.github.xuexiangjys:XFloatView:1.0.2'
+    // android进程监控
+    implementation 'com.jaredrummler:android-processes:1.1.1'
+
+    // Android图表库
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    // ECharts图表库
+    implementation 'com.github.abel533:ECharts:3.0.0.2'
+    // TabBar
+    implementation 'com.github.xuexiangjys:JPTabBar:1.0.1'
+    // 日历控件
+    implementation 'com.github.xuexiangjys:CalendarExaple:1.0.1'
+    implementation 'com.haibin:calendarview:3.6.3'
+    // 图标库
+    implementation "com.mikepenz:iconics-core:4.0.2"
+    // 图标库控件（可选）
+    implementation "com.mikepenz:iconics-views:4.0.2"
+    // 相机拍摄
+    implementation 'com.github.xuexiangjys:CameraView:1.0.3'
+    // 另一款相机拍摄库，使用更简单
+    implementation 'com.wonderkiln:camerakit:0.13.1'
+
+    // 阿里巴巴组件
+    implementation 'com.alibaba.android:vlayout:1.3.0'
+    implementation 'com.alibaba.android:ultraviewpager:1.0.7.8'
+    implementation 'com.alibaba.android:tangram:3.3.6'
+    // 版本更新
+    implementation 'com.github.xuexiangjys:XUpdate:2.1.3'
+//    implementation 'com.zhy:okhttputils:2.6.2'
+//    implementation deps.gson
+//    implementation deps.okhttp3
+    // 腾讯的键值对存储mmkv
+    implementation 'com.tencent:mmkv:1.2.10'
+    // 腾讯x5TBS
+    implementation 'com.tencent.tbs.tbssdk:sdk:43967'
+    // 富文本
+    implementation 'com.zzhoujay.richtext:richtext:3.0.8'
+
+    // 双列表联动
+    implementation 'com.kunminx.linkage:linkage-recyclerview:1.9.2'
+
+    // umeng统计
+    implementation 'com.umeng.umsdk:common:9.3.8'
+    implementation  'com.umeng.umsdk:asms:1.2.1'
+
+    // ANR异常捕获
+    implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
+}

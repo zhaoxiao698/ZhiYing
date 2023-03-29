@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.TestActivity">
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:text="测试"
+        android:textColor="@color/black"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/get"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:text="get请求" />
+
+    <Button
+        android:id="@+id/post"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:text="post请求" />
+
+    <EditText
+        android:id="@+id/et_url"
+        android:layout_marginTop="@dimen/config_margin_30dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/url"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:text="url请求" />
+
+</LinearLayout>

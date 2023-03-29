@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBarView">
+        <attr name="tb_leftText1" format="string"/>
+        <attr name="tb_leftTextColor" format="color"/>
+        <attr name="tb_centerTextColor" format="color"/>
+        <attr name="tb_centerTitle" format="string"/>
+        <attr name="tb_rightTextColor" format="color"/>
+        <attr name="tb_rightText" format="string"/>
+        <attr name="tb_leftDrawable" format="reference"/>
+        <attr name="tb_rightDrawable" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="SearchBarView">
+        <attr name="sb_search" format="boolean"/>
+        <attr name="sb_searchDrawable" format="reference"/>
+        <attr name="sb_searchHintText" format="string"/>
+        <attr name="sb_rightText" format="string"/>
+        <attr name="sb_rightTextSize" format="dimension"/>
+        <attr name="sb_rightTextColor" format="color"/>
+        <attr name="sb_rightDrawable1" format="reference"/>
+        <attr name="sb_rightDrawable2" format="reference"/>
+        <attr name="sb_rightDrawable1_width" format="dimension"/>
+        <attr name="sb_rightDrawable1_height" format="dimension"/>
+        <attr name="sb_rightDrawable2_width" format="dimension"/>
+        <attr name="sb_rightDrawable2_height" format="dimension"/>
+    </declare-styleable>
+</resources>
