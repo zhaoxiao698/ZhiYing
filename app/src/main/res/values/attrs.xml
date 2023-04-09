@@ -24,5 +24,13 @@
         <attr name="sb_rightDrawable1_height" format="dimension"/>
         <attr name="sb_rightDrawable2_width" format="dimension"/>
         <attr name="sb_rightDrawable2_height" format="dimension"/>
+        <attr name="sb_rightDrawable1_marginLeft" format="dimension"/>
+        <attr name="sb_rightDrawable2_marginLeft" format="dimension"/>
+        <attr name="sb_type" format="enum">
+            <enum name="White" value="1"/>
+            <enum name="Gray" value="2"/>
+        </attr>/>
+        <attr name="sb_rightDrawable1_tint" format="reference"/>
+        <attr name="sb_rightDrawable2_tint" format="reference"/>
     </declare-styleable>
 </resources>

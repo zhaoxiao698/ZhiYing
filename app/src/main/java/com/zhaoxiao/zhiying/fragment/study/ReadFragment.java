@@ -2,24 +2,17 @@ package com.zhaoxiao.zhiying.fragment.study;
 
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zhaoxiao.zhiying.R;
-import com.zhaoxiao.zhiying.adapter.ParagraphAdapter;
-import com.zhaoxiao.zhiying.adapter.SentenceAdapter;
+import com.zhaoxiao.zhiying.adapter.study.ParagraphAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.ArticleDetail;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Sentence;
+import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.Sentence;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.util.StringUtils;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

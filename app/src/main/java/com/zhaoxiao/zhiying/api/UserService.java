@@ -1,7 +1,9 @@
 package com.zhaoxiao.zhiying.api;
 
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.User;
+import com.zhaoxiao.zhiying.entity.mine.CodeResponse;
+import com.zhaoxiao.zhiying.entity.mine.Login;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.User;
 
 import java.util.List;
 import java.util.Map;
@@ -30,4 +32,15 @@ public interface UserService {
 
     @GET
     Call<ResponseBody> getUrl(@Url String url);
+
+    @POST
+    Call<CodeResponse> sendCode (@Url String url, @Body Map<String,String> params);
+
+    @POST("user/loginByCode")
+    @FormUrlEncoded
+    Call<Data<Login>> loginByCode (@Field("phone") String phone);
+
+    @POST("user/loginByPassword")
+    @FormUrlEncoded
+    Call<Data<Login>> loginByPassword (@Field("account") String account, @Field("password") String password);
 }

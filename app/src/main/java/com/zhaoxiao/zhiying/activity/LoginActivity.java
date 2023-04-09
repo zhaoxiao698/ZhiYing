@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.jaeger.library.StatusBarUtil;
 import com.zhaoxiao.zhiying.R;
-import com.zhaoxiao.zhiying.entity.PwdSwitch;
+import com.zhaoxiao.zhiying.entity.study.PwdSwitch;
 import com.zhaoxiao.zhiying.util.StringUtils;
 
 import butterknife.BindView;

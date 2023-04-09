@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dragView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:clickable="true"
+    android:focusable="false"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_sliding"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="隐藏"
+            android:layout_centerVertical="true"
+            android:tint="@color/gray"
+            android:src="@drawable/up_test"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="查看题目"
+            android:layout_toRightOf="@+id/iv_sliding"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_question_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_toLeftOf="@+id/tv_question_num"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/g_yellow"
+            android:layout_alignBottom="@+id/tv_question_num"
+            android:layout_marginBottom="-2dp"
+            android:layout_marginRight="3dp"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/tv_question_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@+id/btn_hide"
+            android:layout_centerVertical="true"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_hide"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/config_margin_30dp"
+            android:layout_centerVertical="true"
+            android:text="隐藏"
+            android:background="@color/gray"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <com.zhaoxiao.zhiying.view.FixedViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

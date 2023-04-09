@@ -11,6 +11,7 @@
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -54,6 +55,7 @@
         android:layout_gravity="center_vertical"
         android:gravity="center"
         android:text="四级"
+        android:layout_marginLeft="@dimen/config_margin_10dp"
         android:textSize="20sp"
         android:visibility="gone" />
 
@@ -63,7 +65,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/config_margin_10dp"
-        android:background="@drawable/sign_gray"
+        android:src="@drawable/sign_gray"
         android:visibility="gone" />
 
     <ImageView
@@ -72,7 +74,7 @@
         android:layout_height="30dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/config_margin_10dp"
-        android:background="@drawable/word_gray"
+        android:src="@drawable/word_gray"
         android:visibility="gone" />
 
 </LinearLayout>

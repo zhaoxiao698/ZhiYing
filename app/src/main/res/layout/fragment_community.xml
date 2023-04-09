@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.community.CommunityFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.zhaoxiao.zhiying.view.SearchBarView
+        android:id="@+id/search_bar_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:text="社区" />
+        android:layout_height="wrap_content"
+        app:sb_rightDrawable1="@drawable/add_community"
+        app:sb_rightDrawable1_tint="@color/g_yellow"/>
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/fl_community"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -103,13 +103,6 @@ public class CalendarActivity extends BaseActivity implements
         return calendar;
     }
 
-
-    @Override
-    protected void setStatusBar() {
-        super.setStatusBar();
-        StatusBarUtils.setStatusBarLightMode(this);
-    }
-
     @Override
     public void onCalendarOutOfRange(Calendar calendar) {
 

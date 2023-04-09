@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="3dp"
+    app:cardUseCompatPadding="true"
+    android:layout_marginLeft="@dimen/config_margin_10dp"
+    android:layout_marginRight="@dimen/config_margin_10dp"
+    app:contentPaddingTop="@dimen/config_padding_10dp"
+    app:contentPaddingBottom="@dimen/config_padding_10dp"
+    app:contentPaddingLeft="@dimen/config_padding_20dp"
+    app:contentPaddingRight="@dimen/config_padding_20dp">
+
+    <RelativeLayout
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/config_margin_10dp"
+            android:ellipsize="end"
+            android:text="听力"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/tv_stype"
+            android:layout_marginBottom="@dimen/config_margin_5dp"
+            android:layout_marginRight="@dimen/config_margin_20dp"
+            android:layout_below="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="短篇新闻、长对话、听力篇章"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_below="@id/tv_stype"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="共200题  |  已练习24题"
+            android:textSize="15sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_marginTop="@dimen/config_margin_10dp"
+            android:layout_below="@+id/tv_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/dropdown_gray"
+            android:layout_below="@+id/tv_name"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

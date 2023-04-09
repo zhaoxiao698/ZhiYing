@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jaeger.library.StatusBarUtil;
+import com.xuexiang.xui.utils.StatusBarUtils;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 
 import java.io.Serializable;
@@ -86,23 +87,42 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(in);
     }
 
+//    //保存数据到本地
+//    protected void saveStringToSp(String key, String value) {
+//        SharedPreferences sp = getSharedPreferences("sp_ZhiYing", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putString(key, value);
+//        editor.commit();
+//    }
+//
+//    //从本地文件取出数据
+//    protected String getStringFromSp(String key){
+//        SharedPreferences sp = getSharedPreferences("sp_ZhiYing", Context.MODE_PRIVATE);
+//        return sp.getString(key,"");
+//    }
+
     //保存数据到本地
-    protected void saveStringToSp(String key, String value) {
-        SharedPreferences sp = getSharedPreferences("sp_ceramics", Context.MODE_PRIVATE);
+    public <T> void saveStringToSp(String key, T value) {
+        SharedPreferences sp = getSharedPreferences("sp_ZhiYing", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString(key, value);
+        if(value instanceof String) {
+            editor.putString(key, (String) value);
+        } else if(value instanceof Integer){
+            editor.putInt(key, (Integer) value);
+        }
         editor.commit();
     }
 
     //从本地文件取出数据
-    protected String getStringFromSp(String key){
-        SharedPreferences sp = getSharedPreferences("sp_ceramics", Context.MODE_PRIVATE);
-        return sp.getString(key,"");
+    protected <T> T getStringFromSp(String key, boolean isString) {
+        SharedPreferences sp = getSharedPreferences("sp_ZhiYing", Context.MODE_PRIVATE);
+        if(isString) return (T) sp.getString(key, "");
+        else return (T)new Integer(sp.getInt(key,-1));
     }
 
     //删除
     protected void removeFromSp(String key){
-        SharedPreferences sp = getSharedPreferences("sp_ceramics", Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("sp_ZhiYing", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
         editor.commit();
@@ -111,6 +131,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     //设置状态栏
     protected void setStatusBar() {
         StatusBarUtil.setTransparent(this);
+        StatusBarUtils.setStatusBarLightMode(this);
     }
 
     //获取ApiService

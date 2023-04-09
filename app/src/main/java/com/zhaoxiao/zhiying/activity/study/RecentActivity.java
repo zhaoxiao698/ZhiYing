@@ -1,7 +1,5 @@
 package com.zhaoxiao.zhiying.activity.study;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,21 +12,18 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
-import com.zhaoxiao.zhiying.adapter.RecentAdapter;
+import com.zhaoxiao.zhiying.adapter.study.RecentAdapter;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.PageInfo;
-import com.zhaoxiao.zhiying.entity.Recent;
-import com.zhaoxiao.zhiying.util.LinearTopSmoothScroller;
-import com.zhaoxiao.zhiying.util.TopSmoothScroller;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.PageInfo;
+import com.zhaoxiao.zhiying.entity.study.Recent;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

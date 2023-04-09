@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".activity.mine.CodeLoginActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/logo" />
+
+    <TextView
+        style="@style/TextStyle.Title"
+        android:layout_width="match_parent"
+        android:text="验证码登录"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:text="未注册手机号验证后会直接注册"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="@dimen/config_margin_30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="@dimen/config_margin_10dp"
+        android:background="@drawable/shape_input_account"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:id="@+id/ll_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/config_margin_10dp"
+                android:text="+86"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="@dimen/config_margin_8dp"
+                android:src="@drawable/dropdown_gray" />
+
+        </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="33dp"
+                    android:background="@null"
+                    android:hint="请输入手机号"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="20sp" />
+
+<!--        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText-->
+<!--            android:id="@+id/et_phone_number"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:hint="@string/tip_please_input_phone_number"-->
+<!--            android:inputType="number"-->
+<!--            android:textSize="20sp"-->
+<!--            app:met_clearButton="true"-->
+<!--            app:met_errorMessage="@string/tip_phone_number_error"-->
+<!--            app:met_hideUnderline="true"-->
+<!--            app:met_regexp="@string/regex_phone_number"-->
+<!--            app:met_textColorHint="@color/gray" />-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:scaleX="1"
+            android:scaleY="1" />
+
+        <TextView
+            style="@style/TextStyle.Explain"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:text="@string/agree_protocol"
+            android:textColor="@color/xui_config_color_primary_text" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+            android:id="@+id/tv_user_protocol"
+            style="@style/TextStyle.Explain"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:text="@string/title_user_protocol"
+            android:textColor="?attr/colorAccent" />
+
+        <TextView
+            style="@style/TextStyle.Explain"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:text="@string/lab_and"
+            android:textColor="@color/xui_config_color_primary_text" />
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+            android:id="@+id/tv_privacy_protocol"
+            style="@style/TextStyle.Explain"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:text="@string/title_privacy_protocol"
+            android:textColor="?attr/colorAccent" />
+
+    </LinearLayout>
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/btn_getCode"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="获取验证码"
+        android:textSize="20sp"
+        app:rb_backgroundColor="@color/g_yellow"
+        app:rb_radius="50dp" />
+
+    <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+        android:id="@+id/btn_password_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
+        android:text="密码登录"
+        android:textColor="@color/g_yellow"
+        android:textSize="20sp"
+        app:rb_borderColor="@color/g_yellow"
+        app:rb_borderWidth="1dp"
+        app:rb_radius="50dp" />
+
+</LinearLayout>
+

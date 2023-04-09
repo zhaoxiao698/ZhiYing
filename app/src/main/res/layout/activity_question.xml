@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activity.test.QuestionActivity">
+
+    <include layout="@layout/layout_question_title_bar" />
+
+    <com.xuexiang.xui.widget.progress.HorizontalProgressView
+        android:id="@+id/hpv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:hpv_end_color="@color/dark_orange"
+        app:hpv_end_progress="86"
+        app:hpv_isTracked="true"
+        app:hpv_progress_duration="2200"
+        app:hpv_progress_textColor="#696969"
+        app:hpv_progress_textVisibility="false"
+        app:hpv_start_color="@color/light_orange"
+        app:hpv_track_color="#f4f4f4"
+        app:hpv_track_width="8dp" />
+
+    <com.zhaoxiao.zhiying.view.FixedViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/config_padding_14dp"
+        android:gravity="center_vertical"
+        android:layout_height="80dp">
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_pre"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="52dp"
+            android:textColor="@color/gray"
+            app:rb_backgroundColor="@color/background_gray"
+            app:rb_radius="8dp"
+            android:padding="@dimen/config_padding_10dp"
+            android:textSize="20sp"
+            android:text="上一题"/>
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="52dp"
+            android:padding="@dimen/config_padding_10dp"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:rb_radius="8dp"
+            app:rb_backgroundColor="@color/g_yellow"
+            android:textSize="20sp"
+            android:text="下一题"/>
+
+        <LinearLayout
+            android:id="@+id/btn_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:tint="@color/gray"
+                android:src="@drawable/test_test"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="答题卡"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

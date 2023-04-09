@@ -21,13 +21,12 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.R;
-import com.zhaoxiao.zhiying.adapter.SentenceAdapter;
+import com.zhaoxiao.zhiying.adapter.study.SentenceAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.ArticleDetail;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Sentence;
+import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.Sentence;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.service.MediaService;
 import com.zhaoxiao.zhiying.util.LinearTopSmoothScroller;

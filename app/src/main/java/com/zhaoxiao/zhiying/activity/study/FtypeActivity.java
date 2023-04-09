@@ -7,16 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jaeger.library.StatusBarUtil;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
-import com.zhaoxiao.zhiying.adapter.FtypeAdapter;
+import com.zhaoxiao.zhiying.adapter.study.FtypeAdapter;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Ftype;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.Ftype;
 
 import org.jetbrains.annotations.NotNull;
 

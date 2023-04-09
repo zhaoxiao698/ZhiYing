@@ -3,6 +3,7 @@ package com.zhaoxiao.zhiying.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -12,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+
+import com.donkingliang.labels.LabelsView;
 import com.zhaoxiao.zhiying.R;
 
 import butterknife.BindView;
@@ -26,8 +32,27 @@ public class SearchBarView extends LinearLayout {
     TextView tvRight;
     ImageView ivRight1;
     ImageView ivRight2;
+    CardView cardView;
 
     private onViewClick mClick;
+
+    public enum CardViewType {
+        White(1),
+        Gray(2);
+
+        int value;
+
+        CardViewType(int value) {
+            this.value = value;
+        }
+
+        static CardViewType get(int value) {
+            if (value == 2) {
+                return Gray;
+            }
+            return White;
+        }
+    }
 
     public SearchBarView(Context context) {
         this(context, null);
@@ -90,6 +115,33 @@ public class SearchBarView extends LinearLayout {
                 case R.styleable.SearchBarView_sb_rightDrawable2_height:
                     layoutParams2.height = (int) array.getDimension(attr, 0);
                     break;
+                case R.styleable.SearchBarView_sb_rightDrawable1_marginLeft:
+                    layoutParams1.leftMargin = (int) array.getDimension(attr, 0);
+                    break;
+                case R.styleable.SearchBarView_sb_rightDrawable2_marginLeft:
+                    layoutParams2.leftMargin = (int) array.getDimension(attr, 0);
+                    break;
+                case R.styleable.SearchBarView_sb_type:
+                    if(array.getInt(attr,1)==2){
+                        cardView.setCardBackgroundColor(getResources().getColor(R.color.light_gray));
+                        cardView.setCardElevation(0);
+                    } else {
+                        cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                        cardView.setCardElevation(2);
+                    }
+                    break;
+                case R.styleable.SearchBarView_sb_rightDrawable1_tint:
+                    Drawable drawable1 = ivRight1.getDrawable();
+                    Drawable wrap1 = DrawableCompat.wrap(drawable1);
+                    DrawableCompat.setTint(wrap1, array.getColor(attr, Color.GRAY));
+                    ivRight1.setImageDrawable(wrap1);
+                    break;
+                case R.styleable.SearchBarView_sb_rightDrawable2_tint:
+                    Drawable drawable2 = ivRight2.getDrawable();
+                    Drawable wrap2 = DrawableCompat.wrap(drawable2);
+                    DrawableCompat.setTint(wrap2, array.getColor(attr, Color.GRAY));
+                    ivRight2.setImageDrawable(wrap2);
+                    break;
             }
         }
         array.recycle();
@@ -127,6 +179,7 @@ public class SearchBarView extends LinearLayout {
         tvRight = findViewById(R.id.tv_right);
         ivRight1 = findViewById(R.id.iv_right1);
         ivRight2 = findViewById(R.id.iv_right2);
+        cardView = findViewById(R.id.cardView);
     }
 
     public void setOnViewClick(onViewClick click) {
@@ -208,6 +261,47 @@ public class SearchBarView extends LinearLayout {
         if (ivRight2 != null) {
             layoutParams2.height = res;
         }
+    }
+
+    //设置右图标1marginLeft
+    public void setRightDrawable1_MarginLeft(int res) {
+        if (ivRight1 != null) {
+            layoutParams1.leftMargin = res;
+        }
+    }
+
+    //设置右图标2marginLeft
+    public void setRightDrawable2_MarginLeft(int res) {
+        if (ivRight2 != null) {
+            layoutParams2.leftMargin = res;
+        }
+    }
+
+    //设置cardView类型
+    public void setCardViewType(CardViewType cardViewType) {
+        if(cardViewType==CardViewType.Gray){
+            cardView.setCardBackgroundColor(getResources().getColor(R.color.background_gray));
+            cardView.setCardElevation(0);
+        } else {
+            cardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+            cardView.setCardElevation(2);
+        }
+    }
+
+    //设置右图标1tint
+    public void setRightDrawable1_Tint(int color) {
+        Drawable drawable1 = ivRight2.getDrawable();
+        Drawable wrap1 = DrawableCompat.wrap(drawable1);
+        DrawableCompat.setTint(wrap1, color);
+        ivRight2.setImageDrawable(wrap1);
+    }
+
+    //设置右图标2tint
+    public void setRightDrawable2_Tint(int color) {
+        Drawable drawable2 = ivRight2.getDrawable();
+        Drawable wrap2 = DrawableCompat.wrap(drawable2);
+        DrawableCompat.setTint(wrap2, color);
+        ivRight2.setImageDrawable(wrap2);
     }
 
     public interface onViewClick {

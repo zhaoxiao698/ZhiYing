@@ -10,13 +10,11 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.study.ArticleActivity;
-import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
-import com.zhaoxiao.zhiying.adapter.ArticleAdapter;
-import com.zhaoxiao.zhiying.adapter.RecentAdapter;
+import com.zhaoxiao.zhiying.adapter.study.ArticleAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Article;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.PageInfo;
+import com.zhaoxiao.zhiying.entity.study.Article;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 
 import org.jetbrains.annotations.NotNull;

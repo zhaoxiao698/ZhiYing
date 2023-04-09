@@ -1,21 +1,15 @@
 package com.zhaoxiao.zhiying.activity.study;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
-import android.net.Uri;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.jaeger.library.StatusBarUtil;
@@ -25,32 +19,22 @@ import com.xuexiang.xui.utils.ViewUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
-import com.zhaoxiao.zhiying.adapter.HotAdapter;
-import com.zhaoxiao.zhiying.adapter.SortAdapter;
-import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Channel;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Hot;
-import com.zhaoxiao.zhiying.entity.PageInfo;
+import com.zhaoxiao.zhiying.entity.study.Channel;
+import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.study.ArticleListFragment;
 import com.zhaoxiao.zhiying.fragment.study.ChannelDetailFragment;
 import com.zhaoxiao.zhiying.util.BitMapUtil;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import jp.wasabeef.blurry.Blurry;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ChannelActivity extends BaseActivity {
 

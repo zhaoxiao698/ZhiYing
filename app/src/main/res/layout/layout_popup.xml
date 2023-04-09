@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_popup_arrow"
+        android:tint="#aa000000"
+        android:rotation="180"/>
+
+    <TextView
+        android:layout_margin="12dp"
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/config_padding_20dp"
+        android:paddingRight="@dimen/config_padding_20dp"
+        android:paddingTop="@dimen/config_padding_10dp"
+        android:paddingBottom="@dimen/config_padding_10dp"
+        android:gravity="center"
+        android:background="@drawable/shape_popup"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:text="请先勾选协议" />
+
+
+</FrameLayout>

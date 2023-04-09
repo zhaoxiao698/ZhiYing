@@ -1,6 +1,5 @@
 package com.zhaoxiao.zhiying.activity.study;
 
-import android.os.Bundle;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -12,9 +11,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
-import com.zhaoxiao.zhiying.adapter.MyPagerAdapter;
-import com.zhaoxiao.zhiying.fragment.study.ArticleListFragment;
-import com.zhaoxiao.zhiying.fragment.study.ChannelDetailFragment;
+import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.study.ReadFragment;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
@@ -22,7 +19,6 @@ import com.zhaoxiao.zhiying.view.FixedViewPager;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ArticleActivity extends BaseActivity {
     @BindView(R.id.iv_back)

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".fragment.test.QuestionFragment">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:textSize="30sp"-->
+<!--        android:text="题目" />-->
+
+<!--</LinearLayout>-->
+
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:sothree="http://schemas.android.com/apk/res-auto"
+android:id="@+id/sliding_layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="bottom"
+sothree:umanoPanelHeight="50dp"
+sothree:umanoShadowHeight="4dp"
+sothree:umanoParallaxOffset="100dp"
+sothree:umanoDragView="@+id/dragView"
+sothree:umanoOverlay="true"
+sothree:umanoScrollableView="@+id/rv"
+    sothree:umanoFadeColor="@android:color/transparent"
+tools:context=".fragment.test.QuestionFragment">
+
+<!-- MAIN CONTENT -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_above="@+id/view_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/sv_main"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Main Content"
+        android:clickable="true"
+        android:padding="@dimen/config_padding_10dp"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:textSize="20sp" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/config_margin_20dp"
+        android:backgroundTint="@color/g_yellow"
+        android:tint="@color/white"
+        android:src="@drawable/note_test"
+        sothree:layout_behavior=".view.FabBehavior"
+        sothree:layout_anchor="@id/sv_main"
+        sothree:layout_anchorGravity="bottom|end"
+        sothree:borderWidth="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <View
+        android:id="@+id/view_empty"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+</RelativeLayout>
+
+<!-- SLIDING LAYOUT -->
+    <include layout="@layout/layout_sliding" />
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

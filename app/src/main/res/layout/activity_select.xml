@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:orientation="vertical"
+    tools:context=".activity.test.SelectActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/left_yellow" />
+
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:paddingStart="@dimen/config_padding_20dp"
+            android:paddingTop="@dimen/config_margin_8dp"
+            android:paddingEnd="@dimen/config_padding_20dp"
+            android:paddingBottom="@dimen/config_margin_8dp"
+            android:text="保存"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:rb_backgroundColor="@color/g_yellow"
+            app:rb_radius="20dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="选择题库"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_20dp"
+        android:text="四六级"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <com.donkingliang.labels.LabelsView
+        android:id="@+id/lv1"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:layout_marginLeft="@dimen/config_margin_20dp"
+        app:lineMargin="@dimen/config_margin_20dp"
+        app:wordMargin="@dimen/config_margin_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:labelBackground="@drawable/label_bg"
+        app:labelTextColor="@drawable/label_text_color"
+        app:labelTextSize="18sp"
+        app:selectType="SINGLE"/>
+
+    <!--    <com.xuexiang.xui.widget.flowlayout.FlowTagLayout-->
+    <!--        android:id="@+id/flowlayout_single_select"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:ftl_check_mode="single"-->
+    <!--        app:ftl_entries="@array/CET"/>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_marginTop="@dimen/config_margin_20dp"-->
+    <!--        android:layout_marginLeft="@dimen/config_margin_20dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingTop="@dimen/config_padding_6dp"-->
+    <!--            android:paddingBottom="@dimen/config_padding_6dp"-->
+    <!--            android:paddingStart="@dimen/config_padding_20dp"-->
+    <!--            android:paddingEnd="@dimen/config_padding_20dp"-->
+    <!--            android:text="四级"-->
+    <!--            android:textColor="@color/gray"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:rb_radius="20dp"-->
+    <!--            app:rb_borderColor="@color/gray" />-->
+
+    <!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="@dimen/config_margin_30dp"-->
+    <!--            android:paddingTop="@dimen/config_padding_6dp"-->
+    <!--            android:paddingBottom="@dimen/config_padding_6dp"-->
+    <!--            android:paddingStart="@dimen/config_padding_20dp"-->
+    <!--            android:paddingEnd="@dimen/config_padding_20dp"-->
+    <!--            android:text="六级"-->
+    <!--            android:textColor="@color/gray"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:rb_radius="20dp"-->
+    <!--            app:rb_borderColor="@color/gray" />-->
+
+    <!--    </LinearLayout>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_20dp"
+        android:layout_marginTop="50dp"
+        android:text="考研"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <com.donkingliang.labels.LabelsView
+        android:id="@+id/lv2"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:layout_marginLeft="@dimen/config_margin_20dp"
+        app:lineMargin="@dimen/config_margin_20dp"
+        app:wordMargin="@dimen/config_margin_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:labelBackground="@drawable/label_bg"
+        app:labelTextColor="@drawable/label_text_color"
+        app:labelTextSize="18sp"
+        app:selectType="SINGLE"/>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_marginTop="@dimen/config_margin_20dp"-->
+    <!--        android:layout_marginLeft="@dimen/config_margin_20dp"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:paddingTop="@dimen/config_padding_6dp"-->
+    <!--            android:paddingBottom="@dimen/config_padding_6dp"-->
+    <!--            android:paddingStart="@dimen/config_padding_20dp"-->
+    <!--            android:paddingEnd="@dimen/config_padding_20dp"-->
+    <!--            android:text="英一"-->
+    <!--            android:textColor="@color/gray"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:rb_radius="20dp"-->
+    <!--            app:rb_borderColor="@color/gray" />-->
+
+    <!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="@dimen/config_margin_30dp"-->
+    <!--            android:paddingTop="@dimen/config_padding_6dp"-->
+    <!--            android:paddingBottom="@dimen/config_padding_6dp"-->
+    <!--            android:paddingStart="@dimen/config_padding_20dp"-->
+    <!--            android:paddingEnd="@dimen/config_padding_20dp"-->
+    <!--            android:text="英二"-->
+    <!--            android:textColor="@color/gray"-->
+    <!--            android:textSize="18sp"-->
+    <!--            app:rb_radius="20dp"-->
+    <!--            app:rb_borderColor="@color/gray" />-->
+
+    <!--    </LinearLayout>-->
+
+</LinearLayout>

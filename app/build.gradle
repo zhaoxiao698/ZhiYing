@@ -73,6 +73,11 @@ dependencies {
     implementation 'xyz.doikki.android.dkplayer:videocache:3.3.7'
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'xyz.doikki.android.dkplayer:player-exo:3.3.7'
+    implementation 'com.github.donkingliang:LabelsView:1.6.5'           //标签
+    implementation 'com.github.ZhangHao555:BaseTreeView:v1.4'           //树形控件
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'                  //滑动面板
+    implementation 'io.github.razerdp:BasePopup:3.2.1'                  //弹窗
 
     //XUI
     implementation 'com.github.xuexiangjys:XUI:1.2.0'
@@ -108,9 +113,11 @@ dependencies {
     // RxUtil2
 //    implementation deps.rxjava2
 //    implementation deps.rxandroid
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     // RxBinding的sdk
 //    implementation deps.rxbinding
-//    implementation 'com.github.xuexiangjys:RxUtil2:1.2.1'
+    implementation 'com.github.xuexiangjys:RxUtil2:1.2.1'
     // 任务框架
     implementation 'com.github.xuexiangjys.XTask:xtask-core:1.0.2'
 

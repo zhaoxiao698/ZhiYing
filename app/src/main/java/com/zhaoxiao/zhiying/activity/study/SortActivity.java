@@ -11,11 +11,11 @@ import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
-import com.zhaoxiao.zhiying.adapter.SortAdapter;
+import com.zhaoxiao.zhiying.adapter.study.SortAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Ftype;
-import com.zhaoxiao.zhiying.entity.Stype;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.Ftype;
+import com.zhaoxiao.zhiying.entity.study.Stype;
 import com.zhaoxiao.zhiying.fragment.study.SortFragment;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 

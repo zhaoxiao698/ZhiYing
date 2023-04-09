@@ -10,14 +10,11 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
-import com.zhaoxiao.zhiying.adapter.ChannelAdapter;
-import com.zhaoxiao.zhiying.adapter.HotAdapter;
-import com.zhaoxiao.zhiying.api.ApiConfig;
+import com.zhaoxiao.zhiying.adapter.study.ChannelAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.entity.Channel;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Hot;
-import com.zhaoxiao.zhiying.entity.PageInfo;
+import com.zhaoxiao.zhiying.entity.study.Channel;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +26,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SortFragment extends BaseFragment {
 

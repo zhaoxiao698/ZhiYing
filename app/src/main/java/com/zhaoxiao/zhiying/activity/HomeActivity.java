@@ -10,14 +10,19 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.R;
-import com.zhaoxiao.zhiying.adapter.MyPagerAdapter;
-import com.zhaoxiao.zhiying.entity.TabEntity;
+import com.zhaoxiao.zhiying.activity.test.SelectActivity;
+import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
+import com.zhaoxiao.zhiying.entity.study.TabEntity;
 import com.zhaoxiao.zhiying.fragment.community.CommunityFragment;
 import com.zhaoxiao.zhiying.fragment.study.StudyFragment;
 import com.zhaoxiao.zhiying.fragment.mine.MineFragment;
+import com.zhaoxiao.zhiying.fragment.test.SelectedFragment;
 import com.zhaoxiao.zhiying.fragment.test.TestFragment;
 import com.zhaoxiao.zhiying.service.MediaService;
+import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
@@ -49,6 +54,12 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        //刷新过期时间
+        String account = SpUtils.getInstance(this).getString("account", "");
+        if (!StringUtils.isEmpty(account) && !account.equals("已过期")) {
+            SpUtils.getInstance(this).setString("account", account, 10 * SpUtils.TIME_DAY);
+        }
+
 //        StatusBarUtil.setTransparent(this);
         StatusBarUtils.setStatusBarLightMode(this);
 
@@ -86,6 +97,27 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 commonTabLayout.setCurrentTab(position);
+//                if(position == 1){
+//                    if(getStringFromSp("questionBankId",false)==null||(Integer) getStringFromSp("questionBankId",false)==-1){
+////                    showToast("请先选择题库");
+//                        navigateTo(SelectActivity.class);
+//                        showToast("请先选择题库");
+//                    }
+//                }
+                if(position == 1){
+                    if(getStringFromSp("questionBankId",false)==null||(Integer) getStringFromSp("questionBankId",false)==-1){
+//                    showToast("请先选择题库");
+                        navigateTo(SelectActivity.class);
+                        XToastUtils.info("请先选择题库");
+                    } else {
+                        ((SelectedFragment)mFragments.get(1).getChildFragmentManager().findFragmentById(R.id.fl_test)).startProgress();
+                    }
+                    StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.white), 0);
+                } else if(position==3){
+                    StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.g_yellow), 0);
+                } else {
+                    StatusBarUtil.setTransparent(HomeActivity.this);
+                }
             }
 
             @Override

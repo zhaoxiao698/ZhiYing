@@ -18,6 +18,16 @@
 
 <resources>
 
+    <string-array name="CET">
+        <item>四级</item>
+        <item>六级</item>
+    </string-array>
+
+    <string-array name="PEE">
+        <item>英一</item>
+        <item>英二</item>
+    </string-array>
+
     <string-array name="adBlockUrl">
         <item>ubmcmm.baidustatic.com</item>
         <item>gss1.bdstatic.com/</item>

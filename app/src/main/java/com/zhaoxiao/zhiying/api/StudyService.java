@@ -1,14 +1,15 @@
 package com.zhaoxiao.zhiying.api;
 
-import com.zhaoxiao.zhiying.entity.Article;
-import com.zhaoxiao.zhiying.entity.ArticleDetail;
-import com.zhaoxiao.zhiying.entity.Banner;
-import com.zhaoxiao.zhiying.entity.Channel;
-import com.zhaoxiao.zhiying.entity.Data;
-import com.zhaoxiao.zhiying.entity.Ftype;
-import com.zhaoxiao.zhiying.entity.Hot;
-import com.zhaoxiao.zhiying.entity.PageInfo;
-import com.zhaoxiao.zhiying.entity.Recent;
+import com.zhaoxiao.zhiying.entity.study.Article;
+import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.Banner;
+import com.zhaoxiao.zhiying.entity.study.Channel;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.study.Ftype;
+import com.zhaoxiao.zhiying.entity.study.Hot;
+import com.zhaoxiao.zhiying.entity.study.PageInfo;
+import com.zhaoxiao.zhiying.entity.study.Recent;
+import com.zhaoxiao.zhiying.entity.test.TestFtype;
 
 import java.util.List;
 

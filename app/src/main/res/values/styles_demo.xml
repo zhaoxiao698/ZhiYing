@@ -188,4 +188,28 @@
         <item name="android:windowExitAnimation">@anim/pop_hidden_anim</item>
     </style>
 
+
+<!--    styles_widget-->
+    <style name="SuperButton.Primary.Login">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">40dp</item>
+    <item name="android:layout_marginStart">50dp</item>
+    <item name="android:layout_marginEnd">50dp</item>
+    <item name="sCornersRadius">20dp</item>
+    <item name="sSelectorNormalColor">?attr/colorAccent</item>
+    <item name="sSelectorPressedColor">?attr/colorAccent</item>
+    <item name="android:textColor">@color/xui_config_color_white</item>
+    </style>
+
+    <style name="Container">
+        <item name="android:paddingStart">?attr/xui_config_content_spacing_horizontal</item>
+        <item name="android:paddingEnd">?attr/xui_config_content_spacing_horizontal</item>
+    </style>
+
+    <style name="ScrollViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
 </resources>

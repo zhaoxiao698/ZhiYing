@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.test.SubQuestionFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_subQuestion"
+        android:padding="@dimen/config_padding_10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_stem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="51. Why do people in many cultures prize the egg?"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_a"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/iv_a"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/g_yellow"
+            android:background="@drawable/shape_unselected"
+            android:textSize="18dp"
+            android:text="A"/>
+
+        <TextView
+            android:id="@+id/tv_a"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="It is their major source of protein in winter."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_b"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/iv_b"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/g_yellow"
+            android:background="@drawable/shape_unselected"
+            android:textSize="18dp"
+            android:text="B"/>
+
+        <TextView
+            android:id="@+id/tv_b"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="It is a welcome sign of the coming of spring."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_c"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/iv_c"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/g_yellow"
+            android:background="@drawable/shape_unselected"
+            android:textSize="18dp"
+            android:text="C"/>
+
+        <TextView
+            android:id="@+id/tv_c"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="It can easily be made into a work of art."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_d"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/iv_d"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/g_yellow"
+            android:background="@drawable/shape_unselected"
+            android:textSize="18dp"
+            android:text="D"/>
+
+        <TextView
+            android:id="@+id/tv_d"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="It can bring wealth and honor to them."/>
+
+    </LinearLayout>
+
+<!--    <com.google.android.flexbox.FlexboxLayout-->
+<!--        android:id="@+id/fl_option"-->
+<!--        android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--        app:flexWrap="wrap"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="A"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="B"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="C"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="D"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="E"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="E"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="F"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/g_yellow"-->
+<!--            android:layout_marginLeft="@dimen/config_margin_20dp"-->
+<!--            android:layout_marginTop="@dimen/config_margin_10dp"-->
+<!--            android:background="@drawable/shape_unselected"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text="G"/>-->
+
+<!--    </com.google.android.flexbox.FlexboxLayout>-->
+
+        <com.donkingliang.labels.LabelsView
+            android:id="@+id/lv_position"
+            android:layout_marginTop="@dimen/config_margin_20dp"
+            android:layout_marginLeft="@dimen/config_margin_20dp"
+            app:lineMargin="@dimen/config_margin_20dp"
+            app:wordMargin="@dimen/config_margin_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:labelBackground="@drawable/label_bg_option"
+            app:labelTextColor="@drawable/label_text_color_option"
+            app:labelTextWidth="40dp"
+            app:labelTextHeight="40dp"
+            app:labelTextSize="18sp"
+            app:selectType="SINGLE"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
