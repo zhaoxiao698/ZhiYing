@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_topic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/topic_community"
+        app:tint="@color/g_yellow" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="这里是话题名称"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/iv_topic"/>
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17w人参与     10k人收藏"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:layout_below="@+id/tv_name"
+        android:layout_alignLeft="@id/tv_name"
+        android:layout_toRightOf="@+id/iv_topic"/>
+
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/right1_blue"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        app:tint="@color/g_yellow" />
+
+</RelativeLayout>

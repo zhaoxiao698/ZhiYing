@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.community.CommunityLoggedFragment">
 
-    <TextView
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/slidingTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="社区模块（已登录）" />
+        android:layout_height="50dp"
+        android:background="@color/g_yellow"
+        tl:tl_indicator_color="@color/white"
+        tl:tl_indicator_corner_radius="10dp"
+        tl:tl_indicator_height="5dp"
+        tl:tl_indicator_margin_bottom="@dimen/config_margin_5dp"
+        tl:tl_indicator_width="25dp"
+        tl:tl_textBold="SELECT"
+        tl:tl_textSelectColor="@color/white"
+        tl:tl_textUnselectColor="@color/bright_gray"
+        tl:tl_textsize="17sp" />
 
-</FrameLayout>
+    <com.zhaoxiao.zhiying.view.FixedViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

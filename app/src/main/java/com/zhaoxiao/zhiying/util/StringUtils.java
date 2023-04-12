@@ -40,4 +40,11 @@ public class StringUtils {
         String codeStr = Long.toString(codeL);
         return codeStr.substring(codeStr.length() - 6);
     }
+
+    public static String foldString(String str, int num) {
+        if (str.length()>num){
+            return str.substring(0,num)+"...";
+        }
+        return str;
+    }
 }

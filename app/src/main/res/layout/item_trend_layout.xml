@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_10dp"
+        android:layout_marginRight="@dimen/config_margin_10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingBottom="@dimen/config_padding_10dp"
+        app:contentPaddingLeft="@dimen/config_padding_20dp"
+        app:contentPaddingRight="@dimen/config_padding_20dp"
+        app:contentPaddingTop="@dimen/config_padding_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.xuexiang.xui.widget.imageview.RadiusImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/background"
+                    app:riv_is_oval="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/config_margin_10dp"
+                    android:layout_toRightOf="@+id/iv_avatar"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="名字"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_add_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_name"
+                        android:text="今天 18:09"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/more_community" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="这里是标题"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="备注：如果你的布局通过该方法可以显示，但是打开另一个项目，新项目无法显示，会引起其他项目也会出现无法预览，这个时候还是按以上步骤操作即可。有些项目存在自定义问题，导致一些布局无法预览，生成的缓存文件会导致其他项目预览也失败。"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <com.xuexiang.xui.widget.imageview.nine.NineGridImageView
+                android:id="@+id/ngl_images"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                app:ngiv_imgGap="3dp"
+                app:ngiv_maxSize="6"
+                app:ngiv_showStyle="grid"
+                app:ngiv_singleImgSize="250dp" />
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content">-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="200dp"-->
+            <!--                    android:layout_height="200dp"-->
+            <!--                    android:scaleType="centerCrop"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:layout_margin="5dp"-->
+            <!--                    android:src="@drawable/background"-->
+            <!--                    />-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="200dp"-->
+            <!--                    android:layout_height="200dp"-->
+            <!--                    android:scaleType="centerCrop"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:layout_margin="5dp"-->
+            <!--                    android:src="@drawable/background"-->
+            <!--                    />-->
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="200dp"-->
+            <!--                    android:layout_height="200dp"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:scaleType="centerCrop"-->
+            <!--                    android:layout_margin="5dp"-->
+            <!--                    android:src="@drawable/background"-->
+            <!--                    />-->
+
+            <!--            </LinearLayout>-->
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fl_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap">
+
+                <include layout="@layout/layout_topic_item" />
+
+                <include layout="@layout/layout_topic_item" />
+
+                <include layout="@layout/layout_topic_item" />
+
+                <include layout="@layout/layout_topic_item" />
+
+                <include layout="@layout/layout_topic_item" />
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_hot_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_community_comment"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_hot_comment_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_community_comment_like"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="69攒"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_hot_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="哈哈哈：订单但" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/config_margin_10dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_like"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/like_community"
+                        app:tint="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tv_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:singleLine="true"
+                        android:text="555"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_comment"
+                        android:layout_width="21dp"
+                        android:layout_height="23dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/comment_community"
+                        app:tint="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tv_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:singleLine="true"
+                        android:text="555"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_share"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/share_community"
+                        app:tint="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tv_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:singleLine="true"
+                        android:text="555"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

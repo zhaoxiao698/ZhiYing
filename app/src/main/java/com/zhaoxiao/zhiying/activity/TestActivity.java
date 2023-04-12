@@ -11,7 +11,7 @@ import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.study.Data;
-import com.zhaoxiao.zhiying.entity.study.User;
+import com.zhaoxiao.zhiying.entity.mine.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -84,7 +84,8 @@ public class TestActivity extends BaseActivity {
                 });
                 break;
             case R.id.post:
-                User user = new User("3","345","嘿嘿",30,"男");
+//                User user = new User("3","345","嘿嘿",30,"男");
+                User user = new User();
                 Call<Data<Boolean>> postCall = userService.addUser(user);
                 postCall.enqueue(new Callback<Data<Boolean>>() {
                     @Override

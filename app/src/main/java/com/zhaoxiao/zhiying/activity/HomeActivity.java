@@ -104,7 +104,10 @@ public class HomeActivity extends BaseActivity {
 //                        showToast("请先选择题库");
 //                    }
 //                }
-                if(position == 1){
+                if (position==0){
+                    StatusBarUtil.setTransparent(HomeActivity.this);
+                    StatusBarUtils.setStatusBarLightMode(HomeActivity.this);
+                } else if(position == 1){
                     if(getStringFromSp("questionBankId",false)==null||(Integer) getStringFromSp("questionBankId",false)==-1){
 //                    showToast("请先选择题库");
                         navigateTo(SelectActivity.class);
@@ -113,10 +116,12 @@ public class HomeActivity extends BaseActivity {
                         ((SelectedFragment)mFragments.get(1).getChildFragmentManager().findFragmentById(R.id.fl_test)).startProgress();
                     }
                     StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.white), 0);
-                } else if(position==3){
+                } else if(position==2||position==3){
                     StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.g_yellow), 0);
+                    StatusBarUtils.setStatusBarLightMode(HomeActivity.this);
                 } else {
                     StatusBarUtil.setTransparent(HomeActivity.this);
+                    StatusBarUtils.setStatusBarLightMode(HomeActivity.this);
                 }
             }
 

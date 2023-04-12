@@ -31,6 +31,8 @@ public class MineFragment extends BaseFragment {
     FrameLayout flMine;
     private FragmentManager manager;
 
+    private int flag = -1;
+
     public MineFragment() {
     }
 
@@ -55,23 +57,33 @@ public class MineFragment extends BaseFragment {
         FragmentTransaction transaction = manager.beginTransaction();
         String account = SpUtils.getInstance(getContext()).getString("account", "");
         if (StringUtils.isEmpty(account)) {
-            UnselectedFragment fragment = UnselectedFragment.newInstance(true);
-            transaction.replace(R.id.fl_mine, fragment).commit();
+            if (flag!=0) {
+                UnselectedFragment fragment = UnselectedFragment.newInstance(true);
+                transaction.replace(R.id.fl_mine, fragment).commit();
+                flag = 0;
+            }
         } else if (account.equals("已过期")){
-            UnselectedFragment fragment = UnselectedFragment.newInstance(true);
-            transaction.replace(R.id.fl_mine, fragment).commit();
-            new MaterialDialog.Builder(getContext())
-                    .title("登录状态已过期")
-                    .content("登录状态已过期，请重新登录")
-                    .positiveText(R.string.lab_yes)
-                    .negativeText(R.string.lab_no)
-                    .positiveColor(getResources().getColor(R.color.g_yellow))
-                    .negativeColor(getResources().getColor(R.color.gray))
-                    .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
-                    .show();
+            if (flag!=0) {
+                SpUtils.getInstance(getContext()).setString("account","");
+                UnselectedFragment fragment = UnselectedFragment.newInstance(true);
+                transaction.replace(R.id.fl_mine, fragment).commit();
+                new MaterialDialog.Builder(getContext())
+                        .title("登录状态已过期")
+                        .content("登录状态已过期，请重新登录")
+                        .positiveText(R.string.lab_yes)
+                        .negativeText(R.string.lab_no)
+                        .positiveColor(getResources().getColor(R.color.g_yellow))
+                        .negativeColor(getResources().getColor(R.color.gray))
+                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
+                        .show();
+                flag = 0;
+            }
         } else {
-            MineLoggedFragment fragment = MineLoggedFragment.newInstance();
-            transaction.replace(R.id.fl_mine, fragment).commit();
+            if (flag!=1) {
+                MineLoggedFragment fragment = MineLoggedFragment.newInstance();
+                transaction.replace(R.id.fl_mine, fragment).commit();
+                flag = 1;
+            }
         }
     }
 
