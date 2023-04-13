@@ -165,6 +165,7 @@ public class CodeLogin2Activity extends BaseActivity {
                         navigateTo(HomeActivity.class);
                     } else if (loginType == Login.LoginType.REGISTER){
                         XToastUtils.success("注册成功");
+                        SpUtils.getInstance(CodeLogin2Activity.this).setString("account",login.getAccount(),10*SpUtils.TIME_DAY);
                         new MaterialDialog.Builder(CodeLogin2Activity.this)
                                 .title("注册成功")
                                 .content("请尽快设置密码，设置密码后可使用密码进行登录")

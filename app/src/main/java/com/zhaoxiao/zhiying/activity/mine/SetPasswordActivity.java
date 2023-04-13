@@ -13,11 +13,19 @@ import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.HomeActivity;
+import com.zhaoxiao.zhiying.api.UserService;
+import com.zhaoxiao.zhiying.entity.mine.Login;
+import com.zhaoxiao.zhiying.entity.mine.User;
+import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SetPasswordActivity extends BaseActivity {
     @BindView(R.id.et_password)
@@ -32,6 +40,7 @@ public class SetPasswordActivity extends BaseActivity {
     RoundButton btnYes;
     @BindView(R.id.btn_no)
     Button btnNo;
+    private UserService userService;
 
     @Override
     protected int initLayout() {
@@ -40,6 +49,8 @@ public class SetPasswordActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        userService = (UserService) getService(UserService.class);
+
         etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -77,7 +88,7 @@ public class SetPasswordActivity extends BaseActivity {
         navigateTo(HomeActivity.class);
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_resend})
+    @OnClick({R.id.btn_yes, R.id.btn_no})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_yes:
@@ -98,13 +109,36 @@ public class SetPasswordActivity extends BaseActivity {
         } else if (StringUtils.isEmpty(passwordConfirm)) {
             XToastUtils.error("请再次输入密码");
             llPasswordConfirm.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
-        } else if (password.equals(passwordConfirm)){
+        } else if (!password.equals(passwordConfirm)){
             llPassword.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
             llPasswordConfirm.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
             XToastUtils.error("两次输入密码不一致");
         } else {
-            XToastUtils.success("设置成功");
-            navigateTo(HomeActivity.class);
+            String account = SpUtils.getInstance(this).getString("account","");
+            setPassword(account,password);
+//            XToastUtils.success("设置成功");
+//            navigateTo(HomeActivity.class);
         }
+    }
+
+    private void setPassword(String account, String password) {
+        Call<Data<Boolean>> setPasswordCall = userService.setPassword(account, password);
+        setPasswordCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    boolean success = response.body().getData();
+                    if (success){
+                        XToastUtils.success("设置成功");
+                        navigateTo(HomeActivity.class);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
     }
 }

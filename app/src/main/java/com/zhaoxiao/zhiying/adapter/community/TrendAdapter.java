@@ -109,7 +109,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } else {
             viewHolder.llHotComment.setVisibility(View.VISIBLE);
             viewHolder.tvHotCommentLike.setText(trend.getHotComment().getLike() + "赞");
-            String name = "<font color=\"#FBBC05\">"+trend.getHotComment().getUserName()+"</font>: ";
+            String name = "<font color=\"#FBBC05\">"+trend.getHotComment().getUserName()+"</font>： ";
             String hotComment = StringUtils.foldString(trend.getHotComment().getInfo(),55);
             viewHolder.tvHotComment.setText(Html.fromHtml(name+hotComment));
 //            viewHolder.tvHotComment.setText(trend.getHotComment().getInfo());

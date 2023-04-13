@@ -42,4 +42,8 @@ public interface UserService {
     @POST("user/loginByPassword")
     @FormUrlEncoded
     Call<Data<Login>> loginByPassword (@Field("account") String account, @Field("password") String password);
+
+    @POST("user/setPassword")
+    @FormUrlEncoded
+    Call<Data<Boolean>> setPassword (@Field("account") String account, @Field("password") String password);
 }
