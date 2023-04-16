@@ -1,0 +1,4988 @@
+{
+  "a": [
+    {
+      "wordRank": 457,
+      "headWord": "encourage",
+      "content": {
+        "word": {
+          "wordHead": "encourage",
+          "wordId": "CET4luan_1_457",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "I want to thank everyone who has encouraged and supported me.",
+                  "sCn": "我要感谢每一位鼓励和支持过我的人。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...Office managers knock down walls to encourage team building...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2017.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Many European governments have abandoned policies that used to encourage people to retire early...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...My mission is to encourage green hands and those lacking time or money to feed themselves...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...joining a programme that Bill and Melinda Gates and Warren Buffett started in June to encourage other wealthy people to give...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...We encourage students to go on to college whether they are prepared or not...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Teachers could encourage boys to enjoy reading and writing with \"boy-focused\" approaches such as themes and characters that appeal to them...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "ɪn'kɝrɪdʒ",
+            "ukspeech": "encourage&type=1",
+            "star": 0,
+            "usspeech": "encourage&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_457_encourage_1523505242368000458_encourage_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "vt",
+                  "tran": "鼓励，怂恿；激励；支持",
+                  "hwds": [
+                    {
+                      "w": "heart"
+                    },
+                    {
+                      "w": "stimulate"
+                    },
+                    {
+                      "w": "power"
+                    },
+                    {
+                      "w": "hand"
+                    },
+                    {
+                      "w": "second"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ɪn'kʌrɪdʒ",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "encourage investment",
+                  "pCn": "鼓励投资"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "in'kʌridʒ",
+            "speech": "encourage",
+            "remMethod": {
+              "val": "en(使…) ＋ courage(精神) → 使有精神 → 鼓励",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "encouraging",
+                      "tran": "令人鼓舞的；鼓励的，奖励的"
+                    },
+                    {
+                      "hwd": "encouraged",
+                      "tran": "受到鼓舞的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "encouragingly",
+                      "tran": "鼓励地；勉励人地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "encouragement",
+                      "tran": "鼓励"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "words": [
+                    {
+                      "hwd": "encouraging",
+                      "tran": "鼓励，支持（encourage的ing形式）"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "鼓励",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to give someone the courage or confidence to do something"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 1,
+      "headWord": "access",
+      "content": {
+        "word": {
+          "wordHead": "access",
+          "wordId": "CET4luan_1_1",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Users can access their voice mail remotely.",
+                  "sCn": "用户可以远程获取语音邮件。"
+                },
+                {
+                  "sContent": "Access to the papers is restricted to senior management.",
+                  "sCn": "只有高级管理层才有权查阅这些文件。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...This process improves access to relevant information...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2017.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...in part because of my inability to access the information as quickly...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Department of Education is making efforts to ensure that all students have equal access to a quality education...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...assume that people consciously and rationally choose what and how much they eat and therefore focus on providing information and more access to heal thier foods...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Today's announcement is another important step forward in improving access to a quality education...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...access to public housing...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...smartphones and　other devices into the hands of medical staff for instant access to patient data...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2014.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...the technology　has helped reduce medical error by providing instant access to patient data or prescription details...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2014.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...largely because they no longer had access to affordable health care...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Perhaps the most profound changes will come when the five billion people worldwide who currently lack Internet access get online...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Over two billion people worldwide now have access to vastly more information than ever before...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...That means users have access to notes from not only their classmates and Facebook friends...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...To access your rights under the DDA and to request \"reasonable adjustments\" to your working conditions or your workplace requires disclosure...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2012.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Yet he also empowered millions of people by giving them access to cutting-edge technology...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2012.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...online customers have access to commodities of such a huge variety and number...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...A US study suggested that when a school gave children access to a natural environment...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2010.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...The life of old people is measurably better when they have access to nature...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2010.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Only with free access to this live 'database’...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2009.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...With access to the Internet...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2008.6",
+                    "type": "写作题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'æksɛs",
+            "ukspeech": "access&type=1",
+            "star": 0,
+            "usspeech": "access&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_1_access_1523504930159000002_access_JY.png",
+            "exam": [
+              {
+                "question": "Over a third of the population was estimated to have no _______ to the health service.",
+                "answer": {
+                  "explain": " have access to sth.：  有权利、  机会进入(享用、  使用)…。句意：  据估计， 超过三分之一的人得不到健康服务。assessment：  估价， 评估； assignment：  分配； 职位， 工作； exception：  除外， 例外。",
+                  "rightIndex": 4
+                },
+                "examType": 1,
+                "choices": [
+                  {
+                    "choiceIndex": 1,
+                    "choice": "assessment"
+                  },
+                  {
+                    "choiceIndex": 2,
+                    "choice": "assignment"
+                  },
+                  {
+                    "choiceIndex": 3,
+                    "choice": "exception"
+                  },
+                  {
+                    "choiceIndex": 4,
+                    "choice": "access"
+                  }
+                ]
+              },
+              {
+                "question": "There is no _______ to the house from the main road.",
+                "answer": {
+                  "explain": "这条主路没有通往那栋房子的通道。avenue： 林荫道， 大街； 途径， 渠道； exposure： 暴露； 曝光； edge： 边， 边缘。",
+                  "rightIndex": 1
+                },
+                "examType": 1,
+                "choices": [
+                  {
+                    "choiceIndex": 1,
+                    "choice": "access"
+                  },
+                  {
+                    "choiceIndex": 2,
+                    "choice": "avenue"
+                  },
+                  {
+                    "choiceIndex": 3,
+                    "choice": "exposure"
+                  },
+                  {
+                    "choiceIndex": 4,
+                    "choice": "edge"
+                  }
+                ]
+              }
+            ],
+            "syno": {
+              "synos": [
+                {
+                  "pos": "vt",
+                  "tran": "使用；[计]存取；接近",
+                  "hwds": [
+                    {
+                      "w": "make use of"
+                    },
+                    {
+                      "w": "fashion"
+                    },
+                    {
+                      "w": "employ"
+                    },
+                    {
+                      "w": "border"
+                    },
+                    {
+                      "w": "exercise"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "tran": "进入；使用权；[电]通路",
+                  "hwds": [
+                    {
+                      "w": "opening"
+                    },
+                    {
+                      "w": "admittance"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'ækses",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "access control",
+                  "pCn": "访问控制"
+                },
+                {
+                  "pContent": "have access to",
+                  "pCn": "使用；接近；可以利用"
+                },
+                {
+                  "pContent": "internet access",
+                  "pCn": "互联网接入"
+                },
+                {
+                  "pContent": "easy access",
+                  "pCn": "便于检修；容易接近"
+                },
+                {
+                  "pContent": "market access",
+                  "pCn": "市场准入；进入市场；开放市场"
+                },
+                {
+                  "pContent": "data access",
+                  "pCn": "数据存取"
+                },
+                {
+                  "pContent": "multiple access",
+                  "pCn": "[电脑]多路存取；多路访问"
+                },
+                {
+                  "pContent": "open access",
+                  "pCn": "开放存取；开架阅览"
+                },
+                {
+                  "pContent": "direct access",
+                  "pCn": "[计]直接存取"
+                },
+                {
+                  "pContent": "access network",
+                  "pCn": "接入网；接取网络"
+                },
+                {
+                  "pContent": "broadband access",
+                  "pCn": "宽带接入；宽频存取；宽带通信"
+                },
+                {
+                  "pContent": "network access",
+                  "pCn": "网络接入；网络访问"
+                },
+                {
+                  "pContent": "gain access",
+                  "pCn": "获得访问权限"
+                },
+                {
+                  "pContent": "free access",
+                  "pCn": "自由访问；自由存取；自由入口"
+                },
+                {
+                  "pContent": "remote access",
+                  "pCn": "[计]远程访问；远程存取"
+                },
+                {
+                  "pContent": "get access to",
+                  "pCn": "获得；接近；可以使用"
+                },
+                {
+                  "pContent": "code division multiple access",
+                  "pCn": "码分多址联接方式"
+                },
+                {
+                  "pContent": "random access",
+                  "pCn": "随机存取"
+                },
+                {
+                  "pContent": "public access",
+                  "pCn": "公共存取"
+                },
+                {
+                  "pContent": "database access",
+                  "pCn": "数据库存取"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'ækses, 'æksəs, æk'ses",
+            "speech": "access",
+            "remMethod": {
+              "val": "ac ＋ cess(去) → 来去要走通道 → 通道",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "accessible",
+                      "tran": "易接近的；可进入的；可理解的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "accessibility",
+                      "tran": "易接近；可亲；可以得到"
+                    },
+                    {
+                      "hwd": "accession",
+                      "tran": "增加；就职；到达"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "获取",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to find information, especially on a computer"
+              },
+              {
+                "tranCn": "接近，入口",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "the right to enter a place, use something, see someone etc"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 2,
+      "headWord": "project",
+      "content": {
+        "word": {
+          "wordHead": "project",
+          "wordId": "CET4luan_1_2",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "The project aims to provide an analysis of children’s emotions.",
+                  "sCn": "该计划旨在对儿童情绪作出分析。"
+                },
+                {
+                  "sContent": "a three-year research project",
+                  "sCn": "一项为期三年的研究计划"
+                },
+                {
+                  "sContent": "The scheme will now be extended after a successful pilot project (= a small trial to test if an idea will be successful ) .",
+                  "sCn": "试行成功后，该方案现在将得到推广。"
+                },
+                {
+                  "sContent": "The project is funded by Wellcome plc.",
+                  "sCn": "这个项目由威康公司资助。"
+                },
+                {
+                  "sContent": "a project manager",
+                  "sCn": "项目经理"
+                },
+                {
+                  "sContent": "a geography project",
+                  "sCn": "一个地理课题"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...this is the first time a panel has been designed to be laid directly on top existing roads and the first project to install the panels on public highways...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...They project the image of confidence...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...The total park project will need more plantings in the following years...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...The project is a growing one and has spread from the park to the school and the shopping center...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...Why do the 4-H girls agree to follow the park project through to completion...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...Members of the 4-H club agreed to follow the project through to completion...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...Participation in this project helped the girls developed a new attitude towards their appearance of their own homes;they've learned how to work with tools...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...tell me about the special project you mentioned on the phone...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...they had participants organize different activities-from project planning...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...The total park project needed more plantings in the following years...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...we experienced a library that was as busy as science-fair project week...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Participation in this project helped the girls developed a new attitude towards their parents of their own homes; they've learned how to work with tools...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...The project is a growing one and is spread from the park to the school and the shopping center...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...after that I could apply for project work with the company I used to work for...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2008.12",
+                    "type": "听力题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "prəˈdʒɛkt; prɑdʒɛkt",
+            "ukspeech": "project&type=1",
+            "star": 0,
+            "usspeech": "project&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_2_project_1523504930937000003_project_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "vi",
+                  "tran": "设计；计划；表达；投射",
+                  "hwds": [
+                    {
+                      "w": "design"
+                    },
+                    {
+                      "w": "engineer"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "tran": "设计；计划；发射；放映",
+                  "hwds": [
+                    {
+                      "w": "design"
+                    },
+                    {
+                      "w": "schedule"
+                    },
+                    {
+                      "w": "engineer"
+                    },
+                    {
+                      "w": "style"
+                    },
+                    {
+                      "w": "frame"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "tran": "工程；计划；事业",
+                  "hwds": [
+                    {
+                      "w": "engineering"
+                    },
+                    {
+                      "w": "career"
+                    },
+                    {
+                      "w": "enterprise"
+                    },
+                    {
+                      "w": "plan"
+                    },
+                    {
+                      "w": "scheme"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "prəˈdʒekt",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "project oneself",
+                  "pCn": "表现自己；突出自己"
+                },
+                {
+                  "pContent": "project management",
+                  "pCn": "项目管理；专案管理"
+                },
+                {
+                  "pContent": "construction project",
+                  "pCn": "建筑计划，建设项目；基建计划"
+                },
+                {
+                  "pContent": "project cost",
+                  "pCn": "工程项目成本；施工费用"
+                },
+                {
+                  "pContent": "engineering project",
+                  "pCn": "工程项目"
+                },
+                {
+                  "pContent": "project manager",
+                  "pCn": "项目经理"
+                },
+                {
+                  "pContent": "research project",
+                  "pCn": "研究项目"
+                },
+                {
+                  "pContent": "development project",
+                  "pCn": "开发项目；发展计划"
+                },
+                {
+                  "pContent": "project team",
+                  "pCn": "项目工作组；攻关队伍"
+                },
+                {
+                  "pContent": "investment project",
+                  "pCn": "投资项目；投资计划"
+                },
+                {
+                  "pContent": "three gorges project",
+                  "pCn": "三峡工程"
+                },
+                {
+                  "pContent": "project planning",
+                  "pCn": "项目规划；工程规划；计划图编制"
+                },
+                {
+                  "pContent": "project implementation",
+                  "pCn": "项目执行；项目实现"
+                },
+                {
+                  "pContent": "project financing",
+                  "pCn": "项目融资；项目资金筹措"
+                },
+                {
+                  "pContent": "key project",
+                  "pCn": "重点项目，关键项目；枢纽工程"
+                },
+                {
+                  "pContent": "project plan",
+                  "pCn": "n. 项目规划；工程计划"
+                },
+                {
+                  "pContent": "pilot project",
+                  "pCn": "试点项目，试点工程；样板工程，样板设计"
+                },
+                {
+                  "pContent": "graduation project",
+                  "pCn": "毕业设计"
+                },
+                {
+                  "pContent": "project evaluation",
+                  "pCn": "项目评估；工程评定"
+                },
+                {
+                  "pContent": "power project",
+                  "pCn": "动力工程"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "英 [prəˈdʒekt] 美 [prəˈdʒɛkt",
+            "speech": "project",
+            "remMethod": {
+              "val": "pro(向前) ＋ ject(扔) → 向前扔 → 投射",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "projecting",
+                      "tran": "突出的；伸出的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "projection",
+                      "tran": "投射；规划；突出；发射；推测"
+                    },
+                    {
+                      "hwd": "projector",
+                      "tran": "[仪] 投影仪；放映机；探照灯；设计者"
+                    },
+                    {
+                      "hwd": "projectionist",
+                      "tran": "放映员；电视技师；地图绘制员；电影放映师"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "words": [
+                    {
+                      "hwd": "projecting",
+                      "tran": "使突出（project的现在分词）；计划；发射"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "工程；课题、作业",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a carefully planned piece of work to get information about something, to build something, to improve something etc"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 3,
+      "headWord": "intention",
+      "content": {
+        "word": {
+          "wordHead": "intention",
+          "wordId": "CET4luan_1_3",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "They went into town with the intention of visiting the library.",
+                  "sCn": "他们进了城，打算参观图书馆。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...The intention to put a home-cooked meal on the table was pretty much universal...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...The government has not yet taken any action to regulate sugar consumption although it indicated its intention to do so some time ago...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "ɪn'tɛnʃən",
+            "ukspeech": "intention&type=1",
+            "star": 0,
+            "usspeech": "intention&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_3_intention_1523504931304000004_intention_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "意图；目的；意向；愈合",
+                  "hwds": [
+                    {
+                      "w": "goals"
+                    },
+                    {
+                      "w": "purpose"
+                    },
+                    {
+                      "w": "sake"
+                    },
+                    {
+                      "w": "meaning"
+                    },
+                    {
+                      "w": "will"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ɪnˈtenʃn",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "original intention",
+                  "pCn": "初衷；原始意图"
+                },
+                {
+                  "pContent": "good intention",
+                  "pCn": "好心，良好的意图"
+                },
+                {
+                  "pContent": "real intention",
+                  "pCn": "真实意图；真正目的"
+                },
+                {
+                  "pContent": "evil intention",
+                  "pCn": "歹意；罪恶的动机"
+                },
+                {
+                  "pContent": "behavioral intention",
+                  "pCn": "行为意向；行为意图"
+                },
+                {
+                  "pContent": "with good intention",
+                  "pCn": "好意地；好心"
+                },
+                {
+                  "pContent": "first intention",
+                  "pCn": "第一意图；一期愈合"
+                },
+                {
+                  "pContent": "without intention",
+                  "pCn": "无意地；非故意地"
+                },
+                {
+                  "pContent": "by intention",
+                  "pCn": "prep. 故意；有意"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "in'tenʃən",
+            "speech": "intention",
+            "remMethod": {
+              "val": "in(进入) ＋ tent(张开) ＋ ion → 有扩张的不良意图 → 意图， 意向",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "intent",
+                      "tran": "专心的；急切的；坚决的"
+                    },
+                    {
+                      "hwd": "intentional",
+                      "tran": "故意的；蓄意的；策划的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "intentionally",
+                      "tran": "故意地，有意地"
+                    },
+                    {
+                      "hwd": "intently",
+                      "tran": "专心地；一心一意地；心无旁物地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "intent",
+                      "tran": "意图；目的；含义"
+                    },
+                    {
+                      "hwd": "intentionality",
+                      "tran": "意向性，意图性"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "打算，意图",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a plan or desire to do something"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 4,
+      "headWord": "equivalence",
+      "content": {
+        "word": {
+          "wordHead": "equivalence",
+          "wordId": "CET4luan_1_4",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "...the equivalence of science and rationality.",
+                  "sCn": "...科学和理性的相等。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "ɪ'kwɪvələns",
+            "ukspeech": "equivalence&type=1",
+            "star": 0,
+            "usspeech": "equivalence&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_4_equivalence_1523504931641000005_equivalence_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "等值；相等",
+                  "hwds": [
+                    {
+                      "w": "equation"
+                    },
+                    {
+                      "w": "equivalent value"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ɪ'kwɪv(ə)l(ə)ns",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "functional equivalence",
+                  "pCn": "功能对等"
+                },
+                {
+                  "pContent": "equivalence relation",
+                  "pCn": "等价关系"
+                },
+                {
+                  "pContent": "equivalence principle",
+                  "pCn": "等效性原理；等效原则；等价原理"
+                },
+                {
+                  "pContent": "equivalence class",
+                  "pCn": "[数]等价类"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "i'kwivələns",
+            "speech": "equivalence",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "equivalent",
+                      "tran": "等价的，相等的；同意义的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "equivalent",
+                      "tran": "等价物，相等物"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "等值，相等",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "If there is equivalence between two things, they have the same use, function, size, or value"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 5,
+      "headWord": "negotiate",
+      "content": {
+        "word": {
+          "wordHead": "negotiate",
+          "wordId": "CET4luan_1_5",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "His first aim is to get the warring parties back to the negotiating table (= discussing something ).",
+                  "sCn": "他的首要目标就是把交战各方拉回到谈判桌上。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...who will meet in Copenhagen in December to negotiate a new international climate treaty...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...manage budgets and negotiate contracts...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2010.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Children have to learn to negotiate the world on their own...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2008.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "nɪ'ɡoʃɪet",
+            "ukspeech": "negotiate&type=1",
+            "star": 0,
+            "usspeech": "negotiate&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_5_negotiate_1523504932071000006_negotiate_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "vt",
+                  "tran": "谈判，商议；转让；越过",
+                  "hwds": [
+                    {
+                      "w": "transfer"
+                    },
+                    {
+                      "w": "surmount"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "tran": "谈判，交涉",
+                  "hwds": [
+                    {
+                      "w": "transact"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "nɪ'ɡəʊʃɪeɪt",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "negotiate about",
+                  "pCn": "协商；谈判"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "ni'ɡəuʃieit, -si-",
+            "speech": "negotiate",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "negotiable",
+                      "tran": "可通过谈判解决的；可协商的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "negotiation",
+                      "tran": "谈判；转让；顺利的通过"
+                    },
+                    {
+                      "hwd": "negotiator",
+                      "tran": "谈判者；磋商者；交涉者"
+                    },
+                    {
+                      "hwd": "negotiant",
+                      "tran": "谈判者；磋商者"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "谈判，协商，交涉",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to discuss something in order to reach an agreement, especially in business or politics"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 6,
+      "headWord": "disappointing",
+      "content": {
+        "word": {
+          "wordHead": "disappointing",
+          "wordId": "CET4luan_1_6",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "disappointing profit figures",
+                  "sCn": "令人失望的盈利数字"
+                },
+                {
+                  "sContent": "The Lakers’ loss in the playoffs was very disappointing.",
+                  "sCn": "湖人队在季后赛中的失利令人十分失望。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": ",dɪsə'pɔɪntɪŋ",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "令人失望的；令人扫兴的",
+                  "hwds": [
+                    {
+                      "w": "disillusionary"
+                    },
+                    {
+                      "w": "cauld"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "dɪsə'pɒɪntɪŋ",
+            "ukspeech": "disappointing&type=1",
+            "star": 0,
+            "phone": ",disə'pɔintiɡ",
+            "speech": "disappointing",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "disappointed",
+                      "tran": "失望的，沮丧的；受挫折的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "disappointedly",
+                      "tran": "失望地"
+                    },
+                    {
+                      "hwd": "disappointingly",
+                      "tran": "令人失望地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "disappointment",
+                      "tran": "失望；沮丧"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "disappoint",
+                      "tran": "使失望"
+                    }
+                  ]
+                }
+              ]
+            },
+            "usspeech": "disappointing&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_6_disappointing_1523504932586000007_disappointing_MT.png",
+            "trans": [
+              {
+                "tranCn": "令人失望的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "not as good as you hoped or expected"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 7,
+      "headWord": "alternative",
+      "content": {
+        "word": {
+          "wordHead": "alternative",
+          "wordId": "CET4luan_1_7",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "New ways to treat arthritis may provide an alternative to painkillers.",
+                  "sCn": "治疗关节炎的新方法可能会提供一种止痛药的替代品。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...Already there are many alternative fuel vehicles on the market...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...of all these alternative fuel vehicles...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...food producers turned to sugar as a magic alternative flavour enhancer...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...alternative energy sources will likely meet only about 30% of the world's energy needs by 2050...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "ɔl'tɝnətɪv",
+            "ukspeech": "alternative&type=1",
+            "star": 0,
+            "usspeech": "alternative&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_7_alternative_1523505028819000008_alternative_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "供选择的；选择性的；交替的",
+                  "hwds": [
+                    {
+                      "w": "selective"
+                    },
+                    {
+                      "w": "vicissitudinary"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ɔ:lˈtɜ:nətɪv",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "alternative energy",
+                  "pCn": "替代能源；新能源"
+                },
+                {
+                  "pContent": "alternative medicine",
+                  "pCn": "非传统医学"
+                },
+                {
+                  "pContent": "have no alternative",
+                  "pCn": "没有别的办法了；没有其他选择"
+                },
+                {
+                  "pContent": "alternative fuel",
+                  "pCn": "代用燃料；可替代燃料；人造液体燃料"
+                },
+                {
+                  "pContent": "alternative method",
+                  "pCn": "替代的方法"
+                },
+                {
+                  "pContent": "alternative approach",
+                  "pCn": "变换方法"
+                },
+                {
+                  "pContent": "have no alternative but",
+                  "pCn": "v. 别无选择；只得；唯一的办法是"
+                },
+                {
+                  "pContent": "alternative energy sources",
+                  "pCn": "替代能源"
+                },
+                {
+                  "pContent": "alternative investment",
+                  "pCn": "另类投资"
+                },
+                {
+                  "pContent": "alternative splicing",
+                  "pCn": "可变剪接"
+                },
+                {
+                  "pContent": "alternative solution",
+                  "pCn": "可选择的解决方案"
+                },
+                {
+                  "pContent": "alternative plan",
+                  "pCn": "交替计划；可供选择的方案"
+                },
+                {
+                  "pContent": "alternative design",
+                  "pCn": "替代设计；比较设计"
+                },
+                {
+                  "pContent": "alternative use",
+                  "pCn": "选择使用；交替使用"
+                },
+                {
+                  "pContent": "alternative option",
+                  "pCn": "替代，替代物；比较选择方案"
+                },
+                {
+                  "pContent": "alternative media",
+                  "pCn": "另类媒介；另类媒体"
+                },
+                {
+                  "pContent": "alternative form",
+                  "pCn": "代替方式；替换制度"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "ɔ:l'tə:nətiv",
+            "speech": "alternative",
+            "remMethod": {
+              "val": "alter(改变状态； 其他的) ＋ native(…的) → 其他的 → 替换物",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "alternate",
+                      "tran": "交替的；轮流的"
+                    },
+                    {
+                      "hwd": "alternating",
+                      "tran": "交替的；交互的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "alternatively",
+                      "tran": "非此即彼；二者择一地；作为一种选择"
+                    },
+                    {
+                      "hwd": "alternately",
+                      "tran": "交替地；轮流地；隔一个地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "alternate",
+                      "tran": "替换物"
+                    },
+                    {
+                      "hwd": "alternation",
+                      "tran": "交替，轮流，间隔"
+                    },
+                    {
+                      "hwd": "alternator",
+                      "tran": "[电] 交流发电机"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "words": [
+                    {
+                      "hwd": "alternating",
+                      "tran": "使交替；依次（alternate的ing形式）"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "alternate",
+                      "tran": "交替；轮流"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "alternate",
+                      "tran": "使交替；使轮流"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "代替品",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "If one thing is an alternative to another, the first can be found, used, or done instead of the second"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 8,
+      "headWord": "generous",
+      "content": {
+        "word": {
+          "wordHead": "generous",
+          "wordId": "CET4luan_1_8",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Dietler is generous with his time and money.",
+                  "sCn": "迪特勒在他的时间和金钱方面慷慨大方。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...your generous help made it possible that I can gain a splendid academic achievement in my study career...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2016.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...Dear teacher，I am writing to express my appreciation for the generous help you rendered to me since I entered this university...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2016.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...Your generous help made it possible that I pass my college entrance examination and obtain the good result...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2016.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...combined with the replacement of generous defined-benefit pension plans with less generous defined-contribution ones...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...offer generous need-based packages...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2009.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'dʒɛnərəs",
+            "ukspeech": "generous&type=1",
+            "star": 0,
+            "usspeech": "generous&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_8_generous_1523505029447000009_generous_MT.png",
+            "exam": [
+              {
+                "question": "He made such a _______ contribution to the university that they are naming one of the new buildings after him.",
+                "answer": {
+                  "explain": "句意： 因为他曾对这所大学作出很大贡献， 所以人们准备用他的名字为一座新建筑命名。genuine： 真正的； 诚恳的； minimum： 最小的， 最低的； modest： 谦逊的， 谦让的。",
+                  "rightIndex": 4
+                },
+                "examType": 1,
+                "choices": [
+                  {
+                    "choiceIndex": 1,
+                    "choice": "genuine"
+                  },
+                  {
+                    "choiceIndex": 2,
+                    "choice": "minimum"
+                  },
+                  {
+                    "choiceIndex": 3,
+                    "choice": "modest"
+                  },
+                  {
+                    "choiceIndex": 4,
+                    "choice": "generous"
+                  }
+                ]
+              }
+            ],
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "慷慨的，大方的；宽宏大量的；有雅量的",
+                  "hwds": [
+                    {
+                      "w": "handsome"
+                    },
+                    {
+                      "w": "liberal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˈdʒenərəs",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "be generous with",
+                  "pCn": "用…很大方"
+                },
+                {
+                  "pContent": "be generous in",
+                  "pCn": "乐于……"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'dʒenərəs",
+            "speech": "generous",
+            "remMethod": {
+              "val": "gener(产生) ＋ ous(…的) → 产生很多的 → 慷慨的",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "generously",
+                      "tran": "慷慨地；宽大地；丰盛地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "generosity",
+                      "tran": "慷慨，大方；宽宏大量"
+                    },
+                    {
+                      "hwd": "generousness",
+                      "tran": "丰富，肥沃；宽大"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "慷慨的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "someone who is generous is willing to give money, spend time etc, in order to help people or give them pleasure"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 9,
+      "headWord": "biological",
+      "content": {
+        "word": {
+          "wordHead": "biological",
+          "wordId": "CET4luan_1_9",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "the biological functions of the body",
+                  "sCn": "人体的生物机能"
+                },
+                {
+                  "sContent": "Depression is both biological and psychological.",
+                  "sCn": "抑郁症与生理和心理都有关系。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...scientists are increasingly learning that aging and biological age are two different things...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Looking at the basic biological systems...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...a growing body of research has shown that our appetite and food intake are influenced by a large number of factors besides our biological need for energy...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": ",baɪə'lɑdʒɪkl",
+            "ukspeech": "biological&type=1",
+            "star": 0,
+            "usspeech": "biological&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_9_biological_1523505029851000010_biological_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "[生物]生物的；生物学的",
+                  "hwds": [
+                    {
+                      "w": "biotic"
+                    },
+                    {
+                      "w": "organismal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˌbaɪəˈlɒdʒɪkl",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "biological characteristics",
+                  "pCn": "生物学特性"
+                },
+                {
+                  "pContent": "biological treatment",
+                  "pCn": "生物处理"
+                },
+                {
+                  "pContent": "biological activity",
+                  "pCn": "生物活性"
+                },
+                {
+                  "pContent": "biological engineering",
+                  "pCn": "生物工程；人工育种"
+                },
+                {
+                  "pContent": "biological diversity",
+                  "pCn": "生物多样性；生物差异"
+                },
+                {
+                  "pContent": "biological control",
+                  "pCn": "生物防治；生物控制"
+                },
+                {
+                  "pContent": "biological effect",
+                  "pCn": "生物效应"
+                },
+                {
+                  "pContent": "biological process",
+                  "pCn": "生物学过程；生化过程"
+                },
+                {
+                  "pContent": "biological system",
+                  "pCn": "[计]生物系统"
+                },
+                {
+                  "pContent": "biological clock",
+                  "pCn": "生物钟"
+                },
+                {
+                  "pContent": "biological oxidation",
+                  "pCn": "生物氧化"
+                },
+                {
+                  "pContent": "biological mother",
+                  "pCn": "生母；亲生母亲"
+                },
+                {
+                  "pContent": "biological information",
+                  "pCn": "生物信息"
+                },
+                {
+                  "pContent": "biological product",
+                  "pCn": "生物制品；生物制剂"
+                },
+                {
+                  "pContent": "biological sample",
+                  "pCn": "生物标本；生物样品"
+                },
+                {
+                  "pContent": "biological weapon",
+                  "pCn": "生物武器，细菌武器"
+                },
+                {
+                  "pContent": "biological nitrogen fixation",
+                  "pCn": "生物固氮；生物固氮酌；生物固氮作用"
+                },
+                {
+                  "pContent": "biological indicator",
+                  "pCn": "指示剂；指示生物；生物学指标"
+                },
+                {
+                  "pContent": "biological chemistry",
+                  "pCn": "生物化学"
+                },
+                {
+                  "pContent": "biological father",
+                  "pCn": "生父"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": ",baiəu'lɔdʒik,-kəl",
+            "speech": "biological",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "biologic",
+                      "tran": "生物的；生物学的"
+                    },
+                    {
+                      "hwd": "bioluminescent",
+                      "tran": "生物性发光的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "biologically",
+                      "tran": "生物学上，生物学地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "biology",
+                      "tran": "（一个地区全部的）生物；生物学"
+                    },
+                    {
+                      "hwd": "biologist",
+                      "tran": "生物学家"
+                    },
+                    {
+                      "hwd": "bioluminescence",
+                      "tran": "生物体之发光"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "生物的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "relating to the natural processes performed by living things"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 10,
+      "headWord": "strategy",
+      "content": {
+        "word": {
+          "wordHead": "strategy",
+          "wordId": "CET4luan_1_10",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "the government’s long-term economic strategy",
+                  "sCn": "政府的长期经济策略"
+                },
+                {
+                  "sContent": "a company’s business strategy",
+                  "sCn": "公司的经营策略"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...have a clear strategy for dealing with angry owners—they look away...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2017.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...But in many cases that strategy did not work...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Burger King's promotional strategy of offering low-priced items often proved ineffective...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...but rather that it failed to execute on a strategy to confront it...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Underwriters Laboratories’ chief strategy officer...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2012.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'strætədʒi",
+            "ukspeech": "strategy&type=1",
+            "star": 0,
+            "usspeech": "strategy&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_10_strategy_1523505030285000011_strategy_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "[军]战略，策略",
+                  "hwds": [
+                    {
+                      "w": "device"
+                    },
+                    {
+                      "w": "tactic"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'strætədʒɪ",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "development strategy",
+                  "pCn": "发展战略"
+                },
+                {
+                  "pContent": "control strategy",
+                  "pCn": "控制策略"
+                },
+                {
+                  "pContent": "marketing strategy",
+                  "pCn": "行销策略；市场战略"
+                },
+                {
+                  "pContent": "management strategy",
+                  "pCn": "管理战略；治理策略；决策管理"
+                },
+                {
+                  "pContent": "business strategy",
+                  "pCn": "经营策略；商业策略；企业发展战略"
+                },
+                {
+                  "pContent": "strategy management",
+                  "pCn": "策略管理"
+                },
+                {
+                  "pContent": "competitive strategy",
+                  "pCn": "竞争战略；竞争策略"
+                },
+                {
+                  "pContent": "investment strategy",
+                  "pCn": "n. 投资策略，投资战略"
+                },
+                {
+                  "pContent": "market strategy",
+                  "pCn": "市场策略；市场战略"
+                },
+                {
+                  "pContent": "learning strategy",
+                  "pCn": "学习策略"
+                },
+                {
+                  "pContent": "sales strategy",
+                  "pCn": "推销战略，销售策略"
+                },
+                {
+                  "pContent": "strategy of sustainable development",
+                  "pCn": "可持续发展战略"
+                },
+                {
+                  "pContent": "overall strategy",
+                  "pCn": "全面战略"
+                },
+                {
+                  "pContent": "corporate strategy",
+                  "pCn": "公司策略"
+                },
+                {
+                  "pContent": "global strategy",
+                  "pCn": "全球战略；全球策略"
+                },
+                {
+                  "pContent": "military strategy",
+                  "pCn": "军事战略；军事战略学"
+                },
+                {
+                  "pContent": "internationalization strategy",
+                  "pCn": "国际化战略"
+                },
+                {
+                  "pContent": "financial strategy",
+                  "pCn": "财务策略；金融战略"
+                },
+                {
+                  "pContent": "strategy implementation",
+                  "pCn": "策略实施；战略执行"
+                },
+                {
+                  "pContent": "optimal strategy",
+                  "pCn": "最优策略，最佳策略"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'strætidʒi",
+            "speech": "strategy",
+            "remMethod": {
+              "val": "str(看作strange， 奇怪的) ＋ ate(吃) ＋ gy → 用奇怪的方法吃掉对手 → 策略",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "strategic",
+                      "tran": "战略上的，战略的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "strategically",
+                      "tran": "战略性地；战略上"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "strategist",
+                      "tran": "战略家；军事家"
+                    },
+                    {
+                      "hwd": "stratagem",
+                      "tran": "策略；计谋"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "策略，战略",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a planned series of actions for achieving something"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 11,
+      "headWord": "paradox",
+      "content": {
+        "word": {
+          "wordHead": "paradox",
+          "wordId": "CET4luan_1_11",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "The paradox is that fishermen would catch more fish if they fished less.",
+                  "sCn": "悖论就是: 如果渔夫减少捕鱼，反而会打到更多的鱼。"
+                },
+                {
+                  "sContent": "It’s a paradox that in such a rich country there can be so much poverty.",
+                  "sCn": "在如此富有的国家却有这么多的贫穷现象，真是矛盾。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "'pærədɑks",
+            "ukphone": "ˈpærədɒks",
+            "ukspeech": "paradox&type=1",
+            "star": 0,
+            "phone": "'pærədɔks",
+            "speech": "paradox",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "paradoxical",
+                      "tran": "矛盾的；诡论的；似非而是的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "paradoxically",
+                      "tran": "自相矛盾地；似非而是地；反常地"
+                    }
+                  ]
+                }
+              ]
+            },
+            "usspeech": "paradox&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_11_paradox_1523505030688000012_paradox_JY.png",
+            "trans": [
+              {
+                "tranCn": "悖论；自相矛盾",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a statement that seems impossible because it contains two opposing ideas that are both true"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 12,
+      "headWord": "primary",
+      "content": {
+        "word": {
+          "wordHead": "primary",
+          "wordId": "CET4luan_1_12",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Our primary concern is to provide the refugees with food and health care.",
+                  "sCn": "我们的头等大事是向难民提供食品和医疗。"
+                },
+                {
+                  "sContent": "Many of the villagers rely on fishing as their primary source of income.",
+                  "sCn": "很多村民以打鱼作为他们的主要收入来源。"
+                },
+                {
+                  "sContent": "Personal safety is of primary importance .",
+                  "sCn": "人身安全至关重要。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...saying a real innovative company should develop an innovation culture and use it as a primary tool for success...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2016.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...it isn't even their primary tool...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2014.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...primary and middle schools...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2014.6",
+                    "type": "文本题"
+                  }
+                },
+                {
+                  "sContent": "...Sadness is our primary association with crying...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2014.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Perhaps the primary reason lies that the form far outweighs the content...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2012.6",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...Perhaps the primary advantage is that they have the opportunities to compare prices of a product offered by different retailers...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.6",
+                    "type": "写作题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'praɪmɛri",
+            "ukspeech": "primary&type=1",
+            "star": 0,
+            "usspeech": "primary&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_12_primary_1523505031155000013_primary_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "主要的；[数]初级的；基本的",
+                  "hwds": [
+                    {
+                      "w": "elementary"
+                    },
+                    {
+                      "w": "major"
+                    },
+                    {
+                      "w": "central"
+                    },
+                    {
+                      "w": "main"
+                    },
+                    {
+                      "w": "leading"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "tran": "原色；最主要者",
+                  "hwds": [
+                    {
+                      "w": "original color"
+                    },
+                    {
+                      "w": "fundamental colour"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˈpraɪməri",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "primary school",
+                  "pCn": "小学"
+                },
+                {
+                  "pContent": "primary stage",
+                  "pCn": "初始阶段"
+                },
+                {
+                  "pContent": "primary purpose",
+                  "pCn": "主要目的；根本目的"
+                },
+                {
+                  "pContent": "primary factor",
+                  "pCn": "主因子，准素因子；一次因素"
+                },
+                {
+                  "pContent": "primary education",
+                  "pCn": "初等教育"
+                },
+                {
+                  "pContent": "primary goal",
+                  "pCn": "首要目标"
+                },
+                {
+                  "pContent": "primary function",
+                  "pCn": "主功能；基函数"
+                },
+                {
+                  "pContent": "primary energy",
+                  "pCn": "一次能源；最初的电子能量"
+                },
+                {
+                  "pContent": "primary air",
+                  "pCn": "一次空气"
+                },
+                {
+                  "pContent": "primary source",
+                  "pCn": "主源；第一手来源"
+                },
+                {
+                  "pContent": "primary focus",
+                  "pCn": "主焦点；优先考虑"
+                },
+                {
+                  "pContent": "primary care",
+                  "pCn": "初级治疗，初级护理；基层医疗"
+                },
+                {
+                  "pContent": "primary concern",
+                  "pCn": "主要关心的事"
+                },
+                {
+                  "pContent": "primary data",
+                  "pCn": "原始数据；原始资料"
+                },
+                {
+                  "pContent": "primary treatment",
+                  "pCn": "一次处理；初级处理"
+                },
+                {
+                  "pContent": "primary production",
+                  "pCn": "初级生产"
+                },
+                {
+                  "pContent": "primary key",
+                  "pCn": "主关键字，主键标"
+                },
+                {
+                  "pContent": "primary health care",
+                  "pCn": "初级保健护理"
+                },
+                {
+                  "pContent": "primary culture",
+                  "pCn": "原始培养；初代培养"
+                },
+                {
+                  "pContent": "primary market",
+                  "pCn": "初级市场；初次市场（即证券发行机构）"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'praiməri",
+            "speech": "primary",
+            "remMethod": {
+              "val": "prim(第一， 主要的) ＋ ary(具有…的) → 主要的",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "prime",
+                      "tran": "主要的；最好的；基本的"
+                    },
+                    {
+                      "hwd": "primal",
+                      "tran": "原始的；主要的；最初的"
+                    },
+                    {
+                      "hwd": "prima",
+                      "tran": "（意）第一的，主要的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "primarily",
+                      "tran": "首先；主要地，根本上"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "prime",
+                      "tran": "初期；青年；精华；全盛时期"
+                    },
+                    {
+                      "hwd": "primer",
+                      "tran": "初级读本；识字课本；原始物"
+                    },
+                    {
+                      "hwd": "primal",
+                      "tran": "被压抑童年情绪的释放"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "prime",
+                      "tran": "作准备"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "prime",
+                      "tran": "使准备好；填装"
+                    },
+                    {
+                      "hwd": "primal",
+                      "tran": "释放（被压抑的童年情绪）"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "主要的，基本的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "most important"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 13,
+      "headWord": "standpoint",
+      "content": {
+        "word": {
+          "wordHead": "standpoint",
+          "wordId": "CET4luan_1_13",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "a discussion of marriage from the standpoint of women",
+                  "sCn": "从女性角度对婚姻的探讨"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "'stændpɔɪnt",
+            "ukspeech": "standpoint&type=1",
+            "star": 0,
+            "usspeech": "standpoint&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_13_standpoint_1523505031537000014_standpoint_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "立场；观点",
+                  "hwds": [
+                    {
+                      "w": "viewpoint"
+                    },
+                    {
+                      "w": "perspective"
+                    },
+                    {
+                      "w": "outlook"
+                    },
+                    {
+                      "w": "eye"
+                    },
+                    {
+                      "w": "sentiment"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˈstændpɔɪnt",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "from the standpoint of",
+                  "pCn": "从…角度来看；从…立场来看"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'stændpɔint",
+            "speech": "standpoint",
+            "remMethod": {
+              "val": "stand(站立) ＋ point(观点) → 立场， 观点",
+              "desc": "记忆"
+            },
+            "trans": [
+              {
+                "tranCn": "立场",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a way of thinking about people, situations, ideas etc"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 14,
+      "headWord": "grab",
+      "content": {
+        "word": {
+          "wordHead": "grab",
+          "wordId": "CET4luan_1_14",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Try to get there early and grab good seats.",
+                  "sCn": "尽量早点去，抢个好位子。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...Nearly two-thirds of us grab fast food once a week...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "ɡræb",
+            "ukspeech": "grab&type=1",
+            "star": 0,
+            "usspeech": "grab&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_14_grab_1523505032354000015_grab_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "vt",
+                  "tran": "攫取；霸占；将…深深吸引",
+                  "hwds": [
+                    {
+                      "w": "pounce at"
+                    },
+                    {
+                      "w": "commandeer"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "tran": "攫取；夺取",
+                  "hwds": [
+                    {
+                      "w": "pounce at"
+                    },
+                    {
+                      "w": "snatch up"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "tran": "攫取；霸占；夺取之物",
+                  "hwds": [
+                    {
+                      "w": "arrogation"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ɡræb",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "up for grabs",
+                  "pCn": "大家有份"
+                },
+                {
+                  "pContent": "grab a bite",
+                  "pCn": "吃点东西（非正式语）；随便吃几口；先吃点东西垫垫肚子"
+                },
+                {
+                  "pContent": "grab at",
+                  "pCn": "抓住，抓取；抓住不放"
+                },
+                {
+                  "pContent": "grab crane",
+                  "pCn": "抓斗起重机；抓斗吊车"
+                },
+                {
+                  "pContent": "grab bucket",
+                  "pCn": "抓斗，挖泥抓斗；抓岩机的抓斗"
+                },
+                {
+                  "pContent": "grab hold of",
+                  "pCn": "vt. 控制（抓住）"
+                },
+                {
+                  "pContent": "grab at a straw",
+                  "pCn": "捞救命稻草"
+                },
+                {
+                  "pContent": "grab dredger",
+                  "pCn": "抓斗式挖泥船"
+                },
+                {
+                  "pContent": "grab dredge",
+                  "pCn": "抓斗式挖泥船"
+                },
+                {
+                  "pContent": "grab handle",
+                  "pCn": "扶手；握柄；车顶安全把手"
+                },
+                {
+                  "pContent": "grab bag",
+                  "pCn": "n. 摸彩袋；混杂"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "ɡræb",
+            "speech": "grab",
+            "remMethod": {
+              "val": "螃蟹(crab)用钳子抓(grab)人",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "grabber",
+                      "tran": "强夺者；强取者；掠夺者"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "抢先，抢占，抢夺",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to get something for yourself, sometimes in an unfair way"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 15,
+      "headWord": "crucial",
+      "content": {
+        "word": {
+          "wordHead": "crucial",
+          "wordId": "CET4luan_1_15",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "The conservation of tropical forests is of crucial importance .",
+                  "sCn": "保护热带雨林至关重要。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...crucial to our success...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...which not only serves as crucial bridge to build trust and connection between two generations but also exerts a profound and subtle influence toward to children’s personal growth...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2017.12",
+                    "type": "写作题"
+                  }
+                },
+                {
+                  "sContent": "...is the crucial ingredient in all economic progress--higher growth for nations...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2015.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...that are crucial for career success...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2013.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Campus plays a crucial role in educating the young generation and the consciousness of “green campus” will definitely produce a profound effect on students’ various environmental protection activities after their graduation...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2009.12",
+                    "type": "写作题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'krʊʃəl",
+            "ukspeech": "crucial&type=1",
+            "star": 0,
+            "usspeech": "crucial&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_15_crucial_1523505032734000016_crucial_JY.png",
+            "exam": [
+              {
+                "question": "Improved consumer confidence is ________ to an economic recovery.",
+                "answer": {
+                  "explain": "句意： 增强消费者的信心对经济复苏有决定性意义。subordinate： 下级的， 附属的； cumulative： 积累的； satisfactory： 令人满意的。",
+                  "rightIndex": 1
+                },
+                "examType": 1,
+                "choices": [
+                  {
+                    "choiceIndex": 1,
+                    "choice": "crucial"
+                  },
+                  {
+                    "choiceIndex": 2,
+                    "choice": "subordinate"
+                  },
+                  {
+                    "choiceIndex": 3,
+                    "choice": "cumulative"
+                  },
+                  {
+                    "choiceIndex": 4,
+                    "choice": "satisfactory"
+                  }
+                ]
+              }
+            ],
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "重要的；决定性的；定局的；决断的",
+                  "hwds": [
+                    {
+                      "w": "important"
+                    },
+                    {
+                      "w": "considerable"
+                    },
+                    {
+                      "w": "material"
+                    },
+                    {
+                      "w": "critical"
+                    },
+                    {
+                      "w": "big"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'kruːʃ(ə)l",
+            "phone": "'kru:ʃəl",
+            "speech": "crucial",
+            "remMethod": {
+              "val": "cruc(十字形， 交叉) ＋ ial(…的) → 十字路口 → 至关重要的",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "crucially",
+                      "tran": "关键地；至关重要地"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "至关重要的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "something that is crucial is extremely important, because everything else depends on it"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 16,
+      "headWord": "flaw",
+      "content": {
+        "word": {
+          "wordHead": "flaw",
+          "wordId": "CET4luan_1_16",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "A design flaw (= a mistake or weakness in the way something was made ) caused the engine to explode.",
+                  "sCn": "一个设计缺陷导致了引擎爆炸。"
+                },
+                {
+                  "sContent": "Beautiful scenery does not make up for the flaws of this film.",
+                  "sCn": "美丽的风光弥补不了此影片的不足。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "flɔ",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "瑕疵，裂纹；缺点；一阵狂风",
+                  "hwds": [
+                    {
+                      "w": "checking"
+                    },
+                    {
+                      "w": "defect"
+                    },
+                    {
+                      "w": "deficiency"
+                    },
+                    {
+                      "w": "vice"
+                    },
+                    {
+                      "w": "fault"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "tran": "使无效；使破裂，使有缺陷",
+                  "hwds": [
+                    {
+                      "w": "crack"
+                    },
+                    {
+                      "w": "fracture"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "flɔː",
+            "ukspeech": "flaw&type=1",
+            "star": 0,
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "flaw detection",
+                  "pCn": "探伤检验；缺陷检验"
+                },
+                {
+                  "pContent": "flaw detector",
+                  "pCn": "探伤仪；裂痕探测仪"
+                },
+                {
+                  "pContent": "ultrasonic flaw detector",
+                  "pCn": "[工]超声波探伤仪"
+                },
+                {
+                  "pContent": "flaw echo",
+                  "pCn": "缺陷回波；缺陷的回波信号；缺陷回声"
+                },
+                {
+                  "pContent": "nondestructive flaw detection",
+                  "pCn": "无损探伤"
+                },
+                {
+                  "pContent": "security flaw",
+                  "pCn": "安全漏洞；安全性缺陷"
+                }
+              ],
+              "desc": "短语"
+            },
+            "speech": "flaw",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "flawless",
+                      "tran": "完美的；无瑕疵的；无裂缝的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "flawlessly",
+                      "tran": "完美无瑕地"
+                    }
+                  ]
+                }
+              ]
+            },
+            "usspeech": "flaw&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_16_flaw_1523505033185000017_flaw_MT.png",
+            "trans": [
+              {
+                "tranCn": "缺点；错误",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a mistake, mark, or weakness that makes something imperfect"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 17,
+      "headWord": "depressed",
+      "content": {
+        "word": {
+          "wordHead": "depressed",
+          "wordId": "CET4luan_1_17",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Britain’s depressed housing market",
+                  "sCn": "英国不景气的房产市场"
+                },
+                {
+                  "sContent": "She felt lonely and depressed .",
+                  "sCn": "她感到孤独和沮丧。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...People who struggle with excessive Internet use maybe depressed or have other mood disorders...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2010.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...depressed or irritable when not at the computer...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2010.6",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "dɪ'prɛst",
+            "ukspeech": "depressed&type=1",
+            "star": 0,
+            "usspeech": "depressed&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_17_depressed_1523505033438000018_depressed_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "沮丧的；萧条的；压低的",
+                  "hwds": [
+                    {
+                      "w": "blue"
+                    },
+                    {
+                      "w": "disappointed"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "tran": "使沮丧；使萧条（depress的过去式和过去分词形式）；压低",
+                  "hwds": [
+                    {
+                      "w": "disheartened"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "di'prest",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "depressed area",
+                  "pCn": "萧条区，贫困地区"
+                },
+                {
+                  "pContent": "depressed market",
+                  "pCn": "萧条市场"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "di'prest",
+            "speech": "depressed",
+            "remMethod": {
+              "val": "de(向下) ＋ press(挤压) → 向下压 → 削弱",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "depressing",
+                      "tran": "压抑的；使人沮丧的"
+                    },
+                    {
+                      "hwd": "depressive",
+                      "tran": "抑郁的；压抑的"
+                    },
+                    {
+                      "hwd": "depressible",
+                      "tran": "可抑压的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "depressingly",
+                      "tran": "郁闷地；抑压地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "depression",
+                      "tran": "沮丧；洼地；不景气；忧愁"
+                    },
+                    {
+                      "hwd": "depressor",
+                      "tran": "抑压者；抑压物；压板；降肌"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "depress",
+                      "tran": "压低；使沮丧；使萧条"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "萧条的；沮丧的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "an area, industry etc that is depressed does not have enough economic or business activity"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 18,
+      "headWord": "obstacle",
+      "content": {
+        "word": {
+          "wordHead": "obstacle",
+          "wordId": "CET4luan_1_18",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "The tax puts obstacles in the way of companies trying to develop trade overseas.",
+                  "sCn": "这项税收为想在海外发展贸易的公司设置了障碍。"
+                },
+                {
+                  "sContent": "Women still have to overcome many obstacles to gain equality.",
+                  "sCn": "妇女要获得平等仍需克服重重障碍。"
+                },
+                {
+                  "sContent": "We want to remove all obstacles to travel between the two countries.",
+                  "sCn": "我们想要消除在这两个国家之间旅行的所有障碍。"
+                },
+                {
+                  "sContent": "the single biggest obstacle to a Conservative victory in the next election",
+                  "sCn": "保守党在下一届大选中获胜的最大障碍"
+                },
+                {
+                  "sContent": "There are formidable obstacles on the road to peace.",
+                  "sCn": "通往和平的道路上存在难以逾越的障碍。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...is the biggest obstacle to cooking for most people...",
+                  "sourceInfo": {
+                    "paper": "第二套",
+                    "level": "CET4",
+                    "year": "2015.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'ɑbstəkl",
+            "ukspeech": "obstacle&type=1",
+            "star": 0,
+            "usspeech": "obstacle&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_18_obstacle_1523505033871000019_obstacle_JY.png",
+            "exam": [
+              {
+                "question": "Not having a good command of English can be a serious _____ preventing you from achieving your goals.",
+                "answer": {
+                  "explain": " 句意： 英语不好会成为实现目标的严重障碍。 fault： 过错， 缺点； offense： 冒犯， 进攻； distress： 悲痛， 忧伤。",
+                  "rightIndex": 1
+                },
+                "examType": 1,
+                "choices": [
+                  {
+                    "choiceIndex": 1,
+                    "choice": "obstacle"
+                  },
+                  {
+                    "choiceIndex": 2,
+                    "choice": "fault"
+                  },
+                  {
+                    "choiceIndex": 3,
+                    "choice": "offense"
+                  },
+                  {
+                    "choiceIndex": 4,
+                    "choice": "distress"
+                  }
+                ]
+              }
+            ],
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "障碍，干扰；妨害物",
+                  "hwds": [
+                    {
+                      "w": "interference"
+                    },
+                    {
+                      "w": "let"
+                    },
+                    {
+                      "w": "bar"
+                    },
+                    {
+                      "w": "disturbance"
+                    },
+                    {
+                      "w": "dam"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˈɒbstəkl",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "obstacle course",
+                  "pCn": "n. 超越障碍训练场"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'ɔbstəkl",
+            "speech": "obstacle",
+            "remMethod": {
+              "val": "ob(在…上) ＋ sta(看作stand) ＋ (a)cle(东西) → 站在路中间的东西 → 障碍物",
+              "desc": "记忆"
+            },
+            "trans": [
+              {
+                "tranCn": "阻碍",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "something that makes it difficult to achieve some­thing"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 19,
+      "headWord": "automatic",
+      "content": {
+        "word": {
+          "wordHead": "automatic",
+          "wordId": "CET4luan_1_19",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "an automatic weapon",
+                  "sCn": "自动武器"
+                },
+                {
+                  "sContent": "an automatic gearbox",
+                  "sCn": "自动变速箱"
+                },
+                {
+                  "sContent": "My camera is fully automatic .",
+                  "sCn": "我的照相机是全自动的。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "'ɔtə'mætɪk",
+            "ukspeech": "automatic&type=1",
+            "star": 0,
+            "usspeech": "automatic&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_19_automatic_1523505034343000020_automatic_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "[军][自]自动的；无意识的；必然的",
+                  "hwds": [
+                    {
+                      "w": "inevitable"
+                    },
+                    {
+                      "w": "mechanical"
+                    },
+                    {
+                      "w": "certain"
+                    },
+                    {
+                      "w": "necessary"
+                    },
+                    {
+                      "w": "unconscious"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "tran": "自动机械；[军]自动手枪",
+                  "hwds": [
+                    {
+                      "w": "robot"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˌɔ:tə'mætɪk",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "automatic control",
+                  "pCn": "自动控制"
+                },
+                {
+                  "pContent": "automatic control system",
+                  "pCn": "自动控制系统"
+                },
+                {
+                  "pContent": "fully automatic",
+                  "pCn": "全自动的"
+                },
+                {
+                  "pContent": "automatic system",
+                  "pCn": "自动系统；自动装置"
+                },
+                {
+                  "pContent": "full automatic",
+                  "pCn": "全自动的"
+                },
+                {
+                  "pContent": "automatic welding",
+                  "pCn": "自动焊接"
+                },
+                {
+                  "pContent": "automatic transmission",
+                  "pCn": "自动换档；自动变速装置；自动驾驶"
+                },
+                {
+                  "pContent": "automatic detection",
+                  "pCn": "自动检测"
+                },
+                {
+                  "pContent": "automatic machine",
+                  "pCn": "自动机床；自动机械"
+                },
+                {
+                  "pContent": "automatic testing",
+                  "pCn": "自动测试；自动校验；自动检验"
+                },
+                {
+                  "pContent": "automatic test system",
+                  "pCn": "自动测试系统"
+                },
+                {
+                  "pContent": "automatic equipment",
+                  "pCn": "自动设备；自动装置"
+                },
+                {
+                  "pContent": "automatic operation",
+                  "pCn": "自动操作；自动运算"
+                },
+                {
+                  "pContent": "automatic tracking",
+                  "pCn": "自动跟踪；自动跟踪仪"
+                },
+                {
+                  "pContent": "automatic door",
+                  "pCn": "自动门"
+                },
+                {
+                  "pContent": "automatic inspection",
+                  "pCn": "自动检查；自动检验"
+                },
+                {
+                  "pContent": "automatic feed",
+                  "pCn": "自动进料"
+                },
+                {
+                  "pContent": "automatic control theory",
+                  "pCn": "自动控制理论"
+                },
+                {
+                  "pContent": "automatic switching",
+                  "pCn": "自动转换；自动开关"
+                },
+                {
+                  "pContent": "automatic device",
+                  "pCn": "自动装置"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": ",ɔ:tə'mætik",
+            "speech": "automatic",
+            "remMethod": {
+              "val": "auto(自动) ＋ mat(动) ＋ ic(…的) → 自动的",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "automated",
+                      "tran": "自动化的；机械化的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "automatically",
+                      "tran": "自动地；机械地；无意识地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "automation",
+                      "tran": "自动化；自动操作"
+                    },
+                    {
+                      "hwd": "automaton",
+                      "tran": "自动机；机器人；自动机器"
+                    },
+                    {
+                      "hwd": "automat",
+                      "tran": "自动售货机；[自] 自动机；自动贩卖式餐馆"
+                    },
+                    {
+                      "hwd": "automatism",
+                      "tran": "自动作用；[医] 自动症；自动性"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "words": [
+                    {
+                      "hwd": "automated",
+                      "tran": "自动化（automate的过去分词）；自动操作"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "automate",
+                      "tran": "自动化，自动操作"
+                    },
+                    {
+                      "hwd": "automatize",
+                      "tran": "自动化"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "automate",
+                      "tran": "使自动化，使自动操作"
+                    },
+                    {
+                      "hwd": "automatise",
+                      "tran": "（英）使自动化（等于automatize）"
+                    },
+                    {
+                      "hwd": "automatize",
+                      "tran": "使自动化"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "自动的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "an automatic machine is designed to work without needing someone to operate it for each part of a process"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 20,
+      "headWord": "passionate",
+      "content": {
+        "word": {
+          "wordHead": "passionate",
+          "wordId": "CET4luan_1_20",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "He had a brief but passionate love affair with an older woman.",
+                  "sCn": "他和一个比他年长的女子有过一段短暂而炽热的情史。"
+                },
+                {
+                  "sContent": "a very passionate young man",
+                  "sCn": "一位感情热烈的年轻人"
+                },
+                {
+                  "sContent": "a passionate lover",
+                  "sCn": "富有激情的爱人"
+                },
+                {
+                  "sContent": "a passionate kiss",
+                  "sCn": "激情的一吻"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...I will be more than passionate to plan...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2016.12",
+                    "type": "写作题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'pæʃənət",
+            "ukspeech": "passionate&type=1",
+            "star": 0,
+            "usspeech": "passionate&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_20_passionate_1523505034796000021_passionate_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "adj",
+                  "tran": "热情的；热烈的，激昂的；易怒的",
+                  "hwds": [
+                    {
+                      "w": "intense"
+                    },
+                    {
+                      "w": "warm"
+                    },
+                    {
+                      "w": "tropical"
+                    },
+                    {
+                      "w": "hot"
+                    },
+                    {
+                      "w": "enthusiastic"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "ˈpæʃənət",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "passionate love",
+                  "pCn": "热情的爱；激情之爱"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'pæʃənit",
+            "speech": "passionate",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "passionless",
+                      "tran": "不热情的，冷淡的；冷静的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "passionately",
+                      "tran": "热情地；强烈地；激昂地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "passion",
+                      "tran": "激情；热情；酷爱；盛怒"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "热情的",
+                "descOther": "英释",
+                "pos": "adj",
+                "descCn": "中释",
+                "tranOther": "showing or involving very strong feelings of sexual love"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 21,
+      "headWord": "gambling",
+      "content": {
+        "word": {
+          "wordHead": "gambling",
+          "wordId": "CET4luan_1_21",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "The lottery is probably the most popular form of gambling.",
+                  "sCn": "彩票可能是最普遍的一种赌博形式。"
+                },
+                {
+                  "sContent": "gambling debts",
+                  "sCn": "赌债"
+                },
+                {
+                  "sContent": "The police raided a number of illegal gambling dens (= places for illegal gambling ).",
+                  "sCn": "警方突击搜查了几个非法赌窟。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "usphone": "'gæmblɪŋ",
+            "ukspeech": "gambling&type=1",
+            "star": 0,
+            "usspeech": "gambling&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_21_gambling_1523505035182000022_gambling_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "赌博；投机",
+                  "hwds": [
+                    {
+                      "w": "speculation"
+                    },
+                    {
+                      "w": "gaming"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "tran": "赌博；打赌（gamble的ing形式）",
+                  "hwds": [
+                    {
+                      "w": "betting"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'ɡæmblɪŋ",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "gambling debts",
+                  "pCn": "赌债"
+                },
+                {
+                  "pContent": "gambling house",
+                  "pCn": "赌场"
+                },
+                {
+                  "pContent": "gambling den",
+                  "pCn": "赌场"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'ɡæmbliŋ",
+            "speech": "gambling",
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "game",
+                      "tran": "勇敢的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "gamble",
+                      "tran": "赌博；冒险；打赌"
+                    },
+                    {
+                      "hwd": "game",
+                      "tran": "游戏；比赛"
+                    },
+                    {
+                      "hwd": "gambler",
+                      "tran": "赌徒；投机商人"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "gamble",
+                      "tran": "赌博；孤注一掷；投机；打赌"
+                    },
+                    {
+                      "hwd": "game",
+                      "tran": "赌博"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "gamble",
+                      "tran": "赌博；孤注一掷；冒险假设"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "赌博",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "when people risk money or possessions on the result of something which is not certain, such as a card game or a horse race"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 22,
+      "headWord": "logic",
+      "content": {
+        "word": {
+          "wordHead": "logic",
+          "wordId": "CET4luan_1_22",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "There is a certain logic in their choice of architect.",
+                  "sCn": "他们对建筑师的选择是有一定道理的。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...W: I'm having a lot of trouble with logic and it seems my professor can't explain it in a way that makes sense to me...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.6",
+                    "type": "听力题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'lɑdʒɪk",
+            "ukspeech": "logic&type=1",
+            "star": 0,
+            "usspeech": "logic&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_22_logic_1523505035631000023_logic_MT.png",
+            "ukphone": "'lɒdʒɪk",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "fuzzy logic",
+                  "pCn": "模糊逻辑"
+                },
+                {
+                  "pContent": "programmable logic",
+                  "pCn": "可编程序逻辑"
+                },
+                {
+                  "pContent": "logic control",
+                  "pCn": "逻辑控制"
+                },
+                {
+                  "pContent": "programmable logic controller",
+                  "pCn": "可编程序逻辑控制器"
+                },
+                {
+                  "pContent": "control logic",
+                  "pCn": "控制逻辑"
+                },
+                {
+                  "pContent": "logic system",
+                  "pCn": "逻辑系统"
+                },
+                {
+                  "pContent": "logic circuit",
+                  "pCn": "逻辑电路"
+                },
+                {
+                  "pContent": "fuzzy logic control",
+                  "pCn": "模糊逻辑控制"
+                },
+                {
+                  "pContent": "digital logic",
+                  "pCn": "数字逻辑"
+                },
+                {
+                  "pContent": "temporal logic",
+                  "pCn": "时序逻辑；时间逻辑"
+                },
+                {
+                  "pContent": "logic design",
+                  "pCn": "[计]逻辑设计"
+                },
+                {
+                  "pContent": "mathematical logic",
+                  "pCn": "数理逻辑"
+                },
+                {
+                  "pContent": "formal logic",
+                  "pCn": "形式逻辑"
+                },
+                {
+                  "pContent": "logic analyzer",
+                  "pCn": "逻辑分析仪；逻辑分析器"
+                },
+                {
+                  "pContent": "logic operation",
+                  "pCn": "逻辑运算"
+                },
+                {
+                  "pContent": "propositional logic",
+                  "pCn": "命题逻辑"
+                },
+                {
+                  "pContent": "sequential logic",
+                  "pCn": "时序逻辑；顺序逻辑；循序逻辑"
+                },
+                {
+                  "pContent": "predicate logic",
+                  "pCn": "谓词逻辑"
+                },
+                {
+                  "pContent": "logic programming",
+                  "pCn": "逻辑编程"
+                },
+                {
+                  "pContent": "modal logic",
+                  "pCn": "模态逻辑；情态逻辑"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'lɔdʒik",
+            "speech": "logic",
+            "remMethod": {
+              "val": "log(言语， 思维) ＋ ic → 说话需要有逻辑 → 逻辑， 推理",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "logistic",
+                      "tran": "后勤学的；[数] 符号逻辑的"
+                    },
+                    {
+                      "hwd": "logical",
+                      "tran": "合逻辑的，合理的；逻辑学的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "logically",
+                      "tran": "逻辑上；合乎逻辑"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "logician",
+                      "tran": "逻辑学家；论理学者"
+                    },
+                    {
+                      "hwd": "logicality",
+                      "tran": "逻辑性；合论理性；论法的正确"
+                    },
+                    {
+                      "hwd": "logicism",
+                      "tran": "逻辑主义；逻辑皱"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "逻辑",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a way of thinking about something that seems correct and reasonable, or a set of sensible reasons for doing something"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 23,
+      "headWord": "theory",
+      "content": {
+        "word": {
+          "wordHead": "theory",
+          "wordId": "CET4luan_1_23",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "Freudian theory has had a great influence on psychology.",
+                  "sCn": "弗洛伊德理论对心理学产生过巨大影响。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...they remain fussy―in theory at least—when it comes to paper quality...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2017.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...when he introduced the concept of relative time as part of his special theory of relativity...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.6",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...The prevailing theory seems to be that we’re all hot-tempered single mothers who can’t keep a man...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2009.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...This theory explains the potential that human infants have for learning language...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2008.12",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...What does Chomsky's theory fail to explain according to the speaker...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2008.12",
+                    "type": "听力题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'θiəri",
+            "ukspeech": "theory&type=1",
+            "star": 0,
+            "usspeech": "theory&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_23_theory_1523505035912000024_theory_MT.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "理论；原理；学说；推测",
+                  "hwds": [
+                    {
+                      "w": "mechanism"
+                    },
+                    {
+                      "w": "element"
+                    },
+                    {
+                      "w": "speculation"
+                    },
+                    {
+                      "w": "doctrine"
+                    },
+                    {
+                      "w": "guess"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'θɪərɪ",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "in theory",
+                  "pCn": "理论上"
+                },
+                {
+                  "pContent": "basic theory",
+                  "pCn": "基本理论"
+                },
+                {
+                  "pContent": "control theory",
+                  "pCn": "控制理论，控制论"
+                },
+                {
+                  "pContent": "game theory",
+                  "pCn": "博弈论，对策论"
+                },
+                {
+                  "pContent": "system theory",
+                  "pCn": "系统论"
+                },
+                {
+                  "pContent": "management theory",
+                  "pCn": "管理理论"
+                },
+                {
+                  "pContent": "set theory",
+                  "pCn": "集合论"
+                },
+                {
+                  "pContent": "economic theory",
+                  "pCn": "经济理论；理论经济学"
+                },
+                {
+                  "pContent": "deng xiaoping theory",
+                  "pCn": "邓小平理论"
+                },
+                {
+                  "pContent": "fuzzy theory",
+                  "pCn": "模糊理论；含模理论"
+                },
+                {
+                  "pContent": "general theory",
+                  "pCn": "一般理论；统一理论"
+                },
+                {
+                  "pContent": "learning theory",
+                  "pCn": "学习理论；学习论"
+                },
+                {
+                  "pContent": "information theory",
+                  "pCn": "信息论；情报理论"
+                },
+                {
+                  "pContent": "graph theory",
+                  "pCn": "图论"
+                },
+                {
+                  "pContent": "field theory",
+                  "pCn": "场论"
+                },
+                {
+                  "pContent": "reliability theory",
+                  "pCn": "可靠性理论"
+                },
+                {
+                  "pContent": "probability theory",
+                  "pCn": "概率论"
+                },
+                {
+                  "pContent": "political theory",
+                  "pCn": "政治学理论"
+                },
+                {
+                  "pContent": "optimization theory",
+                  "pCn": "最优化理论"
+                },
+                {
+                  "pContent": "wave theory",
+                  "pCn": "[物]波动论；波动说"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": "'θiəri, 'θi:ə-",
+            "speech": "theory",
+            "remMethod": {
+              "val": "theo(神) ＋ ry → 从理论上讲神是不存在的 → 理论",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "theoretical",
+                      "tran": "理论的；理论上的；假设的；推理的"
+                    },
+                    {
+                      "hwd": "theoretic",
+                      "tran": "理论上的；空谈的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "theoretically",
+                      "tran": "理论地；理论上"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "theorem",
+                      "tran": "[数] 定理；原理"
+                    },
+                    {
+                      "hwd": "theorist",
+                      "tran": "理论家"
+                    },
+                    {
+                      "hwd": "theoretician",
+                      "tran": "理论家，精通于理论的人"
+                    },
+                    {
+                      "hwd": "theorization",
+                      "tran": "理论；理论化"
+                    },
+                    {
+                      "hwd": "theorizer",
+                      "tran": "理论家"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "theorize",
+                      "tran": "建立理论或学说；推理"
+                    },
+                    {
+                      "hwd": "theorise",
+                      "tran": "建立理论"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "theorize",
+                      "tran": "建立理论"
+                    },
+                    {
+                      "hwd": "theorise",
+                      "tran": "使理论化"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "理论",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "an idea or set of ideas that is intended to explain something about life or the world, especially an idea that has not yet been proved to be true"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 24,
+      "headWord": "download",
+      "content": {
+        "word": {
+          "wordHead": "download",
+          "wordId": "CET4luan_1_24",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "games that can be downloaded free from the Internet",
+                  "sCn": "可以从因特网上免费下载的游戏"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...download a program like Freedom that locks you out of your browser...",
+                  "sourceInfo": {
+                    "paper": "第三套",
+                    "level": "CET4",
+                    "year": "2014.12",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...gave their entire class iPads with which to download textbooks just last year...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.6",
+                    "type": "阅读理解"
+                  }
+                },
+                {
+                  "sContent": "...Just go online or download an app...",
+                  "sourceInfo": {
+                    "paper": "第一套",
+                    "level": "CET4",
+                    "year": "2013.12",
+                    "type": "阅读理解"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": ",daʊn'lod",
+            "ukphone": "'daʊnləʊd",
+            "ukspeech": "download&type=1",
+            "star": 0,
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "download link",
+                  "pCn": "下载链接"
+                },
+                {
+                  "pContent": "download center",
+                  "pCn": "下载中心"
+                },
+                {
+                  "pContent": "download now",
+                  "pCn": "立即下载"
+                },
+                {
+                  "pContent": "music download",
+                  "pCn": "音乐下载"
+                }
+              ],
+              "desc": "短语"
+            },
+            "phone": ",daʊn'lod",
+            "speech": "download",
+            "usspeech": "download&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_24_download_1523505036311000025_download_JY.png",
+            "trans": [
+              {
+                "tranCn": "下载",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to move information or programs from a computer network to a small computer"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    },
+    {
+      "wordRank": 25,
+      "headWord": "signal",
+      "content": {
+        "word": {
+          "wordHead": "signal",
+          "wordId": "CET4luan_1_25",
+          "content": {
+            "sentence": {
+              "sentences": [
+                {
+                  "sContent": "At a prearranged signal the lights went out.",
+                  "sCn": "预定的信号一发出，灯就全灭了。"
+                },
+                {
+                  "sContent": "She signalled, and the waiter brought the bill.",
+                  "sCn": "她打了个手势，侍者就拿来了账单。"
+                }
+              ],
+              "desc": "例句"
+            },
+            "realExamSentence": {
+              "sentences": [
+                {
+                  "sContent": "...you should be able to signal to them...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2107.12",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...Learning how different cultures signal respect can help you avoid misunderstandings...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.12",
+                    "type": "听力题"
+                  }
+                },
+                {
+                  "sContent": "...Were they deliberately tried to signal their rejection of her...",
+                  "sourceInfo": {
+                    "level": "CET4",
+                    "year": "2011.12",
+                    "type": "听力题"
+                  }
+                }
+              ],
+              "desc": "真题例句"
+            },
+            "usphone": "'sɪgnl",
+            "ukspeech": "signal&type=1",
+            "star": 0,
+            "usspeech": "signal&type=2",
+            "picture": "http://ydschool-online.nos.netease.com/CET4luan_1_25_signal_1523505036783000026_signal_JY.png",
+            "syno": {
+              "synos": [
+                {
+                  "pos": "n",
+                  "tran": "信号；暗号；导火线",
+                  "hwds": [
+                    {
+                      "w": "high sign"
+                    },
+                    {
+                      "w": "alarm-word"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "tran": "标志；用信号通知",
+                  "hwds": [
+                    {
+                      "w": "mark"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adj",
+                  "tran": "显著的；作为信号的",
+                  "hwds": [
+                    {
+                      "w": "obvious"
+                    },
+                    {
+                      "w": "prominent"
+                    },
+                    {
+                      "w": "marked"
+                    },
+                    {
+                      "w": "noted"
+                    },
+                    {
+                      "w": "outstanding"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "tran": "发信号",
+                  "hwds": [
+                    {
+                      "w": "semaphore"
+                    }
+                  ]
+                }
+              ],
+              "desc": "同近"
+            },
+            "ukphone": "'signəl",
+            "phrase": {
+              "phrases": [
+                {
+                  "pContent": "signal processing",
+                  "pCn": "信号处理"
+                },
+                {
+                  "pContent": "digital signal",
+                  "pCn": "数字信号"
+                },
+                {
+                  "pContent": "digital signal processing",
+                  "pCn": "数字信号处理"
+                },
+                {
+                  "pContent": "signal processor",
+                  "pCn": "n. 信号处理机；讯息处理者"
+                },
+                {
+                  "pContent": "signal transmission",
+                  "pCn": "信号传输；信号发送"
+                },
+                {
+                  "pContent": "digital signal processor",
+                  "pCn": "数位讯号处理器"
+                },
+                {
+                  "pContent": "output signal",
+                  "pCn": "输出信号"
+                },
+                {
+                  "pContent": "input signal",
+                  "pCn": "[电]输入信号"
+                },
+                {
+                  "pContent": "signal analysis",
+                  "pCn": "信号分析"
+                },
+                {
+                  "pContent": "signal generator",
+                  "pCn": "信号发生器；讯号产生机"
+                },
+                {
+                  "pContent": "signal detection",
+                  "pCn": "信号检测"
+                },
+                {
+                  "pContent": "signal to noise ratio",
+                  "pCn": "信噪比，信号噪声比"
+                },
+                {
+                  "pContent": "control signal",
+                  "pCn": "控制信号；操纵信号"
+                },
+                {
+                  "pContent": "speech signal",
+                  "pCn": "语言信号，语音信号"
+                },
+                {
+                  "pContent": "video signal",
+                  "pCn": "视频信号"
+                },
+                {
+                  "pContent": "traffic signal",
+                  "pCn": "交通信号；交通讯号，指挥灯"
+                },
+                {
+                  "pContent": "audio signal",
+                  "pCn": "声频信号；可听声信号"
+                },
+                {
+                  "pContent": "signal source",
+                  "pCn": "n. 信号源"
+                },
+                {
+                  "pContent": "analog signal",
+                  "pCn": "[计]模拟信号"
+                },
+                {
+                  "pContent": "electric signal",
+                  "pCn": "电讯号"
+                }
+              ],
+              "desc": "短语"
+            },
+            "speech": "signal",
+            "remMethod": {
+              "val": "来自sign(n. 标记)",
+              "desc": "记忆"
+            },
+            "relWord": {
+              "desc": "同根",
+              "rels": [
+                {
+                  "pos": "adj",
+                  "words": [
+                    {
+                      "hwd": "signed",
+                      "tran": "有符号的；已签字的；有正负之分的"
+                    }
+                  ]
+                },
+                {
+                  "pos": "adv",
+                  "words": [
+                    {
+                      "hwd": "signally",
+                      "tran": "显著地；突出地；非凡地"
+                    }
+                  ]
+                },
+                {
+                  "pos": "n",
+                  "words": [
+                    {
+                      "hwd": "sign",
+                      "tran": "迹象；符号；记号；手势"
+                    },
+                    {
+                      "hwd": "signage",
+                      "tran": "引导标示"
+                    },
+                    {
+                      "hwd": "signaling",
+                      "tran": "发信号；打信号"
+                    },
+                    {
+                      "hwd": "signer",
+                      "tran": "签名者；用手势示意者"
+                    },
+                    {
+                      "hwd": "sigint",
+                      "tran": "通信情报，信号情报（指对无线电信号监听，截获和破译获得的情报）"
+                    },
+                    {
+                      "hwd": "signaler",
+                      "tran": "信号装置；信号员"
+                    },
+                    {
+                      "hwd": "signalisation",
+                      "tran": "信号通知"
+                    },
+                    {
+                      "hwd": "signalization",
+                      "tran": "信号作用"
+                    },
+                    {
+                      "hwd": "signaller",
+                      "tran": "通讯兵；信号装置"
+                    },
+                    {
+                      "hwd": "signalman",
+                      "tran": "信号员；信号手"
+                    }
+                  ]
+                },
+                {
+                  "pos": "v",
+                  "words": [
+                    {
+                      "hwd": "signed",
+                      "tran": "署名；写下；预示；示意（sign的过去分词）"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vi",
+                  "words": [
+                    {
+                      "hwd": "sign",
+                      "tran": "签署；签名"
+                    },
+                    {
+                      "hwd": "signalize",
+                      "tran": "发信号"
+                    }
+                  ]
+                },
+                {
+                  "pos": "vt",
+                  "words": [
+                    {
+                      "hwd": "sign",
+                      "tran": "签署；示意"
+                    },
+                    {
+                      "hwd": "signalise",
+                      "tran": "使…显著；用信号通知；庆祝；突出地表明"
+                    },
+                    {
+                      "hwd": "signalize",
+                      "tran": "使显眼；使著名；向…发信号"
+                    }
+                  ]
+                }
+              ]
+            },
+            "trans": [
+              {
+                "tranCn": "信号",
+                "descOther": "英释",
+                "pos": "n",
+                "descCn": "中释",
+                "tranOther": "a sound or action that you make in order to give information to someone or tell them to do something"
+              },
+              {
+                "tranCn": "发信号，打信号；示意",
+                "descOther": "英释",
+                "pos": "v",
+                "descCn": "中释",
+                "tranOther": "to make a sound or action in order to give information or tell someone to do something"
+              }
+            ]
+          }
+        }
+      },
+      "bookId": "CET4luan_1"
+    }
+  ]
+}
