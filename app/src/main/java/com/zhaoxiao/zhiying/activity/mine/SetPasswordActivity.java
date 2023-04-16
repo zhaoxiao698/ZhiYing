@@ -14,9 +14,8 @@ import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.HomeActivity;
 import com.zhaoxiao.zhiying.api.UserService;
-import com.zhaoxiao.zhiying.entity.mine.Login;
-import com.zhaoxiao.zhiying.entity.mine.User;
 import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.util.EditTextUtil;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
@@ -88,7 +87,7 @@ public class SetPasswordActivity extends BaseActivity {
         navigateTo(HomeActivity.class);
     }
 
-    @OnClick({R.id.btn_yes, R.id.btn_no})
+    @OnClick({R.id.btn_yes, R.id.btn_no, R.id.ll_password, R.id.ll_password_confirm})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_yes:
@@ -96,6 +95,12 @@ public class SetPasswordActivity extends BaseActivity {
                 break;
             case R.id.btn_no:
                 navigateTo(HomeActivity.class);
+                break;
+            case R.id.ll_password:
+                EditTextUtil.showSoftInputFromWindow(this,etPassword);
+                break;
+            case R.id.ll_password_confirm:
+                EditTextUtil.showSoftInputFromWindow(this,etPasswordConfirm);
                 break;
         }
     }
@@ -109,13 +114,13 @@ public class SetPasswordActivity extends BaseActivity {
         } else if (StringUtils.isEmpty(passwordConfirm)) {
             XToastUtils.error("请再次输入密码");
             llPasswordConfirm.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
-        } else if (!password.equals(passwordConfirm)){
+        } else if (!password.equals(passwordConfirm)) {
             llPassword.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
             llPasswordConfirm.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
             XToastUtils.error("两次输入密码不一致");
         } else {
-            String account = SpUtils.getInstance(this).getString("account","");
-            setPassword(account,password);
+            String account = SpUtils.getInstance(this).getString("account", "");
+            setPassword(account, password);
 //            XToastUtils.success("设置成功");
 //            navigateTo(HomeActivity.class);
         }
@@ -128,7 +133,7 @@ public class SetPasswordActivity extends BaseActivity {
             public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     boolean success = response.body().getData();
-                    if (success){
+                    if (success) {
                         XToastUtils.success("设置成功");
                         navigateTo(HomeActivity.class);
                     }

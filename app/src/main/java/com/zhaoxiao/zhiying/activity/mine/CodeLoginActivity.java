@@ -27,6 +27,7 @@ import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.mine.CodeResponse;
+import com.zhaoxiao.zhiying.util.EditTextUtil;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.DemoPopup;
@@ -135,7 +136,7 @@ public class CodeLoginActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.ll_area, R.id.btn_getCode, R.id.btn_password_login,R.id.tv_user_protocol, R.id.tv_privacy_protocol})
+    @OnClick({R.id.ll_area, R.id.btn_getCode, R.id.btn_password_login,R.id.tv_user_protocol, R.id.tv_privacy_protocol, R.id.ll_phone})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_area:
@@ -172,6 +173,9 @@ public class CodeLoginActivity extends BaseActivity {
                 break;
             case R.id.tv_privacy_protocol:
                 navigateTo(ServiceProtocolActivity.class,KEY_PROTOCOL_TITLE, "隐私政策");
+                break;
+            case R.id.ll_phone:
+                EditTextUtil.showSoftInputFromWindow(this,etPhone);
                 break;
         }
     }

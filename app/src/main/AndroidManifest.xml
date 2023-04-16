@@ -16,7 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.community.TopicDetailActivity"></activity>
+        <activity android:name=".activity.word.WordListActivity"></activity>
+        <activity android:name=".activity.word.WordCompleteActivity" />
+        <activity android:name=".activity.word.WordLearnActivity" />
+        <activity android:name=".activity.word.SetPlanActivity" />
+        <activity android:name=".activity.word.SelectBookActivity" />
+        <activity
+            android:name=".activity.word.WordActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.community.PublishTrendActivity" />
+        <activity android:name=".activity.community.TopicDetailActivity" />
         <activity android:name=".activity.community.TrendDetailActivity" />
         <activity android:name=".activity.mine.SetPasswordActivity" />
         <activity android:name=".activity.mine.CodeLogin2Activity" />

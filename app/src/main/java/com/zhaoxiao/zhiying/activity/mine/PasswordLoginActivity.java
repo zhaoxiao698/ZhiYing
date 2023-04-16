@@ -1,29 +1,28 @@
 package com.zhaoxiao.zhiying.activity.mine;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.alpha.XUIAlphaTextView;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
-import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
-import com.xuexiang.xui.widget.toast.XToast;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.HomeActivity;
 import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.mine.Login;
 import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.util.EditTextUtil;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
@@ -117,28 +116,28 @@ public class PasswordLoginActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.tv_user_protocol, R.id.tv_privacy_protocol, R.id.btn_login, R.id.btn_code_login})
+    @OnClick({R.id.tv_user_protocol, R.id.tv_privacy_protocol, R.id.btn_login, R.id.btn_code_login, R.id.ll_account, R.id.ll_password})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_user_protocol:
-                navigateTo(ServiceProtocolActivity.class,KEY_PROTOCOL_TITLE, "用户协议");
+                navigateTo(ServiceProtocolActivity.class, KEY_PROTOCOL_TITLE, "用户协议");
                 break;
             case R.id.tv_privacy_protocol:
-                navigateTo(ServiceProtocolActivity.class,KEY_PROTOCOL_TITLE, "隐私政策");
+                navigateTo(ServiceProtocolActivity.class, KEY_PROTOCOL_TITLE, "隐私政策");
                 break;
             case R.id.btn_login:
                 String account = etAccount.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-                boolean accountNull=false,passwordNull=false;
+                boolean accountNull = false, passwordNull = false;
                 String hint = null;
                 if (StringUtils.isEmpty(account)) {
                     llAccount.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
                     hint = "请输入账号/手机号";
                     accountNull = true;
                 }
-                if (StringUtils.isEmpty(password)){
+                if (StringUtils.isEmpty(password)) {
                     llPassword.setBackground(getResources().getDrawable(R.drawable.shape_input_account_error));
-                    if(accountNull){
+                    if (accountNull) {
                         hint += "和密码";
                     } else {
                         hint = "请输入密码";
@@ -160,6 +159,12 @@ public class PasswordLoginActivity extends BaseActivity {
                 finish();
                 navigateTo(CodeLoginActivity.class);
                 break;
+            case R.id.ll_account:
+                EditTextUtil.showSoftInputFromWindow(this,etAccount);
+                break;
+            case R.id.ll_password:
+                EditTextUtil.showSoftInputFromWindow(this,etPassword);
+                break;
         }
     }
 
@@ -171,9 +176,9 @@ public class PasswordLoginActivity extends BaseActivity {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     Login login = response.body().getData();
                     Login.LoginType loginType = login.getType();
-                    if (loginType == Login.LoginType.LOGIN_BY_PASSWORD||loginType == Login.LoginType.LOGIN_BY_ACCOUNT||loginType == Login.LoginType.LOGIN_BY_PHONE){
+                    if (loginType == Login.LoginType.LOGIN_BY_PASSWORD || loginType == Login.LoginType.LOGIN_BY_ACCOUNT || loginType == Login.LoginType.LOGIN_BY_PHONE) {
                         XToastUtils.success("登陆成功");
-                        SpUtils.getInstance(PasswordLoginActivity.this).setString("account",login.getAccount(),10*SpUtils.TIME_DAY);
+                        SpUtils.getInstance(PasswordLoginActivity.this).setString("account", login.getAccount(), 10 * SpUtils.TIME_DAY);
                         navigateTo(HomeActivity.class);
                     }
                 } else {

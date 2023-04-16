@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:orientation="vertical"
+    tools:context=".activity.word.WordActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:paddingRight="14dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/left_yellow" />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_10dp"
+        android:layout_marginRight="@dimen/config_margin_10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingLeft="@dimen/config_padding_20dp"
+        app:contentPaddingRight="@dimen/config_padding_20dp"
+        app:contentPaddingTop="@dimen/config_padding_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/config_margin_20dp"
+            android:layout_marginBottom="@dimen/config_margin_20dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:src="@drawable/cet4luan_1" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/config_margin_20dp"
+                android:layout_toRightOf="@+id/iv_img"
+                android:text="四级真题核心词（图片记忆）"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_learned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_alignLeft="@+id/hpv"
+                android:layout_marginTop="@dimen/config_margin_20dp"
+                android:text="已学习：576"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_learned"
+                android:layout_alignLeft="@+id/hpv"
+                android:layout_marginTop="@dimen/config_margin_5dp"
+                android:text="总词数：576"
+                android:textSize="17sp" />
+
+            <com.xuexiang.xui.widget.progress.HorizontalProgressView
+                android:id="@+id/hpv"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tv_total"
+                android:layout_alignLeft="@+id/tv_name"
+                app:hpv_end_color="@color/dark_orange"
+                app:hpv_end_progress="86"
+                app:hpv_isTracked="true"
+                app:hpv_progress_duration="2200"
+                app:hpv_progress_textColor="#696969"
+                app:hpv_progress_textVisibility="false"
+                app:hpv_start_color="@color/light_orange"
+                app:hpv_track_color="#f4f4f4"
+                app:hpv_track_width="8dp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_img"
+                android:layout_marginTop="@dimen/config_margin_10dp"
+                android:background="@color/bright_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tv_word_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="查看单词列表"
+                    android:textColor="@color/g_yellow"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/bright_gray" />
+
+                <TextView
+                    android:id="@+id/tv_change_book"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="切换词书"
+                    android:textColor="@color/g_yellow"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_weight="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_plan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/g_yellow_light"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="今日单词计划"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp">
+
+                    <TextView
+                        android:id="@+id/tv_plan_do"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="10"
+                        android:textColor="@color/g_yellow"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / "
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_plan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="50"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text=" 个单词"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="30dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:text="Success is the sum of small efforts, repeated day in and day out."-->
+                <!--                    android:textSize="15sp"-->
+                <!--                    android:textColor="@color/black"/>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    app:cardBackgroundColor="@color/g_yellow"-->
+<!--                    app:cardCornerRadius="8dp"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:cardMaxElevation="3dp"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:contentPaddingBottom="@dimen/config_padding_10dp"-->
+<!--                    app:contentPaddingLeft="@dimen/config_padding_20dp"-->
+<!--                    app:contentPaddingRight="@dimen/config_padding_20dp"-->
+<!--                    app:contentPaddingTop="@dimen/config_padding_10dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="开始学习" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:text="1222" />-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:cardBackgroundColor="@color/background_gray"-->
+<!--                    app:cardCornerRadius="8dp"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:cardMaxElevation="3dp"-->
+<!--                    app:cardUseCompatPadding="true"-->
+<!--                    app:contentPaddingBottom="@dimen/config_padding_10dp"-->
+<!--                    app:contentPaddingLeft="@dimen/config_padding_20dp"-->
+<!--                    app:contentPaddingRight="@dimen/config_padding_20dp"-->
+<!--                    app:contentPaddingTop="@dimen/config_padding_10dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="@color/g_yellow"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="复习" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:text="136" />-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_collection"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/g_yellow"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardMaxElevation="3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPaddingBottom="@dimen/config_padding_10dp"
+                app:contentPaddingLeft="@dimen/config_padding_20dp"
+                app:contentPaddingRight="@dimen/config_padding_20dp"
+                app:contentPaddingTop="@dimen/config_padding_10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/collection_word"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="收藏"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_setting"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_toRightOf="@+id/card_plan"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardMaxElevation="3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPaddingBottom="@dimen/config_padding_10dp"
+                app:contentPaddingLeft="@dimen/config_padding_20dp"
+                app:contentPaddingRight="@dimen/config_padding_20dp"
+                app:contentPaddingTop="@dimen/config_padding_10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/setting_word" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="设置"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_learn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="#4299F4"
+                app:cardElevation="2dp"
+                app:cardMaxElevation="3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPaddingBottom="@dimen/config_padding_10dp"
+                app:contentPaddingLeft="@dimen/config_padding_20dp"
+                app:contentPaddingRight="@dimen/config_padding_20dp"
+                app:contentPaddingTop="@dimen/config_padding_10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="学习"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="23sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_learn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1120"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_review"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardBackgroundColor="#34A853"
+                app:cardElevation="2dp"
+                app:cardMaxElevation="3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPaddingBottom="@dimen/config_padding_10dp"
+                app:contentPaddingLeft="@dimen/config_padding_20dp"
+                app:contentPaddingRight="@dimen/config_padding_20dp"
+                app:contentPaddingTop="@dimen/config_padding_10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="复习"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="23sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="1233"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+</LinearLayout>

@@ -11,7 +11,9 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.activity.test.SelectActivity;
 import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
 import com.zhaoxiao.zhiying.entity.study.TabEntity;
@@ -56,8 +58,25 @@ public class HomeActivity extends BaseActivity {
     protected void initData() {
         //刷新过期时间
         String account = SpUtils.getInstance(this).getString("account", "");
-        if (!StringUtils.isEmpty(account) && !account.equals("已过期")) {
-            SpUtils.getInstance(this).setString("account", account, 10 * SpUtils.TIME_DAY);
+//        if (!StringUtils.isEmpty(account) && !account.equals("已过期")) {
+//            SpUtils.getInstance(this).setString("account", account, 10 * SpUtils.TIME_DAY);
+//        }
+
+        if (!StringUtils.isEmpty(account)) {
+            if (account.equals("已过期")){
+                SpUtils.getInstance(this).setString("account","");
+                new MaterialDialog.Builder(this)
+                        .title("登录状态已过期")
+                        .content("登录状态已过期，请重新登录")
+                        .positiveText(R.string.lab_yes)
+                        .negativeText(R.string.lab_no)
+                        .positiveColor(getResources().getColor(R.color.g_yellow))
+                        .negativeColor(getResources().getColor(R.color.gray))
+                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
+                        .show();
+            } else {
+                SpUtils.getInstance(this).setString("account", account, 10 * SpUtils.TIME_DAY);
+            }
         }
 
 //        StatusBarUtil.setTransparent(this);

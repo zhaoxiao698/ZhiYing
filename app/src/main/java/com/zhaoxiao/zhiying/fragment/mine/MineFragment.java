@@ -64,18 +64,18 @@ public class MineFragment extends BaseFragment {
             }
         } else if (account.equals("已过期")){
             if (flag!=0) {
-                SpUtils.getInstance(getContext()).setString("account","");
+//                SpUtils.getInstance(getContext()).setString("account","");
                 UnselectedFragment fragment = UnselectedFragment.newInstance(true);
                 transaction.replace(R.id.fl_mine, fragment).commit();
-                new MaterialDialog.Builder(getContext())
-                        .title("登录状态已过期")
-                        .content("登录状态已过期，请重新登录")
-                        .positiveText(R.string.lab_yes)
-                        .negativeText(R.string.lab_no)
-                        .positiveColor(getResources().getColor(R.color.g_yellow))
-                        .negativeColor(getResources().getColor(R.color.gray))
-                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
-                        .show();
+//                new MaterialDialog.Builder(getContext())
+//                        .title("登录状态已过期")
+//                        .content("登录状态已过期，请重新登录")
+//                        .positiveText(R.string.lab_yes)
+//                        .negativeText(R.string.lab_no)
+//                        .positiveColor(getResources().getColor(R.color.g_yellow))
+//                        .negativeColor(getResources().getColor(R.color.gray))
+//                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
+//                        .show();
                 flag = 0;
             }
         } else {

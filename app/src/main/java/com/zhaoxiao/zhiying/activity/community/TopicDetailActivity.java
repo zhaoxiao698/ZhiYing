@@ -138,7 +138,7 @@ public class TopicDetailActivity extends BaseActivity {
             if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                 //折叠
                 StatusBarUtils.setStatusBarDarkMode(this);
-                collapseLayout.setTitle(topic.getName());
+                collapseLayout.setTitle("#"+topic.getName());
             } else {
                 //展开
                 StatusBarUtils.setStatusBarLightMode(this);

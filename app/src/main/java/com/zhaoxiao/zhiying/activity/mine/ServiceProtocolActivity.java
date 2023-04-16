@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xaop.annotation.MemoryCache;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xutil.resource.ResUtils;
@@ -66,5 +67,11 @@ public class ServiceProtocolActivity extends BaseActivity {
     @OnClick(R.id.iv_back)
     public void onClick() {
         finish();
+    }
+
+    @Override
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);
+        StatusBarUtils.setStatusBarLightMode(this);
     }
 }

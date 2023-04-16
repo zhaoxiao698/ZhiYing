@@ -22,6 +22,7 @@ import com.zhaoxiao.zhiying.activity.study.FtypeActivity;
 import com.zhaoxiao.zhiying.activity.study.HotActivity;
 import com.zhaoxiao.zhiying.activity.study.RecentActivity;
 import com.zhaoxiao.zhiying.activity.study.SortActivity;
+import com.zhaoxiao.zhiying.activity.word.WordActivity;
 import com.zhaoxiao.zhiying.adapter.study.HotAdapter;
 import com.zhaoxiao.zhiying.adapter.study.RecentAdapter;
 import com.zhaoxiao.zhiying.api.ApiConfig;
@@ -172,7 +173,8 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
 
             @Override
             public void rightDrawable2Click() {
-                showToast("图标2");
+//                showToast("图标2");
+                navigateTo(WordActivity.class);
             }
         });
     }

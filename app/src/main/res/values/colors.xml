@@ -28,7 +28,8 @@
     <color name="g_green">#34A853</color>
     <color name="g_blue">#4299F4</color>
     <color name="g_red">#EA4335</color>
-    <color name="background_gray">#f7f7f7</color>
+    <color name="background_gray_old">#f7f7f7</color>
+    <color name="background_gray">#f4f4f4</color>
     <color name="background_gray1">#f0f0f0</color>
     <color name="g_yellow_light">#FFF8F3</color>
 

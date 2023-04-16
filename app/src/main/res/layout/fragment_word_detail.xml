@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.word.WordDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_tran"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_word"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="cancel"
+                        android:textColor="@color/g_yellow"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp">
+
+                        <TextView
+                            android:id="@+id/tv_usphone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:text="美 /'kænsl/" />
+
+                        <TextView
+                            android:id="@+id/tv_ukphone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:backgroundTint="@color/white"
+                            android:text="英 /'kænsl/" />
+
+                    </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_pos"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="vt."-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/tv_tran"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:text="取消， 撤销； 删去"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="vt."-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:text="取消， 撤销； 删去"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="18sp" />-->
+
+<!--                    </LinearLayout>-->
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@color/g_yellow" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_sentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_sentence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="例句"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:text="Our flight was cancelled."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:text="我们的航班取消了。"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:text="Our flight was cancelled."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:text="我们的航班取消了。"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="助记"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_rem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="en(使…) ＋ courage(精神) → 使有精神 → 鼓励"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_phrase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_phrase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="短语"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="cancel button"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="取消按钮"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="cancel button"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="取消按钮"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_rel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="同根词"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="cancellation"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="n."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:text="取消；删除"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="cancellation"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="n."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:text="取消；删除"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_syno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:layout_marginRight="@dimen/config_margin_10dp"
+            app:cardBackgroundColor="@color/background_gray"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardMaxElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPaddingBottom="@dimen/config_padding_10dp"
+            app:contentPaddingLeft="@dimen/config_padding_20dp"
+            app:contentPaddingRight="@dimen/config_padding_20dp"
+            app:contentPaddingTop="@dimen/config_padding_10dp">
+
+            <LinearLayout
+                android:id="@+id/ll_syno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="近义词"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="vt."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="[计]取消；删去"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="recall / call it off"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="18sp" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="vt."-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:text="[计]取消；删去"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="16sp" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="recall / call it off"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="18sp" />-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

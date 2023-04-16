@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.word.WordLearnActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:paddingRight="14dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/left_yellow" />
+
+        <TextView
+            android:id="@+id/tv_current_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_back"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_slip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_current_num"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text=" / "
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_total_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_slip"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/iv_collection"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:src="@drawable/star_community"
+            app:tint="@color/g_yellow" />
+
+    </RelativeLayout>
+
+    <com.xuexiang.xui.widget.progress.HorizontalProgressView
+        android:id="@+id/hpv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:hpv_end_color="@color/dark_orange"
+        app:hpv_end_progress="86"
+        app:hpv_isTracked="true"
+        app:hpv_progress_duration="2200"
+        app:hpv_progress_textColor="#696969"
+        app:hpv_progress_textVisibility="false"
+        app:hpv_start_color="@color/light_orange"
+        app:hpv_track_color="#f4f4f4"
+        app:hpv_track_width="8dp" />
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="80dp">
+
+       <LinearLayout
+           android:id="@+id/ll_know"
+           android:orientation="vertical"
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_height="match_parent">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="认识"
+               android:textSize="22sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"/>
+
+           <View
+               android:layout_width="24dp"
+               android:layout_height="5dp"
+               android:layout_marginTop="5dp"
+               android:backgroundTint="@color/g_green"
+               android:background="@drawable/shape_community_comment_like"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/ll_vague"
+           android:orientation="vertical"
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_height="match_parent">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="模糊"
+               android:textSize="22sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"/>
+
+           <View
+               android:layout_width="24dp"
+               android:layout_height="5dp"
+               android:layout_marginTop="5dp"
+               android:backgroundTint="@color/g_yellow"
+               android:background="@drawable/shape_community_comment_like"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/ll_not_know"
+           android:orientation="vertical"
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_height="match_parent">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="不认识"
+               android:textSize="22sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"/>
+
+           <View
+               android:layout_width="24dp"
+               android:layout_height="5dp"
+               android:layout_marginTop="5dp"
+               android:backgroundTint="@color/g_red"
+               android:background="@drawable/shape_community_comment_like"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/ll_next"
+           android:orientation="vertical"
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_height="match_parent">
+
+           <TextView
+               android:id="@+id/tv_next"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="下一词"
+               android:textSize="22sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"/>
+
+           <View
+               android:layout_width="24dp"
+               android:layout_height="5dp"
+               android:layout_marginTop="5dp"
+               android:backgroundTint="@color/g_green"
+               android:background="@drawable/shape_community_comment_like"/>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/ll_wrong"
+           android:orientation="vertical"
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_marginLeft="5dp"
+           android:layout_marginRight="5dp"
+           android:layout_height="match_parent">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="记错了"
+               android:textSize="22sp"
+               android:textStyle="bold"
+               android:textColor="@color/black"/>
+
+           <View
+               android:layout_width="24dp"
+               android:layout_height="5dp"
+               android:layout_marginTop="5dp"
+               android:backgroundTint="@color/g_red"
+               android:background="@drawable/shape_community_comment_like"/>
+
+       </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

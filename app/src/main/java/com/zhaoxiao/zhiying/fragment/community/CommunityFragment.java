@@ -5,8 +5,11 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
+import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
@@ -27,6 +30,8 @@ public class CommunityFragment extends BaseFragment {
     private FragmentManager manager;
 
     private int flag = -1;
+
+    private XUIListPopup mListPopup;
 
     public CommunityFragment() {
     }
@@ -79,18 +84,18 @@ public class CommunityFragment extends BaseFragment {
             }
         } else if (account.equals("已过期")){
             if (flag!=0) {
-                SpUtils.getInstance(getContext()).setString("account", "");
+//                SpUtils.getInstance(getContext()).setString("account", "");
                 UnselectedFragment fragment = UnselectedFragment.newInstance(true);
                 transaction.replace(R.id.fl_community, fragment).commit();
-                new MaterialDialog.Builder(getContext())
-                        .title("登录状态已过期")
-                        .content("登录状态已过期，请重新登录")
-                        .positiveText(R.string.lab_yes)
-                        .negativeText(R.string.lab_no)
-                        .positiveColor(getResources().getColor(R.color.g_yellow))
-                        .negativeColor(getResources().getColor(R.color.gray))
-                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
-                        .show();
+//                new MaterialDialog.Builder(getContext())
+//                        .title("登录状态已过期")
+//                        .content("登录状态已过期，请重新登录")
+//                        .positiveText(R.string.lab_yes)
+//                        .negativeText(R.string.lab_no)
+//                        .positiveColor(getResources().getColor(R.color.g_yellow))
+//                        .negativeColor(getResources().getColor(R.color.gray))
+//                        .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
+//                        .show();
                 flag=0;
             }
         } else {
@@ -99,6 +104,26 @@ public class CommunityFragment extends BaseFragment {
                 transaction.replace(R.id.fl_community, fragment).commit();
                 flag=1;
             }
+        }
+    }
+
+    private void initListPopupIfNeed() {
+        if (mListPopup == null) {
+
+            String[] listItems = new String[]{
+                    "发动态",
+                    "创建话题",
+            };
+
+            XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
+            mListPopup = new XUIListPopup(getContext(), adapter);
+            mListPopup.create(DensityUtils.dp2px(getContext(), 200), DensityUtils.dp2px(getContext(), 150), (adapterView, view, i, l) -> {
+                switch (i){
+                    case 0:break;
+                    case 1:break;
+                }
+                mListPopup.dismiss();
+            });
         }
     }
 }

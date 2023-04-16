@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:gravity="center"
+    android:layout_marginTop="5dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_word"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="cancel"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <com.xuexiang.xui.widget.progress.HorizontalProgressView
+            android:id="@+id/hpv"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tv_total"
+            android:layout_alignLeft="@+id/tv_name"
+            app:hpv_end_color="@color/dark_orange"
+            app:hpv_end_progress="86"
+            app:hpv_isTracked="true"
+            app:hpv_progress_duration="2200"
+            app:hpv_progress_textColor="#696969"
+            app:hpv_progress_textVisibility="false"
+            app:hpv_start_color="@color/light_orange"
+            app:hpv_track_color="#f4f4f4"
+            app:hpv_track_width="8dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_next_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="10天后"/>
+
+</LinearLayout>
