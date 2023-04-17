@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,6 +20,7 @@ import com.zhaoxiao.zhiying.api.WordService;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.entity.word.WordSimple;
+import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.word.WordDetailFragment;
 import com.zhaoxiao.zhiying.fragment.word.WordOptionFragment;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
@@ -316,5 +318,20 @@ public class WordLearnActivity extends BaseActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_content);
+        if (fragment instanceof WordOptionFragment){
+            if (!((WordOptionFragment) fragment).onBackPressed()) {
+                super.onBackPressed();
+            }
+        } else if (fragment instanceof WordDetailFragment){
+            if (!((WordDetailFragment) fragment).onBackPressed()) {
+                super.onBackPressed();
+            }
+        }
     }
 }

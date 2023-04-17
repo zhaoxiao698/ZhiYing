@@ -12,6 +12,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -21,6 +22,10 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.adapter.study.SentenceAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
@@ -114,6 +119,9 @@ public class ListenFragment extends BaseFragment {
     //视频播放
     private VideoFragment videoFragment;
     private boolean isVideo;
+
+    //倍速
+    private XUIListPopup mListPopup;
 
     //点击阅读模式暂停音频
     public void readPause() {
@@ -307,7 +315,52 @@ public class ListenFragment extends BaseFragment {
             case R.id.iv_next:
                 break;
             case R.id.tv_speed:
+                initListPopupIfNeed();
+                mListPopup.setAnimStyle(XUIPopup.ANIM_GROW_FROM_CENTER);
+                mListPopup.setPreferredDirection(XUIPopup.DIRECTION_TOP);
+                mListPopup.show(tvSpeed);
                 break;
+        }
+    }
+
+    //倍速播放弹窗
+    private void initListPopupIfNeed() {
+        if (mListPopup == null) {
+
+            String[] listItems = new String[]{
+//                    "0.25x",
+                    "0.5x",
+                    "0.75x",
+                    "1.0x",
+                    "1.25x",
+                    "1.5x",
+                    "2.0x",
+//                    "3.0x",
+            };
+            float[] listItemsFolat = new float[]{
+//                    0.25f,
+                    0.5f,
+                    0.75f,
+                    1.0f,
+                    1.25f,
+                    1.5f,
+                    2.0f,
+//                    3.0f,
+            };
+
+            XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
+            mListPopup = new XUIListPopup(getContext(), adapter);
+            mListPopup.create(DensityUtils.dp2px(getContext(), 100), ViewGroup.LayoutParams.WRAP_CONTENT, (adapterView, view, i, l) -> {
+                if (isVideo) {
+                    videoFragment.changePlayerSpeed(listItemsFolat[i]);
+                    tvSpeed.setText(listItems[i]);
+                } else {
+                    mMyBinder.changePlayerSpeed(listItemsFolat[i]);
+                    tvSpeed.setText(listItems[i]);
+//                    tvSpeed.setText(mMyBinder.getSpeed()+"x");
+                }
+                mListPopup.dismiss();
+            });
         }
     }
 
@@ -404,6 +457,9 @@ public class ListenFragment extends BaseFragment {
             case ACTION_MUSIC_INIT:
 //                position = 0;
                 if (mMyBinder != null) {
+                    //获取倍数
+                    tvSpeed.setText(mMyBinder.getSpeed()+"x");
+
                     if (mMyBinder.isPlaying()) {
                         ivPlay.setImageResource(R.drawable.pause1_yellow);
                     } else {
@@ -452,6 +508,9 @@ public class ListenFragment extends BaseFragment {
                 mHandler.removeCallbacks(mRunnable);
                 break;
             case ACTION_VIDEO_INIT:
+                //获取倍数
+                tvSpeed.setText(videoFragment.getSpeed()+"x");
+
                 System.out.println(videoFragment);
                 if (videoFragment != null) {
                     if (videoFragment.isPlaying()) {
@@ -567,5 +626,9 @@ public class ListenFragment extends BaseFragment {
         }
         sentenceAdapter.setLight(position + 1);
         sentenceAdapter.notifyDataSetChanged();
+    }
+
+    public boolean onBackPressed(){
+        return videoFragment.onBackPressed();
     }
 }

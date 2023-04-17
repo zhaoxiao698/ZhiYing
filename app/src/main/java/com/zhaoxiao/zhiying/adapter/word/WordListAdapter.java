@@ -69,12 +69,12 @@ public class WordListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvTran.setText(tran.getTranCn());
             viewHolder.llTran.addView(viewGroup, lp);
         }
-        boolean isCollected = wordSimple.getCollect();
-        if(isCollected){
-            viewHolder.ivCollection.setImageResource(R.drawable.star1_community);
-        } else {
-            viewHolder.ivCollection.setImageResource(R.drawable.star_community);
-        }
+//        boolean isCollected = wordSimple.getCollect();
+//        if(isCollected){
+//            viewHolder.ivCollection.setImageResource(R.drawable.star1_community);
+//        } else {
+//            viewHolder.ivCollection.setImageResource(R.drawable.star_community);
+//        }
 
         viewHolder.wordId = wordSimple.getWordId();
         viewHolder.wordSimple = wordSimple;
@@ -94,13 +94,15 @@ public class WordListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         private String wordId;
         private WordSimple wordSimple;
         private TextView tvWord;
-        private ImageView ivCollection;
+//        private ImageView ivCollection;
+        private ImageView ivView;
         private LinearLayout llTran;
 
         public ViewHolder(@NonNull View view) {
             super(view);
             tvWord = view.findViewById(R.id.tv_word);
-            ivCollection = view.findViewById(R.id.iv_collection);
+//            ivCollection = view.findViewById(R.id.iv_collection);
+            ivView = view.findViewById(R.id.iv_view);
             llTran = view.findViewById(R.id.ll_tran);
             llTran.setVisibility(View.GONE);
 
@@ -120,10 +122,16 @@ public class WordListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     }
                 }
             });
-            ivCollection.setOnClickListener(new View.OnClickListener() {
+//            ivCollection.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    mOnItemClickListener.onIconClick(wordSimple,ivCollection);
+//                }
+//            });
+            ivView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnItemClickListener.onIconClick(wordSimple,ivCollection);
+                    mOnItemClickListener.onIconClick(wordSimple);
                 }
             });
         }
@@ -132,6 +140,7 @@ public class WordListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public interface OnItemClickListener {
         void onItemClick(String wordId);
 
-        void onIconClick(WordSimple wordSimple,ImageView ivCollection);
+//        void onIconClick(WordSimple wordSimple,ImageView ivCollection);
+        void onIconClick(WordSimple wordSimple);
     }
 }

@@ -3,6 +3,7 @@ package com.zhaoxiao.zhiying.fragment.word;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.zhaoxiao.zhiying.util.UnitConversion;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class WordDetailFragment extends BaseFragment {
     @BindView(R.id.tv_word)
@@ -50,7 +52,16 @@ public class WordDetailFragment extends BaseFragment {
     CardView cardRel;
     @BindView(R.id.card_syno)
     CardView cardSyno;
+    @BindView(R.id.fl_speech)
+    FrameLayout flSpeech;
     private WordSimple wordSimple;
+
+    private SpeechFragment speechFragment;
+//    private SpeechReceiver speechReceiver;
+
+    private final String BASE_URL = "https://dict.youdao.com/dictvoice?audio=";
+
+    private int speechType = 0;
 
     public WordDetailFragment() {
     }
@@ -68,6 +79,10 @@ public class WordDetailFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        speechFragment = (SpeechFragment) getChildFragmentManager().findFragmentById(R.id.fl_speech);
+//        speechFragment.setOnSpeechFragmentCreatedListener(() -> speechFragment.play(BASE_URL + wordSimple.getUsspeech()));
+
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.setMargins(0, UnitConversion.dp2px(getContext(), 5), 0, 0);
@@ -117,7 +132,7 @@ public class WordDetailFragment extends BaseFragment {
         }
 
 //        llPhrase.removeAllViews();
-        if(wordSimple.getPhrases()==null||wordSimple.getPhrases().size()==0){
+        if (wordSimple.getPhrases() == null || wordSimple.getPhrases().size() == 0) {
             cardPhrase.setVisibility(View.GONE);
         } else {
             for (WordSimple.PhrasesBean phrase : wordSimple.getPhrases()) {
@@ -131,9 +146,9 @@ public class WordDetailFragment extends BaseFragment {
         }
 
 //        llRel.removeAllViews();
-        if(wordSimple.getRels()==null||wordSimple.getRels().size()==0){
+        if (wordSimple.getRels() == null || wordSimple.getRels().size() == 0) {
             cardRel.setVisibility(View.GONE);
-        }else {
+        } else {
             for (WordSimple.RealsBean real : wordSimple.getRels()) {
                 String pos = real.getPos();
                 for (WordSimple.RealsBean.WordsBean word : real.getWords()) {
@@ -150,9 +165,9 @@ public class WordDetailFragment extends BaseFragment {
         }
 
 //        llSyno.removeAllViews();
-        if(wordSimple.getSynos()==null||wordSimple.getSynos().size()==0){
+        if (wordSimple.getSynos() == null || wordSimple.getSynos().size() == 0) {
             cardSyno.setVisibility(View.GONE);
-        }else {
+        } else {
             for (WordSimple.SynosBean syno : wordSimple.getSynos()) {
                 ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.layout_word_syno, null);
                 TextView tvPos = viewGroup.findViewById(R.id.tv_pos);
@@ -171,5 +186,31 @@ public class WordDetailFragment extends BaseFragment {
                 llSyno.addView(viewGroup);
             }
         }
+    }
+
+    @OnClick({R.id.tv_usphone, R.id.tv_ukphone})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_usphone:
+                if (speechType==2){
+                    speechFragment.replay();
+                }
+                speechFragment.release();
+                speechFragment.play(BASE_URL+wordSimple.getUsspeech());
+                speechType=2;
+                break;
+            case R.id.tv_ukphone:
+                if (speechType==1){
+                    speechFragment.replay();
+                }
+                speechFragment.release();
+                speechFragment.play(BASE_URL+wordSimple.getUkspeech());
+                speechType=1;
+                break;
+        }
+    }
+
+    public boolean onBackPressed(){
+        return speechFragment.onBackPressed();
     }
 }

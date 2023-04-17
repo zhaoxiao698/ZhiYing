@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.word.WordListActivity"></activity>
+        <activity android:name=".activity.word.WordDetailActivity"></activity>
+        <activity android:name=".activity.word.WordListActivity" />
         <activity android:name=".activity.word.WordCompleteActivity" />
         <activity android:name=".activity.word.WordLearnActivity" />
         <activity android:name=".activity.word.SetPlanActivity" />
@@ -44,7 +45,10 @@
             android:exported="true" />
 
         <activity android:name=".activity.study.CalendarActivity" />
-        <activity android:name=".activity.study.ArticleActivity" />
+        <activity
+            android:name=".activity.study.ArticleActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.study.ChannelActivity" />
         <activity android:name=".activity.study.SortActivity" />
         <activity android:name=".activity.study.FtypeActivity" />

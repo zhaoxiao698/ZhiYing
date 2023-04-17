@@ -36,7 +36,9 @@ public class MyVideoView extends VideoView {
     @Override
     public void onPrepared() {
         super.onPrepared();
-        onPreparedListener.onPrepared();
+        if (onPreparedListener!=null){
+            onPreparedListener.onPrepared();
+        }
     }
 
     public interface OnPreparedListener {

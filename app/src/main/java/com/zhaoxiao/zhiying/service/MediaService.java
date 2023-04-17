@@ -5,28 +5,20 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.MainActivity;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MediaService extends Service {
     private static final String TAG = "MediaService";
@@ -41,6 +33,8 @@ public class MediaService extends Service {
     public MediaPlayer mMediaPlayer = new MediaPlayer();
 
     private int id;
+
+    float mSpeed = 1.0f;
 
     public MediaService() {
     }
@@ -173,8 +167,37 @@ public class MediaService extends Service {
             mMediaPlayer.seekTo(msec);
         }
 
+        /**
+         * 判断是否正在播放
+         */
         public boolean isPlaying() {
             return mMediaPlayer.isPlaying();
+        }
+
+        /**
+         * 设置倍速
+         */
+        public void changePlayerSpeed(float speed) {
+            if (mMediaPlayer!=null) {
+                // this checks on API 23 and up
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (mMediaPlayer.isPlaying()) {
+                        mMediaPlayer.setPlaybackParams(mMediaPlayer.getPlaybackParams().setSpeed(speed));
+                        mSpeed = speed;
+                    } else {
+                        mMediaPlayer.setPlaybackParams(mMediaPlayer.getPlaybackParams().setSpeed(speed));
+                        mMediaPlayer.pause();
+                        mSpeed = speed;
+                    }
+                }
+            }
+        }
+
+        /**
+         * 获取倍速
+         */
+        public float getSpeed(){
+            return mSpeed;
         }
     }
 

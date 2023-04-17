@@ -12,13 +12,19 @@ import com.xuexiang.xui.utils.StatusBarUtils;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
+import com.zhaoxiao.zhiying.api.StudyService;
+import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.study.ReadFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ArticleActivity extends BaseActivity {
     @BindView(R.id.iv_back)
@@ -35,6 +41,8 @@ public class ArticleActivity extends BaseActivity {
     private String[] mTitles = {"听力", "阅读"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
+    private StudyService studyService;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_article;
@@ -43,6 +51,13 @@ public class ArticleActivity extends BaseActivity {
     @Override
     protected void initData() {
         articleId = (int) getIntent().getSerializableExtra("articleId");
+
+        //添加学习记录
+        String account = SpUtils.getInstance(this).getString("account","");
+        if (!account.equals("") && !account.equals("已过期")) {
+            studyService = (StudyService) getService(StudyService.class);
+            addArticleRecord(account, articleId);
+        }
 
         ivBack.setOnClickListener(v -> finish());
 
@@ -85,9 +100,35 @@ public class ArticleActivity extends BaseActivity {
         });
     }
 
+    private void addArticleRecord(String account, int articleId) {
+        Call<Data<Boolean>> addArticleRecordCall = studyService.addArticleRecord(account, articleId);
+        addArticleRecordCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        System.out.println("添加学习记录成功");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);
         StatusBarUtils.setStatusBarLightMode(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!((ListenFragment) mFragments.get(0)).onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 }

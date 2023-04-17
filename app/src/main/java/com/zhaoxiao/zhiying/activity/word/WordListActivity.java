@@ -102,10 +102,15 @@ public class WordListActivity extends BaseActivity {
 
             }
 
+//            @Override
+//            public void onIconClick(WordSimple wordSimple, ImageView ivCollection) {
+//                boolean isCollected = wordSimple.getCollect();
+//                collect(wordSimple, !isCollected, ivCollection);
+//            }
+
             @Override
-            public void onIconClick(WordSimple wordSimple, ImageView ivCollection) {
-                boolean isCollected = wordSimple.getCollect();
-                collect(wordSimple, !isCollected, ivCollection);
+            public void onIconClick(WordSimple wordSimple) {
+                navigateTo(WordDetailActivity.class, "wordSimple", wordSimple);
             }
         });
         getList(0);

@@ -1,4 +1,4 @@
-package com.zhaoxiao.zhiying.fragment.study;
+package com.zhaoxiao.zhiying.fragment.word;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,7 +13,7 @@ import butterknife.BindView;
 import xyz.doikki.videocontroller.StandardVideoController;
 import xyz.doikki.videoplayer.player.BaseVideoView;
 
-public class VideoFragment extends BaseFragment {
+public class SpeechFragment extends BaseFragment {
 
     @BindView(R.id.player)
     MyVideoView player;
@@ -22,11 +22,23 @@ public class VideoFragment extends BaseFragment {
 
     private float mSpeed = 1.0f;
 
-    public VideoFragment() {
+    public static final String ACTION_SPEECH_INIT = "ACTION_SPEECH_INIT";
+    public static final String ACTION_SPEECH_START = "ACTION_SPEECH_START";
+    public static final String ACTION_SPEECH_STOP = "ACTION_SPEECH_STOP";
+    public static final String ACTION_SPEECH_COMPLETE = "ACTION_SPEECH_COMPLETE";
+
+    private OnSpeechFragmentCreatedListener onSpeechFragmentCreatedListener;
+
+    public void setOnSpeechFragmentCreatedListener(OnSpeechFragmentCreatedListener onSpeechFragmentCreatedListener) {
+        this.onSpeechFragmentCreatedListener = onSpeechFragmentCreatedListener;
     }
 
-    public static VideoFragment newInstance() {
-        return new VideoFragment();
+
+    public SpeechFragment() {
+    }
+
+    public static SpeechFragment newInstance() {
+        return new SpeechFragment();
     }
 
     @Override
@@ -37,6 +49,9 @@ public class VideoFragment extends BaseFragment {
     @Override
     protected void initData() {
 //        player = mRootView.findViewById(R.id.player);
+        if (onSpeechFragmentCreatedListener!=null) {
+            onSpeechFragmentCreatedListener.onSpeechFragmentCreated();
+        }
     }
 
     public void play(String url){
@@ -54,39 +69,40 @@ public class VideoFragment extends BaseFragment {
 //        controller.addDefaultControlComponent("标题", false);
 //        player.setVideoController(controller); //设置控制器
 //        player.start(); //开始播放，不调用则不自动播放
-        player.setOnPreparedListener(new MyVideoView.OnPreparedListener() {
-            @Override
-            public void onPrepared() {
-                broadcastIntent = new Intent(ListenFragment.ACTION_VIDEO_INIT);
-                getContext().sendBroadcast(broadcastIntent);
-            }
-        });
-        player.addOnStateChangeListener(new BaseVideoView.OnStateChangeListener() {
-            @Override
-            public void onPlayerStateChanged(int playerState) {
 
-            }
-
-            @Override
-            public void onPlayStateChanged(int playState) {
-                switch (playState){
-                    case MyVideoView.STATE_PLAYING:
-                        broadcastIntent = new Intent(ListenFragment.ACTION_VIDEO_START);
-                        getContext().sendBroadcast(broadcastIntent);
-                        break;
-                    case MyVideoView.STATE_PAUSED:
-                        broadcastIntent = new Intent(ListenFragment.ACTION_VIDEO_STOP);
-                        getContext().sendBroadcast(broadcastIntent);
-                        break;
-                    case MyVideoView.STATE_PLAYBACK_COMPLETED:
-                        broadcastIntent = new Intent(ListenFragment.ACTION_VIDEO_COMPLETE);
-                        getContext().sendBroadcast(broadcastIntent);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+//        player.setOnPreparedListener(new MyVideoView.OnPreparedListener() {
+//            @Override
+//            public void onPrepared() {
+//                broadcastIntent = new Intent(ACTION_SPEECH_INIT);
+//                getContext().sendBroadcast(broadcastIntent);
+//            }
+//        });
+//        player.addOnStateChangeListener(new BaseVideoView.OnStateChangeListener() {
+//            @Override
+//            public void onPlayerStateChanged(int playerState) {
+//
+//            }
+//
+//            @Override
+//            public void onPlayStateChanged(int playState) {
+//                switch (playState){
+//                    case MyVideoView.STATE_PLAYING:
+//                        broadcastIntent = new Intent(ACTION_SPEECH_START);
+//                        getContext().sendBroadcast(broadcastIntent);
+//                        break;
+//                    case MyVideoView.STATE_PAUSED:
+//                        broadcastIntent = new Intent(ACTION_SPEECH_STOP);
+//                        getContext().sendBroadcast(broadcastIntent);
+//                        break;
+//                    case MyVideoView.STATE_PLAYBACK_COMPLETED:
+//                        broadcastIntent = new Intent(ACTION_SPEECH_COMPLETE);
+//                        getContext().sendBroadcast(broadcastIntent);
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        });
     }
 
     public void replay(){
@@ -145,7 +161,7 @@ public class VideoFragment extends BaseFragment {
             }
         }
     }
-
+    
     public float getSpeed(){
         return mSpeed;
     }
@@ -159,9 +175,9 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     public void onDestroyView() {
-        ((ListenFragment)getParentFragment()).removeCallbacks();
         player.release();
         super.onDestroyView();
+//        player.release();
         System.out.println("onDestroyView ---> "+player);
     }
 
@@ -188,5 +204,9 @@ public class VideoFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         System.out.println("onDetach ---> "+player);
+    }
+
+    public interface OnSpeechFragmentCreatedListener {
+        void onSpeechFragmentCreated();
     }
 }

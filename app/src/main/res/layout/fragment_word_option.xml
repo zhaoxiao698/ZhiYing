@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".fragment.word.WordOptionFragment">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fl_speech"
+        android:visibility="gone"
+        android:name="com.zhaoxiao.zhiying.fragment.word.SpeechFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
     <LinearLayout
         android:layout_gravity="center"
         android:orientation="vertical"

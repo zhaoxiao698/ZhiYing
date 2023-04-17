@@ -48,4 +48,7 @@ public interface StudyService {
 
     @GET("study/getArticleDetail")
     Call<Data<ArticleDetail>> getArticleDetail(@Query("articleId") int articleId);
+
+    @GET("study/addArticleRecord")
+    Call<Data<Boolean>> addArticleRecord(@Query("account") String account, @Query("articleId") int articleId);
 }

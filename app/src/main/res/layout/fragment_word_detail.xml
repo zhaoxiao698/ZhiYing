@@ -11,6 +11,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fl_speech"
+            android:visibility="gone"
+            android:name="com.zhaoxiao.zhiying.fragment.word.SpeechFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,21 +59,25 @@
                         android:layout_marginBottom="15dp">
 
                         <TextView
-                            android:id="@+id/tv_usphone"
+                            android:id="@+id/tv_ukphone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
+                            android:textColor="@color/g_blue"
+                            android:background="@drawable/shape_word_phone1"
                             android:backgroundTint="@color/white"
-                            android:text="美 /'kænsl/" />
+                            android:text="英 /'kænsl/" />
 
                         <TextView
-                            android:id="@+id/tv_ukphone"
+                            android:id="@+id/tv_usphone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
+                            android:textColor="@color/g_blue"
+                            android:background="@drawable/shape_word_phone1"
                             android:backgroundTint="@color/white"
-                            android:text="英 /'kænsl/" />
+                            android:text="美 /'kænsl/" />
 
                     </LinearLayout>
 
