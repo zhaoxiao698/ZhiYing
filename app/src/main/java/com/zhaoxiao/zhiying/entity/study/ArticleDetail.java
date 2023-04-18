@@ -8,6 +8,10 @@ import java.util.List;
 public class ArticleDetail {
     @SerializedName("id")
     private int id;
+    @SerializedName("channelId")
+    private Integer channelId;
+    @SerializedName("channelName")
+    private String channelName;
     @SerializedName("title")
     private String title;
     @SerializedName("duration")
@@ -26,6 +30,8 @@ public class ArticleDetail {
     private Date addTime;
     @SerializedName("sentenceList")
     private List<Sentence> sentenceList;
+    @SerializedName("collect")
+    private boolean collect;
 
     public int getId() {
         return id;
@@ -33,6 +39,22 @@ public class ArticleDetail {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Integer getChannelId() {
+        return channelId;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
+    }
+
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
     }
 
     public String getTitle() {
@@ -107,4 +129,11 @@ public class ArticleDetail {
         this.sentenceList = sentenceList;
     }
 
+    public boolean getCollect() {
+        return collect;
+    }
+
+    public void setCollect(boolean collect) {
+        this.collect = collect;
+    }
 }

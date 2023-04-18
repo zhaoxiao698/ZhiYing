@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
 import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.utils.XToastUtils;
+import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
@@ -37,10 +39,13 @@ import com.zhaoxiao.zhiying.service.MediaService;
 import com.zhaoxiao.zhiying.util.LinearTopSmoothScroller;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.TopSmoothScroller;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.MyVideoView;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -145,6 +150,13 @@ public class ListenFragment extends BaseFragment {
         return fragment;
     }
 
+    //译文切换模式监听
+    private OnChangeTranslationTypeListener onChangeTranslationTypeListener;
+
+    public void setOnItemClickListener(OnChangeTranslationTypeListener onChangeTranslationTypeListener) {
+        this.onChangeTranslationTypeListener = onChangeTranslationTypeListener;
+    }
+
     @Override
     protected int initLayout() {
         return R.layout.fragment_listen;
@@ -181,7 +193,8 @@ public class ListenFragment extends BaseFragment {
     }
 
     private void getArticleDetail() {
-        Call<Data<ArticleDetail>> articleDetailCall = studyService.getArticleDetail(articleId);
+        String account = SpUtils.getInstance(getContext()).getString("account","");
+        Call<Data<ArticleDetail>> articleDetailCall = studyService.getArticleDetail(account,articleId);
         articleDetailCall.enqueue(new Callback<Data<ArticleDetail>>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -278,8 +291,18 @@ public class ListenFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.iv_translation:
                 System.out.println(videoFragment.getCurrentPlayState());
+                showSimpleBottomSheetList();
                 break;
             case R.id.iv_previous:
+                if (position>0){
+                    position--;
+                    locate(1);
+                    if (isVideo){
+                        videoFragment.seekTo(sentenceList.get(position).getNode());
+                    } else {
+                        mMyBinder.seekToPositon(sentenceList.get(position).getNode());
+                    }
+                }
                 break;
             case R.id.iv_play:
                 if(isVideo){
@@ -313,6 +336,15 @@ public class ListenFragment extends BaseFragment {
                 }
                 break;
             case R.id.iv_next:
+                if (position<sentenceList.size()-1){
+                    position++;
+                    locate(1);
+                    if (isVideo){
+                        videoFragment.seekTo(sentenceList.get(position).getNode());
+                    } else {
+                        mMyBinder.seekToPositon(sentenceList.get(position).getNode());
+                    }
+                }
                 break;
             case R.id.tv_speed:
                 initListPopupIfNeed();
@@ -362,6 +394,26 @@ public class ListenFragment extends BaseFragment {
                 mListPopup.dismiss();
             });
         }
+    }
+
+    //倍速播放弹窗
+    private void showSimpleBottomSheetList() {
+        new BottomSheet.BottomListSheetBuilder(getActivity())
+                .setTitle("中英切换")
+                .addItem("双语显示")
+                .addItem("只显示原文")
+                .addItem("只显示译文")
+                .addItem("点击显示译文")
+                .addItem("全部隐藏")
+                .setIsCenter(true)
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+//                    XToastUtils.toast("Item " + (position + 1));
+                    sentenceAdapter.setTranslationType(position);
+                    sentenceAdapter.notifyDataSetChanged();
+                })
+                .build()
+                .show();
     }
 
     @Override
@@ -630,5 +682,30 @@ public class ListenFragment extends BaseFragment {
 
     public boolean onBackPressed(){
         return videoFragment.onBackPressed();
+    }
+
+    public interface OnChangeTranslationTypeListener {
+        void OnChangeTranslationType();
+    }
+
+    public boolean getCollect(){
+        return articleDetail.getCollect();
+    }
+
+    public void setCollect(boolean collect){
+        articleDetail.setCollect(collect);
+    }
+
+    public int getChannelId(){
+        return articleDetail.getChannelId();
+    }
+
+    public Map<String,Object> getMap(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("articleTitle",articleDetail.getTitle());
+        map.put("channelName",articleDetail.getChannelName());
+        map.put("img",articleDetail.getImg());
+        map.put("articleId",articleDetail.getId());
+        return map;
     }
 }

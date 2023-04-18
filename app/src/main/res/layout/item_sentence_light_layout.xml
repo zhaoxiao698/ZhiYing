@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/tv_translation"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/config_margin_5dp"
         android:text="我们所有人都会发生经历某件事。"

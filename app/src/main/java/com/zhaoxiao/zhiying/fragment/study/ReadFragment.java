@@ -13,6 +13,7 @@ import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.Sentence;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +80,8 @@ public class ReadFragment extends BaseFragment {
     }
 
     private void getArticleDetail() {
-        Call<Data<ArticleDetail>> articleDetailCall = studyService.getArticleDetail(articleId);
+        String account = SpUtils.getInstance(getContext()).getString("account","");
+        Call<Data<ArticleDetail>> articleDetailCall = studyService.getArticleDetail(account,articleId);
         articleDetailCall.enqueue(new Callback<Data<ArticleDetail>>() {
             @Override
             public void onResponse(Call<Data<ArticleDetail>> call, Response<Data<ArticleDetail>> response) {
@@ -106,5 +108,13 @@ public class ReadFragment extends BaseFragment {
 
             }
         });
+    }
+
+    public boolean getCollect() {
+        return articleDetail.getCollect();
+    }
+
+    public void setCollect(boolean collect){
+        articleDetail.setCollect(collect);
     }
 }

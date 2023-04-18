@@ -78,6 +78,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'                  //滑动面板
     implementation 'io.github.razerdp:BasePopup:3.2.1'                  //弹窗
+//    implementation 'com.github.mr5:icarus:0.1.14'                              //富文本编辑器
 
     //XUI
     implementation 'com.github.xuexiangjys:XUI:1.2.0'

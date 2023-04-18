@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.api;
 
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.ArticleNote;
 import com.zhaoxiao.zhiying.entity.study.Banner;
 import com.zhaoxiao.zhiying.entity.study.Channel;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -47,8 +48,20 @@ public interface StudyService {
                                                  @Query("title") boolean title, @Query("asc") boolean asc);
 
     @GET("study/getArticleDetail")
-    Call<Data<ArticleDetail>> getArticleDetail(@Query("articleId") int articleId);
+    Call<Data<ArticleDetail>> getArticleDetail(@Query("articleId") String account, @Query("articleId") int articleId);
 
     @GET("study/addArticleRecord")
     Call<Data<Boolean>> addArticleRecord(@Query("account") String account, @Query("articleId") int articleId);
+
+    @GET("study/collect")
+    Call<Data<Boolean>> collect(@Query("account") String account, @Query("articleId") int articleId, @Query("collect") boolean collect);
+
+    @GET("study/saveNote")
+    Call<Data<Boolean>> saveNote(@Query("account") String account, @Query("articleId") int articleId, @Query("info") String info);
+
+    @GET("study/deleteNote")
+    Call<Data<Boolean>> deleteNote(@Query("account") String account, @Query("articleId") int articleId);
+
+    @GET("study/getNote")
+    Call<Data<ArticleNote>> getNote(@Query("account") String account, @Query("articleId") int articleId);
 }

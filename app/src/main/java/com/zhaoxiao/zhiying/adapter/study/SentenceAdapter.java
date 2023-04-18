@@ -1,6 +1,8 @@
 package com.zhaoxiao.zhiying.adapter.study;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,8 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private String title;
     private String addTime;
     private int light = 1;
+    private int translationType = 0;
+    private boolean[] translationList;
 
     private Context mContext;
     private List<Sentence> list;
@@ -45,8 +49,13 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.light = light;
     }
 
+    public void setTranslationType(int translationType) {
+        this.translationType = translationType;
+    }
+
     public void setList(List<Sentence> list) {
         this.list = list;
+        translationList = new boolean[list.size()];
     }
 
     public SentenceAdapter(Context mContext) {
@@ -56,6 +65,7 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public SentenceAdapter(Context mContext, List<Sentence> list) {
         this.mContext = mContext;
         this.list = list;
+        translationList = new boolean[list.size()];
     }
 
     @Override
@@ -93,6 +103,113 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             viewHolder.tvEnglish.setText(sentence.getEnglish());
             viewHolder.tvTranslation.setText(sentence.getTranslation());
             viewHolder.sentenceId = sentence.getId();
+
+            switch (translationType){
+                case 0:
+                    viewHolder.tvEnglish.setVisibility(View.VISIBLE);
+                    viewHolder.tvTranslation.setVisibility(View.VISIBLE);
+
+                    if (position==light) {
+                        viewHolder.tvTranslation.setTextColor(mContext.getResources().getColor(R.color.gray));
+                        viewHolder.tvTranslation.setTypeface(Typeface.DEFAULT);
+                    }
+
+                    viewHolder.tvTranslation.setText(sentence.getTranslation());
+                    viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+                    viewHolder.tvTranslation.setOnClickListener(null);
+                    viewHolder.translation=false;
+
+//                    viewHolder.translation = true;
+                    break;
+                case 1:
+                    viewHolder.tvEnglish.setVisibility(View.VISIBLE);
+                    viewHolder.tvTranslation.setVisibility(View.GONE);
+
+                    if (position==light) {
+                        viewHolder.tvTranslation.setTextColor(mContext.getResources().getColor(R.color.gray));
+                        viewHolder.tvTranslation.setTypeface(Typeface.DEFAULT);
+                    }
+
+                    viewHolder.tvTranslation.setText(sentence.getTranslation());
+                    viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+//                    viewHolder.translation = true;
+                    viewHolder.tvTranslation.setOnClickListener(null);
+                    viewHolder.translation=false;
+
+                    translationList[position-1]=false;
+
+                    break;
+                case 2:
+                    viewHolder.tvEnglish.setVisibility(View.GONE);
+                    viewHolder.tvTranslation.setVisibility(View.VISIBLE);
+
+                    if (position==light) {
+                        viewHolder.tvTranslation.setTextColor(mContext.getResources().getColor(R.color.blue));
+                        viewHolder.tvTranslation.setTypeface(Typeface.DEFAULT_BOLD);
+                    }
+
+                    viewHolder.tvTranslation.setText(sentence.getTranslation());
+                    viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+//                    viewHolder.translation = true;
+                    viewHolder.tvTranslation.setOnClickListener(null);
+                    viewHolder.translation=false;
+
+                    translationList[position-1]=false;
+
+                    break;
+                case 3:
+                    viewHolder.tvEnglish.setVisibility(View.VISIBLE);
+                    viewHolder.tvTranslation.setVisibility(View.VISIBLE);
+
+                    if (position==light) {
+                        viewHolder.tvTranslation.setTextColor(mContext.getResources().getColor(R.color.gray));
+                        viewHolder.tvTranslation.setTypeface(Typeface.DEFAULT);
+                    }
+
+                    System.out.println("position:"+position+"---> "+"translation:"+viewHolder.translation);
+                    if (/*viewHolder.translation*/translationList[position-1]) {
+                        viewHolder.tvTranslation.setText(sentence.getTranslation());
+                        viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+                    } else {
+                        viewHolder.tvTranslation.setText("（点击显示译文）");
+                        viewHolder.tvTranslation.setGravity(Gravity.CENTER);
+                    }
+                    viewHolder.tvTranslation.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (viewHolder.translation){
+                                viewHolder.tvTranslation.setText("（点击显示译文）");
+                                viewHolder.tvTranslation.setGravity(Gravity.CENTER);
+                                viewHolder.translation = false;
+                                translationList[position-1]=false;
+                            } else {
+                                viewHolder.tvTranslation.setText(sentence.getTranslation());
+                                viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+                                viewHolder.translation = true;
+                                translationList[position-1]=true;
+                            }
+                        }
+                    });
+                    break;
+                case 4:
+                    viewHolder.tvEnglish.setVisibility(View.GONE);
+                    viewHolder.tvTranslation.setVisibility(View.GONE);
+
+                    if (position==light) {
+                        viewHolder.tvTranslation.setTextColor(mContext.getResources().getColor(R.color.gray));
+                        viewHolder.tvTranslation.setTypeface(Typeface.DEFAULT);
+                    }
+
+                    viewHolder.tvTranslation.setText(sentence.getTranslation());
+                    viewHolder.tvTranslation.setGravity(Gravity.LEFT);
+//                    viewHolder.translation = true;
+                    viewHolder.tvTranslation.setOnClickListener(null);
+                    viewHolder.translation=false;
+
+                    translationList[position-1]=false;
+
+                    break;
+            }
         }
     }
 
@@ -110,6 +227,7 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         private Integer sentenceId;
         private TextView tvEnglish;
         private TextView tvTranslation;
+        private boolean translation = false;
 
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -122,6 +240,7 @@ public class SentenceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     mOnItemClickListener.onItemClick(sentenceId);
                 }
             });
+
         }
     }
 
