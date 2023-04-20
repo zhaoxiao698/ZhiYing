@@ -156,23 +156,23 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
 
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
-            public void searchClick() {
+            public void searchClick(View view) {
                 showToast("搜索");
             }
 
             @Override
-            public void rightTextClick() {
+            public void rightTextClick(View view) {
                 showToast("文字");
             }
 
             @Override
-            public void rightDrawable1Click() {
+            public void rightDrawable1Click(View view) {
 //                showToast("图标1");
                 navigateTo(CalendarActivity.class);
             }
 
             @Override
-            public void rightDrawable2Click() {
+            public void rightDrawable2Click(View view) {
 //                showToast("图标2");
                 navigateTo(WordActivity.class);
             }

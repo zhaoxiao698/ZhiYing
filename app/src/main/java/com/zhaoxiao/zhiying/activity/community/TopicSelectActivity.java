@@ -1,4 +1,8 @@
-package com.zhaoxiao.zhiying.fragment.community;
+package com.zhaoxiao.zhiying.activity.community;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,44 +14,40 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.R;
-import com.zhaoxiao.zhiying.activity.community.TopicDetailActivity;
+import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.adapter.community.TopicAdapter;
 import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Topic;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
-import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.view.SearchBarView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TopicListFragment extends BaseFragment {
+public class TopicSelectActivity extends BaseActivity {
     @BindView(R.id.rv)
     RecyclerView rv;
     @BindView(R.id.srl)
     SmartRefreshLayout srl;
+    @BindView(R.id.search_bar_view)
+    SearchBarView searchBarView;
     private int pageNum = 1;
     private CommunityService communityService;
     private List<Topic> topicList;
     private TopicAdapter topicAdapter;
     private LinearLayoutManager linearLayoutManager;
 
-    public TopicListFragment() {
-    }
-
-    public static TopicListFragment newInstance() {
-        return new TopicListFragment();
-    }
-
     @Override
     protected int initLayout() {
-        return R.layout.fragment_topic;
+        return R.layout.activity_topic_select;
     }
 
     @Override
@@ -69,14 +69,51 @@ public class TopicListFragment extends BaseFragment {
         });
 
         communityService = (CommunityService) getService(CommunityService.class);
-        linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
-        topicAdapter = new TopicAdapter(getContext());
-//        topicAdapter.setOnItemClickListener(topicId -> navigateTo(TopicDetailActivity.class, "topicId", topicId));
-        topicAdapter.setOnItemClickListener(topic -> navigateTo(TopicDetailActivity.class,"topicId",topic.getId()));
+        topicAdapter = new TopicAdapter(this);
+        topicAdapter.setOnItemClickListener(new TopicAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Topic topic) {
+                Intent intent = new Intent();
+                intent.putExtra("topic",topic);
+                setResult(RESULT_OK, intent);
+                finish();
+
+            }
+        });
         rv.setAdapter(topicAdapter);
 
         getTopicList(0);
+
+        //搜索话题
+        searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
+            @Override
+            public void searchClick(View view) {
+                XToastUtils.toast("搜索话题");
+            }
+
+            @Override
+            public void rightTextClick(View view) {
+
+            }
+
+            @Override
+            public void rightDrawable1Click(View view) {
+
+            }
+
+            @Override
+            public void rightDrawable2Click(View view) {
+
+            }
+        });
+        searchBarView.setOnLeftIconClick(new SearchBarView.onLeftIconClick() {
+            @Override
+            public void leftIconClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void getTopicList(int type) {
@@ -86,7 +123,7 @@ public class TopicListFragment extends BaseFragment {
             public void onResponse(Call<Data<PageInfo<Topic>>> call, Response<Data<PageInfo<Topic>>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     List<Topic> list = response.body().getData().getList();
-                    switch (type){
+                    switch (type) {
                         case 0:
                             topicList = list;
                             topicAdapter.setList(topicList);

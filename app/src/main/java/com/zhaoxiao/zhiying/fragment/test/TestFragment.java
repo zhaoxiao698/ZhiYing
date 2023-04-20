@@ -1,5 +1,7 @@
 package com.zhaoxiao.zhiying.fragment.test;
 
+import android.view.View;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -32,22 +34,22 @@ public class TestFragment extends BaseFragment {
     protected void initData() {
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
-            public void searchClick() {
+            public void searchClick(View view) {
 
             }
 
             @Override
-            public void rightTextClick() {
+            public void rightTextClick(View view) {
                 navigateTo(SelectActivity.class);
             }
 
             @Override
-            public void rightDrawable1Click() {
+            public void rightDrawable1Click(View view) {
                 navigateTo(SelectActivity.class);
             }
 
             @Override
-            public void rightDrawable2Click() {
+            public void rightDrawable2Click(View view) {
 
             }
         });

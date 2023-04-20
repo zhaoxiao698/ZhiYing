@@ -35,6 +35,7 @@ public class SearchBarView extends LinearLayout {
     CardView cardView;
 
     private onViewClick mClick;
+    private onLeftIconClick mLeftIconClick;
 
     public enum CardViewType {
         White(1),
@@ -142,31 +143,44 @@ public class SearchBarView extends LinearLayout {
                     DrawableCompat.setTint(wrap2, array.getColor(attr, Color.GRAY));
                     ivRight2.setImageDrawable(wrap2);
                     break;
+                case R.styleable.SearchBarView_sb_searchDrawable_tint:
+                    Drawable drawable = ivSearch.getDrawable();
+                    Drawable wrap = DrawableCompat.wrap(drawable);
+                    DrawableCompat.setTint(wrap, array.getColor(attr, Color.GRAY));
+                    ivSearch.setImageDrawable(wrap);
+                    break;
             }
         }
         array.recycle();
         layoutSearch.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClick.searchClick();
+                mClick.searchClick(view);
             }
         });
+        ivSearch.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLeftIconClick.leftIconClick(view);
+            }
+        });
+
         tvRight.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClick.rightTextClick();
+                mClick.rightTextClick(view);
             }
         });
         ivRight1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClick.rightDrawable1Click();
+                mClick.rightDrawable1Click(view);
             }
         });
         ivRight2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mClick.rightDrawable2Click();
+                mClick.rightDrawable2Click(view);
             }
         });
 
@@ -184,6 +198,10 @@ public class SearchBarView extends LinearLayout {
 
     public void setOnViewClick(onViewClick click) {
         this.mClick = click;
+    }
+
+    public void setOnLeftIconClick(onLeftIconClick leftIconClick) {
+        this.mLeftIconClick = leftIconClick;
     }
 
     //设置搜索图标
@@ -304,14 +322,25 @@ public class SearchBarView extends LinearLayout {
         ivRight2.setImageDrawable(wrap2);
     }
 
-    public interface onViewClick {
-        void searchClick();
-
-        void rightTextClick();
-
-        void rightDrawable1Click();
-
-        void rightDrawable2Click();
+    //设置search图标tint
+    public void setSearchDrawable_Tint(int color) {
+        Drawable drawable = ivSearch.getDrawable();
+        Drawable wrap = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(wrap, color);
+        ivSearch.setImageDrawable(wrap);
     }
 
+    public interface onViewClick {
+        void searchClick(View view);
+
+        void rightTextClick(View view);
+
+        void rightDrawable1Click(View view);
+
+        void rightDrawable2Click(View view);
+    }
+
+    public interface onLeftIconClick {
+        void leftIconClick(View view);
+    }
 }

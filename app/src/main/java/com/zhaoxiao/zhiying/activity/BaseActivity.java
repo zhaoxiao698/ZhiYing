@@ -58,6 +58,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(in);
     }
 
+    //导航ForResult
+    public void navigateToForResult(Class cls,int requestCode) {
+        Intent in = new Intent(mContext, cls);
+        startActivityForResult(in,requestCode);
+    }
+
     //导航传参ForResult
     public void navigateToForResult(Class cls, String name, Serializable obj,int requestCode) {
         Intent in = new Intent(mContext, cls);

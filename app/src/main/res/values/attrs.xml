@@ -32,5 +32,6 @@
         </attr>/>
         <attr name="sb_rightDrawable1_tint" format="reference"/>
         <attr name="sb_rightDrawable2_tint" format="reference"/>
+        <attr name="sb_searchDrawable_tint" format="reference"/>
     </declare-styleable>
 </resources>

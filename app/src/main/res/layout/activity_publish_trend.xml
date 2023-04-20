@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.community.PublishTrendActivity"
     android:orientation="vertical">
 
@@ -36,7 +37,7 @@
             android:textStyle="bold" />
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_publish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -52,5 +53,234 @@
             app:rb_radius="20dp" />
 
     </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="标题非必填"
+        android:layout_below="@+id/rl_title"
+        android:maxLength="30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:background="@null"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/bright_gray"/>
+
+    <ScrollView
+        android:id="@+id/sv_content"
+        android:layout_below="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_note"
+                android:hint="分享此刻的想法~"
+                android:minLines="8"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="20sp"
+                android:background="@null"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recycler_view"-->
+<!--                android:layout_below="@id/sv_content"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="?attr/xui_config_content_spacing_horizontal"-->
+<!--                android:overScrollMode="never" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:overScrollMode="never" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fl_topic"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap">
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+<!--    <View-->
+<!--        android:id="@+id/divider1"-->
+<!--        android:layout_above="@id/fl_option"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:background="@color/bright_gray"/>-->
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_option"
+        android:layout_above="@id/fl_more"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:alignItems="center"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_add_img"
+            android:layout_marginLeft="10dp"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            android:src="@drawable/picture_community" />
+
+        <ImageView
+            android:id="@+id/iv_at"
+            android:layout_marginLeft="10dp"
+            android:layout_width="45dp"
+            android:layout_height="33dp"
+            android:src="@drawable/at_community" />
+
+        <ImageView
+            android:id="@+id/iv_add_topic"
+            android:layout_marginLeft="10dp"
+            android:layout_width="45dp"
+            android:layout_height="43dp"
+            android:src="@drawable/topic1_community" />
+
+        <ImageView
+            android:id="@+id/iv_add_more"
+            android:layout_marginLeft="10dp"
+            android:layout_width="45dp"
+            android:layout_height="31dp"
+            android:src="@drawable/add1_community" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_more"
+        app:justifyContent="space_around"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="35dp"
+        android:paddingBottom="35dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_share_note"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:tint="@color/black"
+                android:src="@drawable/note2_community" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:text="分享笔记"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_share_article"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:tint="@color/black"
+                android:src="@drawable/article_community"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:text="分享文章"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_share_question"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:tint="@color/black"
+                android:src="@drawable/question1_community"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:text="分享题目"/>
+
+        </LinearLayout>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <TextView
+        android:id="@+id/tv_delete_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0"
+        android:background="@color/app_color_cc_red"
+        android:drawableTop="@drawable/ic_normal_delete"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="拖动到此处删除"
+        android:textColor="@color/app_color_white"
+        android:textSize="12sp"
+        tools:alpha="1" />
 
 </RelativeLayout>

@@ -62,6 +62,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         viewHolder.tvDesc.setText(topic.getJoin()+"人参与     "+topic.getCollection()+"人收藏");
 
         viewHolder.topicId = topic.getId();
+        viewHolder.topic = topic;
     }
 
     @Override
@@ -76,6 +77,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private Integer topicId;
+        private Topic topic;
         private TextView tvName;
         private TextView tvDesc;
 
@@ -87,13 +89,13 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(topicId);
+                    mOnItemClickListener.onItemClick(topic);
                 }
             });
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Integer topicId);
+        void onItemClick(Topic topic);
     }
 }

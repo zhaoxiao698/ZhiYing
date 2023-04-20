@@ -1,5 +1,7 @@
 package com.zhaoxiao.zhiying.fragment.community;
 
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.FragmentManager;
@@ -10,7 +12,9 @@ import com.xuexiang.xui.utils.DensityUtils;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.fragment.test.SelectedFragment;
@@ -49,22 +53,26 @@ public class CommunityFragment extends BaseFragment {
     protected void initData() {
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
-            public void searchClick() {
+            public void searchClick(View view) {
 
             }
 
             @Override
-            public void rightTextClick() {
+            public void rightTextClick(View view) {
 
             }
 
             @Override
-            public void rightDrawable1Click() {
-                XToastUtils.toast("添加");
+            public void rightDrawable1Click(View view) {
+//                XToastUtils.toast("添加");
+                initListPopupIfNeed();
+                mListPopup.setAnimStyle(XUIPopup.ANIM_GROW_FROM_CENTER);
+                mListPopup.setPreferredDirection(XUIPopup.DIRECTION_TOP);
+                mListPopup.show(view);
             }
 
             @Override
-            public void rightDrawable2Click() {
+            public void rightDrawable2Click(View view) {
 
             }
         });
@@ -117,9 +125,9 @@ public class CommunityFragment extends BaseFragment {
 
             XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
             mListPopup = new XUIListPopup(getContext(), adapter);
-            mListPopup.create(DensityUtils.dp2px(getContext(), 200), DensityUtils.dp2px(getContext(), 150), (adapterView, view, i, l) -> {
+            mListPopup.create(DensityUtils.dp2px(getContext(), 100), ViewGroup.LayoutParams.WRAP_CONTENT, (adapterView, view, i, l) -> {
                 switch (i){
-                    case 0:break;
+                    case 0:navigateTo(PublishTrendActivity.class);break;
                     case 1:break;
                 }
                 mListPopup.dismiss();
