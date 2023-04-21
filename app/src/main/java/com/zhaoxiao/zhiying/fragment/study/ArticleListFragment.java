@@ -16,6 +16,7 @@ import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +43,8 @@ public class ArticleListFragment extends BaseFragment {
     private List<Article> articleList;
     private ArticleAdapter articleAdapter;
     private LinearLayoutManager linearLayoutManager;
+
+    private String account;
 
 
     public ArticleListFragment() {
@@ -78,6 +81,8 @@ public class ArticleListFragment extends BaseFragment {
 
         studyService = (StudyService) getService(StudyService.class);
 
+        account = SpUtils.getInstance(getContext()).getString("account","");
+
         getArticleList(0);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
@@ -87,46 +92,90 @@ public class ArticleListFragment extends BaseFragment {
     }
 
     private void getArticleList(int type){
-        Call<Data<PageInfo<Article>>> articleCall = studyService.getArticleList(pageNum, 8,channelId,false,false);
-        articleCall.enqueue(new Callback<Data<PageInfo<Article>>>() {
-            @Override
-            public void onResponse(Call<Data<PageInfo<Article>>> call, Response<Data<PageInfo<Article>>> response) {
-                if (response.body() != null && response.body().getCode() == 10000) {
-                    List<Article> list = response.body().getData().getList();
-                    switch (type) {
-                        case 0:
-                            articleList = list;
-                            articleAdapter.setList(articleList);
-                            articleAdapter.notifyDataSetChanged();
-                            pageNum = 1;
-                            break;
-                        case 1:
-                            articleList = list;
-                            articleAdapter.setList(articleList);
-                            articleAdapter.notifyDataSetChanged();
-                            srl.finishRefresh();
-                            pageNum = 1;
-                            break;
-                        case 2:
-                            if (pageNum > response.body().getData().getPages()) {
-                                pageNum = response.body().getData().getPageNum();
-                                srl.finishLoadMore();
-                                showToast("没有更多数据了");
+        if (channelId != -1) {
+            Call<Data<PageInfo<Article>>> articleCall = studyService.getArticleList(pageNum, 8, channelId, false, false);
+            articleCall.enqueue(new Callback<Data<PageInfo<Article>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<Article>>> call, Response<Data<PageInfo<Article>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<Article> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                articleList = list;
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                pageNum = 1;
                                 break;
-                            }
-                            articleList.addAll(list);
-                            articleAdapter.setList(articleList);
-                            articleAdapter.notifyDataSetChanged();
-                            srl.finishLoadMore();
-                            break;
-                    }
-                }else System.out.println("请求失败");
-            }
+                            case 1:
+                                articleList = list;
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                articleList.addAll(list);
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    } else System.out.println("请求失败");
+                }
 
-            @Override
-            public void onFailure(Call<Data<PageInfo<Article>>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<Data<PageInfo<Article>>> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        } else {
+            Call<Data<PageInfo<Article>>> articleCall = studyService.getArticleCollectionList(pageNum, 8, account);
+            articleCall.enqueue(new Callback<Data<PageInfo<Article>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<Article>>> call, Response<Data<PageInfo<Article>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<Article> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                articleList = list;
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                break;
+                            case 1:
+                                articleList = list;
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                articleList.addAll(list);
+                                articleAdapter.setList(articleList);
+                                articleAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    } else System.out.println("请求失败");
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<Article>>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 }

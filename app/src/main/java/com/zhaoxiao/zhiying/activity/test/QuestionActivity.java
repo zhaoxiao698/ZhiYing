@@ -25,6 +25,7 @@ import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +55,8 @@ public class QuestionActivity extends BaseActivity {
     private int position;
 
     private List<QuestionM> questionList;
+    private Map<String, Object> map;
+    private String subType;
 
     @Override
     protected int initLayout() {
@@ -62,7 +65,10 @@ public class QuestionActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        questionList = (List<QuestionM>) getIntent().getSerializableExtra("questionList");
+        map = (Map<String, Object>) getIntent().getSerializableExtra("map");
+        questionList = (List<QuestionM>) map.get("questionList");
+        subType = (String) map.get("subType");
+        tvTitle.setText(subType);
         for (QuestionM question : questionList /*DataSource.getQuestionList()*/) {
             mFragments.add(QuestionFragment.newInstance(question));
         }

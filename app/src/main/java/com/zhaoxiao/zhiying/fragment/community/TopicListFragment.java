@@ -17,6 +17,7 @@ import com.zhaoxiao.zhiying.entity.community.Topic;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,11 +39,20 @@ public class TopicListFragment extends BaseFragment {
     private TopicAdapter topicAdapter;
     private LinearLayoutManager linearLayoutManager;
 
+    private boolean isCollect = false;
+    private String account;
+
     public TopicListFragment() {
     }
 
     public static TopicListFragment newInstance() {
         return new TopicListFragment();
+    }
+
+    public static TopicListFragment newInstance(boolean isCollect) {
+        TopicListFragment fragment = new TopicListFragment();
+        fragment.isCollect = isCollect;
+        return fragment;
     }
 
     @Override
@@ -68,6 +78,8 @@ public class TopicListFragment extends BaseFragment {
             }
         });
 
+        account = SpUtils.getInstance(getContext()).getString("account","");
+
         communityService = (CommunityService) getService(CommunityService.class);
         linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
@@ -80,46 +92,90 @@ public class TopicListFragment extends BaseFragment {
     }
 
     private void getTopicList(int type) {
-        Call<Data<PageInfo<Topic>>> topicCall = communityService.getTopicList(pageNum, 8);
-        topicCall.enqueue(new Callback<Data<PageInfo<Topic>>>() {
-            @Override
-            public void onResponse(Call<Data<PageInfo<Topic>>> call, Response<Data<PageInfo<Topic>>> response) {
-                if (response.body() != null && response.body().getCode() == 10000) {
-                    List<Topic> list = response.body().getData().getList();
-                    switch (type){
-                        case 0:
-                            topicList = list;
-                            topicAdapter.setList(topicList);
-                            topicAdapter.notifyDataSetChanged();
-                            pageNum = 1;
-                            break;
-                        case 1:
-                            topicList = list;
-                            topicAdapter.setList(topicList);
-                            topicAdapter.notifyDataSetChanged();
-                            pageNum = 1;
-                            srl.finishRefresh();
-                            break;
-                        case 2:
-                            if (pageNum > response.body().getData().getPages()) {
-                                pageNum = response.body().getData().getPageNum();
-                                srl.finishLoadMore();
-                                XToastUtils.toast("没有更多数据了");
+        if (!isCollect) {
+            Call<Data<PageInfo<Topic>>> topicCall = communityService.getTopicList(pageNum, 8);
+            topicCall.enqueue(new Callback<Data<PageInfo<Topic>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<Topic>>> call, Response<Data<PageInfo<Topic>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<Topic> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                topicList = list;
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                pageNum = 1;
                                 break;
-                            }
-                            topicList.addAll(list);
-                            topicAdapter.setList(topicList);
-                            topicAdapter.notifyDataSetChanged();
-                            srl.finishLoadMore();
-                            break;
+                            case 1:
+                                topicList = list;
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                srl.finishRefresh();
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    XToastUtils.toast("没有更多数据了");
+                                    break;
+                                }
+                                topicList.addAll(list);
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Data<PageInfo<Topic>>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<Data<PageInfo<Topic>>> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        } else {
+            Call<Data<PageInfo<Topic>>> topicCall = communityService.getTopicCollectionList(pageNum, 8,account);
+            topicCall.enqueue(new Callback<Data<PageInfo<Topic>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<Topic>>> call, Response<Data<PageInfo<Topic>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<Topic> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                topicList = list;
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                break;
+                            case 1:
+                                topicList = list;
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                srl.finishRefresh();
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    XToastUtils.toast("没有更多数据了");
+                                    break;
+                                }
+                                topicList.addAll(list);
+                                topicAdapter.setList(topicList);
+                                topicAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<Topic>>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 }

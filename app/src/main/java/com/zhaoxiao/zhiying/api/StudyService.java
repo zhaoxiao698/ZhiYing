@@ -64,4 +64,10 @@ public interface StudyService {
 
     @GET("study/getNote")
     Call<Data<ArticleNote>> getNote(@Query("account") String account, @Query("articleId") int articleId);
+
+    @GET("study/getChannelCollectionList")
+    Call<Data<PageInfo<Channel>>> getChannelCollectionList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,@Query("account") String account);
+
+    @GET("study/getArticleCollectionList")
+    Call<Data<PageInfo<Article>>> getArticleCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
 }

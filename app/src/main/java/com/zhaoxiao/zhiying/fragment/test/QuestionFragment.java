@@ -171,6 +171,10 @@ public class QuestionFragment extends BaseFragment {
             slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
             fab.hide();
         }
+        if (mFragments.size()<1){
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+            fab.hide();
+        }
     }
 
     public boolean onBackPressed() {

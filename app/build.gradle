@@ -79,6 +79,8 @@ dependencies {
     implementation 'com.sothree.slidinguppanel:library:3.4.0'                  //滑动面板
     implementation 'io.github.razerdp:BasePopup:3.2.1'                  //弹窗
 //    implementation 'com.github.mr5:icarus:0.1.14'                              //富文本编辑器
+    implementation 'io.github.lucksiege:pictureselector:v3.11.1'        //图片选择
+
 
     //XUI
     implementation 'com.github.xuexiangjys:XUI:1.2.0'
@@ -123,7 +125,7 @@ dependencies {
     implementation 'com.github.xuexiangjys.XTask:xtask-core:1.0.2'
 
     // PictureSelector图片选择
-    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
+//    implementation 'com.github.xuexiangjys.PictureSelector:picture-core:1.0.5'
 
     // 下拉刷新
 //    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'

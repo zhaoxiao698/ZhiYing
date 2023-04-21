@@ -15,6 +15,7 @@ import com.zhaoxiao.zhiying.entity.test.ClozeM;
 import com.zhaoxiao.zhiying.entity.test.ListeningM;
 import com.zhaoxiao.zhiying.entity.test.MatchM;
 import com.zhaoxiao.zhiying.entity.test.NewM;
+import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.entity.test.TestFtype;
 import com.zhaoxiao.zhiying.entity.test.TranslationM;
 import com.zhaoxiao.zhiying.entity.test.WritingM;
@@ -61,4 +62,67 @@ public interface TestService {
     @GET("test/getNewList")
     Call<Data<List<NewM>>> getNewList(@Query("random") boolean random, @Query("limitNum") int limitNum,
                                       @Query("questionBankId") int questionBankId, @Query("type") int type);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<QuestionM>>> getTestCollectionList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                           @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<ListeningM>>> getTestCollectionList1(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<BankedM>>> getTestCollectionList2(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<MatchM>>> getTestCollectionList3(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<CarefulM>>> getTestCollectionList4(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<TranslationM>>> getTestCollectionList5(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<WritingM>>> getTestCollectionList6(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<ClozeM>>> getTestCollectionList7(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestCollectionList")
+    Call<Data<PageInfo<NewM>>> getTestCollectionList8(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<QuestionM>> getQuestionById(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<ListeningM>> getQuestionById1(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<BankedM>> getQuestionById2(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<MatchM>> getQuestionById3(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<CarefulM>> getQuestionById4(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<TranslationM>> getQuestionById5(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<WritingM>> getQuestionById6(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<ClozeM>> getQuestionById7(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getQuestionById")
+    Call<Data<NewM>> getQuestionById8(@Query("questionId") int questionId, @Query("table") int table);
 }

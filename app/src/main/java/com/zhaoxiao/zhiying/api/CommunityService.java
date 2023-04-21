@@ -34,4 +34,8 @@ public interface CommunityService {
     Call<Data<PageInfo<Topic>>> getTopicList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize);
     @GET("community/getTopic")
     Call<Data<Topic>> getTopic(@Query("topicId") int topicId);
+    @GET("community/getTrendCollectionList")
+    Call<Data<PageInfo<Trend>>> getTrendCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
+    @GET("community/getTopicCollectionList")
+    Call<Data<PageInfo<Topic>>> getTopicCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
 }

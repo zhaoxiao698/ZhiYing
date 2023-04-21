@@ -8,6 +8,8 @@ public class QuestionM implements Serializable {
     private String info;
     private int subQuestionNum;
     private int order;
+    private String subType;
+
 
     public QuestionM() {
     }
@@ -48,5 +50,13 @@ public class QuestionM implements Serializable {
 
     public void setOrder(int order) {
         this.order = order;
+    }
+
+    public String getSubType() {
+        return subType;
+    }
+
+    public void setSubType(String subType) {
+        this.subType = subType;
     }
 }

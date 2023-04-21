@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.study.NoteActivity"></activity>
+        <activity android:name=".activity.test.QuestionDetailActivity"></activity>
+        <activity android:name=".activity.mine.CollectionActivity" />
+        <activity android:name=".activity.study.NoteActivity" />
         <activity android:name=".activity.word.WordDetailActivity" />
         <activity android:name=".activity.word.WordListActivity" />
         <activity android:name=".activity.word.WordCompleteActivity" />

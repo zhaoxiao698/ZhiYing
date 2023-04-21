@@ -36,7 +36,9 @@ import com.zhaoxiao.zhiying.view.CustomDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -280,7 +282,17 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                     @Override
                     public void onResponse(Call<Data<List<ListeningM>>> call, Response<Data<List<ListeningM>>> response) {
                         List<ListeningM> list = response.body().getData();
-                        navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("questionList",list);
+                        String subType = "听力";
+                        switch (stypeId){
+                            case 1: subType = "短篇新闻";break;
+                            case 2: subType = "长对话";break;
+                            case 3: subType = "听力篇章";break;
+                            case 4: subType = "讲话/报道/讲座";break;
+                        }
+                        map.put("subType",subType);
+                        navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
 
@@ -298,7 +310,11 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                             @Override
                             public void onResponse(Call<Data<List<BankedM>>> call, Response<Data<List<BankedM>>> response) {
                                 List<BankedM> list = response.body().getData();
-                                navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("questionList",list);
+                                String subType = "选词填空";
+                                map.put("subType",subType);
+                                navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
 
@@ -314,7 +330,11 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                             @Override
                             public void onResponse(Call<Data<List<MatchM>>> call, Response<Data<List<MatchM>>> response) {
                                 List<MatchM> list = response.body().getData();
-                                navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("questionList",list);
+                                String subType = "匹配";
+                                map.put("subType",subType);
+                                navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
 
@@ -330,7 +350,11 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                             @Override
                             public void onResponse(Call<Data<List<CarefulM>>> call, Response<Data<List<CarefulM>>> response) {
                                 List<CarefulM> list = response.body().getData();
-                                navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("questionList",list);
+                                String subType = "仔细阅读";
+                                map.put("subType",subType);
+                                navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
 
@@ -348,7 +372,16 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                             @Override
                             public void onResponse(Call<Data<List<NewM>>> call, Response<Data<List<NewM>>> response) {
                                 List<NewM> list = response.body().getData();
-                                navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("questionList",list);
+                                String subType = "新题型";
+                                switch (stypeId){
+                                    case 8:subType = "新题型-七选五";break;
+                                    case 9:subType = "新题型-排序";break;
+                                    case 10:subType = "新题型-小标题";break;
+                                }
+                                map.put("subType",subType);
+                                navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
 
@@ -366,7 +399,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                     @Override
                     public void onResponse(Call<Data<List<TranslationM>>> call, Response<Data<List<TranslationM>>> response) {
                         List<TranslationM> list = response.body().getData();
-                        navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("questionList",list);
+                        String subType = "翻译";
+                        switch (stypeId){
+                            case 11:subType = "汉译英";break;
+                            case 12:subType = "英译汉";break;
+                        }
+                        map.put("subType",subType);
+                        navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
 
@@ -382,7 +423,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                     @Override
                     public void onResponse(Call<Data<List<WritingM>>> call, Response<Data<List<WritingM>>> response) {
                         List<WritingM> list = response.body().getData();
-                        navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("questionList",list);
+                        String subType = "写作";
+                        switch (stypeId){
+                            case 13:subType = "短文写作";break;
+                            case 14:subType = "应用文";break;
+                        }
+                        map.put("subType",subType);
+                        navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
 
@@ -398,7 +447,11 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                     @Override
                     public void onResponse(Call<Data<List<ClozeM>>> call, Response<Data<List<ClozeM>>> response) {
                         List<ClozeM> list = response.body().getData();
-                        navigateTo(QuestionActivity.class, "questionList", (Serializable) list);
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("questionList",list);
+                        String subType = "完形填空";
+                        map.put("subType",subType);
+                        navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
 
