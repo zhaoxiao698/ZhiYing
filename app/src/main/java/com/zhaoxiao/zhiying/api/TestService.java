@@ -15,6 +15,7 @@ import com.zhaoxiao.zhiying.entity.test.ClozeM;
 import com.zhaoxiao.zhiying.entity.test.ListeningM;
 import com.zhaoxiao.zhiying.entity.test.MatchM;
 import com.zhaoxiao.zhiying.entity.test.NewM;
+import com.zhaoxiao.zhiying.entity.test.QuestionAnswer;
 import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.entity.test.TestFtype;
 import com.zhaoxiao.zhiying.entity.test.TranslationM;
@@ -23,7 +24,9 @@ import com.zhaoxiao.zhiying.entity.test.WritingM;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface TestService {
@@ -125,4 +128,18 @@ public interface TestService {
 
     @GET("test/getQuestionById")
     Call<Data<NewM>> getQuestionById8(@Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getTestHistoryList")
+    Call<Data<PageInfo<QuestionM>>> getTestHistoryList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table);
+
+    @GET("test/addTestRecord")
+    Call<Data<Boolean>> addTestRecord(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table);
+
+    @POST("test/saveAnswer")
+    Call<Data<Boolean>> saveAnswer(@Body QuestionAnswer questionAnswer);
+
+    @GET("test/getTestWrongList")
+    Call<Data<PageInfo<QuestionM>>> getTestWrongList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                       @Query("account") String account, @Query("table") int table);
 }

@@ -20,10 +20,12 @@ public class User implements Serializable {
     private int age;
     @SerializedName("sex")
     private String sex;
-    @SerializedName("admin")
-    private int admin;
+    @SerializedName("permissions")
+    private int permissions;
     @SerializedName("addTime")
     private Date addTime;
+    @SerializedName("status")
+    private int status;
 
     public String getAccount() {
         return account;
@@ -81,12 +83,12 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public int getAdmin() {
-        return admin;
+    public int getPermissions() {
+        return permissions;
     }
 
-    public void setAdmin(int admin) {
-        this.admin = admin;
+    public void setPermissions(int permissions) {
+        this.permissions = permissions;
     }
 
     public Date getAddTime() {
@@ -95,6 +97,14 @@ public class User implements Serializable {
 
     public void setAddTime(Date addTime) {
         this.addTime = addTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
@@ -107,8 +117,9 @@ public class User implements Serializable {
                 ", avatar='" + avatar + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
-                ", admin=" + admin +
+                ", admin=" + permissions +
                 ", addTime=" + addTime +
+                ", status=" + status +
                 '}';
     }
 }

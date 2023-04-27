@@ -43,7 +43,14 @@ public class SelectBookActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        tb.setLeftClickListener(v -> finish());
+        tb.setLeftClickListener(v -> {
+            String bookId = getStringFromSp("word_bookId",true);
+            if (StringUtils.isEmpty(bookId)){
+                navigateTo(HomeActivity.class);
+            }else {
+                super.onBackPressed();
+            }
+        });
 
         for (String mTitle : mTitles) {
             mFragments.add(SelectBookFragment.newInstance(mTitle));

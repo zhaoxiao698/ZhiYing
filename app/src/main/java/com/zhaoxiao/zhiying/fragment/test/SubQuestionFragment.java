@@ -1,24 +1,28 @@
 package com.zhaoxiao.zhiying.fragment.test;
 
-import android.view.LayoutInflater;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.donkingliang.labels.LabelsView;
-import com.google.android.flexbox.FlexboxLayout;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.test.QuestionActivity;
 import com.zhaoxiao.zhiying.entity.test.BankedQuestion;
 import com.zhaoxiao.zhiying.entity.test.CarefulQuestion;
 import com.zhaoxiao.zhiying.entity.test.ClozeQuestion;
-import com.zhaoxiao.zhiying.entity.test.Label;
 import com.zhaoxiao.zhiying.entity.test.ListeningQuestion;
 import com.zhaoxiao.zhiying.entity.test.MatchQuestion;
 import com.zhaoxiao.zhiying.entity.test.NewQuestion;
 import com.zhaoxiao.zhiying.entity.test.SubQuestion;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.UnitConversion;
 
 import java.util.ArrayList;
@@ -61,9 +65,22 @@ public class SubQuestionFragment extends BaseFragment {
     TextView ivD;
     @BindView(R.id.lv_position)
     LabelsView lvPosition;
+//    @BindView(R.id.ll_a)
+//    LinearLayout llA;
+    @BindView(R.id.tv_right)
+    TextView tvRight;
+    @BindView(R.id.tv_wrong)
+    TextView tvWrong;
+    @BindView(R.id.ll_answer)
+    LinearLayout llAnswer;
     private SubQuestion subQuestion;
     private int optionNum;
     private int selectedPosition = -1;
+
+    public static final String ACTION_QUESTION_SELECT = "ACTION_QUESTION_SELECT";
+    public static final String ACTION_QUESTION_UNSELECT = "ACTION_QUESTION_UNSELECT";
+    private QuestionReceiver questionReceiver;
+    private boolean select;
 
     public SubQuestionFragment() {
     }
@@ -82,6 +99,12 @@ public class SubQuestionFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        questionReceiver = new QuestionReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_QUESTION_SELECT);
+        intentFilter.addAction(ACTION_QUESTION_UNSELECT);
+        getContext().registerReceiver(questionReceiver, intentFilter);
+
         tvStem.setText(subQuestion.getId() + ". " + subQuestion.getStem());
         if (subQuestion instanceof ListeningQuestion || subQuestion instanceof CarefulQuestion || subQuestion instanceof ClozeQuestion) {
 //            flOption.setVisibility(View.GONE);
@@ -127,20 +150,99 @@ public class SubQuestionFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+//        questionReceiver = new QuestionReceiver();
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(ACTION_QUESTION_SELECT);
+//        intentFilter.addAction(ACTION_QUESTION_UNSELECT);
+//        getContext().registerReceiver(questionReceiver, intentFilter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+//        questionReceiver = new QuestionReceiver();
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(ACTION_QUESTION_SELECT);
+//        intentFilter.addAction(ACTION_QUESTION_UNSELECT);
+//        getContext().registerReceiver(questionReceiver, intentFilter);
+        select = ((QuestionActivity)getActivity()).getSelect();
+
+        if (select) {
+            lvPosition.setIndicator(false);
+            llAnswer.setVisibility(View.INVISIBLE);
+        }else {
+            lvPosition.setIndicator(true);
+            if (subQuestion instanceof ListeningQuestion || subQuestion instanceof CarefulQuestion || subQuestion instanceof ClozeQuestion) {
+                switch (subQuestion.getAnswer()) {
+                    case "A":
+                        setActive(1);
+                        setInActive(2);
+                        setInActive(3);
+                        setInActive(4);
+                        break;
+                    case "B":
+                        setActive(2);
+                        setInActive(1);
+                        setInActive(3);
+                        setInActive(4);
+                        break;
+                    case "C":
+                        setActive(3);
+                        setInActive(1);
+                        setInActive(2);
+                        setInActive(4);
+                        break;
+                    case "D":
+                        setActive(4);
+                        setInActive(1);
+                        setInActive(2);
+                        setInActive(3);
+                        break;
+                }
+            } else if (subQuestion instanceof BankedQuestion || subQuestion instanceof MatchQuestion || subQuestion instanceof NewQuestion) {
+                char answer = subQuestion.getAnswer().charAt(0);
+                lvPosition.setSelects(answer - 'A');
+            }
+            llAnswer.setVisibility(View.VISIBLE);
+            tvRight.setText("正确答案："+subQuestion.getAnswer());
+            if (StringUtils.isEmpty(subQuestion.getUserAnswer())){
+                tvWrong.setTextColor(getResources().getColor(R.color.gray));
+                tvWrong.setText("你的答案：空");
+            } else if (subQuestion.getUserAnswer().equals(subQuestion.getAnswer())) {
+                tvWrong.setTextColor(getResources().getColor(R.color.green));
+                tvWrong.setText("你的答案："+subQuestion.getUserAnswer());
+            } else {
+                tvWrong.setTextColor(getResources().getColor(R.color.red));
+                tvWrong.setText("你的答案："+subQuestion.getUserAnswer());
+            }
+        }
+    }
+
     @OnClick({R.id.ll_a, R.id.ll_b, R.id.ll_c, R.id.ll_d})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_a:
-                select(1);
+                if (select) {
+                    select(1);
+                }
                 break;
             case R.id.ll_b:
-                select(2);
+                if (select) {
+                    select(2);
+                }
                 break;
             case R.id.ll_c:
-                select(3);
+                if (select) {
+                    select(3);
+                }
                 break;
             case R.id.ll_d:
-                select(4);
+                if (select) {
+                    select(4);
+                }
                 break;
         }
     }
@@ -187,7 +289,7 @@ public class SubQuestionFragment extends BaseFragment {
         setInActive(selectedPosition);
         if (selectedPosition != select) {
             setActive(select);
-            char userAnswer = (char) ('A'-1+select);
+            char userAnswer = (char) ('A' - 1 + select);
             subQuestion.setUserAnswer(String.valueOf(userAnswer));
         } else {
             subQuestion.setUserAnswer("");
@@ -243,5 +345,72 @@ public class SubQuestionFragment extends BaseFragment {
                 tvD.setTextColor(getResources().getColor(R.color.gray));
                 break;
         }
+    }
+
+    public class QuestionReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            System.out.println("接收广播");
+            switch (intent.getAction()) {
+                case ACTION_QUESTION_SELECT:
+                    select = true;
+                    lvPosition.setIndicator(false);
+                    llAnswer.setVisibility(View.GONE);
+                    break;
+                case ACTION_QUESTION_UNSELECT:
+                    select = false;
+                    lvPosition.setIndicator(true);
+                    if (subQuestion instanceof ListeningQuestion || subQuestion instanceof CarefulQuestion || subQuestion instanceof ClozeQuestion) {
+                        switch (subQuestion.getAnswer()) {
+                            case "A":
+                                setActive(1);
+                                setInActive(2);
+                                setInActive(3);
+                                setInActive(4);
+                                break;
+                            case "B":
+                                setActive(2);
+                                setInActive(1);
+                                setInActive(3);
+                                setInActive(4);
+                                break;
+                            case "C":
+                                setActive(3);
+                                setInActive(1);
+                                setInActive(2);
+                                setInActive(4);
+                                break;
+                            case "D":
+                                setActive(4);
+                                setInActive(1);
+                                setInActive(2);
+                                setInActive(3);
+                                break;
+                        }
+                    } else if (subQuestion instanceof BankedQuestion || subQuestion instanceof MatchQuestion || subQuestion instanceof NewQuestion) {
+                        char answer = subQuestion.getAnswer().charAt(0);
+                        lvPosition.setSelects(answer - 'A');
+                    }
+                    llAnswer.setVisibility(View.VISIBLE);
+                    tvRight.setText("正确答案："+subQuestion.getAnswer());
+                    if (StringUtils.isEmpty(subQuestion.getUserAnswer())){
+                        tvWrong.setTextColor(getResources().getColor(R.color.gray));
+                        tvWrong.setText("你的答案：空");
+                    } else if (subQuestion.getUserAnswer().equals(subQuestion.getAnswer())) {
+                        tvWrong.setTextColor(getResources().getColor(R.color.green));
+                        tvWrong.setText("你的答案："+subQuestion.getUserAnswer());
+                    } else {
+                        tvWrong.setTextColor(getResources().getColor(R.color.red));
+                        tvWrong.setText("你的答案："+subQuestion.getUserAnswer());
+                    }
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        getContext().unregisterReceiver(questionReceiver);
+        super.onDestroyView();
     }
 }

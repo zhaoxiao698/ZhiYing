@@ -38,4 +38,8 @@ public interface CommunityService {
     Call<Data<PageInfo<Trend>>> getTrendCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
     @GET("community/getTopicCollectionList")
     Call<Data<PageInfo<Topic>>> getTopicCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
+    @GET("community/getTrendHistoryList")
+    Call<Data<PageInfo<Trend>>> getTrendHistoryList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
+    @GET("community/addTrendRecord")
+    Call<Data<Boolean>> addTrendRecord(@Query("account") String account, @Query("trendId") int trendId);
 }

@@ -13,13 +13,9 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.api.WordService;
-import com.zhaoxiao.zhiying.fragment.community.TopicListFragment;
 import com.zhaoxiao.zhiying.fragment.community.TrendListFragment;
 import com.zhaoxiao.zhiying.fragment.study.ArticleListFragment;
-import com.zhaoxiao.zhiying.fragment.study.SortFragment;
-import com.zhaoxiao.zhiying.fragment.test.QuestionFragment;
 import com.zhaoxiao.zhiying.fragment.test.QuestionListFragment;
-import com.zhaoxiao.zhiying.fragment.word.SelectBookFragment;
 import com.zhaoxiao.zhiying.fragment.word.WordListFragment;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
@@ -28,7 +24,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CollectionActivity extends BaseActivity {
+public class HistoryActivity extends BaseActivity {
     @BindView(R.id.tb)
     TitleBar tb;
     @BindView(R.id.slidingTabLayout)
@@ -36,25 +32,23 @@ public class CollectionActivity extends BaseActivity {
     @BindView(R.id.viewPager)
     FixedViewPager viewPager;
 
-    private String[] mTitles = {"频道","文章","题目","单词","动态","话题"};
+    private String[] mTitles = {"文章","题目","单词","动态"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private WordService wordService;
 
     @Override
     protected int initLayout() {
-        return R.layout.activity_collection;
+        return R.layout.activity_history;
     }
 
     @Override
     protected void initData() {
         tb.setLeftClickListener(v -> finish());
 
-        mFragments.add(SortFragment.newInstance(-1,0));
-        mFragments.add(ArticleListFragment.newInstance(-1));
-        mFragments.add(QuestionListFragment.newInstance());
-        mFragments.add(WordListFragment.newInstance("收藏"));
-        mFragments.add(TrendListFragment.newInstance("收藏"));
-        mFragments.add(TopicListFragment.newInstance(true));
+        mFragments.add(ArticleListFragment.newInstance(-2));
+        mFragments.add(QuestionListFragment.newInstance("历史"));
+        mFragments.add(WordListFragment.newInstance("历史"));
+        mFragments.add(TrendListFragment.newInstance("历史"));
         viewPager.setOffscreenPageLimit(mFragments.size());
         slidingTabLayout.setViewPager(viewPager, mTitles, this, mFragments);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

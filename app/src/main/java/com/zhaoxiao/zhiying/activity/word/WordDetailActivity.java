@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.api.WordService;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.word.WordSimple;
@@ -47,6 +48,13 @@ public class WordDetailActivity extends BaseActivity {
     private String account;
     private String bookId;
 
+    //    private String account;
+
+    private long startTime;
+    private long endTime;
+    private long duration;
+    private UserService userService;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_word_detail;
@@ -73,6 +81,12 @@ public class WordDetailActivity extends BaseActivity {
             ivCollection.setImageResource(R.drawable.star_community);
         }
 
+        //添加单词记录
+//        account = SpUtils.getInstance(this).getString("account", "");
+        if (!account.equals("") && !account.equals("已过期")) {
+//            addWordRecord(account, wordId);
+            userService = (UserService) getService(UserService.class);
+        }
     }
 
     @OnClick({R.id.iv_back, R.id.iv_collection, R.id.ll_back})
@@ -102,6 +116,41 @@ public class WordDetailActivity extends BaseActivity {
                         } else {
                             ivCollection.setImageResource(R.drawable.star_community);
                         }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        endTime = System.currentTimeMillis();
+        duration = endTime - startTime;
+        if (!account.equals("") && !account.equals("已过期")) {
+            addPlanDo();
+        }
+    }
+
+    private void addPlanDo(){
+        Call<Data<Boolean>> addPlanDoCall = userService.addPlanDo(account, duration);
+        addPlanDoCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        System.out.println("添加学习记录："+duration+"ms");
                     }
                 }
             }

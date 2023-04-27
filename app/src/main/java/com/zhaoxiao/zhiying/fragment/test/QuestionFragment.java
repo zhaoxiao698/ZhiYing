@@ -30,6 +30,7 @@ import com.zhaoxiao.zhiying.entity.test.NewM;
 import com.zhaoxiao.zhiying.entity.test.NewQuestion;
 import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class QuestionFragment extends BaseFragment {
     private int position;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private float anchorPoint;
+
 
     public QuestionFragment() {
     }
@@ -222,5 +224,18 @@ public class QuestionFragment extends BaseFragment {
 //                this.viewEmpty.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    public void setCurrentItem(int j){
+        if (j<0){
+            return;
+        }
+        viewPager.setCurrentItem(j);
+        float anchorPoint = ((SubQuestionFragment)mFragments.get(position)).getHeight();
+        if(Math.abs(this.anchorPoint-anchorPoint)>0.01){
+            this.anchorPoint=anchorPoint;
+            slidingLayout.setAnchorPoint(anchorPoint);
+        }
+        setPanelState(SlidingUpPanelLayout.PanelState.ANCHORED);
     }
 }

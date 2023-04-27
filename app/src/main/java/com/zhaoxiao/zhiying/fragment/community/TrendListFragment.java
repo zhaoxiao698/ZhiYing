@@ -100,25 +100,53 @@ public class TrendListFragment extends BaseFragment {
     }
 
     private void getTrendList(int type) {
-        if (!this.type.equals("收藏")) {
-            Map<String, String> map = new HashMap<>();
-            map.put("pageNo", String.valueOf(pageNum));
-            map.put("pageSize", String.valueOf(8));
-            if (this.type.equals("热门")) {
-                map.put("sort", "1");
-            }
-            map.put("order", "false");
-            if (this.type.equals("关注")) {
-                map.put("fanAccount", SpUtils.getInstance(getContext()).getString("account", ""));
-            }
-            if (topicId != -1) {
-                map.put("topicId", String.valueOf(topicId));
-            }
-            Call<Data<PageInfo<Trend>>> trendCall = communityService.getTrendList(map);
-            trendCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
+        if (this.type.equals("历史")){
+            Call<Data<PageInfo<Trend>>> trendCollectionCall = communityService.getTrendHistoryList(pageNum, 8, account);
+            trendCollectionCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
                 @Override
                 public void onResponse(Call<Data<PageInfo<Trend>>> call, Response<Data<PageInfo<Trend>>> response) {
-                    System.out.println(response);
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<Trend> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                trendList = list;
+                                trendAdapter.setList(trendList);
+                                trendAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                break;
+                            case 1:
+                                trendList = list;
+                                trendAdapter.setList(trendList);
+                                trendAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                srl.finishRefresh();
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    XToastUtils.toast("没有更多数据了");
+                                    break;
+                                }
+                                trendList.addAll(list);
+                                trendAdapter.setList(trendList);
+                                trendAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<Trend>>> call, Throwable t) {
+
+                }
+            });
+        }else if (this.type.equals("收藏")) {
+            Call<Data<PageInfo<Trend>>> trendCollectionCall = communityService.getTrendCollectionList(pageNum, 8, account);
+            trendCollectionCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<Trend>>> call, Response<Data<PageInfo<Trend>>> response) {
                     if (response.body() != null && response.body().getCode() == 10000) {
                         List<Trend> list = response.body().getData().getList();
                         switch (type) {
@@ -157,10 +185,24 @@ public class TrendListFragment extends BaseFragment {
                 }
             });
         } else {
-            Call<Data<PageInfo<Trend>>> trendCollectionCall = communityService.getTrendCollectionList(pageNum, 8, account);
-            trendCollectionCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
+            Map<String, String> map = new HashMap<>();
+            map.put("pageNo", String.valueOf(pageNum));
+            map.put("pageSize", String.valueOf(8));
+            if (this.type.equals("热门")) {
+                map.put("sort", "1");
+            }
+            map.put("order", "false");
+            if (this.type.equals("关注")) {
+                map.put("fanAccount", SpUtils.getInstance(getContext()).getString("account", ""));
+            }
+            if (topicId != -1) {
+                map.put("topicId", String.valueOf(topicId));
+            }
+            Call<Data<PageInfo<Trend>>> trendCall = communityService.getTrendList(map);
+            trendCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
                 @Override
                 public void onResponse(Call<Data<PageInfo<Trend>>> call, Response<Data<PageInfo<Trend>>> response) {
+                    System.out.println(response);
                     if (response.body() != null && response.body().getCode() == 10000) {
                         List<Trend> list = response.body().getData().getList();
                         switch (type) {

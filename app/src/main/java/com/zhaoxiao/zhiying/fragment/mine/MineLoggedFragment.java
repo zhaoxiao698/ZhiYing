@@ -11,10 +11,21 @@ import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.mine.CollectionActivity;
+import com.zhaoxiao.zhiying.activity.mine.HistoryActivity;
+import com.zhaoxiao.zhiying.activity.mine.NoteListActivity;
+import com.zhaoxiao.zhiying.activity.mine.SetTimePlanActivity;
+import com.zhaoxiao.zhiying.activity.mine.WrongQuestionActivity;
+import com.zhaoxiao.zhiying.api.UserService;
+import com.zhaoxiao.zhiying.entity.mine.Plan;
+import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MineLoggedFragment extends BaseFragment {
 
@@ -52,6 +63,17 @@ public class MineLoggedFragment extends BaseFragment {
     LinearLayout llNote;
     @BindView(R.id.ll_wrong)
     LinearLayout llWrong;
+    @BindView(R.id.tv_no_plan)
+    TextView tvNoPlan;
+    @BindView(R.id.tv_have_plan)
+    TextView tvHavePlan;
+
+    private long timePlan;
+    private long timePlanDo;
+    private UserService userService;
+    private String account;
+
+    private Plan plan;
 
     public MineLoggedFragment() {
     }
@@ -67,7 +89,8 @@ public class MineLoggedFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        userService = (UserService) getService(UserService.class);
+        account = SpUtils.getInstance(getContext()).getString("account","");
     }
 
     @OnClick({R.id.iv_avatar, R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong})
@@ -89,21 +112,73 @@ public class MineLoggedFragment extends BaseFragment {
                 XToastUtils.toast("粉丝");
                 break;
             case R.id.card_plan:
-                XToastUtils.toast("计划");
+//                XToastUtils.toast("计划");
+                navigateTo(SetTimePlanActivity.class,"timePlan",timePlan);
                 break;
             case R.id.ll_collection:
 //                XToastUtils.toast("收藏");
                 navigateTo(CollectionActivity.class);
                 break;
             case R.id.ll_history:
-                XToastUtils.toast("历史");
+//                XToastUtils.toast("历史");
+                navigateTo(HistoryActivity.class);
                 break;
             case R.id.ll_note:
-                XToastUtils.toast("笔记");
+//                XToastUtils.toast("笔记");
+                navigateTo(NoteListActivity.class);
                 break;
             case R.id.ll_wrong:
-                XToastUtils.toast("错题");
+//                XToastUtils.toast("错题");
+                navigateTo(WrongQuestionActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        getPlan();
+
+//        timePlan = getStringFromSp("time_plan", false);
+//        if (timePlan <= 0) {
+//            tvHavePlan.setVisibility(View.GONE);
+//            tvNoPlan.setVisibility(View.VISIBLE);
+//        } else {
+//            tvHavePlan.setVisibility(View.VISIBLE);
+//            tvNoPlan.setVisibility(View.GONE);
+//            tvPlan.setText(String.valueOf(timePlan));
+//
+//            getPlan();
+//        }
+    }
+
+    private void getPlan() {
+        Call<Data<Plan>> planCall = userService.getPlan(account);
+        planCall.enqueue(new Callback<Data<Plan>>() {
+            @Override
+            public void onResponse(Call<Data<Plan>> call, Response<Data<Plan>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    plan = response.body().getData();
+                    timePlan = plan.getPlan();
+                    timePlanDo = plan.getPlanDo();
+                    if (timePlan <= 0) {
+                        tvHavePlan.setVisibility(View.GONE);
+                        tvNoPlan.setVisibility(View.VISIBLE);
+                    } else {
+                        tvHavePlan.setVisibility(View.VISIBLE);
+                        tvNoPlan.setVisibility(View.GONE);
+                        tvPlan.setText(String.valueOf(timePlan/(1000 * 60)));
+                        tvPlanDo.setText(String.valueOf(timePlanDo/(1000 * 60)));
+                        hpv.setProgress((float)timePlanDo/timePlan*100);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Plan>> call, Throwable t) {
+
+            }
+        });
     }
 }

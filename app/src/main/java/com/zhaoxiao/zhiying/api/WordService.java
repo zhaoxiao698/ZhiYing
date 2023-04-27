@@ -34,4 +34,6 @@ public interface WordService {
     Call<Data<PageInfo<WordSimple>>> getCollectionList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("account") String account, @Query("bookId") String bookId);
     @GET("word/collect")
     Call<Data<Boolean>> collect(@Query("account") String account, @Query("wordId") String wordId, @Query("bookId") String bookId, @Query("collect") boolean collect);
+    @GET("word/getHistoryList")
+    Call<Data<PageInfo<WordSimple>>> getHistoryList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("account") String account, @Query("bookId") String bookId);
 }

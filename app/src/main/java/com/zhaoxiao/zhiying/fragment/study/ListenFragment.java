@@ -449,7 +449,11 @@ public class ListenFragment extends BaseFragment {
 //            if (mMyBinder != null) {
 //                mMyBinder.closeMedia();
 //            }
-            getContext().unbindService(mServiceConnection);
+            try {
+                getContext().unbindService(mServiceConnection);
+            } catch (IllegalArgumentException e) {
+                // 忽略“接收器未注册”的异常
+            }
             isBind = false;
         }
     }

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
@@ -58,6 +59,8 @@ public class NoteActivity extends BaseActivity {
     TextView tvTime;
     @BindView(R.id.divider)
     View divider;
+    @BindView(R.id.tv_note)
+    TextView tvNote;
     private Map<String, Object> map;
     private String articleTitle;
     private String channelName;
@@ -65,7 +68,10 @@ public class NoteActivity extends BaseActivity {
     private boolean flag;
     private StudyService studyService;
     private String account;
-    private int articleId;
+    private Integer articleId;
+
+    private Boolean link = false;
+    private Boolean edit = false;
 
     @Override
     protected int initLayout() {
@@ -78,7 +84,33 @@ public class NoteActivity extends BaseActivity {
         articleTitle = (String) map.get("articleTitle");
         channelName = (String) map.get("channelName");
         img = (String) map.get("img");
-        articleId = (int) map.get("articleId");
+        articleId = (Integer) map.get("articleId");
+        link = (Boolean) map.get("link");
+        edit = (Boolean) map.get("edit");
+
+        if (link) {
+            rlLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    navigateTo(ArticleActivity.class, "articleId", articleId);
+                }
+            });
+        }
+        if (edit == null || !edit) {
+//            etNote.setEnabled(false);
+//            etNote.setKeyListener(null);
+//            etNote.setText("岑氏");
+
+//            etNote.setVisibility(View.GONE);
+//            tvNote.setVisibility(View.VISIBLE);
+
+            etNote.setEnabled(false);
+//            btnSave.setVisibility(View.GONE);
+            btnSave.setVisibility(View.INVISIBLE);
+            btnSave.setEnabled(false);
+            ivMore.setVisibility(View.GONE);
+            tvTopTitle.setText("笔记");
+        }
 
         account = SpUtils.getInstance(this).getString("account", "");
 
@@ -134,6 +166,7 @@ public class NoteActivity extends BaseActivity {
                     if (articleNote != null) {
                         tvTime.setText(StringUtils.formatDateTime(articleNote.getAddTime()));
                         etNote.setText(articleNote.getInfo());
+                        tvNote.setText(articleNote.getInfo());
                     }
                 }
             }

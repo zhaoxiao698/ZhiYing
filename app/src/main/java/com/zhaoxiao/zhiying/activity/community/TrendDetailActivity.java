@@ -36,6 +36,8 @@ import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.adapter.community.CommentAdapter;
 import com.zhaoxiao.zhiying.api.CommunityService;
+import com.zhaoxiao.zhiying.api.StudyService;
+import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
 import com.zhaoxiao.zhiying.entity.community.Topic;
@@ -45,6 +47,7 @@ import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.community.CommentFragment;
 import com.zhaoxiao.zhiying.util.SettingSPUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import org.jetbrains.annotations.NotNull;
@@ -103,6 +106,8 @@ public class TrendDetailActivity extends BaseActivity {
     private LinearLayoutManager linearLayoutManager;
     private int commentSortType = 0;
     private int refreshFlag;
+
+    private String account;
 
     @Override
     protected int initLayout() {
@@ -177,6 +182,31 @@ public class TrendDetailActivity extends BaseActivity {
 
             @Override
             public void onTabReselect(int position) {
+
+            }
+        });
+
+        //添加动态记录
+        account = SpUtils.getInstance(this).getString("account", "");
+        if (!account.equals("") && !account.equals("已过期")) {
+            addTrendRecord(account, trend.getId());
+        }
+    }
+
+    private void addTrendRecord(String account, int id) {
+        Call<Data<Boolean>> addTrendRecordCall = communityService.addTrendRecord(account, id);
+        addTrendRecordCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        System.out.println("添加动态记录成功");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
 
             }
         });

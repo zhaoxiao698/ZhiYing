@@ -3,6 +3,7 @@ package com.zhaoxiao.zhiying.api;
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
 import com.zhaoxiao.zhiying.entity.study.ArticleNote;
+import com.zhaoxiao.zhiying.entity.study.ArticleNoteDetail;
 import com.zhaoxiao.zhiying.entity.study.Banner;
 import com.zhaoxiao.zhiying.entity.study.Channel;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -48,7 +49,7 @@ public interface StudyService {
                                                  @Query("title") boolean title, @Query("asc") boolean asc);
 
     @GET("study/getArticleDetail")
-    Call<Data<ArticleDetail>> getArticleDetail(@Query("articleId") String account, @Query("articleId") int articleId);
+    Call<Data<ArticleDetail>> getArticleDetail(@Query("account") String account, @Query("articleId") int articleId);
 
     @GET("study/addArticleRecord")
     Call<Data<Boolean>> addArticleRecord(@Query("account") String account, @Query("articleId") int articleId);
@@ -70,4 +71,10 @@ public interface StudyService {
 
     @GET("study/getArticleCollectionList")
     Call<Data<PageInfo<Article>>> getArticleCollectionList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
+
+    @GET("study/getArticleHistoryList")
+    Call<Data<PageInfo<Article>>> getArticleHistoryList(@Query("pageNo") int pageNo,@Query("pageSize") int pageSize,@Query("account") String account);
+
+    @GET("study/getArticleNoteList")
+    Call<Data<PageInfo<ArticleNoteDetail>>> getArticleNoteList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("account") String account);
 }

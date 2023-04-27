@@ -118,6 +118,19 @@
         android:layout_weight="1"
         android:layout_height="0dp"/>
 
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_below="@+id/divider"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:gravity="top"
+        android:visibility="gone"
+        android:background="@color/g_yellow"
+        android:layout_above="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
     <Button
         android:id="@+id/btn_save"
         android:layout_alignParentBottom="true"

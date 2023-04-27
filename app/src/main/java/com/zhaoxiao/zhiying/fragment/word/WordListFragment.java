@@ -46,8 +46,9 @@ public class WordListFragment extends BaseFragment {
     public WordListFragment() {
     }
 
-    public static WordListFragment newInstance() {
+    public static WordListFragment newInstance(String bookName) {
         WordListFragment fragment = new WordListFragment();
+        fragment.bookName = bookName;
         return fragment;
     }
 
@@ -74,7 +75,7 @@ public class WordListFragment extends BaseFragment {
             }
         });
 
-        bookName = "收藏";
+//        bookName = "收藏";
         bookId = getStringFromSp("word_bookId",true);
         account = SpUtils.getInstance(getContext()).getString("account","");
         wordService = (WordService) getService(WordService.class);
@@ -104,7 +105,60 @@ public class WordListFragment extends BaseFragment {
     }
 
     private void getList(int type) {
-        if (bookName.equals("收藏")){
+        if (bookName.equals("历史")){
+            Call<Data<PageInfo<WordSimple>>> collectionListCall = wordService.getHistoryList(pageNum, 16, account,bookId);
+            collectionListCall.enqueue(new Callback<Data<PageInfo<WordSimple>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<WordSimple>>> call, Response<Data<PageInfo<WordSimple>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<WordSimple> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                wordSimpleList = list;
+                                wordListAdapter.setList(wordSimpleList);
+                                wordListAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                preList = list;
+                                break;
+                            case 1:
+                                wordSimpleList = list;
+                                wordListAdapter.setList(wordSimpleList);
+                                wordListAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                preList = list;
+                                break;
+                            case 2:
+//                                if (pageNum > response.body().getData().getPages()) {
+//                                    pageNum = response.body().getData().getPageNum();
+//                                    srl.finishLoadMore();
+//                                    showToast("没有更多数据了");
+//                                    break;
+//                                }
+                                if (list==null||list.size()==0||list.get(0).getWordId().equals(preList.get(0).getWordId())){
+//                                    if (list.equals(preList)){
+                                    pageNum --;
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                wordSimpleList.addAll(list);
+                                wordListAdapter.setList(wordSimpleList);
+                                wordListAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                preList = list;
+                                break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<WordSimple>>> call, Throwable t) {
+
+                }
+            });
+        }
+        else if (bookName.equals("收藏")){
             Call<Data<PageInfo<WordSimple>>> collectionListCall = wordService.getCollectionList(pageNum, 16, account,bookId);
             collectionListCall.enqueue(new Callback<Data<PageInfo<WordSimple>>>() {
                 @Override

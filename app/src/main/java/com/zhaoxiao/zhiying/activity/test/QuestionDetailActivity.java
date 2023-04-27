@@ -13,7 +13,9 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.api.TestService;
+import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.test.BankedM;
 import com.zhaoxiao.zhiying.entity.test.CarefulM;
@@ -25,6 +27,7 @@ import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.entity.test.TranslationM;
 import com.zhaoxiao.zhiying.entity.test.WritingM;
 import com.zhaoxiao.zhiying.fragment.test.QuestionFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
 import java.util.Map;
 
@@ -52,6 +55,13 @@ public class QuestionDetailActivity extends BaseActivity {
     private TestService testService;
     private FragmentManager fragmentManager;
 
+    private String account;
+
+    private long startTime;
+    private long endTime;
+    private long duration;
+    private UserService userService;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_question_detail;
@@ -74,6 +84,32 @@ public class QuestionDetailActivity extends BaseActivity {
         }
         testService = (TestService) getService(TestService.class);
         getQuestion();
+
+        //添加测试记录
+        account = SpUtils.getInstance(this).getString("account", "");
+        if (!account.equals("") && !account.equals("已过期")) {
+            addTestRecord(account, questionId,table);
+            userService = (UserService) getService(UserService.class);
+        }
+    }
+
+    private void addTestRecord(String account, int questionId, int table) {
+        Call<Data<Boolean>> addTestRecordCall = testService.addTestRecord(account, questionId, table);
+        addTestRecordCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        System.out.println("添加测试记录成功");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void getQuestion() {
@@ -284,9 +320,37 @@ public class QuestionDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    protected void onStart() {
+        super.onStart();
+        startTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        endTime = System.currentTimeMillis();
+        duration = endTime - startTime;
+        if (!account.equals("") && !account.equals("已过期")) {
+            addPlanDo();
+        }
+    }
+
+    private void addPlanDo(){
+        Call<Data<Boolean>> addPlanDoCall = userService.addPlanDo(account, duration);
+        addPlanDoCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        System.out.println("添加学习记录："+duration+"ms");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
     }
 }

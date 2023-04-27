@@ -60,11 +60,19 @@ public class QuestionListFragment extends BaseFragment {
     private String account;
     private XUIListPopup mListPopup;
 
+    private String history = "";
+
     public QuestionListFragment() {
     }
 
     public static QuestionListFragment newInstance() {
         return new QuestionListFragment();
+    }
+
+    public static QuestionListFragment newInstance(String history) {
+        QuestionListFragment fragment = new QuestionListFragment();
+        fragment.history = history;
+        return fragment;
     }
 
     @Override
@@ -107,47 +115,133 @@ public class QuestionListFragment extends BaseFragment {
     }
 
     private void getQuestionList(int type) {
-        Call<Data<PageInfo<QuestionM>>> testCollectionCall = testService.getTestCollectionList(pageNum, 8, account, table);
-        testCollectionCall.enqueue(new Callback<Data<PageInfo<QuestionM>>>() {
-            @Override
-            public void onResponse(Call<Data<PageInfo<QuestionM>>> call, Response<Data<PageInfo<QuestionM>>> response) {
-                if (response.body() != null && response.body().getCode() == 10000) {
-                    List<QuestionM> list = response.body().getData().getList();
-                    switch (type) {
-                        case 0:
-                            questionList = list;
-                            questionAdapter.setList(questionList);
-                            questionAdapter.notifyDataSetChanged();
-                            pageNum = 1;
-                            break;
-                        case 1:
-                            questionList = list;
-                            questionAdapter.setList(questionList);
-                            questionAdapter.notifyDataSetChanged();
-                            srl.finishRefresh();
-                            pageNum = 1;
-                            break;
-                        case 2:
-                            if (pageNum > response.body().getData().getPages()) {
-                                pageNum = response.body().getData().getPageNum();
-                                srl.finishLoadMore();
-                                showToast("没有更多数据了");
+        if (history.equals("错题")) {
+            Call<Data<PageInfo<QuestionM>>> testCollectionCall = testService.getTestWrongList(pageNum, 8, account, table);
+            testCollectionCall.enqueue(new Callback<Data<PageInfo<QuestionM>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<QuestionM>>> call, Response<Data<PageInfo<QuestionM>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<QuestionM> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                pageNum = 1;
                                 break;
-                            }
-                            questionList.addAll(list);
-                            questionAdapter.setList(questionList);
-                            questionAdapter.notifyDataSetChanged();
-                            srl.finishLoadMore();
-                            break;
+                            case 1:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                questionList.addAll(list);
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Data<PageInfo<QuestionM>>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<Data<PageInfo<QuestionM>>> call, Throwable t) {
 
-            }
-        });
+                }
+            });
+        } else if (history.equals("历史")){
+            Call<Data<PageInfo<QuestionM>>> testCollectionCall = testService.getTestHistoryList(pageNum, 8, account, table);
+            testCollectionCall.enqueue(new Callback<Data<PageInfo<QuestionM>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<QuestionM>>> call, Response<Data<PageInfo<QuestionM>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<QuestionM> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                break;
+                            case 1:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                questionList.addAll(list);
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<QuestionM>>> call, Throwable t) {
+
+                }
+            });
+        } else {
+            Call<Data<PageInfo<QuestionM>>> testCollectionCall = testService.getTestCollectionList(pageNum, 8, account, table);
+            testCollectionCall.enqueue(new Callback<Data<PageInfo<QuestionM>>>() {
+                @Override
+                public void onResponse(Call<Data<PageInfo<QuestionM>>> call, Response<Data<PageInfo<QuestionM>>> response) {
+                    if (response.body() != null && response.body().getCode() == 10000) {
+                        List<QuestionM> list = response.body().getData().getList();
+                        switch (type) {
+                            case 0:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                pageNum = 1;
+                                break;
+                            case 1:
+                                questionList = list;
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishRefresh();
+                                pageNum = 1;
+                                break;
+                            case 2:
+                                if (pageNum > response.body().getData().getPages()) {
+                                    pageNum = response.body().getData().getPageNum();
+                                    srl.finishLoadMore();
+                                    showToast("没有更多数据了");
+                                    break;
+                                }
+                                questionList.addAll(list);
+                                questionAdapter.setList(questionList);
+                                questionAdapter.notifyDataSetChanged();
+                                srl.finishLoadMore();
+                                break;
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Data<PageInfo<QuestionM>>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
     @OnClick(R.id.ll_type)

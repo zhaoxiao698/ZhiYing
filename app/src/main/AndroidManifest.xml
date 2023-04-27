@@ -16,7 +16,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.test.QuestionDetailActivity"></activity>
+        <activity android:name=".activity.test.TestCompleteActivity"></activity>
+        <activity android:name=".activity.test.AnswerSheetActivity" />
+        <activity android:name=".activity.mine.WrongQuestionActivity" />
+        <activity android:name=".activity.community.TopicSelectActivity" />
+        <activity android:name=".activity.community.NoteSelectActivity" />
+        <activity android:name=".activity.community.ArticleSelectActivity" />
+        <activity android:name=".activity.community.QuestionSelectActivity" />
+        <activity android:name=".activity.mine.SetTimePlanActivity" />
+        <activity android:name=".activity.mine.NoteListActivity" />
+        <activity android:name=".activity.mine.HistoryActivity" />
+        <activity android:name=".activity.test.QuestionDetailActivity" />
         <activity android:name=".activity.mine.CollectionActivity" />
         <activity android:name=".activity.study.NoteActivity" />
         <activity android:name=".activity.word.WordDetailActivity" />
@@ -36,7 +46,8 @@
         <activity android:name=".activity.mine.ServiceProtocolActivity" />
         <activity android:name=".activity.mine.PasswordLoginActivity" />
         <activity android:name=".activity.mine.CodeLoginActivity" />
-        <activity android:name=".activity.test.QuestionActivity" />
+        <activity android:name=".activity.test.QuestionActivity"
+            android:launchMode="singleTask" />
         <activity
             android:name=".activity.test.SelectActivity"
             android:launchMode="singleTop" />

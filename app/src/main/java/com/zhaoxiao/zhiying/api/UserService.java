@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.api;
 
 import com.zhaoxiao.zhiying.entity.mine.CodeResponse;
 import com.zhaoxiao.zhiying.entity.mine.Login;
+import com.zhaoxiao.zhiying.entity.mine.Plan;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.mine.User;
 
@@ -46,4 +47,13 @@ public interface UserService {
     @POST("user/setPassword")
     @FormUrlEncoded
     Call<Data<Boolean>> setPassword (@Field("account") String account, @Field("password") String password);
+
+    @GET("user/getPlan")
+    Call<Data<Plan>> getPlan(@Query("account") String account);
+
+    @GET("user/setPlan")
+    Call<Data<Boolean>> setPlan(@Query("account") String account, @Query("plan") long plan);
+
+    @GET("user/addPlanDo")
+    Call<Data<Boolean>> addPlanDo(@Query("account") String account, @Query("planDo") long planDo);
 }

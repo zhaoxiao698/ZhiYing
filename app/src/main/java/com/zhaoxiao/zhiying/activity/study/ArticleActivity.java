@@ -17,6 +17,7 @@ import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
+import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.study.ReadFragment;
@@ -55,6 +56,11 @@ public class ArticleActivity extends BaseActivity {
 
     private String account;
 
+    private long startTime;
+    private long endTime;
+    private long duration;
+    private UserService userService;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_article;
@@ -69,6 +75,7 @@ public class ArticleActivity extends BaseActivity {
         if (!account.equals("") && !account.equals("已过期")) {
             studyService = (StudyService) getService(StudyService.class);
             addArticleRecord(account, articleId);
+            userService = (UserService) getService(UserService.class);
         }
 
         ivBack.setOnClickListener(v -> finish());
@@ -186,6 +193,8 @@ public class ArticleActivity extends BaseActivity {
                         case 0:
 //                            XToastUtils.toast("笔记");
                             if (!account.equals("") && !account.equals("已过期")) {
+                                map.put("link",false);
+                                map.put("edit",true);
                                 navigateTo(NoteActivity.class, "map", (Serializable) map);
                             } else {
                                 navigateTo(CodeLoginActivity.class);
@@ -228,6 +237,41 @@ public class ArticleActivity extends BaseActivity {
                         } else {
                             XToastUtils.toast("取消收藏成功");
                         }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        startTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        endTime = System.currentTimeMillis();
+        duration = endTime - startTime;
+        if (!account.equals("") && !account.equals("已过期")) {
+            addPlanDo();
+        }
+    }
+
+    private void addPlanDo(){
+        Call<Data<Boolean>> addPlanDoCall = userService.addPlanDo(account, duration);
+        addPlanDoCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        System.out.println("添加学习记录："+duration+"ms");
                     }
                 }
             }
