@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.fragment.mine;
 
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -67,6 +68,8 @@ public class MineLoggedFragment extends BaseFragment {
     TextView tvNoPlan;
     @BindView(R.id.tv_have_plan)
     TextView tvHavePlan;
+    @BindView(R.id.rl_have_plan)
+    RelativeLayout rlHavePlan;
 
     private long timePlan;
     private long timePlanDo;
@@ -90,7 +93,7 @@ public class MineLoggedFragment extends BaseFragment {
     @Override
     protected void initData() {
         userService = (UserService) getService(UserService.class);
-        account = SpUtils.getInstance(getContext()).getString("account","");
+        account = SpUtils.getInstance(getContext()).getString("account", "");
     }
 
     @OnClick({R.id.iv_avatar, R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong})
@@ -113,7 +116,7 @@ public class MineLoggedFragment extends BaseFragment {
                 break;
             case R.id.card_plan:
 //                XToastUtils.toast("计划");
-                navigateTo(SetTimePlanActivity.class,"timePlan",timePlan);
+                navigateTo(SetTimePlanActivity.class, "timePlan", timePlan);
                 break;
             case R.id.ll_collection:
 //                XToastUtils.toast("收藏");
@@ -163,14 +166,14 @@ public class MineLoggedFragment extends BaseFragment {
                     timePlan = plan.getPlan();
                     timePlanDo = plan.getPlanDo();
                     if (timePlan <= 0) {
-                        tvHavePlan.setVisibility(View.GONE);
+                        rlHavePlan.setVisibility(View.GONE);
                         tvNoPlan.setVisibility(View.VISIBLE);
                     } else {
-                        tvHavePlan.setVisibility(View.VISIBLE);
+                        rlHavePlan.setVisibility(View.VISIBLE);
                         tvNoPlan.setVisibility(View.GONE);
-                        tvPlan.setText(String.valueOf(timePlan/(1000 * 60)));
-                        tvPlanDo.setText(String.valueOf(timePlanDo/(1000 * 60)));
-                        hpv.setProgress((float)timePlanDo/timePlan*100);
+                        tvPlan.setText(String.valueOf(timePlan / (1000 * 60)));
+                        tvPlanDo.setText(String.valueOf(timePlanDo / (1000 * 60)));
+                        hpv.setProgress((float) timePlanDo / timePlan * 100);
                     }
                 }
             }

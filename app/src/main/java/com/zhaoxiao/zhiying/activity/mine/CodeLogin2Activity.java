@@ -62,7 +62,7 @@ public class CodeLogin2Activity extends BaseActivity {
         phone = (String) getIntent().getSerializableExtra("phone");
         userService = (UserService) getService(UserService.class);
 
-        tvDesc.setText("短信验证码已发送至 +86 - " + phone);
+        tvDesc.setText("短信验证码已发送至 +86 - " + StringUtils.hidePhone(phone));
         mCountDownHelper = new CountDownButtonHelper(btnResend, 60);
         mCountDownHelper.setOnCountDownListener(new CountDownButtonHelper.OnCountDownListener() {
             @Override

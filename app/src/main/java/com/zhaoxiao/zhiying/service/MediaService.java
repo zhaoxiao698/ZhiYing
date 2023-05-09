@@ -14,6 +14,7 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
+import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.MainActivity;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
@@ -234,37 +235,40 @@ public class MediaService extends Service {
         if (audio != null && !audio.equals("")) {
             try {
                 mMediaPlayer.setDataSource(audio);//设置播放来源
+
+                mMediaPlayer.prepareAsync();//异步准备
+                mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    //异步准备监听
+                    @Override
+                    public void onPrepared(MediaPlayer mediaPlayer) {
+                        Log.d(TAG, "Voice异步文件准备完成");
+                        Log.d("Voice异步文件时长", mediaPlayer.getDuration() / 1000 + "");
+                        mediaPlayer.start();//播放
+                        Intent intent = new Intent(ListenFragment.ACTION_MUSIC_INIT);
+                        sendBroadcast(intent);
+                    }
+                });
+                mMediaPlayer.setScreenOnWhilePlaying(true);// 设置播放的时候一直让屏幕变亮
+                mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+                    //文件缓冲监听
+                    @Override
+                    public void onBufferingUpdate(MediaPlayer mediaPlayer, int i) {
+                        Log.d("Voice进度", i + "%");
+                        Log.d("Voice文件长度", mediaPlayer.getDuration() / 1000 + "");
+                    }
+                });
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Intent intent = new Intent(ListenFragment.ACTION_MUSIC_COMPLETE);
+                        sendBroadcast(intent);
+                    }
+                });
             } catch (IOException e) {
                 e.printStackTrace();
+
+                XToastUtils.toast("音频出错");
             }
-            mMediaPlayer.prepareAsync();//异步准备
-            mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                //异步准备监听
-                @Override
-                public void onPrepared(MediaPlayer mediaPlayer) {
-                    Log.d(TAG, "Voice异步文件准备完成");
-                    Log.d("Voice异步文件时长", mediaPlayer.getDuration() / 1000 + "");
-                    mediaPlayer.start();//播放
-                    Intent intent = new Intent(ListenFragment.ACTION_MUSIC_INIT);
-                    sendBroadcast(intent);
-                }
-            });
-            mMediaPlayer.setScreenOnWhilePlaying(true);// 设置播放的时候一直让屏幕变亮
-            mMediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
-                //文件缓冲监听
-                @Override
-                public void onBufferingUpdate(MediaPlayer mediaPlayer, int i) {
-                    Log.d("Voice进度", i + "%");
-                    Log.d("Voice文件长度", mediaPlayer.getDuration() / 1000 + "");
-                }
-            });
-            mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    Intent intent = new Intent(ListenFragment.ACTION_MUSIC_COMPLETE);
-                    sendBroadcast(intent);
-                }
-            });
         }
     }
 
