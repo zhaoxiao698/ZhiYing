@@ -7,6 +7,7 @@ import android.graphics.RectF;
 
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.MonthView;
+import com.zhaoxiao.zhiying.R;
 
 /**
  * 精美进度风格
@@ -52,9 +53,15 @@ public class ProgressMonthView extends MonthView {
         int cy = y + mItemHeight / 2;
 
         int angle = getAngle(Integer.parseInt(calendar.getScheme()));
+        if (angle >= 360) {
+            angle = 360;
+            mProgressPaint.setColor(getResources().getColor(R.color.g_green));
+        } else {
+            mProgressPaint.setColor(getResources().getColor(R.color.g_yellow));
+        }
 
         RectF progressRectF = new RectF(cx - mRadius, cy - mRadius, cx + mRadius, cy + mRadius);
-        mProgressPaint.setColor(calendar.getSchemeColor());
+//        mProgressPaint.setColor(calendar.getSchemeColor());
         canvas.drawArc(progressRectF, -90, angle, false, mProgressPaint);
 
         RectF noneRectF = new RectF(cx - mRadius, cy - mRadius, cx + mRadius, cy + mRadius);

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_10dp"
+        android:layout_marginRight="@dimen/config_margin_10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingBottom="@dimen/config_padding_10dp"
+        app:contentPaddingLeft="@dimen/config_padding_20dp"
+        app:contentPaddingRight="@dimen/config_padding_20dp"
+        app:contentPaddingTop="@dimen/config_padding_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="笔记内容"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/rl_link"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_note_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="这里是文章标题"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tv_sub_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="16sp"
+                    android:text="分类"
+                    android:layout_marginLeft="20dp"
+                    android:singleLine="true"
+                    android:layout_marginBottom="5dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_below="@id/rl_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="2023-10-06  23:05"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

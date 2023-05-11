@@ -148,20 +148,20 @@ public class TestCompleteActivity extends BaseActivity implements CircleProgress
                 total++;
                 if (StringUtils.isEmpty(((TranslationM) question).getUserAnswer())){
                     no++;
-                } else if (((TranslationM) question).getAnswer().equals(((TranslationM) question).getUserAnswer())) {
+                }/* else if (((TranslationM) question).getAnswer().equals(((TranslationM) question).getUserAnswer())) {
                     right++;
                 } else {
                     wrong++;
-                }
+                }*/
             } else if (question instanceof WritingM){
                 total++;
                 if (StringUtils.isEmpty(((WritingM) question).getUserAnswer())){
                     no++;
-                } else if (((WritingM) question).getAnswer().equals(((WritingM) question).getUserAnswer())) {
+                }/* else if (((WritingM) question).getAnswer().equals(((WritingM) question).getUserAnswer())) {
                     right++;
                 } else {
                     wrong++;
-                }
+                }*/
             }
         }
 
@@ -170,8 +170,10 @@ public class TestCompleteActivity extends BaseActivity implements CircleProgress
         tvWrong.setText(String.valueOf(wrong));
         tvNo.setText(String.valueOf(no));
 
-        progressViewCircleSmall2.setEndProgress((float)right/(right+wrong)*100);
-        progressViewCircleSmall2.startProgressAnimation();
+        if (right+wrong>0) {
+            progressViewCircleSmall2.setEndProgress((float) right / (right + wrong) * 100);
+            progressViewCircleSmall2.startProgressAnimation();
+        }
     }
 
     @OnClick({R.id.iv_back, R.id.btn_commit})

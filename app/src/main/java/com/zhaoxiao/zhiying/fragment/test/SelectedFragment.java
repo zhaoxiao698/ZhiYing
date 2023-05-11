@@ -1,6 +1,7 @@
 package com.zhaoxiao.zhiying.fragment.test;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,36 +14,44 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.xuexiang.rxutil2.rxjava.RxJavaUtils;
 import com.xuexiang.xui.widget.progress.CircleProgressView;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.mine.CollectionActivity;
+import com.zhaoxiao.zhiying.activity.mine.HistoryActivity;
+import com.zhaoxiao.zhiying.activity.mine.NoteListActivity;
+import com.zhaoxiao.zhiying.activity.mine.WrongQuestionActivity;
 import com.zhaoxiao.zhiying.activity.test.QuestionActivity;
-import com.zhaoxiao.zhiying.adapter.study.FtypeAdapter;
+import com.zhaoxiao.zhiying.activity.test.SetQuestionActivity;
+import com.zhaoxiao.zhiying.activity.test.TruePaperListActivity;
+import com.zhaoxiao.zhiying.activity.test.WordTestActivity;
+import com.zhaoxiao.zhiying.activity.word.WordActivity;
 import com.zhaoxiao.zhiying.adapter.test.TestFtypeAdapter;
-import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.api.TestService;
-import com.zhaoxiao.zhiying.data.DataSource;
 import com.zhaoxiao.zhiying.entity.study.Data;
-import com.zhaoxiao.zhiying.entity.study.Ftype;
 import com.zhaoxiao.zhiying.entity.test.BankedM;
 import com.zhaoxiao.zhiying.entity.test.CarefulM;
 import com.zhaoxiao.zhiying.entity.test.ClozeM;
 import com.zhaoxiao.zhiying.entity.test.ListeningM;
 import com.zhaoxiao.zhiying.entity.test.MatchM;
 import com.zhaoxiao.zhiying.entity.test.NewM;
+import com.zhaoxiao.zhiying.entity.test.Paper;
+import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.entity.test.TestFtype;
 import com.zhaoxiao.zhiying.entity.test.TranslationM;
 import com.zhaoxiao.zhiying.entity.test.WritingM;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CustomDialog;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import io.reactivex.functions.Consumer;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +65,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     CircleProgressView progressViewCircleSmall2;
     @BindView(R.id.progress_text_main)
     TextView progressTextMain;
-//    @BindView(R.id.recycler_view)
+    //    @BindView(R.id.recycler_view)
 //    RecyclerView recyclerView;
     @BindView(R.id.rv)
     RecyclerView rv;
@@ -72,7 +81,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     private TestFtypeAdapter ftypeAdapter;
     private LinearLayoutManager linearLayoutManager;
     private TestService testService;
-    private int num = 0,finish = 0,right = 0;
+    private int num = 0, finish = 0, right = 0;
 
     private CustomDialog customDialog;
 
@@ -82,6 +91,10 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
 //    private List<TreeNode<QuestionType>> dataToBind = new ArrayList<>();
 //
 //    MySingleLayoutTreeAdapter adapter;
+
+    private String account;
+
+    private int source;
 
     public SelectedFragment() {
     }
@@ -160,6 +173,13 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
             }
         });
 
+        account = SpUtils.getInstance(getContext()).getString("account", "");
+
+        source = getStringFromSp("question_source", false);
+        if (source==-1){
+            source = 1;
+        }
+
         testService = (TestService) getService(TestService.class);
 //        ftypeList = DataSource.getTestFtype();
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -175,7 +195,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
             @Override
             public void onStypeClick(int ftypeId, int stypeId) {
 //                navigateTo(QuestionActivity.class);
-                special(ftypeId,stypeId);
+                special(ftypeId, stypeId);
             }
         });
         getTestFtypeList();
@@ -185,7 +205,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     }
 
     private void getTestFtypeList() {
-        Call<Data<List<TestFtype>>> ftypeCall = testService.getTestFtypeList(questionBankId);
+        Call<Data<List<TestFtype>>> ftypeCall = testService.getTestFtypeList(account, questionBankId);
         ftypeCall.enqueue(new Callback<Data<List<TestFtype>>>() {
             @Override
             public void onResponse(Call<Data<List<TestFtype>>> call, Response<Data<List<TestFtype>>> response) {
@@ -199,7 +219,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
 //                    srl.finishLoadMore();
 //                    showToast("请求类型成功");
                 } /*else showToast("请求类型失败");*/
-                System.out.println("responseBody:"+response.body());
+                System.out.println("responseBody:" + response.body());
                 System.out.println(response);
             }
 
@@ -211,17 +231,30 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     }
 
     private void sum(List<TestFtype> list) {
+        num = 0;
+        finish = 0;
+        right = 0;
         for (TestFtype ftype : list) {
-            num+= ftype.getNum();
-            finish+= ftype.getFinish();
-            right+= ftype.getRight();
+            num += ftype.getNum();
+            finish += ftype.getFinish();
+            right += ftype.getRight();
         }
-        num = 1000;
-        finish = 500;
-        right = 400;
-        tvNum.setText(finish+"/"+num);
-        progressViewCircleSmall1.setEndProgress((float) finish/num*100);
-        progressViewCircleSmall2.setEndProgress((float) right/finish*100);
+//        num = 1000;
+//        finish = 500;
+//        right = 400;
+        if (finish >= num) {
+            finish = num;
+        }
+        if (right >= finish) {
+            right = finish;
+        }
+        tvNum.setText(finish + "/" + num);
+        if (num>0) {
+            progressViewCircleSmall1.setEndProgress((float) finish / num * 100);
+        }
+        if (finish>0){
+            progressViewCircleSmall2.setEndProgress((float) right / finish * 100);
+        }
         startProgress();
     }
 
@@ -250,9 +283,9 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     public void onCircleProgressUpdate(View view, float progress) {
         int progressInt = (int) progress;
         if (view.getId() == R.id.progressView_circle_small1) {
-            int finish = Math.round (progress*num/100);
-            tvNum.setText(finish+"/"+num);
-        } else if (view.getId() == R.id.progressView_circle_small2){
+            int finish = Math.round(progress * num / 100);
+            tvNum.setText(finish + "/" + num);
+        } else if (view.getId() == R.id.progressView_circle_small2) {
             progressTextMain.setText(progressInt + "");
         }
     }
@@ -277,21 +310,29 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
         customDialog.show();
         switch (ftypeId) {
             case 1:
-                Call<Data<List<ListeningM>>> listeningCall = testService.getListeningList(random, limitNum, questionBankId, 0, stypeId);
+                Call<Data<List<ListeningM>>> listeningCall = testService.getListeningList(random, limitNum, questionBankId, 0, stypeId,source,account);
                 listeningCall.enqueue(new Callback<Data<List<ListeningM>>>() {
                     @Override
                     public void onResponse(Call<Data<List<ListeningM>>> call, Response<Data<List<ListeningM>>> response) {
                         List<ListeningM> list = response.body().getData();
                         Map<String, Object> map = new HashMap<>();
-                        map.put("questionList",list);
+                        map.put("questionList", list);
                         String subType = "听力";
-                        switch (stypeId){
-                            case 1: subType = "短篇新闻";break;
-                            case 2: subType = "长对话";break;
-                            case 3: subType = "听力篇章";break;
-                            case 4: subType = "讲话/报道/讲座";break;
+                        switch (stypeId) {
+                            case 1:
+                                subType = "短篇新闻";
+                                break;
+                            case 2:
+                                subType = "长对话";
+                                break;
+                            case 3:
+                                subType = "听力篇章";
+                                break;
+                            case 4:
+                                subType = "讲话/报道/讲座";
+                                break;
                         }
-                        map.put("subType",subType);
+                        map.put("subType", subType);
                         navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
@@ -305,15 +346,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
             case 2:
                 switch (stypeId) {
                     case 5:
-                        Call<Data<List<BankedM>>> bankedCall = testService.getBankedList(random, limitNum, questionBankId);
+                        Call<Data<List<BankedM>>> bankedCall = testService.getBankedList(random, limitNum, questionBankId,source,account);
                         bankedCall.enqueue(new Callback<Data<List<BankedM>>>() {
                             @Override
                             public void onResponse(Call<Data<List<BankedM>>> call, Response<Data<List<BankedM>>> response) {
                                 List<BankedM> list = response.body().getData();
                                 Map<String, Object> map = new HashMap<>();
-                                map.put("questionList",list);
+                                map.put("questionList", list);
                                 String subType = "选词填空";
-                                map.put("subType",subType);
+                                map.put("subType", subType);
                                 navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
@@ -325,15 +366,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                         });
                         break;
                     case 6:
-                        Call<Data<List<MatchM>>> matchCall = testService.getMatchList(random, limitNum, questionBankId);
+                        Call<Data<List<MatchM>>> matchCall = testService.getMatchList(random, limitNum, questionBankId,source,account);
                         matchCall.enqueue(new Callback<Data<List<MatchM>>>() {
                             @Override
                             public void onResponse(Call<Data<List<MatchM>>> call, Response<Data<List<MatchM>>> response) {
                                 List<MatchM> list = response.body().getData();
                                 Map<String, Object> map = new HashMap<>();
-                                map.put("questionList",list);
+                                map.put("questionList", list);
                                 String subType = "匹配";
-                                map.put("subType",subType);
+                                map.put("subType", subType);
                                 navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
@@ -345,15 +386,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                         });
                         break;
                     case 7:
-                        Call<Data<List<CarefulM>>> carefulCall = testService.getCarefulList(random, limitNum, questionBankId);
+                        Call<Data<List<CarefulM>>> carefulCall = testService.getCarefulList(random, limitNum, questionBankId,source,account);
                         carefulCall.enqueue(new Callback<Data<List<CarefulM>>>() {
                             @Override
                             public void onResponse(Call<Data<List<CarefulM>>> call, Response<Data<List<CarefulM>>> response) {
                                 List<CarefulM> list = response.body().getData();
                                 Map<String, Object> map = new HashMap<>();
-                                map.put("questionList",list);
+                                map.put("questionList", list);
                                 String subType = "仔细阅读";
-                                map.put("subType",subType);
+                                map.put("subType", subType);
                                 navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
@@ -367,20 +408,26 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                     case 8:
                     case 9:
                     case 10:
-                        Call<Data<List<NewM>>> newCall = testService.getNewList(random, limitNum, questionBankId, stypeId);
+                        Call<Data<List<NewM>>> newCall = testService.getNewList(random, limitNum, questionBankId, stypeId,source,account);
                         newCall.enqueue(new Callback<Data<List<NewM>>>() {
                             @Override
                             public void onResponse(Call<Data<List<NewM>>> call, Response<Data<List<NewM>>> response) {
                                 List<NewM> list = response.body().getData();
                                 Map<String, Object> map = new HashMap<>();
-                                map.put("questionList",list);
+                                map.put("questionList", list);
                                 String subType = "新题型";
-                                switch (stypeId){
-                                    case 8:subType = "新题型-七选五";break;
-                                    case 9:subType = "新题型-排序";break;
-                                    case 10:subType = "新题型-小标题";break;
+                                switch (stypeId) {
+                                    case 8:
+                                        subType = "新题型-七选五";
+                                        break;
+                                    case 9:
+                                        subType = "新题型-排序";
+                                        break;
+                                    case 10:
+                                        subType = "新题型-小标题";
+                                        break;
                                 }
-                                map.put("subType",subType);
+                                map.put("subType", subType);
                                 navigateTo(QuestionActivity.class, "map", (Serializable) map);
                                 RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                             }
@@ -394,19 +441,23 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                 }
                 break;
             case 3:
-                Call<Data<List<TranslationM>>> translationCall = testService.getTranslationList(random, limitNum, questionBankId);
+                Call<Data<List<TranslationM>>> translationCall = testService.getTranslationList(random, limitNum, questionBankId,source,account);
                 translationCall.enqueue(new Callback<Data<List<TranslationM>>>() {
                     @Override
                     public void onResponse(Call<Data<List<TranslationM>>> call, Response<Data<List<TranslationM>>> response) {
                         List<TranslationM> list = response.body().getData();
                         Map<String, Object> map = new HashMap<>();
-                        map.put("questionList",list);
+                        map.put("questionList", list);
                         String subType = "翻译";
-                        switch (stypeId){
-                            case 11:subType = "汉译英";break;
-                            case 12:subType = "英译汉";break;
+                        switch (stypeId) {
+                            case 11:
+                                subType = "汉译英";
+                                break;
+                            case 12:
+                                subType = "英译汉";
+                                break;
                         }
-                        map.put("subType",subType);
+                        map.put("subType", subType);
                         navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
@@ -418,19 +469,23 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                 });
                 break;
             case 4:
-                Call<Data<List<WritingM>>> writingCall = testService.getWritingList(random, limitNum, questionBankId, stypeId);
+                Call<Data<List<WritingM>>> writingCall = testService.getWritingList(random, limitNum, questionBankId, stypeId,source,account);
                 writingCall.enqueue(new Callback<Data<List<WritingM>>>() {
                     @Override
                     public void onResponse(Call<Data<List<WritingM>>> call, Response<Data<List<WritingM>>> response) {
                         List<WritingM> list = response.body().getData();
                         Map<String, Object> map = new HashMap<>();
-                        map.put("questionList",list);
+                        map.put("questionList", list);
                         String subType = "写作";
-                        switch (stypeId){
-                            case 13:subType = "短文写作";break;
-                            case 14:subType = "应用文";break;
+                        switch (stypeId) {
+                            case 13:
+                                subType = "短文写作";
+                                break;
+                            case 14:
+                                subType = "应用文";
+                                break;
                         }
-                        map.put("subType",subType);
+                        map.put("subType", subType);
                         navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
@@ -442,15 +497,15 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
                 });
                 break;
             case 5:
-                Call<Data<List<ClozeM>>> clozeCall = testService.getClozeList(random, limitNum, questionBankId);
+                Call<Data<List<ClozeM>>> clozeCall = testService.getClozeList(random, limitNum, questionBankId,source,account);
                 clozeCall.enqueue(new Callback<Data<List<ClozeM>>>() {
                     @Override
                     public void onResponse(Call<Data<List<ClozeM>>> call, Response<Data<List<ClozeM>>> response) {
                         List<ClozeM> list = response.body().getData();
                         Map<String, Object> map = new HashMap<>();
-                        map.put("questionList",list);
+                        map.put("questionList", list);
                         String subType = "完形填空";
-                        map.put("subType",subType);
+                        map.put("subType", subType);
                         navigateTo(QuestionActivity.class, "map", (Serializable) map);
                         RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
                     }
@@ -460,6 +515,77 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
 
                     }
                 });
+        }
+    }
+
+    //模拟考试
+    private void exam(){
+        customDialog.show();
+        Call<Data<Paper>> examCall = testService.getExam(questionBankId);
+        examCall.enqueue(new Callback<Data<Paper>>() {
+            @Override
+            public void onResponse(Call<Data<Paper>> call, Response<Data<Paper>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    Paper paper = response.body().getData();
+                    List<QuestionM> list = new ArrayList<>();
+                    if (questionBankId==1||questionBankId==2){
+                        list.addAll(paper.getListeningList());
+                        list.addAll(paper.getBankedList());
+                        list.addAll(paper.getMatchList());
+                        list.addAll(paper.getCarefulList());
+                        list.addAll(paper.getTranslationList());
+                        list.addAll(paper.getWritingList());
+                    } else if (questionBankId==3||questionBankId==4){
+                        list.addAll(paper.getClozeList());
+                        list.addAll(paper.getCarefulList());
+                        list.addAll(paper.getNewList());
+                        list.addAll(paper.getTranslationList());
+                        list.addAll(paper.getWritingList());
+                    }
+
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("questionList",list);
+                    String subType = "模拟考试";
+                    map.put("subType",subType);
+                    navigateTo(QuestionActivity.class, "map", (Serializable) map);
+                    RxJavaUtils.delay(500, TimeUnit.MILLISECONDS, aLong -> customDialog.dismiss(), System.out::println);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Paper>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @OnClick({R.id.ll_word, R.id.ll_true, R.id.ll_exam, R.id.ll_history, R.id.ll_wrong, R.id.ll_collection, R.id.ll_note, R.id.ll_setting})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_word:
+                navigateTo(WordActivity.class);
+                break;
+            case R.id.ll_true:
+                navigateTo(TruePaperListActivity.class);
+                break;
+            case R.id.ll_exam:
+                exam();
+                break;
+            case R.id.ll_history:
+                navigateTo(HistoryActivity.class,"select",1);
+                break;
+            case R.id.ll_wrong:
+                navigateTo(WrongQuestionActivity.class);
+                break;
+            case R.id.ll_collection:
+                navigateTo(CollectionActivity.class,"select",2);
+                break;
+            case R.id.ll_note:
+                navigateTo(NoteListActivity.class,"select",1);
+                break;
+            case R.id.ll_setting:
+                navigateTo(SetQuestionActivity.class);
+                break;
         }
     }
 }

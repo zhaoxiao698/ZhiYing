@@ -92,20 +92,20 @@
     <com.haibin.calendarview.CalendarLayout
         android:id="@+id/calendarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="vertical"
-        app:calendar_content_view_id="@+id/recyclerView">
+        app:calendar_content_view_id="@+id/rv">
 
         <com.haibin.calendarview.CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
-            app:calendar_height="52dp"
+            app:calendar_height="55dp"
             app:current_month_lunar_text_color="#CFCFCF"
             app:current_month_text_color="#333333"
-            app:day_text_size="14sp"
+            app:day_text_size="15sp"
             app:max_year="2020"
             app:min_year="2004"
             app:month_view="com.zhaoxiao.zhiying.view.ProgressMonthView"
@@ -127,6 +127,11 @@
             app:year_view_month_text_size="20sp"
             app:year_view_scheme_color="#f17706" />
 
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+
 <!--        <ScrollView-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:id="@+id/aaa"-->
@@ -143,5 +148,134 @@
 <!--        </ScrollView>-->
 
     </com.haibin.calendarview.CalendarLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:background="@drawable/shape_calendar_tip"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textSize="16sp"
+            android:text="学习进度"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/shape_calendar_tip1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textSize="16sp"
+            android:text="完成打卡"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bright_gray"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="连续打卡"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_continuous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"
+                    android:text="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="38dp"
+            android:background="@color/bright_gray"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="累计打卡"/>
+
+            <LinearLayout                android:layout_marginTop="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"
+                    android:text="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

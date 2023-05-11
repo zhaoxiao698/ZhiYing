@@ -1,5 +1,6 @@
 package com.zhaoxiao.zhiying.api;
 
+import com.zhaoxiao.zhiying.entity.mine.CalendarInfo;
 import com.zhaoxiao.zhiying.entity.mine.CodeResponse;
 import com.zhaoxiao.zhiying.entity.mine.Login;
 import com.zhaoxiao.zhiying.entity.mine.Plan;
@@ -56,4 +57,10 @@ public interface UserService {
 
     @GET("user/addPlanDo")
     Call<Data<Boolean>> addPlanDo(@Query("account") String account, @Query("planDo") long planDo);
+
+    @GET("user/getPlanList")
+    Call<Data<List<Plan>>> getPlanList(@Query("account") String account);
+
+    @GET("user/getCalendarInfo")
+    Call<Data<CalendarInfo>> getCalendarInfo(@Query("account") String account);
 }

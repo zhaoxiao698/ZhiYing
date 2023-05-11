@@ -40,6 +40,8 @@ public class CollectionActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private WordService wordService;
 
+    private int select = 0;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_collection;
@@ -47,6 +49,10 @@ public class CollectionActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        if (getIntent().getSerializableExtra("select")!=null){
+            select = (int) getIntent().getSerializableExtra("select");
+        }
+
         tb.setLeftClickListener(v -> finish());
 
         mFragments.add(SortFragment.newInstance(-1,0));
@@ -74,6 +80,7 @@ public class CollectionActivity extends BaseActivity {
             }
         });
         setTextSize(slidingTabLayout.getCurrentTab());
+        slidingTabLayout.setCurrentTab(select);
     }
 
     @Override

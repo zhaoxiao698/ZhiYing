@@ -16,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.test.TestCompleteActivity"></activity>
+        <activity android:name=".activity.test.SetQuestionActivity"></activity>
+        <activity android:name=".activity.test.WordTestActivity" />
+        <activity android:name=".activity.test.TestNoteActivity" />
+        <activity android:name=".activity.test.TruePaperListActivity" />
+        <activity android:name=".activity.test.TestCompleteActivity" />
         <activity android:name=".activity.test.AnswerSheetActivity" />
         <activity android:name=".activity.mine.WrongQuestionActivity" />
         <activity android:name=".activity.community.TopicSelectActivity" />
@@ -46,7 +50,8 @@
         <activity android:name=".activity.mine.ServiceProtocolActivity" />
         <activity android:name=".activity.mine.PasswordLoginActivity" />
         <activity android:name=".activity.mine.CodeLoginActivity" />
-        <activity android:name=".activity.test.QuestionActivity"
+        <activity
+            android:name=".activity.test.QuestionActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".activity.test.SelectActivity"
@@ -82,6 +87,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.study.RecentActivity" />
+        <activity android:name=".activity.study.CalendarTestActivity" />
     </application>
 
 </manifest>

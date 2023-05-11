@@ -26,7 +26,7 @@
             app:justifyContent="space_around">
 
             <LinearLayout
-                android:id="@+id/ll_radio"
+                android:id="@+id/ll_word"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -35,9 +35,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/word_test" />
+                    android:src="@drawable/word_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_listen"
+                android:id="@+id/ll_true"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -60,9 +60,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/true_test" />
+                    android:src="@drawable/true_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,9 +85,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/test_test" />
+                    android:src="@drawable/test_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_speech"
+                android:id="@+id/ll_history"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -110,9 +110,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/history_test" />
+                    android:src="@drawable/history_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
             app:justifyContent="space_around">
 
             <LinearLayout
-                android:id="@+id/ll_travel"
+                android:id="@+id/ll_wrong"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -143,9 +143,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/wrong_test" />
+                    android:src="@drawable/wrong_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_work"
+                android:id="@+id/ll_collection"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -168,9 +168,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/collect_test" />
+                    android:src="@drawable/collect_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -184,7 +184,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_book"
+                android:id="@+id/ll_note"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -193,9 +193,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/note_test" />
+                    android:src="@drawable/note_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -209,7 +209,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_speak"
+                android:id="@+id/ll_setting"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -218,9 +218,9 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:tint="@color/white"
                     android:background="@drawable/shape_test_button"
-                    android:src="@drawable/setting_test" />
+                    android:src="@drawable/setting_test"
+                    app:tint="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"

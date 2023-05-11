@@ -36,6 +36,8 @@ public class HistoryActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private WordService wordService;
 
+    private int select = 0;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_history;
@@ -43,6 +45,10 @@ public class HistoryActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        if (getIntent().getSerializableExtra("select")!=null){
+            select = (int) getIntent().getSerializableExtra("select");
+        }
+
         tb.setLeftClickListener(v -> finish());
 
         mFragments.add(ArticleListFragment.newInstance(-2));
@@ -68,6 +74,7 @@ public class HistoryActivity extends BaseActivity {
             }
         });
         setTextSize(slidingTabLayout.getCurrentTab());
+        slidingTabLayout.setCurrentTab(select);
     }
 
     @Override

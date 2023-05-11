@@ -28,6 +28,7 @@ import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 
@@ -56,6 +57,10 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        //设置时区
+        TimeZone timeZone = TimeZone.getTimeZone("GMT+8");
+        TimeZone.setDefault(timeZone);
+
         //刷新过期时间
         String account = SpUtils.getInstance(this).getString("account", "");
 //        if (!StringUtils.isEmpty(account) && !account.equals("已过期")) {

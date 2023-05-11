@@ -14,15 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.entity.study.ArticleNoteDetail;
+import com.zhaoxiao.zhiying.entity.test.TestNoteDetail;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import java.util.List;
 
-public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TestNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<ArticleNoteDetail> list;
+    private List<TestNoteDetail> list;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -30,15 +31,15 @@ public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         mOnItemClickListener = onItemClickListener;
     }
 
-    public void setList(List<ArticleNoteDetail> list) {
+    public void setList(List<TestNoteDetail> list) {
         this.list = list;
     }
 
-    public ArticleNoteAdapter(Context mContext) {
+    public TestNoteAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-    public ArticleNoteAdapter(Context mContext, List<ArticleNoteDetail> list) {
+    public TestNoteAdapter(Context mContext, List<TestNoteDetail> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -46,7 +47,7 @@ public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_article_note_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_test_note_layout, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -55,17 +56,13 @@ public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        ArticleNoteDetail articleNoteDetail = list.get(position);
-        viewHolder.tvInfo.setText(articleNoteDetail.getInfo());
-        viewHolder.tvChannelName.setText(articleNoteDetail.getChannelName());
-        viewHolder.tvTitle.setText(articleNoteDetail.getArticleTitle());
-        viewHolder.tvTime.setText(StringUtils.formatDateTime(articleNoteDetail.getAddTime()));
-        Picasso.with(mContext)
-                .load(articleNoteDetail.getArticleImg())
-                .transform(new CircleCornerTransForm())
-                .into(viewHolder.ivImg);
-        viewHolder.articleId = articleNoteDetail.getArticleId();
-        viewHolder.articleNoteDetail = articleNoteDetail;
+        TestNoteDetail testNoteDetail = list.get(position);
+        viewHolder.tvInfo.setText(testNoteDetail.getInfo());
+        viewHolder.tvSubType.setText(testNoteDetail.getSubType());
+        viewHolder.tvTitle.setText(testNoteDetail.getQuestionInfo());
+        viewHolder.tvTime.setText(StringUtils.formatDateTime(testNoteDetail.getAddTime()));
+        viewHolder.questionId = testNoteDetail.getQuestionId();
+        viewHolder.testNoteDetail = testNoteDetail;
     }
 
     @Override
@@ -79,34 +76,30 @@ public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     //绑定控件，得到控件对象
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private Integer articleId;
-        private ArticleNoteDetail articleNoteDetail;
+        private Integer questionId;
+        private TestNoteDetail testNoteDetail;
         private TextView tvInfo;
-        private RelativeLayout rlLink;
-        private ImageView ivImg;
         private TextView tvTitle;
-        private TextView tvChannelName;
+        private TextView tvSubType;
         private TextView tvTime;
 
         public ViewHolder(@NonNull View view) {
             super(view);
             tvInfo = view.findViewById(R.id.tv_info);
-            rlLink = view.findViewById(R.id.rl_link);
-            ivImg = view.findViewById(R.id.iv_img);
             tvTitle = view.findViewById(R.id.tv_title);
-            tvChannelName = view.findViewById(R.id.tv_channel_name);
+            tvSubType = view.findViewById(R.id.tv_sub_type);
             tvTime = view.findViewById(R.id.tv_time);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(articleNoteDetail);
+                    mOnItemClickListener.onItemClick(testNoteDetail);
                 }
             });
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ArticleNoteDetail articleNoteDetail);
+        void onItemClick(TestNoteDetail testNoteDetail);
     }
 }

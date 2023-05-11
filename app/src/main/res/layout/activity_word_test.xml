@@ -20,31 +20,30 @@
             app:layout_scrollFlags="scroll|enterAlways"
             android:background="@color/g_yellow"
             app:tb_leftImageResource="@drawable/ic_navigation_back_white"
-            app:tb_titleText="我的笔记"
+            app:tb_titleText="单词测试"
             app:tb_useThemeColor="false" />
-
-        <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/slidingTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/g_yellow"
-            tl:tl_indicator_color="@color/white"
-            tl:tl_indicator_corner_radius="10dp"
-            tl:tl_indicator_height="5dp"
-            tl:tl_indicator_margin_bottom="@dimen/config_margin_5dp"
-            tl:tl_indicator_width="25dp"
-            tl:tl_indicator_width_equal_title="true"
-            tl:tl_textBold="SELECT"
-            tl:tl_textSelectColor="@color/white"
-            tl:tl_textUnselectColor="@color/bright_gray"
-            tl:tl_textsize="17sp" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.zhaoxiao.zhiying.view.FixedViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/srl"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_height="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.header.BezierRadarHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.scwang.smart.refresh.footer.BallPulseFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.api;
 
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.ArticleNoteDetail;
 import com.zhaoxiao.zhiying.entity.study.Banner;
 import com.zhaoxiao.zhiying.entity.study.Channel;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -15,10 +16,13 @@ import com.zhaoxiao.zhiying.entity.test.ClozeM;
 import com.zhaoxiao.zhiying.entity.test.ListeningM;
 import com.zhaoxiao.zhiying.entity.test.MatchM;
 import com.zhaoxiao.zhiying.entity.test.NewM;
+import com.zhaoxiao.zhiying.entity.test.Paper;
 import com.zhaoxiao.zhiying.entity.test.QuestionAnswer;
 import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.entity.test.TestFtype;
+import com.zhaoxiao.zhiying.entity.test.TestNoteDetail;
 import com.zhaoxiao.zhiying.entity.test.TranslationM;
+import com.zhaoxiao.zhiying.entity.test.TruePaper;
 import com.zhaoxiao.zhiying.entity.test.WritingM;
 
 import java.util.List;
@@ -31,40 +35,40 @@ import retrofit2.http.Query;
 
 public interface TestService {
     @GET("test/getTestFtypeList")
-    Call<Data<List<TestFtype>>> getTestFtypeList(@Query("questionBankId") int questionBankId);
+    Call<Data<List<TestFtype>>> getTestFtypeList(@Query("account") String account, @Query("questionBankId") int questionBankId);
 
     @GET("test/getListeningList")
     Call<Data<List<ListeningM>>> getListeningList(@Query("random") boolean random, @Query("limitNum") int limitNum,
                                                   @Query("questionBankId") int questionBankId, @Query("num") int num,
-                                                  @Query("type") int type);
+                                                  @Query("type") int type,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getBankedList")
     Call<Data<List<BankedM>>> getBankedList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                            @Query("questionBankId") int questionBankId);
+                                            @Query("questionBankId") int questionBankId,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getMatchList")
     Call<Data<List<MatchM>>> getMatchList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                          @Query("questionBankId") int questionBankId);
+                                          @Query("questionBankId") int questionBankId,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getCarefulList")
     Call<Data<List<CarefulM>>> getCarefulList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                              @Query("questionBankId") int questionBankId);
+                                              @Query("questionBankId") int questionBankId,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getTranslationList")
     Call<Data<List<TranslationM>>> getTranslationList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                                      @Query("questionBankId") int questionBankId);
+                                                      @Query("questionBankId") int questionBankId,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getWritingList")
     Call<Data<List<WritingM>>> getWritingList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                              @Query("questionBankId") int questionBankId, @Query("type") int type);
+                                              @Query("questionBankId") int questionBankId, @Query("type") int type,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getClozeList")
     Call<Data<List<ClozeM>>> getClozeList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                          @Query("questionBankId") int questionBankId);
+                                          @Query("questionBankId") int questionBankId,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getNewList")
     Call<Data<List<NewM>>> getNewList(@Query("random") boolean random, @Query("limitNum") int limitNum,
-                                      @Query("questionBankId") int questionBankId, @Query("type") int type);
+                                      @Query("questionBankId") int questionBankId, @Query("type") int type,@Query("source")int source,@Query("account")String account);
 
     @GET("test/getTestCollectionList")
     Call<Data<PageInfo<QuestionM>>> getTestCollectionList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
@@ -142,4 +146,27 @@ public interface TestService {
     @GET("test/getTestWrongList")
     Call<Data<PageInfo<QuestionM>>> getTestWrongList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
                                                        @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTruePaperList")
+    Call<Data<PageInfo<TruePaper>>> getTruePaperList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                     @Query("questionBankId") int questionBankId);
+
+    @GET("test/getTruePaper")
+    Call<Data<Paper>> getTruePaper(@Query("truePaperId") int truePaperId);
+
+    @GET("test/getTestNoteList")
+    Call<Data<PageInfo<TestNoteDetail>>> getTestNoteList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                         @Query("account") String account, @Query("table") int table);
+
+    @GET("test/getTestNote")
+    Call<Data<TestNoteDetail>> getTestNote(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/saveTestNote")
+    Call<Data<Boolean>> saveTestNote(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table, @Query("info") String info);
+
+    @GET("test/deleteTestNote")
+    Call<Data<Boolean>> deleteTestNote(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table);
+
+    @GET("test/getExam")
+    Call<Data<Paper>> getExam(@Query("questionBankId") int questionBankId);
 }

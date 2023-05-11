@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.donkingliang.labels.LabelsView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.test.QuestionActivity;
+import com.zhaoxiao.zhiying.activity.test.QuestionDetailActivity;
 import com.zhaoxiao.zhiying.entity.test.BankedQuestion;
 import com.zhaoxiao.zhiying.entity.test.CarefulQuestion;
 import com.zhaoxiao.zhiying.entity.test.ClozeQuestion;
@@ -168,7 +169,12 @@ public class SubQuestionFragment extends BaseFragment {
 //        intentFilter.addAction(ACTION_QUESTION_SELECT);
 //        intentFilter.addAction(ACTION_QUESTION_UNSELECT);
 //        getContext().registerReceiver(questionReceiver, intentFilter);
-        select = ((QuestionActivity)getActivity()).getSelect();
+
+        if (getActivity() instanceof QuestionActivity) {
+            select = ((QuestionActivity) getActivity()).getSelect();
+        } else if (getActivity() instanceof QuestionDetailActivity){
+            select = ((QuestionDetailActivity) getActivity()).getSelect();
+        }
 
         if (select) {
             lvPosition.setIndicator(false);

@@ -62,6 +62,8 @@ public class QuestionDetailActivity extends BaseActivity {
     private long duration;
     private UserService userService;
 
+    private boolean select = false;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_question_detail;
@@ -88,7 +90,7 @@ public class QuestionDetailActivity extends BaseActivity {
         //添加测试记录
         account = SpUtils.getInstance(this).getString("account", "");
         if (!account.equals("") && !account.equals("已过期")) {
-            addTestRecord(account, questionId,table);
+//            addTestRecord(account, questionId,table);
             userService = (UserService) getService(UserService.class);
         }
     }
@@ -352,5 +354,9 @@ public class QuestionDetailActivity extends BaseActivity {
 
             }
         });
+    }
+
+    public boolean getSelect(){
+        return select;
     }
 }

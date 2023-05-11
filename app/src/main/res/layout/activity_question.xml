@@ -8,6 +8,13 @@
     android:background="@color/white"
     tools:context=".activity.test.QuestionActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fl_test_listening"
+        android:visibility="gone"
+        android:name="com.zhaoxiao.zhiying.fragment.test.TestListeningFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
     <include layout="@layout/layout_question_title_bar" />
 
     <com.xuexiang.xui.widget.progress.HorizontalProgressView
@@ -73,8 +80,8 @@
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:tint="@color/gray"
-                android:src="@drawable/test_test"/>
+                android:src="@drawable/test_test"
+                app:tint="@color/gray" />
 
             <TextView
                 android:layout_width="wrap_content"

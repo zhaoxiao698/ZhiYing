@@ -1,15 +1,22 @@
 package com.zhaoxiao.zhiying.activity.test;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -47,11 +54,13 @@ import com.zhaoxiao.zhiying.entity.test.WritingM;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.test.QuestionFragment;
 import com.zhaoxiao.zhiying.fragment.test.SubQuestionFragment;
+import com.zhaoxiao.zhiying.fragment.test.TestListeningFragment;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,6 +91,8 @@ public class QuestionActivity extends BaseActivity {
     LinearLayout btnSheet;
     @BindView(R.id.hpv)
     HorizontalProgressView hpv;
+    @BindView(R.id.fl_test_listening)
+    FragmentContainerView flTestListening;
     float currentProgress;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -106,6 +117,9 @@ public class QuestionActivity extends BaseActivity {
     private boolean select = true;
     private Map<String,Object> map1;
 
+    private TestListeningFragment testListeningFragment;
+    private TestReceiver testReceiver;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_question;
@@ -113,6 +127,16 @@ public class QuestionActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        testListeningFragment = (TestListeningFragment) getSupportFragmentManager().findFragmentById(R.id.fl_test_listening);
+        //注册广播
+        testReceiver = new TestReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(TestListeningFragment.ACTION_TEST_INIT);
+        intentFilter.addAction(TestListeningFragment.ACTION_TEST_START);
+        intentFilter.addAction(TestListeningFragment.ACTION_TEST_STOP);
+        intentFilter.addAction(TestListeningFragment.ACTION_TEST_COMPLETE);
+        registerReceiver(testReceiver, intentFilter);
+
         map = (Map<String, Object>) getIntent().getSerializableExtra("map");
         if (map.get("select") != null) {
             select = (boolean) map.get("select");
@@ -148,7 +172,9 @@ public class QuestionActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 ((QuestionFragment) mFragments.get(QuestionActivity.this.position)).setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
                 toSheet = false;
-                saveAnswer(QuestionActivity.this.position);
+                if (!account.equals("") && !account.equals("已过期")) {
+                    saveAnswer(QuestionActivity.this.position);
+                }
 
                 QuestionActivity.this.position = position;
                 preAndNext(position);
@@ -161,6 +187,10 @@ public class QuestionActivity extends BaseActivity {
 //                currentProgress = end;
                 currentProgress = (float) (position+1)/mFragments.size()*100;
                 hpv.setProgress(currentProgress);
+
+                testListeningFragment.pause();
+                testListeningFragment.seekTo(0);
+                testListeningFragment.release();
             }
 
             @Override
@@ -300,9 +330,9 @@ public class QuestionActivity extends BaseActivity {
                         System.out.println("保存答案成功");
                         if (toSheet) {
                             map1 = new HashMap<>();
-                            map.put("questionList", questionList);
-                            map.put("select", select);
-                            navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map, ANSWER_SHEET_RESULT);
+                            map1.put("questionList", questionList);
+                            map1.put("select", select);
+                            navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
                         }
                     }
                 }
@@ -376,7 +406,7 @@ public class QuestionActivity extends BaseActivity {
                 if (position == mFragments.size() - 1) {
 //                    XToastUtils.toast("交卷");
                     toSheet = true;
-                    saveAnswer(position);
+//                    saveAnswer(position);
 //                    navigateToForResult(AnswerSheetActivity.class,"questionList", (Serializable) questionList, ANSWER_SHEET_RESULT);
 //                    navigateTo(AnswerSheetActivity.class,"questionList", (Serializable) questionList);
                 } else {
@@ -392,7 +422,14 @@ public class QuestionActivity extends BaseActivity {
                 break;
             case R.id.btn_sheet:
                 toSheet = true;
-                saveAnswer(position);
+                if (!account.equals("") && !account.equals("已过期")) {
+                    saveAnswer(position);
+                } else {
+                    map1 = new HashMap<>();
+                    map1.put("questionList", questionList);
+                    map1.put("select", select);
+                    navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
+                }
 //                navigateToForResult(AnswerSheetActivity.class,"questionList", (Serializable) questionList, ANSWER_SHEET_RESULT);
 //                navigateTo(AnswerSheetActivity.class,"questionList", (Serializable) questionList);
                 break;
@@ -409,6 +446,11 @@ public class QuestionActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         hpv.stopProgressAnimation();
+        try {
+            this.unregisterReceiver(testReceiver);
+        } catch (IllegalArgumentException e) {
+            // 忽略“接收器未注册”的异常
+        }
         super.onDestroy();
     }
 
@@ -490,5 +532,21 @@ public class QuestionActivity extends BaseActivity {
 
     public boolean getSelect(){
         return select;
+    }
+
+    //自定义广播
+    public class TestReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ((QuestionFragment)mFragments.get(position)).UIControl(intent.getAction());
+            if (intent.getAction().equals(TestListeningFragment.ACTION_TEST_COMPLETE)){
+                if(position-1>=0)((QuestionFragment)mFragments.get(position-1)).UIControl(intent.getAction());
+            }
+        }
+    }
+
+    public TestListeningFragment getTestListeningFragment(){
+        return testListeningFragment;
     }
 }
