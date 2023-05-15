@@ -62,6 +62,7 @@ public class NoteListActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     private int select = 0;
+    private boolean share = false;
 
     @Override
     protected int initLayout() {
@@ -73,11 +74,14 @@ public class NoteListActivity extends BaseActivity {
         if (getIntent().getSerializableExtra("select")!=null){
             select = (int) getIntent().getSerializableExtra("select");
         }
+        if (getIntent().getSerializableExtra("share")!=null){
+            share = (boolean) getIntent().getSerializableExtra("share");
+        }
 
         tb.setLeftClickListener(v -> finish());
 
-        mFragments.add(ArticleNoteListFragment.newInstance());
-        mFragments.add(TestNoteListFragment.newInstance());
+        mFragments.add(ArticleNoteListFragment.newInstance(share));
+        mFragments.add(TestNoteListFragment.newInstance(share));
         viewPager.setOffscreenPageLimit(mFragments.size());
         slidingTabLayout.setViewPager(viewPager, mTitles, this, mFragments);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

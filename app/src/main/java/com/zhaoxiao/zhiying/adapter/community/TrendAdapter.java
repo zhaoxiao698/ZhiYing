@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
+import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.imageview.nine.ItemImageClickListener;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
@@ -27,21 +28,35 @@ import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xui.widget.imageview.preview.loader.GlideMediaLoader;
 import com.xuexiang.xui.widget.textview.ReadMoreTextView;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
+import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
 import com.zhaoxiao.zhiying.entity.community.Topic;
 import com.zhaoxiao.zhiying.entity.community.Trend;
 import com.zhaoxiao.zhiying.entity.study.Article;
+import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.SettingSPUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<Trend> list;
+    private CommunityService communityService;
+    private String account;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -51,6 +66,14 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public void setList(List<Trend> list) {
         this.list = list;
+    }
+
+    public void setCommunityService(CommunityService communityService) {
+        this.communityService = communityService;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public TrendAdapter(Context mContext) {
@@ -116,9 +139,9 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         //操作条
-        viewHolder.tvLike.setText(String.valueOf(trend.getLike()));
-        viewHolder.tvComment.setText(String.valueOf(trend.getComment()));
-        viewHolder.tvShare.setText(String.valueOf(trend.getShare()));
+        viewHolder.tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
+        viewHolder.tvComment.setText(NumberUtils.intChange2Str(trend.getComment()));
+        viewHolder.tvShare.setText(NumberUtils.intChange2Str(trend.getShare()));
 
         //图片
         viewHolder.bind(trend.getImgList());
@@ -130,6 +153,16 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         viewHolder.trendId = trend.getId();
         viewHolder.trend = trend;
+
+        //点赞状态
+        boolean likeStatus = trend.getLikeStatus();
+        if(likeStatus){
+            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            viewHolder.ivLike.setImageResource(R.drawable.like1_community);
+        } else {
+            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+            viewHolder.ivLike.setImageResource(R.drawable.like_community);
+        }
     }
 
     @Override
@@ -164,7 +197,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private LinearLayout llShare;
         private ImageView ivShare;
         private TextView tvShare;
-
+        private ImageView ivMore;
 
         public ViewHolder(@NonNull View view) {
             super(view);
@@ -187,6 +220,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             llShare = view.findViewById(R.id.ll_share);
             ivShare = view.findViewById(R.id.iv_share);
             tvShare = view.findViewById(R.id.tv_share);
+            ivMore = view.findViewById(R.id.iv_more);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -196,19 +230,32 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             llLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    XToastUtils.toast("点赞");
+//                    XToastUtils.toast("点赞");
+                    boolean likeStatus = trend.getLikeStatus();
+                    like(!likeStatus,trend,ivLike,tvLike);
                 }
             });
             llComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    XToastUtils.toast("评论");
+                    mOnItemClickListener.onItemClick(trend);
+//                    XToastUtils.toast("评论");
                 }
             });
             llShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    XToastUtils.toast("分享转发");
+//                    XToastUtils.toast("分享转发");
+                    Map<String,Object> linkMap = new HashMap<>();
+                    linkMap.put("linkId",trend.getId());
+                    linkMap.put("info",trend.getInfo());
+                    ((BaseActivity)mContext).navigateTo(PublishTrendActivity.class,"linkMap", (Serializable) linkMap);
+                }
+            });
+            ivMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showSimpleBottomSheetList(trend);
                 }
             });
 //            tvInfo.setOnClickListener(new View.OnClickListener() {
@@ -294,5 +341,95 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public interface OnItemClickListener {
         void onItemClick(Trend trend);
+    }
+
+    private void like(boolean like,Trend trend,ImageView view,TextView num) {
+        Call<Data<Boolean>> likeCall = communityService.like(account, trend.getId(), like);
+        likeCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        trend.setLikeStatus(like);
+                        if (like){
+                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            view.setImageResource(R.drawable.like1_community);
+                            trend.setLike(trend.getLike()+1);
+                            num.setText(NumberUtils.intChange2Str(trend.getLike()));
+                        } else {
+                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+                            view.setImageResource(R.drawable.like_community);
+                            trend.setLike(trend.getLike()-1);
+                            num.setText(NumberUtils.intChange2Str(trend.getLike()));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (like){
+                    XToastUtils.toast("点赞失败");
+                } else {
+                    XToastUtils.toast("取消点赞失败");
+                }
+            }
+        });
+    }
+
+    private void collect(boolean collect,Trend trend) {
+        Call<Data<Boolean>> collectCall = communityService.collect(account, trend.getId(), collect);
+        collectCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        trend.setCollectStatus(collect);
+                        if (collect){
+                            XToastUtils.toast("收藏成功");
+                        } else {
+                            XToastUtils.toast("取消收藏成功");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (collect){
+                    XToastUtils.toast("收藏失败");
+                } else {
+                    XToastUtils.toast("取消收藏失败");
+                }
+            }
+        });
+    }
+
+    //更多
+    private void showSimpleBottomSheetList(Trend trend) {
+        boolean collectStatus = trend.getCollectStatus();
+        BottomSheet.BottomListSheetBuilder bottomListSheetBuilder = new BottomSheet.BottomListSheetBuilder(mContext);
+        bottomListSheetBuilder
+                .setTitle("更多");
+        if (collectStatus){
+            bottomListSheetBuilder
+                    .addItem("取消收藏");
+        } else {
+            bottomListSheetBuilder
+                    .addItem("收藏");
+        }
+        bottomListSheetBuilder
+                .addItem("举报")
+                .setIsCenter(true)
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    if (position == 0) {
+                        collect(!collectStatus,trend);
+                    } else if (position == 1) {
+                        XToastUtils.toast("举报");
+                    }
+                })
+                .build()
+                .show();
     }
 }

@@ -41,7 +41,7 @@ public interface StudyService {
 
 
     @GET("study/getChannelById")
-    Call<Data<Channel>> getChannelById(@Query("channelId") int channelId);
+    Call<Data<Channel>> getChannelById(@Query("channelId") int channelId,@Query("account") String account);
 
     @GET("study/getArticleList")
     Call<Data<PageInfo<Article>>> getArticleList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
@@ -77,4 +77,7 @@ public interface StudyService {
 
     @GET("study/getArticleNoteList")
     Call<Data<PageInfo<ArticleNoteDetail>>> getArticleNoteList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("account") String account);
+
+    @GET("study/channelCollect")
+    Call<Data<Boolean>> channelCollect(@Query("account") String account, @Query("channelId") int channelId, @Query("collect") boolean collect);
 }

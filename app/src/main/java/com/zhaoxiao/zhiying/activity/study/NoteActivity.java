@@ -80,6 +80,8 @@ public class NoteActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        account = SpUtils.getInstance(this).getString("account", "");
+
         map = (Map<String, Object>) getIntent().getSerializableExtra("map");
         articleTitle = (String) map.get("articleTitle");
         channelName = (String) map.get("channelName");
@@ -87,6 +89,9 @@ public class NoteActivity extends BaseActivity {
         articleId = (Integer) map.get("articleId");
         link = (Boolean) map.get("link");
         edit = (Boolean) map.get("edit");
+        if (map.get("account")!=null){
+            account = (String) map.get("account");
+        }
 
         if (link) {
             rlLink.setOnClickListener(new View.OnClickListener() {
@@ -110,9 +115,10 @@ public class NoteActivity extends BaseActivity {
             btnSave.setEnabled(false);
             ivMore.setVisibility(View.GONE);
             tvTopTitle.setText("笔记");
+            etNote.setHint("");
         }
 
-        account = SpUtils.getInstance(this).getString("account", "");
+//        account = SpUtils.getInstance(this).getString("account", "");
 
         studyService = (StudyService) getService(StudyService.class);
 

@@ -54,7 +54,8 @@ public class StringUtils {
 
     public static String hidePhone(String phoneNumber) {
 //        String phoneNumber = "15567893456";
-        String resultPhone= phoneNumber.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2");
+        String resultPhone1= phoneNumber.replaceAll("(\\d{3})\\d{4}(\\d{4})","$1****$2");
+        String resultPhone= phoneNumber.replaceAll("(\\d{3})\\d{6}(\\d{2})","$1******$2");
 //        System.out.println("隐藏后的手机号：" + resultPhone);
         return resultPhone;
     }

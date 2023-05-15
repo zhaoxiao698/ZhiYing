@@ -9,7 +9,7 @@ public class QuestionM implements Serializable {
     private int subQuestionNum;
     private int order;
     private String subType;
-
+    private boolean collectStatus;
 
     public QuestionM() {
     }
@@ -58,5 +58,13 @@ public class QuestionM implements Serializable {
 
     public void setSubType(String subType) {
         this.subType = subType;
+    }
+
+    public boolean getCollectStatus() {
+        return collectStatus;
+    }
+
+    public void setCollectStatus(boolean collectStatus) {
+        this.collectStatus = collectStatus;
     }
 }

@@ -521,7 +521,7 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
     //模拟考试
     private void exam(){
         customDialog.show();
-        Call<Data<Paper>> examCall = testService.getExam(questionBankId);
+        Call<Data<Paper>> examCall = testService.getExam(questionBankId,account);
         examCall.enqueue(new Callback<Data<Paper>>() {
             @Override
             public void onResponse(Call<Data<Paper>> call, Response<Data<Paper>> response) {

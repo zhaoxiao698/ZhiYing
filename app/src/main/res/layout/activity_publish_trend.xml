@@ -36,7 +36,23 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+<!--        <com.xuexiang.xui.widget.button.roundbutton.RoundButton-->
+<!--            android:id="@+id/btn_publish"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:paddingStart="@dimen/config_padding_20dp"-->
+<!--            android:paddingTop="@dimen/config_margin_8dp"-->
+<!--            android:paddingEnd="@dimen/config_padding_20dp"-->
+<!--            android:paddingBottom="@dimen/config_margin_8dp"-->
+<!--            android:text="发布"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:rb_backgroundColor="@color/g_yellow"-->
+<!--            app:rb_radius="20dp" />-->
+<!--        -->
+        <Button
             android:id="@+id/btn_publish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,8 +65,8 @@
             android:text="发布"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:rb_backgroundColor="@color/g_yellow"
-            app:rb_radius="20dp" />
+            android:textColor="@color/save_note"
+            android:background="@drawable/save_note" />
 
     </RelativeLayout>
 
@@ -90,7 +106,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/et_note"
+                android:id="@+id/et_info"
                 android:hint="分享此刻的想法~"
                 android:minLines="8"
                 android:layout_marginLeft="15dp"
@@ -128,6 +144,61 @@
                 app:flexWrap="wrap">
 
             </com.google.android.flexbox.FlexboxLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_share_link"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_share_link"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/shape_note_link"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_share_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="这里是标题"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:singleLine="true"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_toRightOf="@+id/iv_img"/>
+
+                    <TextView
+                        android:id="@+id/tv_share_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="笔记"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:singleLine="true"
+                        android:layout_marginBottom="5dp"
+                        android:layout_alignBottom="@+id/iv_img"
+                        android:layout_toRightOf="@+id/iv_img"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/ll_share_link"
+                    android:layout_alignRight="@id/ll_share_link"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_item_delete"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -193,7 +264,7 @@
         android:background="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="145dp">
 
         <LinearLayout
             android:id="@+id/ll_share_note"

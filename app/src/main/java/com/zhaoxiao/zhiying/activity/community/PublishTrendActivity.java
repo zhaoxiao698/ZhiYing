@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,22 +69,42 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.mine.NoteListActivity;
 import com.zhaoxiao.zhiying.adapter.community.GridImageAdapter;
+import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Topic;
+import com.zhaoxiao.zhiying.entity.study.Article;
+import com.zhaoxiao.zhiying.entity.study.ArticleDetail;
+import com.zhaoxiao.zhiying.entity.study.ArticleNote;
+import com.zhaoxiao.zhiying.entity.study.ArticleNoteDetail;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.entity.test.QuestionM;
+import com.zhaoxiao.zhiying.entity.test.TestNoteDetail;
 import com.zhaoxiao.zhiying.listener.DragListener;
 import com.zhaoxiao.zhiying.listener.OnItemLongClickListener;
 import com.zhaoxiao.zhiying.util.EPSoftKeyBoardListener;
 import com.zhaoxiao.zhiying.util.EditTextUtil;
 import com.zhaoxiao.zhiying.util.PictureSelector.FullyGridLayoutManager;
 import com.zhaoxiao.zhiying.util.PictureSelector.GlideEngine;
+import com.zhaoxiao.zhiying.util.UnitConversion;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PublishTrendActivity extends BaseActivity/* implements ImageSelectGridAdapter.OnAddPicClickListener*/ {
 
@@ -90,15 +113,15 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
     @BindView(R.id.tv_top_title)
     TextView tvTopTitle;
     @BindView(R.id.btn_publish)
-    RoundButton btnPublish;
+    Button btnPublish;
     @BindView(R.id.rl_title)
     RelativeLayout rlTitle;
     @BindView(R.id.et_title)
     EditText etTitle;
     @BindView(R.id.divider)
     View divider;
-    @BindView(R.id.et_note)
-    EditText etNote;
+    @BindView(R.id.et_info)
+    EditText etInfo;
     @BindView(R.id.iv_add_img)
     ImageView ivAddImg;
     @BindView(R.id.iv_at)
@@ -127,6 +150,16 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
     TextView tvDeleteText;
     @BindView(R.id.fl_topic)
     FlexboxLayout flTopic;
+//    @BindView(R.id.recycler)
+//    RecyclerView recycler;
+    @BindView(R.id.tv_share_title)
+    TextView tvShareTitle;
+    @BindView(R.id.tv_share_type)
+    TextView tvShareType;
+    @BindView(R.id.rl_share_link)
+    RelativeLayout rlShareLink;
+    @BindView(R.id.iv_del)
+    ImageView ivDel;
 
     private ViewGroup.LayoutParams linearParams;
     private boolean isExpand;
@@ -170,6 +203,18 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
     public final static int ARTICLE_RESULT = 6;
     public final static int QUESTION_RESULT = 7;
     public final static int AT_RESULT = 8;
+    private boolean shareLink = false;
+
+    private RelativeLayout.LayoutParams linearParams1;
+
+    private int linkId=0;
+    private int linkType=0;
+    private int linkTable=0;
+
+    private CommunityService communityService;
+    private String account;
+
+    private Map<String,Object> linkMap;
 
     @Override
     protected int initLayout() {
@@ -178,9 +223,29 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
 
     @Override
     protected void initData() {
-        linearParams = (RelativeLayout.LayoutParams) flMore.getLayoutParams(); //取控件textView当前的布局参数
+        if (getIntent().getSerializableExtra("linkMap") != null) {
+            linkMap = (Map<String, Object>) getIntent().getSerializableExtra("linkMap");
+            if (!shareLink) {
+                    rlShareLink.setVisibility(View.VISIBLE);
+                    tvShareTitle.setText((String) linkMap.get("info"));
+                    tvShareType.setText("动态");
+                    shareLink=true;
+
+                    linkId= (int) linkMap.get("linkId");
+                    linkType=5;
+            }
+        }
+
+        communityService = (CommunityService) getService(CommunityService.class);
+        account = SpUtils.getInstance(this).getString("account","");
+
+        linearParams = (RelativeLayout.LayoutParams) flMore.getLayoutParams();
         linearParams.height = 0;
         flMore.setLayoutParams(linearParams);
+
+        linearParams1 = (RelativeLayout.LayoutParams) svContent.getLayoutParams();
+        linearParams1.bottomMargin = UnitConversion.dp2px(this,50);
+        svContent.setLayoutParams(linearParams1);
 
         EPSoftKeyBoardListener.setListener(this, new EPSoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
             @Override
@@ -188,11 +253,31 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
                 linearParams.height = 0;
                 flMore.setLayoutParams(linearParams);
                 ivAddMore.setImageTintList(getResources().getColorStateList(R.color.black));
+                isExpand=false;
+                linearParams1.bottomMargin = UnitConversion.dp2px(PublishTrendActivity.this,50);
+                svContent.setLayoutParams(linearParams1);
             }
 
             @Override
             public void keyBoardHide(int height) {
 
+            }
+        });
+
+        btnPublish.setEnabled(!etInfo.getText().toString().trim().equals(""));
+//        btnPublish.setEnabled(!etInfo.toString().trim().equals(""));
+        etInfo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                btnPublish.setEnabled(!editable.toString().trim().equals(""));
             }
         });
 
@@ -208,21 +293,22 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
         mRecyclerView.setFocusable(false);
     }
 
-    @OnClick({R.id.iv_back, R.id.btn_publish, R.id.iv_add_img, R.id.iv_at, R.id.iv_add_topic, R.id.iv_add_more, R.id.fl_option, R.id.ll_share_note, R.id.ll_share_article, R.id.ll_share_question, R.id.fl_more})
+    @OnClick({R.id.iv_back, R.id.btn_publish, R.id.iv_add_img, R.id.iv_at, R.id.iv_add_topic, R.id.iv_add_more, R.id.fl_option, R.id.ll_share_note, R.id.ll_share_article, R.id.ll_share_question, R.id.fl_more, R.id.iv_del})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.btn_publish:
-                XToastUtils.toast("发布");
+//                XToastUtils.toast("发布");
+                publish();
                 break;
             case R.id.iv_add_img:
                 openPicture();
                 break;
             case R.id.iv_at:
-//                XToastUtils.toast("@");
-                navigateToForResult(TopicSelectActivity.class, TOPIC_RESULT);
+                XToastUtils.toast("@");
+//                navigateToForResult(TopicSelectActivity.class, TOPIC_RESULT);
                 break;
             case R.id.iv_add_topic:
 //                XToastUtils.toast("#");
@@ -234,6 +320,8 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
                     flMore.setLayoutParams(linearParams);
                     ivAddMore.setImageTintList(getResources().getColorStateList(R.color.black));
                     isExpand = false;
+                    linearParams1.bottomMargin = UnitConversion.dp2px(PublishTrendActivity.this,50);
+                    svContent.setLayoutParams(linearParams1);
                 } else {
 //                flMore.setVisibility(View.VISIBLE);
                     linearParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -242,18 +330,36 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
 //                ivAddMore.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.g_yellow)));
                     EditTextUtil.hideKeyboard(this);
                     isExpand = true;
+                    linearParams1.bottomMargin = UnitConversion.dp2px(PublishTrendActivity.this,50+145);
+                    svContent.setLayoutParams(linearParams1);
                 }
                 break;
             case R.id.fl_option:
                 break;
             case R.id.ll_share_note:
-                navigateToForResult(NoteSelectActivity.class, NOTE_RESULT);
+                if (shareLink){
+                    XToastUtils.toast("不能同时添加多个链接");
+                    break;
+                }
+                navigateToForResult(NoteListActivity.class, "share", true, NOTE_RESULT);
                 break;
             case R.id.ll_share_article:
+                if (shareLink){
+                    XToastUtils.toast("不能同时添加多个链接");
+                    break;
+                }
                 navigateToForResult(ArticleSelectActivity.class, ARTICLE_RESULT);
                 break;
             case R.id.ll_share_question:
+                if (shareLink){
+                    XToastUtils.toast("不能同时添加多个链接");
+                    break;
+                }
                 navigateToForResult(QuestionSelectActivity.class, QUESTION_RESULT);
+                break;
+            case R.id.iv_del:
+                rlShareLink.setVisibility(View.GONE);
+                shareLink = false;
                 break;
         }
     }
@@ -515,6 +621,13 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -771,26 +884,140 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data!=null) {
+        if (data != null) {
             if (requestCode == TOPIC_RESULT) {
                 Topic topic = (Topic) data.getExtras().getSerializable("topic");
 //            Log.i(TAG, topic.toString());
-                ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.layout_topic_item, null);
-                RoundButton child = viewGroup.findViewById(R.id.tv_option);
-                viewGroup.removeView(child);
-                child.setText("#" + topic.getName());
-                child.setOnClickListener(view -> XToastUtils.info(topic.getName()));
-                flTopic.addView(child);
-                topicIdList.add(topic.getId());
+                if (!topicIdList.contains(topic.getId())) {
+                    ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.layout_topic_publish_item, null);
+                    RelativeLayout child = viewGroup.findViewById(R.id.rl_option);
+                    viewGroup.removeView(child);
+                    RoundButton tvOption = child.findViewById(R.id.tv_option);
+                    tvOption.setText("#" + topic.getName());
+                    tvOption.setOnClickListener(view -> XToastUtils.info(topic.getName()));
+                    ImageView ivDel = child.findViewById(R.id.iv_del);
+                    ivDel.setOnClickListener(view -> {
+                        flTopic.removeView(child);
+                        topicIdList.remove(Integer.valueOf(topic.getId()));
+                    });
+                    flTopic.addView(child);
+                    topicIdList.add(topic.getId());
+                }
             } else if (requestCode == NOTE_RESULT) {
+                if (!shareLink) {
+                    if (data.getExtras().getSerializable("articleNoteDetail") != null) {
+                        ArticleNoteDetail articleNoteDetail = (ArticleNoteDetail) data.getExtras().getSerializable("articleNoteDetail");
+                        rlShareLink.setVisibility(View.VISIBLE);
+                        tvShareTitle.setText(articleNoteDetail.getInfo());
+                        tvShareType.setText("文章笔记");
+                        shareLink=true;
 
+                        linkId=articleNoteDetail.getArticleId();
+                        linkType=1;
+                    } else if (data.getExtras().getSerializable("testNoteDetail") != null) {
+                        TestNoteDetail testNoteDetail = (TestNoteDetail) data.getExtras().getSerializable("testNoteDetail");
+                        rlShareLink.setVisibility(View.VISIBLE);
+                        tvShareTitle.setText(testNoteDetail.getInfo());
+                        tvShareType.setText("题目笔记");
+                        shareLink=true;
+
+                        linkId=testNoteDetail.getQuestionId();
+                        linkType=1;
+                        linkTable= (int) data.getExtras().getSerializable("table");
+                    }
+                }
             } else if (requestCode == ARTICLE_RESULT) {
+                if (!shareLink) {
+                    if (data.getExtras().getSerializable("article") != null) {
+                        Article article = (Article) data.getExtras().getSerializable("article");
+                        rlShareLink.setVisibility(View.VISIBLE);
+                        tvShareTitle.setText(article.getTitle());
+                        tvShareType.setText("文章");
+                        shareLink=true;
 
+                        linkId=article.getId();
+                        linkType=1;
+                    }
+                }
             } else if (requestCode == QUESTION_RESULT) {
+                if (!shareLink) {
+                    if (data.getExtras().getSerializable("question") != null) {
+                        QuestionM question = (QuestionM) data.getExtras().getSerializable("question");
+                        rlShareLink.setVisibility(View.VISIBLE);
+                        tvShareTitle.setText(question.getInfo());
+                        tvShareType.setText("题目");
+                        shareLink=true;
 
+                        linkId=question.getId();
+                        linkType=1;
+                        linkTable= (int) data.getExtras().getSerializable("table");
+                    }
+                }
             } else if (requestCode == AT_RESULT) {
 
             }
         }
+    }
+
+    private void publish() {
+        MediaType textType = MediaType.parse("text/plain");
+        RequestBody accountBody = RequestBody.create(textType, account);
+        RequestBody titleBody = RequestBody.create(textType, etTitle.getText().toString());
+        RequestBody infoBody = RequestBody.create(textType, etInfo.getText().toString());
+        RequestBody linkIdBody = null;
+        RequestBody linkTypeBody = null;
+        RequestBody linkTableBody = null;
+//        if (shareLink){
+            linkIdBody = RequestBody.create(textType, String.valueOf(linkId));
+            linkTypeBody = RequestBody.create(textType, String.valueOf(linkType));
+            linkTableBody = RequestBody.create(textType, String.valueOf(linkTable));
+//        }
+        StringBuilder sb = new StringBuilder();
+        for (Integer topicId : topicIdList) {
+            sb.append(topicId).append(",");
+        }
+        String topicIdListString = "";
+        if (sb.length()>0){
+            topicIdListString = sb.substring(0, sb.length() - 1);
+        }
+        RequestBody topicIdListBody = RequestBody.create(textType, topicIdListString);
+
+        List<MultipartBody.Part> imgFileList = new ArrayList<>();
+        for (LocalMedia localMedia : mAdapter.getData()) {
+            String imgRealPath = localMedia.getRealPath();
+            File file = new File(imgRealPath);
+            RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), file);
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("imgFileList", file.getName(), fileBody);
+            imgFileList.add(filePart);
+        }
+
+        Map<String, RequestBody> params = new HashMap<>();
+        params.put("account", accountBody);
+        params.put("title", titleBody);
+        params.put("info", infoBody);
+//        if (shareLink) {
+            params.put("linkId", linkIdBody);
+            params.put("linkType", linkTypeBody);
+            params.put("linkTable", linkTableBody);
+//        }
+        params.put("topicIdList", topicIdListBody);
+
+        Call<Data<Boolean>> publishTrendCall = communityService.publishTrend(params, imgFileList);
+        publishTrendCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        XToastUtils.toast("发布成功");
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
     }
 }

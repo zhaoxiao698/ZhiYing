@@ -9,7 +9,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="195dp"
         android:background="@drawable/shape_gradient" />
 
     <LinearLayout
@@ -73,7 +73,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="130dp"
             android:layout_marginLeft="@dimen/config_margin_5dp"
             android:layout_marginRight="@dimen/config_margin_5dp"
             app:cardCornerRadius="8dp"
@@ -95,20 +95,21 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_trend"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="35sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="5dp"
                         android:text="动态"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 
@@ -126,20 +127,21 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_attention"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="35sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="5dp"
                         android:text="关注"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 
@@ -157,20 +159,21 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_fan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="35sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="5dp"
                         android:text="粉丝"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 

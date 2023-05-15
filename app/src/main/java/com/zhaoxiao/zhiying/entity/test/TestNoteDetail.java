@@ -2,9 +2,10 @@ package com.zhaoxiao.zhiying.entity.test;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TestNoteDetail {
+public class TestNoteDetail implements Serializable {
     @SerializedName("userAccount")
     private String userAccount;
     @SerializedName("questionId")

@@ -110,28 +110,28 @@ public interface TestService {
     Call<Data<QuestionM>> getQuestionById(@Query("questionId") int questionId, @Query("table") int table);
 
     @GET("test/getQuestionById")
-    Call<Data<ListeningM>> getQuestionById1(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<ListeningM>> getQuestionById1(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<BankedM>> getQuestionById2(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<BankedM>> getQuestionById2(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<MatchM>> getQuestionById3(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<MatchM>> getQuestionById3(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<CarefulM>> getQuestionById4(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<CarefulM>> getQuestionById4(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<TranslationM>> getQuestionById5(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<TranslationM>> getQuestionById5(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<WritingM>> getQuestionById6(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<WritingM>> getQuestionById6(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<ClozeM>> getQuestionById7(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<ClozeM>> getQuestionById7(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getQuestionById")
-    Call<Data<NewM>> getQuestionById8(@Query("questionId") int questionId, @Query("table") int table);
+    Call<Data<NewM>> getQuestionById8(@Query("questionId") int questionId, @Query("table") int table, @Query("account") String account);
 
     @GET("test/getTestHistoryList")
     Call<Data<PageInfo<QuestionM>>> getTestHistoryList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
@@ -152,7 +152,7 @@ public interface TestService {
                                                      @Query("questionBankId") int questionBankId);
 
     @GET("test/getTruePaper")
-    Call<Data<Paper>> getTruePaper(@Query("truePaperId") int truePaperId);
+    Call<Data<Paper>> getTruePaper(@Query("truePaperId") int truePaperId,@Query("account") String account);
 
     @GET("test/getTestNoteList")
     Call<Data<PageInfo<TestNoteDetail>>> getTestNoteList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
@@ -168,5 +168,8 @@ public interface TestService {
     Call<Data<Boolean>> deleteTestNote(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table);
 
     @GET("test/getExam")
-    Call<Data<Paper>> getExam(@Query("questionBankId") int questionBankId);
+    Call<Data<Paper>> getExam(@Query("questionBankId") int questionBankId,@Query("account") String account);
+
+    @GET("test/collect")
+    Call<Data<Boolean>> collect(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table, @Query("collect") boolean collect);
 }

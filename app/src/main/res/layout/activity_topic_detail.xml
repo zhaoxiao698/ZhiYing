@@ -42,15 +42,14 @@
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
-                <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                <Button
                     android:id="@+id/btn_collect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:rb_backgroundColor="@color/g_yellow_light"
                     android:textColor="@color/g_yellow"
-                    app:rb_radius="5dp"
                     android:textStyle="bold"
                     android:textSize="16sp"
+                    android:background="@drawable/shape_topic_collect_btn"
                     android:text="收藏话题"
                     android:layout_alignParentEnd="true"/>
 

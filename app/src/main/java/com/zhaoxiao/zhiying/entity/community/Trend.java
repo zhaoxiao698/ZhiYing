@@ -38,6 +38,28 @@ public class Trend implements Serializable {
     private int share;
     @SerializedName("hotComment")
     private Comment hotComment;
+    @SerializedName("linkId")
+    private int linkId;
+    @SerializedName("linkType")
+    private int linkType;
+    @SerializedName("linkTable")
+    private int linkTable;
+    @SerializedName("linkTitle")
+    private String linkTitle;
+    @SerializedName("linkTypeS")
+    private String linkTypeS;
+    @SerializedName("channelName")
+    private String channelName;
+    @SerializedName("articleImg")
+    private String articleImg;
+    @SerializedName("subType")
+    private String subType;
+    @SerializedName("likeStatus")
+    private boolean likeStatus;
+    @SerializedName("collectStatus")
+    private boolean collectStatus;
+    @SerializedName("attentionStatus")
+    private boolean attentionStatus;
 
     public int getId() {
         return id;
@@ -159,6 +181,94 @@ public class Trend implements Serializable {
         this.hotComment = hotComment;
     }
 
+    public int getLinkId() {
+        return linkId;
+    }
+
+    public void setLinkId(int linkId) {
+        this.linkId = linkId;
+    }
+
+    public int getLinkType() {
+        return linkType;
+    }
+
+    public void setLinkType(int linkType) {
+        this.linkType = linkType;
+    }
+
+    public int getLinkTable() {
+        return linkTable;
+    }
+
+    public void setLinkTable(int linkTable) {
+        this.linkTable = linkTable;
+    }
+
+    public String getLinkTitle() {
+        return linkTitle;
+    }
+
+    public void setLinkTitle(String linkTitle) {
+        this.linkTitle = linkTitle;
+    }
+
+    public String getLinkTypeS() {
+        return linkTypeS;
+    }
+
+    public void setLinkTypeS(String linkTypeS) {
+        this.linkTypeS = linkTypeS;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
+    }
+
+    public String getArticleImg() {
+        return articleImg;
+    }
+
+    public void setArticleImg(String articleImg) {
+        this.articleImg = articleImg;
+    }
+
+    public String getSubType() {
+        return subType;
+    }
+
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
+
+    public boolean getLikeStatus() {
+        return likeStatus;
+    }
+
+    public void setLikeStatus(boolean likeStatus) {
+        this.likeStatus = likeStatus;
+    }
+
+    public boolean getCollectStatus() {
+        return collectStatus;
+    }
+
+    public void setCollectStatus(boolean collectStatus) {
+        this.collectStatus = collectStatus;
+    }
+
+    public boolean getAttentionStatus() {
+        return attentionStatus;
+    }
+
+    public void setAttentionStatus(boolean attentionStatus) {
+        this.attentionStatus = attentionStatus;
+    }
+
     @Override
     public String toString() {
         return "Trend{" +
@@ -177,6 +287,17 @@ public class Trend implements Serializable {
                 ", comment=" + comment +
                 ", share=" + share +
                 ", hotComment=" + hotComment +
+                ", linkId=" + linkId +
+                ", linkType=" + linkType +
+                ", linkTable=" + linkTable +
+                ", linkTitle='" + linkTitle + '\'' +
+                ", linkTypeS='" + linkTypeS + '\'' +
+                ", channelName='" + channelName + '\'' +
+                ", articleImg='" + articleImg + '\'' +
+                ", subType='" + subType + '\'' +
+                ", likeStatus=" + likeStatus +
+                ", collectStatus=" + collectStatus +
+                ", attentionStatus=" + attentionStatus +
                 '}';
     }
 }

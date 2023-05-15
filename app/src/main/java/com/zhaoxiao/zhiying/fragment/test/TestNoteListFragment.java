@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -60,11 +61,15 @@ public class TestNoteListFragment extends BaseFragment {
     private String account;
     private XUIListPopup mListPopup;
 
+    private boolean share;
+
     public TestNoteListFragment() {
     }
 
-    public static TestNoteListFragment newInstance() {
-        return new TestNoteListFragment();
+    public static TestNoteListFragment newInstance(boolean share) {
+        TestNoteListFragment fragment = new TestNoteListFragment();
+        fragment.share = share;
+        return fragment;
     }
 
     @Override
@@ -97,16 +102,26 @@ public class TestNoteListFragment extends BaseFragment {
         linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rv.setLayoutManager(linearLayoutManager);
         testNoteAdapter = new TestNoteAdapter(getContext());
-        testNoteAdapter.setOnItemClickListener(testNoteDetail -> {
-            Map<String,Object> map = new HashMap<>();
-            map.put("questionInfo",testNoteDetail.getQuestionInfo());
-            map.put("subType",testNoteDetail.getSubType());
-            map.put("questionId",testNoteDetail.getQuestionId());
-            map.put("table",table);
-            map.put("link",true);
-            map.put("edit",true);
-            navigateTo(TestNoteActivity.class, "map", (Serializable) map);
-        });
+        if (share){
+            testNoteAdapter.setOnItemClickListener(testNoteDetail -> {
+                Intent intent = new Intent();
+                intent.putExtra("testNoteDetail",testNoteDetail);
+                intent.putExtra("table",table);
+                getActivity().setResult(getActivity().RESULT_OK, intent);
+                getActivity().finish();
+            });
+        } else {
+            testNoteAdapter.setOnItemClickListener(testNoteDetail -> {
+                Map<String, Object> map = new HashMap<>();
+                map.put("questionInfo", testNoteDetail.getQuestionInfo());
+                map.put("subType", testNoteDetail.getSubType());
+                map.put("questionId", testNoteDetail.getQuestionId());
+                map.put("table", table);
+                map.put("link", true);
+                map.put("edit", true);
+                navigateTo(TestNoteActivity.class, "map", (Serializable) map);
+            });
+        }
         rv.setAdapter(testNoteAdapter);
 
         getNoteList(0);

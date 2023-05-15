@@ -7,20 +7,28 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.mine.CollectionActivity;
 import com.zhaoxiao.zhiying.activity.mine.HistoryActivity;
+import com.zhaoxiao.zhiying.activity.mine.MyAttentionActivity;
+import com.zhaoxiao.zhiying.activity.mine.MyFanActivity;
+import com.zhaoxiao.zhiying.activity.mine.MyTrendActivity;
 import com.zhaoxiao.zhiying.activity.mine.NoteListActivity;
+import com.zhaoxiao.zhiying.activity.mine.SetInfoActivity;
 import com.zhaoxiao.zhiying.activity.mine.SetTimePlanActivity;
 import com.zhaoxiao.zhiying.activity.mine.WrongQuestionActivity;
 import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.mine.Plan;
+import com.zhaoxiao.zhiying.entity.mine.User;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
+import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,6 +78,12 @@ public class MineLoggedFragment extends BaseFragment {
     TextView tvHavePlan;
     @BindView(R.id.rl_have_plan)
     RelativeLayout rlHavePlan;
+    @BindView(R.id.tv_trend)
+    TextView tvTrend;
+    @BindView(R.id.tv_attention)
+    TextView tvAttention;
+    @BindView(R.id.tv_fan)
+    TextView tvFan;
 
     private long timePlan;
     private long timePlanDo;
@@ -77,6 +91,8 @@ public class MineLoggedFragment extends BaseFragment {
     private String account;
 
     private Plan plan;
+
+    private User user;
 
     public MineLoggedFragment() {
     }
@@ -96,23 +112,27 @@ public class MineLoggedFragment extends BaseFragment {
         account = SpUtils.getInstance(getContext()).getString("account", "");
     }
 
-    @OnClick({R.id.iv_avatar, R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong})
+    @OnClick({/*R.id.iv_avatar, */R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.iv_avatar:
-                XToastUtils.toast("预览头像");
-                break;
+//            case R.id.iv_avatar:
+////                XToastUtils.toast("预览头像");
+//                break;
             case R.id.ll_info:
-                XToastUtils.toast("个人信息");
+//                XToastUtils.toast("个人信息");
+                navigateTo(SetInfoActivity.class);
                 break;
             case R.id.ll_trend:
-                XToastUtils.toast("动态");
+//                XToastUtils.toast("动态");
+                navigateTo(MyTrendActivity.class);
                 break;
             case R.id.ll_attention:
-                XToastUtils.toast("关注");
+//                XToastUtils.toast("关注");
+                navigateTo(MyAttentionActivity.class);
                 break;
             case R.id.ll_fan:
-                XToastUtils.toast("粉丝");
+//                XToastUtils.toast("粉丝");
+                navigateTo(MyFanActivity.class);
                 break;
             case R.id.card_plan:
 //                XToastUtils.toast("计划");
@@ -142,6 +162,7 @@ public class MineLoggedFragment extends BaseFragment {
         super.onStart();
 
         getPlan();
+        getUserInfo();
 
 //        timePlan = getStringFromSp("time_plan", false);
 //        if (timePlan <= 0) {
@@ -180,6 +201,32 @@ public class MineLoggedFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<Data<Plan>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getUserInfo() {
+        Call<Data<User>> getUserInfoCall = userService.getByAccount(account);
+        getUserInfoCall.enqueue(new Callback<Data<User>>() {
+            @Override
+            public void onResponse(Call<Data<User>> call, Response<Data<User>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    user = response.body().getData();
+                    tvName.setText(user.getName());
+                    tvSign.setText(user.getSign());
+                    Picasso.with(getContext())
+                            .load(user.getAvatar())
+                            .transform(new CircleCornerTransForm())
+                            .into(ivAvatar);
+                    tvTrend.setText(NumberUtils.intChange2Str(user.getTrendNum()));
+                    tvAttention.setText(NumberUtils.intChange2Str(user.getAttentionNum()));
+                    tvFan.setText(NumberUtils.intChange2Str(user.getFanNum()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<User>> call, Throwable t) {
 
             }
         });

@@ -23,15 +23,25 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private Context mContext;
     private List<Article> list;
+    private boolean share = false;
 
     private OnItemClickListener mOnItemClickListener;
+    private OnItemClickListenerShare mOnItemClickListenerShare;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemClickListenerShare(OnItemClickListenerShare onItemClickListenerShare) {
+        mOnItemClickListenerShare = onItemClickListenerShare;
+    }
+
     public void setList(List<Article> list) {
         this.list = list;
+    }
+
+    public void setShare(boolean share) {
+        this.share = share;
     }
 
     public ArticleAdapter(Context mContext) {
@@ -65,6 +75,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.articleId = article.getId();
+        viewHolder.article = article;
     }
 
     @Override
@@ -79,6 +90,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private Integer articleId;
+        private Article article;
         private ImageView ivImg;
         private TextView tvTitle;
         private TextView tvDuration;
@@ -96,7 +108,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(articleId);
+                    if (share){
+                        mOnItemClickListenerShare.onItemClick(article);
+                    } else {
+                        mOnItemClickListener.onItemClick(articleId);
+                    }
                 }
             });
         }
@@ -104,5 +120,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(Integer articleId);
+    }
+
+    public interface OnItemClickListenerShare {
+        void onItemClick(Article article);
     }
 }

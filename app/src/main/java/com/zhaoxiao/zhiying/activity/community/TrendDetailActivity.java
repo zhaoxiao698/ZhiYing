@@ -3,10 +3,13 @@ package com.zhaoxiao.zhiying.activity.community;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +30,7 @@ import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
+import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.imageview.nine.ItemImageClickListener;
 import com.xuexiang.xui.widget.imageview.nine.NineGridImageView;
@@ -34,10 +38,12 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.study.ArticleActivity;
+import com.zhaoxiao.zhiying.activity.study.NoteActivity;
+import com.zhaoxiao.zhiying.activity.test.QuestionDetailActivity;
+import com.zhaoxiao.zhiying.activity.test.TestNoteActivity;
 import com.zhaoxiao.zhiying.adapter.community.CommentAdapter;
 import com.zhaoxiao.zhiying.api.CommunityService;
-import com.zhaoxiao.zhiying.api.StudyService;
-import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
 import com.zhaoxiao.zhiying.entity.community.Topic;
@@ -45,6 +51,7 @@ import com.zhaoxiao.zhiying.entity.community.Trend;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.community.CommentFragment;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.SettingSPUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
@@ -52,11 +59,13 @@ import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,6 +102,18 @@ public class TrendDetailActivity extends BaseActivity {
     RecyclerView rv;
     @BindView(R.id.srl)
     SmartRefreshLayout srl;
+    @BindView(R.id.tv_share_title)
+    TextView tvShareTitle;
+    @BindView(R.id.tv_share_type)
+    TextView tvShareType;
+    @BindView(R.id.ll_share_link)
+    LinearLayout llShareLink;
+    @BindView(R.id.iv_like)
+    ImageView ivLike;
+    @BindView(R.id.iv_collection)
+    ImageView ivCollection;
+    @BindView(R.id.btn_attention)
+    Button btnAttention;
 
     private Trend trend;
     private String[] mTitles = {"最新", "热门"};
@@ -122,8 +143,8 @@ public class TrendDetailActivity extends BaseActivity {
         srl.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull @NotNull RefreshLayout refreshLayout) {
-                pageNum=1;
-                refreshFlag=0;
+                pageNum = 1;
+                refreshFlag = 0;
                 getTrendDetail(1);
                 getCommentList(1);
             }
@@ -141,7 +162,7 @@ public class TrendDetailActivity extends BaseActivity {
         setDetail();
 
         //comment
-        linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
         commentAdapter = new CommentAdapter(this);
         rv.setAdapter(commentAdapter);
@@ -240,11 +261,11 @@ public class TrendDetailActivity extends BaseActivity {
         }
 
         //操作条
-        tvLike.setText(String.valueOf(trend.getLike()));
-        tvComment.setText(String.valueOf(trend.getComment()));
-        tvCommentNum1.setText("（" + trend.getComment() + "条）");
-        tvShare.setText(String.valueOf(trend.getShare()));
-        tvCollection.setText(String.valueOf(trend.getCollection()));
+        tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
+        tvComment.setText(NumberUtils.intChange2Str(trend.getComment()));
+        tvCommentNum1.setText("（" + NumberUtils.intChange2Str(trend.getComment()) + "条）");
+        tvShare.setText(NumberUtils.intChange2Str(trend.getShare()));
+        tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));
 
         //图片
         nglImages.setImagesData(trend.getImgList(), 0);
@@ -253,22 +274,101 @@ public class TrendDetailActivity extends BaseActivity {
                 .load(trend.getUserAvatar())
                 .transform(new CircleCornerTransForm())
                 .into(ivAvatar);
+
+        //分享链接
+        llShareLink.setOnClickListener(view -> {
+            Map<String, Object> map = new HashMap<>();
+            switch (trend.getLinkType()) {
+                case 1:
+                    map.put("articleTitle", trend.getLinkTitle());
+                    map.put("channelName", trend.getChannelName());
+                    map.put("img", trend.getArticleImg());
+                    map.put("articleId", trend.getLinkId());
+                    map.put("link", true);
+                    map.put("edit", false);
+                    map.put("account", trend.getUserAccount());
+                    navigateTo(NoteActivity.class, "map", (Serializable) map);
+                    break;
+                case 2:
+                    map.put("questionInfo", trend.getLinkTitle());
+                    map.put("subType", trend.getSubType());
+                    map.put("questionId", trend.getLinkId());
+                    map.put("table", trend.getLinkTable());
+                    map.put("link", true);
+                    map.put("edit", false);
+                    map.put("account", trend.getUserAccount());
+                    navigateTo(TestNoteActivity.class, "map", (Serializable) map);
+                    break;
+                case 3:
+                    navigateTo(ArticleActivity.class, "articleId", trend.getLinkId());
+                    break;
+                case 4:
+                    map.put("questionId", trend.getLinkId());
+                    map.put("table", trend.getLinkTable());
+                    navigateTo(QuestionDetailActivity.class, "map", (Serializable) map);
+                    break;
+                case 5:
+                    getTrendShare(trend.getLinkId());
+                    break;
+                default:
+                    llShareLink.setVisibility(View.GONE);
+                    break;
+            }
+        });
+        tvShareTitle.setText(trend.getLinkTitle());
+        tvShareType.setText(trend.getLinkTypeS());
+
+        //点赞收藏关注状态
+        boolean likeStatus = trend.getLikeStatus();
+        if (likeStatus) {
+            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            ivLike.setImageResource(R.drawable.like1_community);
+//            trend.setLike(trend.getLike()+1);
+//            tvLike.setText(String.valueOf(trend.getLike()));
+        } else {
+            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+            ivLike.setImageResource(R.drawable.like_community);
+//            trend.setLike(trend.getLike()-1);
+//            tvLike.setText(String.valueOf(trend.getLike()));
+        }
+        boolean collectStatus = trend.getCollectStatus();
+        if (collectStatus) {
+            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            ivCollection.setImageResource(R.drawable.star1_community);
+//            trend.setCollection(trend.getCollection()+1);
+//            tvCollection.setText(String.valueOf(trend.getCollection()));
+        } else {
+            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+            ivCollection.setImageResource(R.drawable.star_community);
+//            trend.setCollection(trend.getCollection()-1);
+//            tvCollection.setText(String.valueOf(trend.getCollection()));
+        }
+        boolean attentionStatus = trend.getAttentionStatus();
+        if (attentionStatus) {
+            btnAttention.setText("已关注");
+            btnAttention.setTextColor(getResources().getColor(R.color.gray));
+            btnAttention.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
+        } else {
+            btnAttention.setText("关注");
+            btnAttention.setTextColor(getResources().getColor(R.color.white));
+            btnAttention.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn));
+        }
     }
 
     private void getCommentList(int type) {
         Map<String, String> map = new HashMap<>();
         map.put("pageNo", String.valueOf(pageNum));
         map.put("pageSize", String.valueOf(8));
-        map.put("sort",String.valueOf(commentSortType));
-        map.put("order","false");
-        map.put("trendId",String.valueOf(trend.getId()));
+        map.put("sort", String.valueOf(commentSortType));
+        map.put("order", "false");
+        map.put("trendId", String.valueOf(trend.getId()));
         Call<Data<PageInfo<Comment>>> commentCall = communityService.getCommentList(map);
         commentCall.enqueue(new Callback<Data<PageInfo<Comment>>>() {
             @Override
             public void onResponse(Call<Data<PageInfo<Comment>>> call, Response<Data<PageInfo<Comment>>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     List<Comment> list = response.body().getData().getList();
-                    switch (type){
+                    switch (type) {
                         case 0:
                             commentList = list;
                             commentAdapter.setList(commentList);
@@ -280,7 +380,7 @@ public class TrendDetailActivity extends BaseActivity {
                             commentAdapter.setList(commentList);
                             commentAdapter.notifyDataSetChanged();
                             pageNum = 1;
-                            if(++refreshFlag==2) srl.finishRefresh();
+                            if (++refreshFlag == 2) srl.finishRefresh();
                             break;
                         case 2:
                             if (pageNum > response.body().getData().getPages()) {
@@ -306,12 +406,12 @@ public class TrendDetailActivity extends BaseActivity {
     }
 
     private void getTrendDetail(int type) {
-        Call<Data<Trend>> trendCall = communityService.getTrend(trend.getId());
+        Call<Data<Trend>> trendCall = communityService.getTrend(trend.getId(), account);
         trendCall.enqueue(new Callback<Data<Trend>>() {
             @Override
             public void onResponse(Call<Data<Trend>> call, Response<Data<Trend>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
-                    switch (type){
+                    switch (type) {
                         case 0:
                             trend = response.body().getData();
                             setDetail();
@@ -319,7 +419,7 @@ public class TrendDetailActivity extends BaseActivity {
                         case 1:
                             trend = response.body().getData();
                             setDetail();
-                            if(++refreshFlag==2) srl.finishRefresh();
+                            if (++refreshFlag == 2) srl.finishRefresh();
                             break;
                         case 2:
                             //detail没有加载
@@ -406,10 +506,13 @@ public class TrendDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.iv_more:
-                XToastUtils.toast("更多");
+//                XToastUtils.toast("更多");
+                showSimpleBottomSheetList();
                 break;
             case R.id.btn_attention:
-                XToastUtils.toast("关注");
+//                XToastUtils.toast("关注");
+                boolean attentionStatus = trend.getAttentionStatus();
+                attention(!attentionStatus);
                 break;
             case R.id.ll_reply:
                 XToastUtils.toast("回复");
@@ -418,13 +521,21 @@ public class TrendDetailActivity extends BaseActivity {
                 XToastUtils.toast("评论");
                 break;
             case R.id.ll_like:
-                XToastUtils.toast("点赞");
+//                XToastUtils.toast("点赞");
+                boolean likeStatus = trend.getLikeStatus();
+                like(!likeStatus);
                 break;
             case R.id.ll_collection:
-                XToastUtils.toast("收藏");
+//                XToastUtils.toast("收藏");
+                boolean collectStatus = trend.getCollectStatus();
+                collect(!collectStatus);
                 break;
             case R.id.ll_share:
-                XToastUtils.toast("分享转发");
+//                XToastUtils.toast("分享转发");
+                Map<String, Object> linkMap = new HashMap<>();
+                linkMap.put("linkId", trend.getId());
+                linkMap.put("info", trend.getInfo());
+                navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                 break;
         }
     }
@@ -434,4 +545,157 @@ public class TrendDetailActivity extends BaseActivity {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 0);
         StatusBarUtils.setStatusBarLightMode(this);
     }
+
+    private void like(boolean like) {
+        Call<Data<Boolean>> likeCall = communityService.like(account, trend.getId(), like);
+        likeCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        trend.setLikeStatus(like);
+                        if (like) {
+                            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            ivLike.setImageResource(R.drawable.like1_community);
+                            trend.setLike(trend.getLike()+1);
+                            tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
+                        } else {
+                            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+                            ivLike.setImageResource(R.drawable.like_community);
+                            trend.setLike(trend.getLike()-1);
+                            tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (like) {
+                    XToastUtils.toast("点赞失败");
+                } else {
+                    XToastUtils.toast("取消点赞失败");
+                }
+            }
+        });
+    }
+
+    private void collect(boolean collect) {
+        Call<Data<Boolean>> collectCall = communityService.collect(account, trend.getId(), collect);
+        collectCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        trend.setCollectStatus(collect);
+                        if (collect) {
+                            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            ivCollection.setImageResource(R.drawable.star1_community);
+                            trend.setCollection(trend.getCollection()+1);
+                            tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));
+                        } else {
+                            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+                            ivCollection.setImageResource(R.drawable.star_community);
+                            trend.setCollection(trend.getCollection()-1);
+                            tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (collect) {
+                    XToastUtils.toast("收藏失败");
+                } else {
+                    XToastUtils.toast("取消收藏失败");
+                }
+            }
+        });
+    }
+
+    private void getTrendShare(int trendId) {
+        Call<Data<Trend>> trendShareCall = communityService.getTrend(trendId, account);
+        trendShareCall.enqueue(new Callback<Data<Trend>>() {
+            @Override
+            public void onResponse(Call<Data<Trend>> call, Response<Data<Trend>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    Trend trendShare = response.body().getData();
+                    navigateTo(TrendDetailActivity.class, "trend", trendShare);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Trend>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //更多
+    private void showSimpleBottomSheetList() {
+        boolean collectStatus = trend.getCollectStatus();
+        BottomSheet.BottomListSheetBuilder bottomListSheetBuilder = new BottomSheet.BottomListSheetBuilder(this);
+        bottomListSheetBuilder
+                .setTitle("更多");
+        if (collectStatus) {
+            bottomListSheetBuilder
+                    .addItem("取消收藏");
+        } else {
+            bottomListSheetBuilder
+                    .addItem("收藏");
+        }
+        bottomListSheetBuilder
+                .addItem("举报")
+                .setIsCenter(true)
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    if (position == 0) {
+                        collect(!collectStatus);
+                    } else if (position == 1) {
+                        XToastUtils.toast("举报");
+                    }
+                })
+                .build()
+                .show();
+    }
+
+    private void attention(boolean attention) {
+        Call<Data<Boolean>> attentionCall = communityService.attention(trend.getUserAccount(), account, attention);
+        attentionCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        trend.setAttentionStatus(attention);
+                        if (attention) {
+                            btnAttention.setText("已关注");
+                            btnAttention.setTextColor(getResources().getColor(R.color.gray));
+                            btnAttention.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
+                        } else {
+                            btnAttention.setText("关注");
+                            btnAttention.setTextColor(getResources().getColor(R.color.white));
+                            btnAttention.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (attention) {
+                    XToastUtils.toast("关注失败");
+                } else {
+                    XToastUtils.toast("取消关注失败");
+                }
+            }
+        });
+    }
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.bind(this);
+//    }
 }

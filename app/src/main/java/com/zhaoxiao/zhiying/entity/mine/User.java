@@ -26,6 +26,16 @@ public class User implements Serializable {
     private Date addTime;
     @SerializedName("status")
     private int status;
+    @SerializedName("sign")
+    private String sign;
+    @SerializedName("mail")
+    private String mail;
+    @SerializedName("trendNum")
+    private int trendNum;
+    @SerializedName("attentionNum")
+    private int attentionNum;
+    @SerializedName("fanNum")
+    private int fanNum;
 
     public String getAccount() {
         return account;
@@ -107,6 +117,46 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getTrendNum() {
+        return trendNum;
+    }
+
+    public void setTrendNum(int trendNum) {
+        this.trendNum = trendNum;
+    }
+
+    public int getAttentionNum() {
+        return attentionNum;
+    }
+
+    public void setAttentionNum(int attentionNum) {
+        this.attentionNum = attentionNum;
+    }
+
+    public int getFanNum() {
+        return fanNum;
+    }
+
+    public void setFanNum(int fanNum) {
+        this.fanNum = fanNum;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -117,9 +167,14 @@ public class User implements Serializable {
                 ", avatar='" + avatar + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
-                ", admin=" + permissions +
+                ", permissions=" + permissions +
                 ", addTime=" + addTime +
                 ", status=" + status +
+                ", sign='" + sign + '\'' +
+                ", mail='" + mail + '\'' +
+                ", trendNum=" + trendNum +
+                ", attentionNum=" + attentionNum +
+                ", fanNum=" + fanNum +
                 '}';
     }
 }

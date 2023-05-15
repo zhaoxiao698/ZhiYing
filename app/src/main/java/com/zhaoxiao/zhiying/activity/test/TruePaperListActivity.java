@@ -138,7 +138,7 @@ public class TruePaperListActivity extends BaseActivity {
     }
 
     private void getTruePaper(TruePaper truePaper) {
-        Call<Data<Paper>> truePaperCall = testService.getTruePaper(truePaper.getId());
+        Call<Data<Paper>> truePaperCall = testService.getTruePaper(truePaper.getId(),account);
         truePaperCall.enqueue(new Callback<Data<Paper>>() {
             @Override
             public void onResponse(Call<Data<Paper>> call, Response<Data<Paper>> response) {

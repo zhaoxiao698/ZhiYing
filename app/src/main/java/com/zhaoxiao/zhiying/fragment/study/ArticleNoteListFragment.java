@@ -1,5 +1,6 @@
 package com.zhaoxiao.zhiying.fragment.study;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -50,11 +51,15 @@ public class ArticleNoteListFragment extends BaseFragment {
     private LinearLayoutManager linearLayoutManager;
     private String account;
 
+    private boolean share;
+
     public ArticleNoteListFragment() {
     }
 
-    public static ArticleNoteListFragment newInstance() {
-        return new ArticleNoteListFragment();
+    public static ArticleNoteListFragment newInstance(boolean share) {
+        ArticleNoteListFragment fragment = new ArticleNoteListFragment();
+        fragment.share = share;
+        return fragment;
     }
 
     @Override
@@ -87,16 +92,25 @@ public class ArticleNoteListFragment extends BaseFragment {
         linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rv.setLayoutManager(linearLayoutManager);
         articleNoteAdapter = new ArticleNoteAdapter(getContext());
-        articleNoteAdapter.setOnItemClickListener(articleNoteDetail -> {
-            Map<String,Object> map = new HashMap<>();
-            map.put("articleTitle",articleNoteDetail.getArticleTitle());
-            map.put("channelName",articleNoteDetail.getChannelName());
-            map.put("img",articleNoteDetail.getArticleImg());
-            map.put("articleId",articleNoteDetail.getArticleId());
-            map.put("link",true);
-            map.put("edit",true);
-            navigateTo(NoteActivity.class, "map", (Serializable) map);
-        });
+        if (share){
+            articleNoteAdapter.setOnItemClickListener(articleNoteDetail -> {
+                Intent intent = new Intent();
+                intent.putExtra("articleNoteDetail",articleNoteDetail);
+                getActivity().setResult(getActivity().RESULT_OK, intent);
+                getActivity().finish();
+            });
+        } else {
+            articleNoteAdapter.setOnItemClickListener(articleNoteDetail -> {
+                Map<String,Object> map = new HashMap<>();
+                map.put("articleTitle",articleNoteDetail.getArticleTitle());
+                map.put("channelName",articleNoteDetail.getChannelName());
+                map.put("img",articleNoteDetail.getArticleImg());
+                map.put("articleId",articleNoteDetail.getArticleId());
+                map.put("link",true);
+                map.put("edit",true);
+                navigateTo(NoteActivity.class, "map", (Serializable) map);
+            });
+        }
         rv.setAdapter(articleNoteAdapter);
 
         getNoteList(0);

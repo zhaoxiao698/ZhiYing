@@ -2,6 +2,8 @@ package com.zhaoxiao.zhiying.activity.study;
 
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -16,6 +18,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xui.utils.ViewUtils;
+import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
@@ -25,12 +28,15 @@ import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.study.ArticleListFragment;
 import com.zhaoxiao.zhiying.fragment.study.ChannelDetailFragment;
 import com.zhaoxiao.zhiying.util.BitMapUtil;
+import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jp.wasabeef.blurry.Blurry;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,6 +66,8 @@ public class ChannelActivity extends BaseActivity {
     SlidingTabLayout slidingTabLayout;
     @BindView(R.id.viewPager)
     FixedViewPager viewPager;
+    @BindView(R.id.btn_collect)
+    Button btnCollect;
 
     private int channelId;
     private Channel channel;
@@ -69,6 +77,8 @@ public class ChannelActivity extends BaseActivity {
 
     private StudyService studyService;
 
+    private String account;
+
     @Override
     protected int initLayout() {
         return R.layout.activity_channel;
@@ -76,20 +86,21 @@ public class ChannelActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        account = SpUtils.getInstance(this).getString("account", "");
         channelId = (int) getIntent().getSerializableExtra("channelId");
         studyService = (StudyService) getService(StudyService.class);
         getChannel();
     }
 
     private void getChannel() {
-        Call<Data<Channel>> channelCall = studyService.getChannelById(channelId);
+        Call<Data<Channel>> channelCall = studyService.getChannelById(channelId, account);
         channelCall.enqueue(new Callback<Data<Channel>>() {
             @Override
             public void onResponse(Call<Data<Channel>> call, Response<Data<Channel>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     channel = response.body().getData();
                     afterRequest();
-                }else System.out.println("请求失败");
+                } else System.out.println("请求失败");
             }
 
             @Override
@@ -191,6 +202,18 @@ public class ChannelActivity extends BaseActivity {
 //                setTextSize(slidingTabLayout.getCurrentTab());
             }
         });
+
+        //订阅状态
+        boolean collectStatus = channel.getCollectStatus();
+        if (collectStatus) {
+            btnCollect.setText("已订阅");
+            btnCollect.setTextColor(getResources().getColor(R.color.gray));
+            btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
+        } else {
+            btnCollect.setText("订阅");
+            btnCollect.setTextColor(getResources().getColor(R.color.white));
+            btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn));
+        }
     }
 
     @Override
@@ -211,5 +234,50 @@ public class ChannelActivity extends BaseActivity {
                 textView.setTypeface(Typeface.DEFAULT);
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.btn_collect)
+    public void onClick() {
+        boolean collectStatus = channel.getCollectStatus();
+        collect(!collectStatus);
+    }
+
+    private void collect(boolean collect) {
+        Call<Data<Boolean>> channelCollectCall = studyService.channelCollect(account, channelId, collect);
+        channelCollectCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()) {
+                        channel.setCollectStatus(collect);
+                        if (collect) {
+                            btnCollect.setText("已订阅");
+                            btnCollect.setTextColor(getResources().getColor(R.color.gray));
+                            btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
+                        } else {
+                            btnCollect.setText("订阅");
+                            btnCollect.setTextColor(getResources().getColor(R.color.white));
+                            btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (collect) {
+                    XToastUtils.toast("订阅失败");
+                } else {
+                    XToastUtils.toast("取消订阅失败");
+                }
+            }
+        });
     }
 }

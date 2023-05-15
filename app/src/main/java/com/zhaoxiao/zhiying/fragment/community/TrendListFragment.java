@@ -93,9 +93,17 @@ public class TrendListFragment extends BaseFragment {
         linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         rv.setLayoutManager(linearLayoutManager);
         trendAdapter = new TrendAdapter(getContext());
+        trendAdapter.setCommunityService(communityService);
+        trendAdapter.setAccount(account);
 //        trendAdapter.setOnItemClickListener(trendId -> XToastUtils.toast(String.valueOf(trendId)));
         trendAdapter.setOnItemClickListener(trend -> navigateTo(TrendDetailActivity.class,"trend", trend));
         rv.setAdapter(trendAdapter);
+//        getTrendList(0);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         getTrendList(0);
     }
 
@@ -198,6 +206,7 @@ public class TrendListFragment extends BaseFragment {
             if (topicId != -1) {
                 map.put("topicId", String.valueOf(topicId));
             }
+            map.put("account", SpUtils.getInstance(getContext()).getString("account", ""));
             Call<Data<PageInfo<Trend>>> trendCall = communityService.getTrendList(map);
             trendCall.enqueue(new Callback<Data<PageInfo<Trend>>>() {
                 @Override

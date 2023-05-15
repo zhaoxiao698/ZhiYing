@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".fragment.mine.FeedbackFragment">
+
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="反馈内容"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="@dimen/config_margin_10dp"
+        android:background="@drawable/shape_input_account"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <EditText
+            android:id="@+id/et_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入反馈内容"
+            android:textColor="@color/black"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:maxLength="250"
+            android:lines="8"
+            android:textColorHint="@color/gray"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_commit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:text="提   交"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/save_note"
+        android:background="@drawable/save_note" />
+
+</LinearLayout>

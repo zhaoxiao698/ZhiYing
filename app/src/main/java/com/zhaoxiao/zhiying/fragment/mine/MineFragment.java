@@ -13,6 +13,8 @@ import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.HomeActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLogin2Activity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
+import com.zhaoxiao.zhiying.activity.mine.MessageActivity;
+import com.zhaoxiao.zhiying.activity.mine.SetActivity;
 import com.zhaoxiao.zhiying.activity.mine.SetPasswordActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.fragment.test.UnselectedFragment;
@@ -91,10 +93,12 @@ public class MineFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_setting:
-                XToastUtils.toast("设置");
+//                XToastUtils.toast("设置");
+                navigateTo(SetActivity.class);
                 break;
             case R.id.iv_message:
-                XToastUtils.toast("消息");
+//                XToastUtils.toast("消息");
+                navigateTo(MessageActivity.class);
                 break;
         }
     }

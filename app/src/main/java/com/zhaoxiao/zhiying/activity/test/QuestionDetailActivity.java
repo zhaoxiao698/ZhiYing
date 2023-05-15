@@ -13,6 +13,7 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.api.TestService;
 import com.zhaoxiao.zhiying.api.UserService;
@@ -29,6 +30,8 @@ import com.zhaoxiao.zhiying.entity.test.WritingM;
 import com.zhaoxiao.zhiying.fragment.test.QuestionFragment;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -84,11 +87,12 @@ public class QuestionDetailActivity extends BaseActivity {
             case 7:tvTitle.setText("完形填空");break;
             case 8:tvTitle.setText("新题型");break;
         }
+        account = SpUtils.getInstance(this).getString("account", "");
         testService = (TestService) getService(TestService.class);
         getQuestion();
 
         //添加测试记录
-        account = SpUtils.getInstance(this).getString("account", "");
+//        account = SpUtils.getInstance(this).getString("account", "");
         if (!account.equals("") && !account.equals("已过期")) {
 //            addTestRecord(account, questionId,table);
             userService = (UserService) getService(UserService.class);
@@ -117,7 +121,7 @@ public class QuestionDetailActivity extends BaseActivity {
     private void getQuestion() {
         switch (table){
             case 1:
-                Call<Data<ListeningM>> questionByIdCall1 = testService.getQuestionById1(questionId, table);
+                Call<Data<ListeningM>> questionByIdCall1 = testService.getQuestionById1(questionId, table,account);
                 questionByIdCall1.enqueue(new Callback<Data<ListeningM>>() {
                     @Override
                     public void onResponse(Call<Data<ListeningM>> call, Response<Data<ListeningM>> response) {
@@ -138,7 +142,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 2:
-                Call<Data<BankedM>> questionByIdCall2 = testService.getQuestionById2(questionId, table);
+                Call<Data<BankedM>> questionByIdCall2 = testService.getQuestionById2(questionId, table,account);
                 questionByIdCall2.enqueue(new Callback<Data<BankedM>>() {
                     @Override
                     public void onResponse(Call<Data<BankedM>> call, Response<Data<BankedM>> response) {
@@ -159,7 +163,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 3:
-                Call<Data<MatchM>> questionByIdCall3 = testService.getQuestionById3(questionId, table);
+                Call<Data<MatchM>> questionByIdCall3 = testService.getQuestionById3(questionId, table,account);
                 questionByIdCall3.enqueue(new Callback<Data<MatchM>>() {
                     @Override
                     public void onResponse(Call<Data<MatchM>> call, Response<Data<MatchM>> response) {
@@ -180,7 +184,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 4:
-                Call<Data<CarefulM>> questionByIdCall4 = testService.getQuestionById4(questionId, table);
+                Call<Data<CarefulM>> questionByIdCall4 = testService.getQuestionById4(questionId, table,account);
                 questionByIdCall4.enqueue(new Callback<Data<CarefulM>>() {
                     @Override
                     public void onResponse(Call<Data<CarefulM>> call, Response<Data<CarefulM>> response) {
@@ -201,7 +205,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 5:
-                Call<Data<TranslationM>> questionByIdCall5 = testService.getQuestionById5(questionId, table);
+                Call<Data<TranslationM>> questionByIdCall5 = testService.getQuestionById5(questionId, table,account);
                 questionByIdCall5.enqueue(new Callback<Data<TranslationM>>() {
                     @Override
                     public void onResponse(Call<Data<TranslationM>> call, Response<Data<TranslationM>> response) {
@@ -222,7 +226,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 6:
-                Call<Data<WritingM>> questionByIdCall6 = testService.getQuestionById6(questionId, table);
+                Call<Data<WritingM>> questionByIdCall6 = testService.getQuestionById6(questionId, table,account);
                 questionByIdCall6.enqueue(new Callback<Data<WritingM>>() {
                     @Override
                     public void onResponse(Call<Data<WritingM>> call, Response<Data<WritingM>> response) {
@@ -243,7 +247,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 7:
-                Call<Data<ClozeM>> questionByIdCall7 = testService.getQuestionById7(questionId, table);
+                Call<Data<ClozeM>> questionByIdCall7 = testService.getQuestionById7(questionId, table,account);
                 questionByIdCall7.enqueue(new Callback<Data<ClozeM>>() {
                     @Override
                     public void onResponse(Call<Data<ClozeM>> call, Response<Data<ClozeM>> response) {
@@ -264,7 +268,7 @@ public class QuestionDetailActivity extends BaseActivity {
                 });
                 break;
             case 8:
-                Call<Data<NewM>> questionByIdCall8 = testService.getQuestionById8(questionId, table);
+                Call<Data<NewM>> questionByIdCall8 = testService.getQuestionById8(questionId, table,account);
                 questionByIdCall8.enqueue(new Callback<Data<NewM>>() {
                     @Override
                     public void onResponse(Call<Data<NewM>> call, Response<Data<NewM>> response) {
@@ -294,29 +298,30 @@ public class QuestionDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.iv_more:
-                new BottomSheet.BottomListSheetBuilder(this)
-                        .setTitle("更多")
-                        .addItem("收藏")
-                        .addItem("笔记")
-                        .addItem("分享")
-                        .setIsCenter(true)
-                        .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
-                            dialog.dismiss();
-//                            XToastUtils.toast("Item " + (position + 1));
-                            switch (position) {
-                                case 0:
-                                    XToastUtils.toast("1");
-                                    break;
-                                case 1:
-                                    XToastUtils.toast("2");
-                                    break;
-                                case 2:
-                                    XToastUtils.toast("3");
-                                    break;
-                            }
-                        })
-                        .build()
-                        .show();
+//                new BottomSheet.BottomListSheetBuilder(this)
+//                        .setTitle("更多")
+//                        .addItem("收藏")
+//                        .addItem("笔记")
+//                        .addItem("分享")
+//                        .setIsCenter(true)
+//                        .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+//                            dialog.dismiss();
+////                            XToastUtils.toast("Item " + (position + 1));
+//                            switch (position) {
+//                                case 0:
+//                                    XToastUtils.toast("1");
+//                                    break;
+//                                case 1:
+//                                    XToastUtils.toast("2");
+//                                    break;
+//                                case 2:
+//                                    XToastUtils.toast("3");
+//                                    break;
+//                            }
+//                        })
+//                        .build()
+//                        .show();
+                showSimpleBottomSheetList();
                 break;
         }
     }
@@ -358,5 +363,107 @@ public class QuestionDetailActivity extends BaseActivity {
 
     public boolean getSelect(){
         return select;
+    }
+
+    //更多弹窗
+    private void showSimpleBottomSheetList() {
+        boolean isCollect = question.getCollectStatus();
+        Map<String, Object> map = new HashMap<>();
+        map.put("questionInfo", question.getInfo());
+        map.put("subType", question.getSubType());
+        map.put("questionId", question.getId());
+//        int table = 0;
+//        if (question instanceof ListeningM) {
+//            table = 1;
+//        } else if (question instanceof BankedM) {
+//            table = 2;
+//        } else if (question instanceof MatchM) {
+//            table = 3;
+//        } else if (question instanceof CarefulM) {
+//            table = 4;
+//        } else if (question instanceof ClozeM) {
+//            table = 5;
+//        } else if (question instanceof NewM) {
+//            table = 6;
+//        } else if (question instanceof TranslationM) {
+//            table = 7;
+//        } else if (question instanceof WritingM) {
+//            table = 8;
+//        }
+        map.put("table", table);
+
+        BottomSheet.BottomListSheetBuilder bottomListSheetBuilder = new BottomSheet.BottomListSheetBuilder(this);
+        bottomListSheetBuilder
+                .setTitle("更多")
+                .addItem("笔记");
+        if (isCollect){
+            bottomListSheetBuilder
+                    .addItem("取消收藏");
+        } else {
+            bottomListSheetBuilder
+                    .addItem("收藏");
+        }
+        int finalTable = table;
+        bottomListSheetBuilder
+                .addItem("分享")
+                .setIsCenter(true)
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position){
+                        case 0:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                map.put("link",false);
+                                map.put("edit",true);
+                                navigateTo(TestNoteActivity.class, "map", (Serializable) map);
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                        case 1:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                collect(!isCollect,question, finalTable);
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                        case 2:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                XToastUtils.toast("分享");
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                    }
+                })
+                .build()
+                .show();
+    }
+
+    private void collect(boolean collect,QuestionM question,int table) {
+        Call<Data<Boolean>> collectCall = testService.collect(account, question.getId(), table, collect);
+        collectCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        question.setCollectStatus(collect);
+                        if (collect){
+                            XToastUtils.toast("收藏成功");
+                        } else {
+                            XToastUtils.toast("取消收藏成功");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (collect) {
+                    XToastUtils.toast("收藏失败");
+                } else {
+                    XToastUtils.toast("取消收藏失败");
+                }
+            }
+        });
     }
 }

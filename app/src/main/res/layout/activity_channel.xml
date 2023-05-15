@@ -103,13 +103,13 @@
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 
-                <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+                <Button
+                    android:id="@+id/btn_collect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/tv_num"
                     style="@style/RoundButton.Green"
-                    app:rb_backgroundColor="@color/g_yellow"
-                    app:rb_radius="5dp"
+                    android:background="@drawable/shape_attention_btn"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:text="订阅"

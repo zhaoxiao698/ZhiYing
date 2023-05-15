@@ -28,6 +28,9 @@ import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.community.ArticleSelectActivity;
+import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
+import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
+import com.zhaoxiao.zhiying.activity.study.NoteActivity;
 import com.zhaoxiao.zhiying.adapter.test.MyTestAdapter;
 import com.zhaoxiao.zhiying.api.TestService;
 import com.zhaoxiao.zhiying.api.UserService;
@@ -368,29 +371,30 @@ public class QuestionActivity extends BaseActivity {
                 break;
             case R.id.iv_more:
 //                XToastUtils.toast("更多");
-                new BottomSheet.BottomListSheetBuilder(this)
-                        .setTitle("更多")
-                        .addItem("收藏")
-                        .addItem("笔记")
-                        .addItem("分享")
-                        .setIsCenter(true)
-                        .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
-                            dialog.dismiss();
-//                            XToastUtils.toast("Item " + (position + 1));
-                            switch (position){
-                                case 0:
-                                    XToastUtils.toast("1");
-                                    break;
-                                case 1:
-                                    XToastUtils.toast("2");
-                                    break;
-                                case 2:
-                                    XToastUtils.toast("3");
-                                    break;
-                            }
-                        })
-                        .build()
-                        .show();
+//                new BottomSheet.BottomListSheetBuilder(this)
+//                        .setTitle("更多")
+//                        .addItem("收藏")
+//                        .addItem("笔记")
+//                        .addItem("分享")
+//                        .setIsCenter(true)
+//                        .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+//                            dialog.dismiss();
+////                            XToastUtils.toast("Item " + (position + 1));
+//                            switch (position){
+//                                case 0:
+//                                    XToastUtils.toast("1");
+//                                    break;
+//                                case 1:
+//                                    XToastUtils.toast("2");
+//                                    break;
+//                                case 2:
+//                                    XToastUtils.toast("3");
+//                                    break;
+//                            }
+//                        })
+//                        .build()
+//                        .show();
+                showSimpleBottomSheetList();
                 break;
             case R.id.btn_pre:
                 viewPager.setCurrentItem(--position);
@@ -548,5 +552,111 @@ public class QuestionActivity extends BaseActivity {
 
     public TestListeningFragment getTestListeningFragment(){
         return testListeningFragment;
+    }
+
+    //更多弹窗
+    private void showSimpleBottomSheetList() {
+        if (questionList.size()==0){
+            return;
+        }
+        QuestionM question = questionList.get(position);
+        boolean isCollect = question.getCollectStatus();
+        Map<String, Object> map = new HashMap<>();
+        map.put("questionInfo", question.getInfo());
+        map.put("subType", question.getSubType());
+        map.put("questionId", question.getId());
+        int table = 0;
+        if (question instanceof ListeningM) {
+            table = 1;
+        } else if (question instanceof BankedM) {
+            table = 2;
+        } else if (question instanceof MatchM) {
+            table = 3;
+        } else if (question instanceof CarefulM) {
+            table = 4;
+        } else if (question instanceof ClozeM) {
+            table = 5;
+        } else if (question instanceof NewM) {
+            table = 6;
+        } else if (question instanceof TranslationM) {
+            table = 7;
+        } else if (question instanceof WritingM) {
+            table = 8;
+        }
+        map.put("table", table);
+
+        BottomSheet.BottomListSheetBuilder bottomListSheetBuilder = new BottomSheet.BottomListSheetBuilder(this);
+        bottomListSheetBuilder
+                .setTitle("更多")
+                .addItem("笔记");
+        if (isCollect){
+            bottomListSheetBuilder
+                    .addItem("取消收藏");
+        } else {
+            bottomListSheetBuilder
+                    .addItem("收藏");
+        }
+        int finalTable = table;
+        bottomListSheetBuilder
+                .addItem("分享")
+                .setIsCenter(true)
+                .setOnSheetItemClickListener((dialog, itemView, position, tag) -> {
+                    dialog.dismiss();
+                    switch (position){
+                        case 0:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                map.put("link",false);
+                                map.put("edit",true);
+                                navigateTo(TestNoteActivity.class, "map", (Serializable) map);
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                        case 1:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                collect(!isCollect,question, finalTable);
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                        case 2:
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                XToastUtils.toast("分享");
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
+                            break;
+                    }
+                })
+                .build()
+                .show();
+    }
+
+    private void collect(boolean collect,QuestionM question,int table) {
+        Call<Data<Boolean>> collectCall = testService.collect(account, question.getId(), table, collect);
+        collectCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        question.setCollectStatus(collect);
+                        if (collect){
+                            XToastUtils.toast("收藏成功");
+                        } else {
+                            XToastUtils.toast("取消收藏成功");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (collect) {
+                    XToastUtils.toast("收藏失败");
+                } else {
+                    XToastUtils.toast("取消收藏失败");
+                }
+            }
+        });
     }
 }

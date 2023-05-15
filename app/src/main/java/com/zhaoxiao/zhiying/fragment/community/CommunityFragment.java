@@ -14,6 +14,7 @@ import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
 import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.community.CreateTopicActivity;
 import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
@@ -128,7 +129,7 @@ public class CommunityFragment extends BaseFragment {
             mListPopup.create(DensityUtils.dp2px(getContext(), 100), ViewGroup.LayoutParams.WRAP_CONTENT, (adapterView, view, i, l) -> {
                 switch (i){
                     case 0:navigateTo(PublishTrendActivity.class);break;
-                    case 1:break;
+                    case 1:navigateTo(CreateTopicActivity.class);break;
                 }
                 mListPopup.dismiss();
             });

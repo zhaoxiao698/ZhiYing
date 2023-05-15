@@ -14,12 +14,14 @@ public class Topic implements Serializable {
         private String info;
         @SerializedName("addTime")
         private Date addTime;
-        @SerializedName("userId")
+        @SerializedName("userAccount")
         private String userAccount;
         @SerializedName("join")
         private int join;
         @SerializedName("collection")
         private int collection;
+        private boolean collectStatus;
+
 
         public int getId() {
             return id;
@@ -77,6 +79,14 @@ public class Topic implements Serializable {
             this.collection = collection;
         }
 
+        public boolean getCollectStatus() {
+            return collectStatus;
+        }
+
+        public void setCollectStatus(boolean collectStatus) {
+            this.collectStatus = collectStatus;
+        }
+
         @Override
         public String toString() {
             return "Topic{" +
@@ -87,6 +97,7 @@ public class Topic implements Serializable {
                     ", userAccount='" + userAccount + '\'' +
                     ", join=" + join +
                     ", collection=" + collection +
+                    ", collectStatus=" + collectStatus +
                     '}';
         }
-    }
+}

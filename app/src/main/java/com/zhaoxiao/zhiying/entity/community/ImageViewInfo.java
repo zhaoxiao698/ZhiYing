@@ -112,17 +112,17 @@ public class ImageViewInfo implements IPreviewInfo, Serializable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeString(mUrl);
-//        dest.writeParcelable(mBounds, flags);
-//        dest.writeString(mDescription);
-//        dest.writeString(mVideoUrl);
+        dest.writeString(mUrl);
+        dest.writeParcelable(mBounds, flags);
+        dest.writeString(mDescription);
+        dest.writeString(mVideoUrl);
     }
 
     protected ImageViewInfo(Parcel in) {
-//        mUrl = in.readString();
-//        mBounds = in.readParcelable(Rect.class.getClassLoader());
-//        mDescription = in.readString();
-//        mVideoUrl = in.readString();
+        mUrl = in.readString();
+        mBounds = in.readParcelable(Rect.class.getClassLoader());
+        mDescription = in.readString();
+        mVideoUrl = in.readString();
     }
 
     public static final Parcelable.Creator<ImageViewInfo> CREATOR = new Parcelable.Creator<ImageViewInfo>() {

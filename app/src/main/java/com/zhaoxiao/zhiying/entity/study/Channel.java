@@ -20,6 +20,7 @@ public class Channel implements Serializable {
     private int collection;
     @SerializedName("lastTime")
     private Date lastTime;
+    private boolean collectStatus;
 
     public int getId() {
         return id;
@@ -77,6 +78,14 @@ public class Channel implements Serializable {
         this.lastTime = lastTime;
     }
 
+    public boolean getCollectStatus() {
+        return collectStatus;
+    }
+
+    public void setCollectStatus(boolean collectStatus) {
+        this.collectStatus = collectStatus;
+    }
+
     @Override
     public String toString() {
         return "Channel{" +
@@ -86,7 +95,8 @@ public class Channel implements Serializable {
                 ", img='" + img + '\'' +
                 ", num=" + num +
                 ", collection=" + collection +
-                ", lastTime='" + lastTime + '\'' +
+                ", lastTime=" + lastTime +
+                ", collectStatus=" + collectStatus +
                 '}';
     }
 }

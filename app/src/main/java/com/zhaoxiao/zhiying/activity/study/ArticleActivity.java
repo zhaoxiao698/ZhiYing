@@ -204,7 +204,11 @@ public class ArticleActivity extends BaseActivity {
                             navigateTo(ChannelActivity.class,"channelId",channelId);
                             break;
                         case 2:
-                            collect(!isCollect,listenFragment);
+                            if (!account.equals("") && !account.equals("已过期")) {
+                                collect(!isCollect, listenFragment);
+                            } else {
+                                navigateTo(CodeLoginActivity.class);
+                            }
                             break;
                         case 3:
                             if (!account.equals("") && !account.equals("已过期")) {
@@ -243,7 +247,11 @@ public class ArticleActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Data<Boolean>> call, Throwable t) {
-
+                if (collect) {
+                    XToastUtils.toast("收藏失败");
+                } else {
+                    XToastUtils.toast("取消收藏失败");
+                }
             }
         });
     }

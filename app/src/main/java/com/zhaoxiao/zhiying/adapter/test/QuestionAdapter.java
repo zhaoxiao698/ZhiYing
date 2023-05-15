@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.widget.button.roundbutton.RoundButton;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.adapter.study.ArticleAdapter;
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.test.QuestionM;
 import com.zhaoxiao.zhiying.util.NumberUtils;
@@ -26,15 +27,25 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context mContext;
     private List<QuestionM> list;
+    private boolean share = false;
 
     private OnItemClickListener mOnItemClickListener;
+    private OnItemClickListenerShare mOnItemClickListenerShare;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemClickListenerShare(OnItemClickListenerShare onItemClickListenerShare) {
+        mOnItemClickListenerShare = onItemClickListenerShare;
+    }
+
     public void setList(List<QuestionM> list) {
         this.list = list;
+    }
+
+    public void setShare(boolean share) {
+        this.share = share;
     }
 
     public QuestionAdapter(Context mContext) {
@@ -62,6 +73,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         viewHolder.tvTitle.setText(Html.fromHtml(question.getInfo()));
         viewHolder.tvType.setText(question.getSubType());
         viewHolder.questionId = question.getId();
+        viewHolder.question = question;
     }
 
     @Override
@@ -76,6 +88,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private Integer questionId;
+        private QuestionM question;
         private TextView tvTitle;
         private RoundButton tvType;
 
@@ -87,7 +100,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(questionId);
+                    if (share){
+                        mOnItemClickListenerShare.onItemClick(question);
+                    } else {
+                        mOnItemClickListener.onItemClick(questionId);
+                    }
                 }
             });
         }
@@ -95,5 +112,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public interface OnItemClickListener {
         void onItemClick(Integer questionId);
+    }
+
+    public interface OnItemClickListenerShare {
+        void onItemClick(QuestionM question);
     }
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingTop="13dp"
+    android:orientation="horizontal">
+
+    <com.xuexiang.xui.widget.imageview.RadiusImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/notice_mine"
+        app:riv_is_oval="true" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/config_margin_10dp"
+        android:layout_marginRight="@dimen/config_margin_10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingBottom="@dimen/config_padding_10dp"
+        app:contentPaddingLeft="@dimen/config_padding_20dp"
+        app:contentPaddingRight="@dimen/config_padding_20dp"
+        app:contentPaddingTop="@dimen/config_padding_10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这里是消息这里是消息这里是消里是是消里是消息这里是消息这里是消息这里是消息"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_message"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:text="2023.12.23 23:00"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

@@ -2,9 +2,10 @@ package com.zhaoxiao.zhiying.entity.study;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Recent {
+public class Recent implements Serializable {
     @SerializedName("id")
     private int id;
     @SerializedName("channelName")
