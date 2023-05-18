@@ -62,4 +62,12 @@ public interface CommunityService {
     Call<Data<Boolean>> attention(@Query("userAccount") String userAccount,@Query("fanAccount") String trendId,@Query("attention") boolean attention);
     @GET("community/topicCollect")
     Call<Data<Boolean>> topicCollect(@Query("account") String account,@Query("topicId") int topicId,@Query("collect") boolean collect);
+    @GET("community/getTrendSearchList")
+    Call<Data<PageInfo<Trend>>> getTrendSearchList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,@Query("searchWord") String searchWord, @Query("account") String account);
+    @GET("community/sendComment")
+    Call<Data<Boolean>> sendComment(@Query("trendId") int trendId, @Query("account") String account, @Query("info") String info);
+    @GET("community/likeComment")
+    Call<Data<Boolean>> likeComment(@Query("commentId") int commentId, @Query("account") String account, @Query("like") boolean like);
+    @GET("community/getTopicSearchList")
+    Call<Data<PageInfo<Topic>>> getTopicSearchList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,@Query("searchWord") String searchWord);
 }

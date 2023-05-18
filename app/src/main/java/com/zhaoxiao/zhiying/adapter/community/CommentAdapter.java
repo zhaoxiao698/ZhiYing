@@ -24,20 +24,29 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xui.widget.textview.ReadMoreTextView;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
 import com.zhaoxiao.zhiying.entity.community.Topic;
 import com.zhaoxiao.zhiying.entity.community.Trend;
+import com.zhaoxiao.zhiying.entity.study.Data;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.SettingSPUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<Comment> list;
+    private CommunityService communityService;
+    private String account;
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -47,6 +56,14 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public void setList(List<Comment> list) {
         this.list = list;
+    }
+
+    public void setCommunityService(CommunityService communityService) {
+        this.communityService = communityService;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public CommentAdapter(Context mContext) {
@@ -96,6 +113,17 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 .into(viewHolder.ivAvatar);
 
         viewHolder.commentId = comment.getId();
+        viewHolder.comment = comment;
+
+        //点赞状态
+        boolean likeStatus = comment.getLikeStatus();
+        if(likeStatus){
+            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            viewHolder.ivLike.setImageResource(R.drawable.like1_community);
+        } else {
+            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+            viewHolder.ivLike.setImageResource(R.drawable.like_community);
+        }
     }
 
     @Override
@@ -110,6 +138,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private Integer commentId;
+        private Comment comment;
         private ImageView ivAvatar;
         private TextView tvName;
         private TextView tvAddTime;
@@ -137,7 +166,9 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             llLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    XToastUtils.toast("点赞");
+//                    XToastUtils.toast("点赞");
+                    boolean likeStatus = comment.getLikeStatus();
+                    like(!likeStatus,comment,ivLike,tvLike);
                 }
             });
         }
@@ -145,5 +176,39 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(Integer commentId);
+    }
+
+    private void like(boolean like,Comment comment,ImageView view,TextView num) {
+        Call<Data<Boolean>> likeCommentCall = communityService.likeComment(comment.getId(), account, like);
+        likeCommentCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        comment.setLikeStatus(like);
+                        if (like){
+                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            view.setImageResource(R.drawable.like1_community);
+                            comment.setLike(comment.getLike()+1);
+                            num.setText(NumberUtils.intChange2Str(comment.getLike()));
+                        } else {
+                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
+                            view.setImageResource(R.drawable.like_community);
+                            comment.setLike(comment.getLike()-1);
+                            num.setText(NumberUtils.intChange2Str(comment.getLike()));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+                if (like){
+                    XToastUtils.toast("点赞失败");
+                } else {
+                    XToastUtils.toast("取消点赞失败");
+                }
+            }
+        });
     }
 }

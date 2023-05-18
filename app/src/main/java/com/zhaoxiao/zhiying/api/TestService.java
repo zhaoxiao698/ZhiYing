@@ -172,4 +172,9 @@ public interface TestService {
 
     @GET("test/collect")
     Call<Data<Boolean>> collect(@Query("account") String account, @Query("questionId") int questionId, @Query("table") int table, @Query("collect") boolean collect);
+
+    @GET("test/getQuestionSearchList")
+    Call<Data<PageInfo<QuestionM>>> getQuestionSearchList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                          @Query("account") String account, @Query("table") int table,
+                                                          @Query("searchWord") String searchWord);
 }

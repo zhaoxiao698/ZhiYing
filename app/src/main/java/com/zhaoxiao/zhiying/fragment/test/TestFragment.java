@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.test.QuestionSearchActivity;
 import com.zhaoxiao.zhiying.activity.test.SelectActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.util.StringUtils;
@@ -35,7 +36,7 @@ public class TestFragment extends BaseFragment {
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
             public void searchClick(View view) {
-
+                navigateTo(QuestionSearchActivity.class);
             }
 
             @Override

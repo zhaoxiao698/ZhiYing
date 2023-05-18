@@ -1,5 +1,6 @@
 package com.zhaoxiao.zhiying.util;
 
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -32,7 +33,7 @@ public class StringUtils {
 
     public static String randomCode() {
         StringBuilder str = new StringBuilder();
-        Random random = new Random();
+        SecureRandom random = new SecureRandom();
         for (int i = 0; i < 6; i++) {
             str.append(random.nextInt(10));
         }

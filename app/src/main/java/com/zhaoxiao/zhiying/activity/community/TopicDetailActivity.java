@@ -193,11 +193,11 @@ public class TopicDetailActivity extends BaseActivity {
                     if (response.body().getData()) {
                         topic.setCollectStatus(collect);
                         if (collect) {
-                            btnCollect.setText("已订阅");
+                            btnCollect.setText("已收藏");
                             btnCollect.setTextColor(getResources().getColor(R.color.gray));
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
                         } else {
-                            btnCollect.setText("订阅");
+                            btnCollect.setText("收藏话题");
                             btnCollect.setTextColor(getResources().getColor(R.color.g_yellow));
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_topic_collect_btn));
                         }

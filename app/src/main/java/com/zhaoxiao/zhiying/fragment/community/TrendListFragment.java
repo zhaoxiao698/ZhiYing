@@ -246,7 +246,7 @@ public class TrendListFragment extends BaseFragment {
 
                 @Override
                 public void onFailure(Call<Data<PageInfo<Trend>>> call, Throwable t) {
-
+                    System.out.println(t);
                 }
             });
         }

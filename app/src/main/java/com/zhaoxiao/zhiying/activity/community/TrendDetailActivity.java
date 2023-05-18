@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -51,6 +52,8 @@ import com.zhaoxiao.zhiying.entity.community.Trend;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.study.PageInfo;
 import com.zhaoxiao.zhiying.fragment.community.CommentFragment;
+import com.zhaoxiao.zhiying.util.EPSoftKeyBoardListener;
+import com.zhaoxiao.zhiying.util.EditTextUtil;
 import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.SettingSPUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
@@ -114,6 +117,10 @@ public class TrendDetailActivity extends BaseActivity {
     ImageView ivCollection;
     @BindView(R.id.btn_attention)
     Button btnAttention;
+    @BindView(R.id.et_reply)
+    EditText etReply;
+    @BindView(R.id.ll_reply1)
+    LinearLayout llReply1;
 
     private Trend trend;
     private String[] mTitles = {"最新", "热门"};
@@ -157,6 +164,21 @@ public class TrendDetailActivity extends BaseActivity {
             }
         });
 
+        EPSoftKeyBoardListener.setListener(this, new EPSoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
+            @Override
+            public void keyBoardShow(int height) {
+                llReply1.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void keyBoardHide(int height) {
+                llReply1.setVisibility(View.GONE);
+            }
+        });
+
+        account = SpUtils.getInstance(this).getString("account", "");
+        communityService = (CommunityService) getService(CommunityService.class);
+
         //detail
         setImagesAdapter();
         setDetail();
@@ -165,11 +187,13 @@ public class TrendDetailActivity extends BaseActivity {
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
         commentAdapter = new CommentAdapter(this);
+        commentAdapter.setAccount(account);
+        commentAdapter.setCommunityService(communityService);
         rv.setAdapter(commentAdapter);
         rv.setNestedScrollingEnabled(false);
         rv.setFocusable(false);
 
-        communityService = (CommunityService) getService(CommunityService.class);
+//        communityService = (CommunityService) getService(CommunityService.class);
         getCommentList(0);
 //        manager = getSupportFragmentManager();
 //
@@ -208,7 +232,7 @@ public class TrendDetailActivity extends BaseActivity {
         });
 
         //添加动态记录
-        account = SpUtils.getInstance(this).getString("account", "");
+//        account = SpUtils.getInstance(this).getString("account", "");
         if (!account.equals("") && !account.equals("已过期")) {
             addTrendRecord(account, trend.getId());
         }
@@ -362,6 +386,7 @@ public class TrendDetailActivity extends BaseActivity {
         map.put("sort", String.valueOf(commentSortType));
         map.put("order", "false");
         map.put("trendId", String.valueOf(trend.getId()));
+        map.put("account", account);
         Call<Data<PageInfo<Comment>>> commentCall = communityService.getCommentList(map);
         commentCall.enqueue(new Callback<Data<PageInfo<Comment>>>() {
             @Override
@@ -499,7 +524,7 @@ public class TrendDetailActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.iv_back, R.id.iv_more, R.id.btn_attention, R.id.ll_reply, R.id.ll_comment, R.id.ll_like, R.id.ll_collection, R.id.ll_share})
+    @OnClick({R.id.iv_back, R.id.iv_more, R.id.btn_attention, R.id.ll_reply, R.id.ll_comment, R.id.ll_like, R.id.ll_collection, R.id.ll_share, R.id.tv_send})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -515,10 +540,12 @@ public class TrendDetailActivity extends BaseActivity {
                 attention(!attentionStatus);
                 break;
             case R.id.ll_reply:
-                XToastUtils.toast("回复");
+//                llReply1.setVisibility(View.VISIBLE);
+                EditTextUtil.showSoftInputFromWindow(this, etReply);
+//                XToastUtils.toast("回复");
                 break;
             case R.id.ll_comment:
-                XToastUtils.toast("评论");
+//                XToastUtils.toast("评论");
                 break;
             case R.id.ll_like:
 //                XToastUtils.toast("点赞");
@@ -537,7 +564,36 @@ public class TrendDetailActivity extends BaseActivity {
                 linkMap.put("info", trend.getInfo());
                 navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                 break;
+            case R.id.tv_send:
+                sendComment();
+                break;
         }
+    }
+
+    private void sendComment() {
+        String info = etReply.getText().toString().trim();
+        if (StringUtils.isEmpty(info)){
+            return;
+        }
+        Call<Data<Boolean>> sendCommentCall = communityService.sendComment(trend.getId(), account, info);
+        sendCommentCall.enqueue(new Callback<Data<Boolean>>() {
+            @Override
+            public void onResponse(Call<Data<Boolean>> call, Response<Data<Boolean>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    if (response.body().getData()){
+                        XToastUtils.toast("评论成功");
+                        etReply.setText("");
+                        EditTextUtil.hideKeyboard(TrendDetailActivity.this);
+                        getCommentList(0);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<Boolean>> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -557,12 +613,12 @@ public class TrendDetailActivity extends BaseActivity {
                         if (like) {
                             ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
                             ivLike.setImageResource(R.drawable.like1_community);
-                            trend.setLike(trend.getLike()+1);
+                            trend.setLike(trend.getLike() + 1);
                             tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
                         } else {
                             ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
                             ivLike.setImageResource(R.drawable.like_community);
-                            trend.setLike(trend.getLike()-1);
+                            trend.setLike(trend.getLike() - 1);
                             tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
                         }
                     }
@@ -591,12 +647,12 @@ public class TrendDetailActivity extends BaseActivity {
                         if (collect) {
                             ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
                             ivCollection.setImageResource(R.drawable.star1_community);
-                            trend.setCollection(trend.getCollection()+1);
+                            trend.setCollection(trend.getCollection() + 1);
                             tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));
                         } else {
                             ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
                             ivCollection.setImageResource(R.drawable.star_community);
-                            trend.setCollection(trend.getCollection()-1);
+                            trend.setCollection(trend.getCollection() - 1);
                             tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));
                         }
                     }
@@ -690,6 +746,13 @@ public class TrendDetailActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
 //    @Override

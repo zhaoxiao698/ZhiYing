@@ -22,6 +22,8 @@ public class Comment implements Serializable {
     private Date addTime;
     @SerializedName("like")
     private int like;
+    @SerializedName("likeStatus")
+    private boolean likeStatus;
 
     public int getId() {
         return id;
@@ -87,6 +89,14 @@ public class Comment implements Serializable {
         this.like = like;
     }
 
+    public boolean getLikeStatus() {
+        return likeStatus;
+    }
+
+    public void setLikeStatus(boolean likeStatus) {
+        this.likeStatus = likeStatus;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -98,6 +108,7 @@ public class Comment implements Serializable {
                 ", info='" + info + '\'' +
                 ", addTime=" + addTime +
                 ", like=" + like +
+                ", likeStatus=" + likeStatus +
                 '}';
     }
 }

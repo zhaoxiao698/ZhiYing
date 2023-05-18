@@ -16,6 +16,7 @@ import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.community.CreateTopicActivity;
 import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
+import com.zhaoxiao.zhiying.activity.community.TrendSearchActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.fragment.test.SelectedFragment;
@@ -55,7 +56,7 @@ public class CommunityFragment extends BaseFragment {
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
             public void searchClick(View view) {
-
+                navigateTo(TrendSearchActivity.class);
             }
 
             @Override

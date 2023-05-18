@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".activity.community.TopicSelectActivity">
-
-<!--    <com.zhaoxiao.zhiying.view.SearchBarView-->
-<!--        android:id="@+id/search_bar_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:sb_type="Gray"-->
-<!--        app:sb_searchDrawable_tint="@color/gray"-->
-<!--        app:sb_searchHintText="搜索话题"-->
-<!--        app:sb_searchDrawable="@drawable/ic_navigation_back_white"/>-->
+    tools:context=".activity.study.ArticleSearchActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

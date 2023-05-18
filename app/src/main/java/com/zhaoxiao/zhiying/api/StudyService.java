@@ -80,4 +80,8 @@ public interface StudyService {
 
     @GET("study/channelCollect")
     Call<Data<Boolean>> channelCollect(@Query("account") String account, @Query("channelId") int channelId, @Query("collect") boolean collect);
+
+    @GET("study/getArticleSearchList")
+    Call<Data<PageInfo<Article>>> getArticleSearchList(@Query("pageNo") int pageNo, @Query("pageSize") int pageSize,
+                                                 @Query("searchWord") String searchWord);
 }

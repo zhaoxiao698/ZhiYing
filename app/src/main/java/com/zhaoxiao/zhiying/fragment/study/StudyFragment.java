@@ -16,6 +16,7 @@ import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 import com.xuexiang.xui.widget.banner.widget.banner.base.BaseBanner;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.study.ArticleActivity;
+import com.zhaoxiao.zhiying.activity.study.ArticleSearchActivity;
 import com.zhaoxiao.zhiying.activity.study.CalendarActivity;
 import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
 import com.zhaoxiao.zhiying.activity.study.FtypeActivity;
@@ -157,7 +158,8 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
         searchBarView.setOnViewClick(new SearchBarView.onViewClick() {
             @Override
             public void searchClick(View view) {
-                showToast("搜索");
+//                showToast("搜索");
+                navigateTo(ArticleSearchActivity.class);
             }
 
             @Override
