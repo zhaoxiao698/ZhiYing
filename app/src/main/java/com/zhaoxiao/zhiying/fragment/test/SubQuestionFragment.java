@@ -106,6 +106,9 @@ public class SubQuestionFragment extends BaseFragment {
         intentFilter.addAction(ACTION_QUESTION_UNSELECT);
         getContext().registerReceiver(questionReceiver, intentFilter);
 
+        if (StringUtils.isEmpty(subQuestion.getStem())) {
+            tvStem.setText(String.valueOf(subQuestion.getId()));
+        }
         tvStem.setText(subQuestion.getId() + ". " + subQuestion.getStem());
         if (subQuestion instanceof ListeningQuestion || subQuestion instanceof CarefulQuestion || subQuestion instanceof ClozeQuestion) {
 //            flOption.setVisibility(View.GONE);
@@ -113,6 +116,7 @@ public class SubQuestionFragment extends BaseFragment {
             tvB.setText(subQuestion.getB());
             tvC.setText(subQuestion.getC());
             tvD.setText(subQuestion.getD());
+            lvPosition.setVisibility(View.GONE);
         } else if (subQuestion instanceof BankedQuestion || subQuestion instanceof MatchQuestion || subQuestion instanceof NewQuestion) {
             llA.setVisibility(View.GONE);
             llB.setVisibility(View.GONE);
@@ -258,7 +262,8 @@ public class SubQuestionFragment extends BaseFragment {
         float screenHeight = getResources().getDisplayMetrics().heightPixels;
         System.out.println("view-->" + viewHeight);
         System.out.println("屏幕-->" + screenHeight);
-        float slidingHeight = viewHeight + UnitConversion.dp2px(getContext(), 50 + 80 - 30);
+//        float slidingHeight = viewHeight + UnitConversion.dp2px(getContext(), 50 + 80 - 30);
+        float slidingHeight = viewHeight + UnitConversion.dp2px(getContext(), 45 + 78 - 30);
         return slidingHeight / screenHeight;
     }
 

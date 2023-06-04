@@ -1,6 +1,7 @@
 package com.zhaoxiao.zhiying.activity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -140,12 +141,17 @@ public class HomeActivity extends BaseActivity {
                         ((SelectedFragment)mFragments.get(1).getChildFragmentManager().findFragmentById(R.id.fl_test)).startProgress();
                     }
                     StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.white), 0);
-                } else if(position==2||position==3){
-                    StatusBarUtil.setColor(HomeActivity.this, getResources().getColor(R.color.g_yellow), 0);
                     StatusBarUtils.setStatusBarLightMode(HomeActivity.this);
+                } else if(position==2||position==3){
+                    int[] attrs = {R.attr.myBgColor};
+                    TypedArray typedArray = HomeActivity.this.obtainStyledAttributes(attrs);
+                    int myBgColor = typedArray.getColor(0, 0);
+                    typedArray.recycle();
+                    StatusBarUtil.setColor(HomeActivity.this, myBgColor, 0);
+                    StatusBarUtils.setStatusBarDarkMode(HomeActivity.this);
                 } else {
                     StatusBarUtil.setTransparent(HomeActivity.this);
-                    StatusBarUtils.setStatusBarLightMode(HomeActivity.this);
+                    StatusBarUtils.setStatusBarDarkMode(HomeActivity.this);
                 }
             }
 

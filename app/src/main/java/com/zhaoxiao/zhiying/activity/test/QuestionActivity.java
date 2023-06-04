@@ -28,6 +28,7 @@ import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.community.ArticleSelectActivity;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
 import com.zhaoxiao.zhiying.activity.study.NoteActivity;
@@ -332,18 +333,20 @@ public class QuestionActivity extends BaseActivity {
                     if (response.body().getData()){
                         System.out.println("保存答案成功");
                         if (toSheet) {
-                            map1 = new HashMap<>();
-                            map1.put("questionList", questionList);
-                            map1.put("select", select);
-                            navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
+//                            map1 = new HashMap<>();
+//                            map1.put("questionList", questionList);
+//                            map1.put("select", select);
+//                            navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
                         }
+                    } else {
+                        System.out.println("保存答案失败");
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<Data<Boolean>> call, Throwable t) {
-
+                System.out.println("请求失败");
             }
         });
     }
@@ -410,7 +413,11 @@ public class QuestionActivity extends BaseActivity {
                 if (position == mFragments.size() - 1) {
 //                    XToastUtils.toast("交卷");
                     toSheet = true;
-//                    saveAnswer(position);
+                    map1 = new HashMap<>();
+                    map1.put("questionList", questionList);
+                    map1.put("select", select);
+                    navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
+                    saveAnswer(position);
 //                    navigateToForResult(AnswerSheetActivity.class,"questionList", (Serializable) questionList, ANSWER_SHEET_RESULT);
 //                    navigateTo(AnswerSheetActivity.class,"questionList", (Serializable) questionList);
                 } else {
@@ -428,6 +435,10 @@ public class QuestionActivity extends BaseActivity {
                 toSheet = true;
                 if (!account.equals("") && !account.equals("已过期")) {
                     saveAnswer(position);
+                    map1 = new HashMap<>();
+                    map1.put("questionList", questionList);
+                    map1.put("select", select);
+                    navigateToForResult(AnswerSheetActivity.class, "map", (Serializable) map1, ANSWER_SHEET_RESULT);
                 } else {
                     map1 = new HashMap<>();
                     map1.put("questionList", questionList);
@@ -621,7 +632,13 @@ public class QuestionActivity extends BaseActivity {
                             break;
                         case 2:
                             if (!account.equals("") && !account.equals("已过期")) {
-                                XToastUtils.toast("分享");
+//                                XToastUtils.toast("分享");
+                                Map<String, Object> linkMap = new HashMap<>();
+                                linkMap.put("linkId", question);
+                                linkMap.put("info", question.getInfo());
+                                linkMap.put("type", "题目");
+                                linkMap.put("linkType", 2);
+                                navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                             } else {
                                 navigateTo(CodeLoginActivity.class);
                             }

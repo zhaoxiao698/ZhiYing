@@ -72,7 +72,7 @@
                     android:layout_marginLeft="15dp"
                     android:background="@null"
                     android:hint="请输入手机号"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:textSize="20sp" />

@@ -41,6 +41,7 @@ import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.study.ChannelActivity;
 import com.zhaoxiao.zhiying.activity.study.NoteActivity;
 import com.zhaoxiao.zhiying.adapter.community.GridImageAdapter;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.UserService;
 import com.zhaoxiao.zhiying.entity.mine.User;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -184,7 +185,7 @@ public class SetInfoActivity extends BaseActivity {
                     etAge.setText(String.valueOf(user.getAge()));
                     etMail.setText(user.getMail());
                     Picasso.with(mContext)
-                            .load(user.getAvatar())
+                            .load(ApiConfig.BASE_URl+user.getAvatar())
                             .transform(new CircleCornerTransForm())
                             .into(ivAvatar);
                 }

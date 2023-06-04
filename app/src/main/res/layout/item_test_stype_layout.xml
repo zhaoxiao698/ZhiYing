@@ -31,7 +31,7 @@
                 android:layout_marginBottom="@dimen/config_margin_10dp"
                 android:text="短篇新闻"
                 android:textColor="#000"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_num"
@@ -41,11 +41,11 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="共200题  |  已练习24题"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/right_gray" />

@@ -3,6 +3,7 @@ package com.zhaoxiao.zhiying.activity.mine;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xuexiang.xui.utils.XToastUtils;
@@ -21,6 +22,8 @@ import static com.zhaoxiao.zhiying.activity.mine.ServiceProtocolActivity.KEY_PRO
 public class SetActivity extends BaseActivity {
     @BindView(R.id.tv_cache)
     TextView tvCache;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     @Override
     protected int initLayout() {
@@ -29,16 +32,33 @@ public class SetActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        int themeColor = getStringFromSp("theme_color", false);
+        switch (themeColor) {
+            case -1:
+            case 0:
+                ivBack.setImageResource(R.drawable.left_yellow);
+                break;
+            case 1:
+                ivBack.setImageResource(R.drawable.left_blue);
+                break;
+            case 2:
+                ivBack.setImageResource(R.drawable.left_red);
+                break;
+            case 3:
+                ivBack.setImageResource(R.drawable.left_green);
+                break;
+        }
+
         String totalCacheSize = "";
         try {
             totalCacheSize = CacheDataManager.getTotalCacheSize(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        tvCache.setText(" （"+totalCacheSize+"）");
+        tvCache.setText(" （" + totalCacheSize + "）");
     }
 
-    @OnClick({R.id.iv_back, R.id.rl_info, R.id.rl_account, R.id.rl_cache, R.id.rl_help, R.id.rl_user_protocol, R.id.rl_privacy_protocol, R.id.rl_about, R.id.rl_logout})
+    @OnClick({R.id.iv_back, R.id.rl_info, R.id.rl_account, R.id.rl_cache, R.id.rl_help, R.id.rl_user_protocol, R.id.rl_privacy_protocol, R.id.rl_theme, R.id.rl_about, R.id.rl_logout})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -59,7 +79,7 @@ public class SetActivity extends BaseActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                tvCache.setText(" （"+totalCacheSize+"）");
+                tvCache.setText(" （" + totalCacheSize + "）");
                 break;
             case R.id.rl_help:
                 navigateTo(HelpActivity.class);
@@ -69,6 +89,9 @@ public class SetActivity extends BaseActivity {
                 break;
             case R.id.rl_privacy_protocol:
                 navigateTo(ServiceProtocolActivity.class, KEY_PROTOCOL_TITLE, "隐私政策");
+                break;
+            case R.id.rl_theme:
+                navigateTo(ThemeActivity.class);
                 break;
             case R.id.rl_about:
                 navigateTo(AboutActivity.class);
@@ -90,5 +113,12 @@ public class SetActivity extends BaseActivity {
                         .show();
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

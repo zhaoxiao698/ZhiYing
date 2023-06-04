@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.Channel;
+import com.zhaoxiao.zhiying.util.NumberUtils;
+import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import java.util.List;
@@ -55,11 +58,11 @@ public class ChannelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ViewHolder viewHolder = (ViewHolder) holder;
         Channel channel = list.get(position);
         viewHolder.tvName.setText(channel.getName());
-        viewHolder.tvNum.setText("共" + channel.getNum() + "篇");
-        viewHolder.tvCollection.setText("已订阅：" + channel.getCollection());
-        viewHolder.tvLastTime.setText("更新时间：" + channel.getLastTime());
+        viewHolder.tvNum.setText("共" + NumberUtils.intChange2Str(channel.getNum()) + "篇");
+        viewHolder.tvCollection.setText("已订阅：" + NumberUtils.intChange2Str(channel.getCollection()));
+        viewHolder.tvLastTime.setText("更新时间：" + StringUtils.formatDate(channel.getLastTime()));
         Picasso.with(mContext)
-                .load(channel.getImg())
+                .load(ApiConfig.BASE_URl+channel.getImg())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.channelId = channel.getId();

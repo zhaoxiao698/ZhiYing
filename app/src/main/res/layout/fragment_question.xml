@@ -60,8 +60,9 @@ tools:context=".fragment.test.QuestionFragment">
                 android:clickable="true"
                 android:padding="@dimen/config_padding_10dp"
                 android:focusable="false"
+                android:textColor="@color/black"
                 android:focusableInTouchMode="true"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:id="@+id/ll_listening"
@@ -100,6 +101,14 @@ tools:context=".fragment.test.QuestionFragment">
                     android:text="00:00" />
 
             </LinearLayout>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_img"
+                android:layout_gravity="center"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:src="@drawable/background"/>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/fl_banked"

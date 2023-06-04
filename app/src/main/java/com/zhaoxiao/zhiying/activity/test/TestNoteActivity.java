@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.study.ArticleActivity;
 import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.api.TestService;
@@ -30,6 +32,7 @@ import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -118,7 +121,7 @@ public class TestNoteActivity extends BaseActivity {
 //        account = SpUtils.getInstance(this).getString("account", "");
         testService = (TestService) getService(TestService.class);
 
-        tvTitle.setText(questionInfo);
+        tvTitle.setText(Html.fromHtml(questionInfo));
         tvSubType.setText(subType);
 
         if (etNote.getText().toString().trim().equals("")) {
@@ -200,7 +203,13 @@ public class TestNoteActivity extends BaseActivity {
                     if (response.body().getData()) {
                         XToastUtils.toast("保存成功");
                         if (isShare) {
-                            XToastUtils.toast("跳转分享页面");
+//                            XToastUtils.toast("跳转分享页面");
+                            Map<String, Object> linkMap = new HashMap<>();
+                            linkMap.put("linkId", questionId);
+                            linkMap.put("info", etNote.getText().toString());
+                            linkMap.put("type", "题目笔记");
+                            linkMap.put("linkType", 4);
+                            navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                         }
                     }
                 }

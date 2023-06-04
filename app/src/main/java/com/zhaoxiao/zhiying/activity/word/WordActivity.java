@@ -14,6 +14,7 @@ import com.xuexiang.xui.widget.progress.HorizontalProgressView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.WordService;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.entity.word.BookMore;

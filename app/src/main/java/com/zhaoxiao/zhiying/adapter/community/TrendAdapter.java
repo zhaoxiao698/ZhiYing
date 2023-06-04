@@ -30,6 +30,7 @@ import com.xuexiang.xui.widget.textview.ReadMoreTextView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
 import com.zhaoxiao.zhiying.entity.community.Topic;
@@ -99,7 +100,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ViewHolder viewHolder = (ViewHolder) holder;
         Trend trend = list.get(position);
         viewHolder.tvName.setText(trend.getUserName());
-        viewHolder.tvAddTime.setText(StringUtils.formatDate(trend.getAddTime()));
+        viewHolder.tvAddTime.setText(StringUtils.formatDateTime(trend.getAddTime()));
         if (StringUtils.isEmpty(trend.getTitle())){
             viewHolder.tvTitle.setVisibility(View.GONE);
         } else {
@@ -131,7 +132,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             viewHolder.llHotComment.setVisibility(View.GONE);
         } else {
             viewHolder.llHotComment.setVisibility(View.VISIBLE);
-            viewHolder.tvHotCommentLike.setText(trend.getHotComment().getLike() + "赞");
+            viewHolder.tvHotCommentLike.setText(NumberUtils.intChange2Str(trend.getHotComment().getLike()) + "赞");
             String name = "<font color=\"#FBBC05\">"+trend.getHotComment().getUserName()+"</font>： ";
             String hotComment = StringUtils.foldString(trend.getHotComment().getInfo(),55);
             viewHolder.tvHotComment.setText(Html.fromHtml(name+hotComment));
@@ -147,7 +148,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         viewHolder.bind(trend.getImgList());
 
         Picasso.with(mContext)
-                .load(trend.getUserAvatar())
+                .load(ApiConfig.BASE_URl+trend.getUserAvatar())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivAvatar);
 
@@ -290,7 +291,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 //                            .into(imageView);
 
                     Picasso.with(mContext)
-                            .load(imageViewInfo.getUrl())
+                            .load(ApiConfig.BASE_URl+imageViewInfo.getUrl())
                             .transform(new CircleCornerTransForm())
                             .into(imageView);
                 }

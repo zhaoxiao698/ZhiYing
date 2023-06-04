@@ -9,8 +9,8 @@
 
     <com.xuexiang.xui.widget.imageview.RadiusImageView
         android:id="@+id/iv_img"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
         android:src="@drawable/img_beautiful_scenery"
         app:riv_border_color="@color/xui_config_color_gray_6"
         app:riv_border_width="0px"
@@ -63,9 +63,9 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="30dp"
+        android:layout_width="28dp"
         android:layout_marginLeft="@dimen/config_margin_20dp"
-        android:layout_height="30dp"
+        android:layout_height="28dp"
         android:src="@drawable/download_gray" />
 
 </LinearLayout>

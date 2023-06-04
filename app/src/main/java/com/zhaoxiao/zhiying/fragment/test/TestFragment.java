@@ -54,6 +54,12 @@ public class TestFragment extends BaseFragment {
 
             }
         });
+        searchBarView.setOnLeftIconClick(new SearchBarView.onLeftIconClick() {
+            @Override
+            public void leftIconClick(View view) {
+                navigateTo(QuestionSearchActivity.class);
+            }
+        });
     }
 
     @Override

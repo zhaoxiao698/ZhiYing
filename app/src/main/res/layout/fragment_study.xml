@@ -23,7 +23,7 @@
         <com.scwang.smart.refresh.header.BezierRadarHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -326,7 +326,7 @@
                             android:layout_centerVertical="true"
                             android:text="最近更新"
                             android:textColor="@color/black"
-                            android:textSize="23sp"
+                            android:textSize="21sp"
                             android:textStyle="bold" />
 
                         <LinearLayout
@@ -342,7 +342,7 @@
                                 android:layout_centerVertical="true"
                                 android:text="更多"
                                 android:textColor="@color/gray"
-                                android:textSize="15sp" />
+                                android:textSize="14sp" />
 
                             <ImageView
                                 android:layout_width="10dp"
@@ -396,7 +396,7 @@
                             android:layout_centerVertical="true"
                             android:text="热门推荐"
                             android:textColor="@color/black"
-                            android:textSize="23sp"
+                            android:textSize="21sp"
                             android:textStyle="bold" />
 
                         <LinearLayout
@@ -412,7 +412,7 @@
                                 android:layout_centerVertical="true"
                                 android:text="更多"
                                 android:textColor="@color/gray"
-                                android:textSize="15sp" />
+                                android:textSize="14sp" />
 
                             <ImageView
                                 android:layout_width="10dp"
@@ -438,7 +438,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
         <!--    <com.scwang.smart.refresh.footer.BallPulseFooter-->
         <!--        android:layout_width="match_parent"-->

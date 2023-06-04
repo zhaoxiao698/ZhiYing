@@ -24,6 +24,7 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xui.widget.textview.ReadMoreTextView;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
@@ -89,7 +90,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ViewHolder viewHolder = (ViewHolder) holder;
         Comment comment = list.get(position);
         viewHolder.tvName.setText(comment.getUserName());
-        viewHolder.tvAddTime.setText(StringUtils.formatDate(comment.getAddTime()));
+        viewHolder.tvAddTime.setText(StringUtils.formatDateTime(comment.getAddTime()));
         if (StringUtils.isEmpty(comment.getInfo())){
             viewHolder.tvInfo.setVisibility(View.GONE);
         } else {
@@ -104,11 +105,11 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         //操作条
-        viewHolder.tvLike.setText(String.valueOf(comment.getLike()));
+        viewHolder.tvLike.setText(NumberUtils.intChange2Str(comment.getLike()));
 
         //图片
         Picasso.with(mContext)
-                .load(comment.getUserAvatar())
+                .load(ApiConfig.BASE_URl+comment.getUserAvatar())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivAvatar);
 

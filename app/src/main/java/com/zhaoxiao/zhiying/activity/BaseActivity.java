@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jaeger.library.StatusBarUtil;
 import com.xuexiang.xui.utils.StatusBarUtils;
+import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 
 import java.io.Serializable;
@@ -27,6 +28,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        int themeColor = getStringFromSp("theme_color",false);
+        switch (themeColor){
+            case -1:
+            case 0:
+                setTheme(R.style.Theme_ZhiYing);
+                break;
+            case 1:
+                setTheme(R.style.Theme_ZhiYing_Blue);
+                break;
+            case 2:
+                setTheme(R.style.Theme_ZhiYing_Red);
+                break;
+            case 3:
+                setTheme(R.style.Theme_ZhiYing_Green);
+                break;
+        }
         setContentView(initLayout());
         setStatusBar();
         ButterKnife.bind(this);

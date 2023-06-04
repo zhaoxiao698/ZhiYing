@@ -228,11 +228,13 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
             if (!shareLink) {
                     rlShareLink.setVisibility(View.VISIBLE);
                     tvShareTitle.setText((String) linkMap.get("info"));
-                    tvShareType.setText("动态");
+//                    tvShareType.setText("动态");
+                    tvShareType.setText((String) linkMap.get("type"));
                     shareLink=true;
 
                     linkId= (int) linkMap.get("linkId");
-                    linkType=5;
+//                    linkType=5;
+                    linkType=(int) linkMap.get("linkType");
             }
         }
 

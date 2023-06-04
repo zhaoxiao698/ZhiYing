@@ -179,6 +179,12 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
                 navigateTo(WordActivity.class);
             }
         });
+        searchBarView.setOnLeftIconClick(new SearchBarView.onLeftIconClick() {
+            @Override
+            public void leftIconClick(View view) {
+                navigateTo(ArticleSearchActivity.class);
+            }
+        });
     }
 
     private void request() {
@@ -192,7 +198,7 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
                     mData = new ArrayList<>();
                     for (Banner banner : bannerList) {
                         BannerItem item = new BannerItem();
-                        item.imgUrl = banner.getImg();
+                        item.imgUrl = ApiConfig.BASE_URl + banner.getImg();
                         item.title = String.valueOf(banner.getId());
 
                         mData.add(item);
@@ -346,7 +352,7 @@ public class StudyFragment extends BaseFragment implements BaseBanner.OnItemClic
                 break;
             case R.id.ll_book:
                 HashMap<String,Object> mapBook = new HashMap<>();
-                mapBook.put("ftypeId",10);
+                mapBook.put("ftypeId",11);
                 mapBook.put("stypeId",80);
                 navigateTo(SortActivity.class,"map", mapBook);
                 break;

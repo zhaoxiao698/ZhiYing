@@ -92,7 +92,7 @@ public class MyAttentionActivity extends BaseActivity {
     }
 
     private void getMyAttentionList(int type) {
-        Call<Data<PageInfo<User>>> myAttentionListCall = userService.getMyAttentionList(pageNum, 8, account);
+        Call<Data<PageInfo<User>>> myAttentionListCall = userService.getMyAttentionList(pageNum, 10, account);
         myAttentionListCall.enqueue(new Callback<Data<PageInfo<User>>>() {
             @Override
             public void onResponse(Call<Data<PageInfo<User>>> call, Response<Data<PageInfo<User>>> response) {

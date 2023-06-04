@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.Hot;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
@@ -63,12 +65,12 @@ public class HotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Hot hot = list.get(position);
         viewHolder.tvName.setText(hot.getName());
         if (more) {
-            viewHolder.tvNum.setText("共"+hot.getNum()+"篇");
-            viewHolder.tvCollection.setText("已订阅："+hot.getCollection());
+            viewHolder.tvNum.setText("共"+NumberUtils.intChange2Str(hot.getNum())+"篇");
+            viewHolder.tvCollection.setText("已订阅："+ NumberUtils.intChange2Str(hot.getCollection()));
             viewHolder.tvLastTime.setText("更新时间："+ StringUtils.formatDate(hot.getLastTime()));
         }
         Picasso.with(mContext)
-                .load(hot.getImg())
+                .load(ApiConfig.BASE_URl+hot.getImg())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.hotId = hot.getId();

@@ -21,7 +21,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:singleLine="true"
-        android:textSize="23sp"
+        android:textSize="21sp"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:text="模拟考试"/>

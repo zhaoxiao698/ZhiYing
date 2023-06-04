@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.adapter.study.ArticleAdapter;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.entity.word.Book;
 import com.zhaoxiao.zhiying.util.NumberUtils;

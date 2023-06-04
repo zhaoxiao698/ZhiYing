@@ -16,6 +16,7 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.Topic;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
@@ -59,7 +60,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ViewHolder viewHolder = (ViewHolder) holder;
         Topic topic = list.get(position);
         viewHolder.tvName.setText(topic.getName());
-        viewHolder.tvDesc.setText(topic.getJoin()+"人参与     "+topic.getCollection()+"人收藏");
+        viewHolder.tvDesc.setText(NumberUtils.intChange2Str(topic.getJoin())+"人参与     "+NumberUtils.intChange2Str(topic.getCollection())+"人收藏");
 
         viewHolder.topicId = topic.getId();
         viewHolder.topic = topic;

@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Something has happened to all of us."
         android:textColor="@color/black"
+        android:lineSpacingExtra="3dp"
         android:textSize="20sp" />
 
 </LinearLayout>

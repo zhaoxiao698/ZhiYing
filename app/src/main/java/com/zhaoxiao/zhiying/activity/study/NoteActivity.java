@@ -17,6 +17,8 @@ import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.entity.study.ArticleNote;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -24,6 +26,8 @@ import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -125,7 +129,7 @@ public class NoteActivity extends BaseActivity {
         tvTitle.setText(articleTitle);
         tvChannelName.setText(channelName);
         Picasso.with(mContext)
-                .load(img)
+                .load(ApiConfig.BASE_URl+img)
                 .transform(new CircleCornerTransForm())
                 .into(ivImg);
 
@@ -208,7 +212,13 @@ public class NoteActivity extends BaseActivity {
                     if (response.body().getData()) {
                         XToastUtils.toast("保存成功");
                         if (isShare) {
-                            XToastUtils.toast("跳转分享页面");
+//                            XToastUtils.toast("跳转分享页面");
+                            Map<String, Object> linkMap = new HashMap<>();
+                            linkMap.put("linkId", articleId);
+                            linkMap.put("info", etNote.getText().toString());
+                            linkMap.put("type", "文章笔记");
+                            linkMap.put("linkType", 3);
+                            navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                         }
                     }
                 }

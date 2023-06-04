@@ -12,11 +12,13 @@ import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.MainActivity;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 
 import java.io.IOException;
@@ -45,6 +47,7 @@ public class MediaService extends Service {
         return mBinder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         audio = intent.getStringExtra("audio");
@@ -75,7 +78,7 @@ public class MediaService extends Service {
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(
                         getApplicationContext(),
-                        0, notificationIntent, 0);
+                        0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(
@@ -234,7 +237,7 @@ public class MediaService extends Service {
         mMediaPlayer.reset();
         if (audio != null && !audio.equals("")) {
             try {
-                mMediaPlayer.setDataSource(audio);//设置播放来源
+                mMediaPlayer.setDataSource(ApiConfig.BASE_URl+audio);//设置播放来源
 
                 mMediaPlayer.prepareAsync();//异步准备
                 mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.mine.User;
 import com.zhaoxiao.zhiying.entity.study.Hot;
 import com.zhaoxiao.zhiying.util.StringUtils;
@@ -59,7 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         User user = list.get(position);
         viewHolder.tvName.setText(user.getName());
         Picasso.with(mContext)
-                .load(user.getAvatar())
+                .load(ApiConfig.BASE_URl+user.getAvatar())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivAvatar);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

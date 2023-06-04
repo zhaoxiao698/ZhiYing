@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher1_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ZhiYing">
-        <activity android:name=".activity.community.TrendSearchActivity"></activity>
+        <activity android:name=".activity.mine.ThemeActivity"></activity>
+        <activity android:name=".activity.community.TrendSearchActivity" />
         <activity android:name=".activity.test.QuestionSearchActivity" />
         <activity android:name=".activity.study.ArticleSearchActivity" />
         <activity android:name=".activity.mine.MyFanActivity" />

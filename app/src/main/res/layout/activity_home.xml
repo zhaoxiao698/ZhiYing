@@ -22,7 +22,7 @@
         android:background="@color/white"
         tl:tl_iconHeight="24dp"
         tl:tl_iconWidth="24dp"
-        tl:tl_textSelectColor="@color/g_yellow"
+        tl:tl_textSelectColor="?attr/myBgColor"
         tl:tl_textUnselectColor="@color/gray"
         tl:tl_textsize="12sp"/>
 </RelativeLayout>

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.Article;
 import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
@@ -71,7 +72,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         viewHolder.tvCount.setText(NumberUtils.intChange2Str(article.getCount()));
         viewHolder.tvAddTime.setText(StringUtils.formatDate(article.getAddTime()));
         Picasso.with(mContext)
-                .load(article.getImg())
+                .load(ApiConfig.BASE_URl+article.getImg())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.articleId = article.getId();

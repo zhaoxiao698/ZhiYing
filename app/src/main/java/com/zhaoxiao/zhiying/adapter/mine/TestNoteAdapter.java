@@ -1,6 +1,7 @@
 package com.zhaoxiao.zhiying.adapter.mine;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class TestNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TestNoteDetail testNoteDetail = list.get(position);
         viewHolder.tvInfo.setText(testNoteDetail.getInfo());
         viewHolder.tvSubType.setText(testNoteDetail.getSubType());
-        viewHolder.tvTitle.setText(testNoteDetail.getQuestionInfo());
+        viewHolder.tvTitle.setText(Html.fromHtml(testNoteDetail.getQuestionInfo()));
         viewHolder.tvTime.setText(StringUtils.formatDateTime(testNoteDetail.getAddTime()));
         viewHolder.questionId = testNoteDetail.getQuestionId();
         viewHolder.testNoteDetail = testNoteDetail;

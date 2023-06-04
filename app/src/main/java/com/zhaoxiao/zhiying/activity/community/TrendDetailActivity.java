@@ -44,6 +44,7 @@ import com.zhaoxiao.zhiying.activity.study.NoteActivity;
 import com.zhaoxiao.zhiying.activity.test.QuestionDetailActivity;
 import com.zhaoxiao.zhiying.activity.test.TestNoteActivity;
 import com.zhaoxiao.zhiying.adapter.community.CommentAdapter;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
 import com.zhaoxiao.zhiying.entity.community.ImageViewInfo;
@@ -259,7 +260,7 @@ public class TrendDetailActivity extends BaseActivity {
 
     private void setDetail() {
         tvName.setText(trend.getUserName());
-        tvAddTime.setText(StringUtils.formatDate(trend.getAddTime()));
+        tvAddTime.setText(StringUtils.formatDateTime(trend.getAddTime()));
         if (StringUtils.isEmpty(trend.getTitle())) {
             tvTitle.setVisibility(View.GONE);
         } else {
@@ -295,7 +296,7 @@ public class TrendDetailActivity extends BaseActivity {
         nglImages.setImagesData(trend.getImgList(), 0);
 
         Picasso.with(mContext)
-                .load(trend.getUserAvatar())
+                .load(ApiConfig.BASE_URl+trend.getUserAvatar())
                 .transform(new CircleCornerTransForm())
                 .into(ivAvatar);
 
@@ -479,7 +480,7 @@ public class TrendDetailActivity extends BaseActivity {
             @Override
             protected void onDisplayImage(Context context, ImageView imageView, ImageViewInfo imageViewInfo) {
                 Picasso.with(mContext)
-                        .load(imageViewInfo.getUrl())
+                        .load(ApiConfig.BASE_URl+imageViewInfo.getUrl())
                         .transform(new CircleCornerTransForm())
                         .into(imageView);
             }
@@ -562,6 +563,8 @@ public class TrendDetailActivity extends BaseActivity {
                 Map<String, Object> linkMap = new HashMap<>();
                 linkMap.put("linkId", trend.getId());
                 linkMap.put("info", trend.getInfo());
+                linkMap.put("type", "动态");
+                linkMap.put("linkType", 5);
                 navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                 break;
             case R.id.tv_send:

@@ -3,6 +3,8 @@ package com.zhaoxiao.zhiying.activity.study;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,12 +24,15 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
 import com.zhaoxiao.zhiying.entity.study.Channel;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.study.ArticleListFragment;
 import com.zhaoxiao.zhiying.fragment.study.ChannelDetailFragment;
 import com.zhaoxiao.zhiying.util.BitMapUtil;
+import com.zhaoxiao.zhiying.util.NumberUtils;
+import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
@@ -79,6 +84,8 @@ public class ChannelActivity extends BaseActivity {
 
     private String account;
 
+    private Handler mHandler = new Handler(Looper.getMainLooper());
+
     @Override
     protected int initLayout() {
         return R.layout.activity_channel;
@@ -112,28 +119,57 @@ public class ChannelActivity extends BaseActivity {
 
     private void afterRequest() {
         tvName.setText(channel.getName());
-        tvNum.setText("共" + channel.getNum() + "篇");
-        tvCollection.setText("已订阅：" + channel.getCollection());
-        tvLastTime.setText("更新时间：" + channel.getLastTime());
+        tvNum.setText("共" + NumberUtils.intChange2Str(channel.getNum()) + "篇");
+        tvCollection.setText("已订阅：" + NumberUtils.intChange2Str(channel.getCollection()));
+        tvLastTime.setText("更新时间：" + StringUtils.formatDate(channel.getLastTime()));
         Picasso.with(mContext)
-                .load(channel.getImg())
+                .load(ApiConfig.BASE_URl+channel.getImg())
                 .transform(new CircleCornerTransForm())
                 .into(ivImg);
-        Picasso.with(mContext)
-                .load(channel.getImg())
-                .transform(new CircleCornerTransForm())
-                .into(aiv);
+//        Picasso.with(mContext)
+//                .load(ApiConfig.BASE_URl+channel.getImg())
+//                .transform(new CircleCornerTransForm())
+//                .into(aiv);
 
         //毛玻璃
 //        Bitmap bp = BitmapFactory.decodeResource(this.getBaseContext().getResources(), R.drawable.img_beautiful_girl);
-        Bitmap bp = BitMapUtil.getBitmap(channel.getImg());
-        if (bp != null) {
-            Blurry.with(this)
-                    .radius(25)
-                    .sampling(2)
-                    .from(bp)
-                    .into(aiv);
-        }
+//        Bitmap bp = BitMapUtil.getBitmap1(ApiConfig.BASE_URl+channel.getImg());
+//        if (bp != null) {
+//            Blurry.with(this)
+//                    .radius(25)
+//                    .sampling(2)
+//                    .from(bp)
+//                    .into(aiv);
+//        }
+
+        //异步执行
+        BitMapUtil.getBitmap(ApiConfig.BASE_URl + channel.getImg(), new BitMapUtil.BitmapCallback() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap) {
+                if (bitmap != null) {
+//                    Blurry.with(ChannelActivity.this)
+//                            .radius(25)
+//                            .sampling(2)
+//                            .from(bitmap)
+//                            .into(aiv);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Blurry.with(ChannelActivity.this)
+                                    .radius(25)
+                                    .sampling(2)
+                                    .from(bitmap)
+                                    .into(aiv);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e) {
+
+            }
+        });
 
         //Tab导航
         mFragments.add(ChannelDetailFragment.newInstance(channel.getInfo()));
@@ -261,10 +297,16 @@ public class ChannelActivity extends BaseActivity {
                             btnCollect.setText("已订阅");
                             btnCollect.setTextColor(getResources().getColor(R.color.gray));
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
+                            channel.setCollection(channel.getCollection()+1);
+                            tvCollection.setText("已订阅：" + channel.getCollection());
+//                            tvCollection.setText(String.valueOf(channel.getCollection()));
                         } else {
                             btnCollect.setText("订阅");
                             btnCollect.setTextColor(getResources().getColor(R.color.white));
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn));
+                            channel.setCollection(channel.getCollection()-1);
+                            tvCollection.setText("已订阅：" + channel.getCollection());
+//                            tvCollection.setText(String.valueOf(channel.getCollection()));
                         }
                     }
                 }

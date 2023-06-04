@@ -66,8 +66,10 @@ public class AccountActivity extends BaseActivity {
             public void onResponse(Call<Data<User>> call, Response<Data<User>> response) {
                 if (response.body() != null && response.body().getCode() == 10000) {
                     user = response.body().getData();
-                    tvAccount.setText(user.getAccount());
-                    tvPhone.setText(StringUtils.hidePhone(user.getPhone()));
+                    if (user!=null){
+                        tvAccount.setText(user.getAccount());
+                        tvPhone.setText(StringUtils.hidePhone(user.getPhone()));
+                    }
                 }
             }
 

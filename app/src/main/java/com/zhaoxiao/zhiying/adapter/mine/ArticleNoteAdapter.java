@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.ArticleNoteDetail;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
@@ -61,7 +62,7 @@ public class ArticleNoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         viewHolder.tvTitle.setText(articleNoteDetail.getArticleTitle());
         viewHolder.tvTime.setText(StringUtils.formatDateTime(articleNoteDetail.getAddTime()));
         Picasso.with(mContext)
-                .load(articleNoteDetail.getArticleImg())
+                .load(ApiConfig.BASE_URl+articleNoteDetail.getArticleImg())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.articleId = articleNoteDetail.getArticleId();

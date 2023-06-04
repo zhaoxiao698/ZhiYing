@@ -32,8 +32,8 @@
 
                 <com.xuexiang.xui.widget.imageview.RadiusImageView
                     android:id="@+id/iv_avatar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/background"
                     app:riv_is_oval="true" />
@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:text="名字"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -61,14 +61,14 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_name"
                         android:text="今天 18:09"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_more"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/more_community" />
 
@@ -81,7 +81,7 @@
                 android:layout_marginTop="15dp"
                 android:text="这里是标题"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -91,7 +91,7 @@
                 android:layout_marginTop="8dp"
                 android:text="备注：如果你的布局通过该方法可以显示，但是打开另一个项目，新项目无法显示，会引起其他项目也会出现无法预览，这个时候还是按以上步骤操作即可。有些项目存在自定义问题，导致一些布局无法预览，生成的缓存文件会导致其他项目预览也失败。"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <com.xuexiang.xui.widget.imageview.nine.NineGridImageView
                 android:id="@+id/ngl_images"
@@ -199,8 +199,8 @@
 
                     <ImageView
                         android:id="@+id/iv_like"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
                         android:src="@drawable/like_community"
                         app:tint="@color/gray" />
 
@@ -211,7 +211,7 @@
                         android:layout_marginLeft="3dp"
                         android:singleLine="true"
                         android:text="555"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -226,8 +226,8 @@
 
                     <ImageView
                         android:id="@+id/iv_comment"
-                        android:layout_width="21dp"
-                        android:layout_height="23dp"
+                        android:layout_width="20dp"
+                        android:layout_height="22dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/comment_community"
                         app:tint="@color/gray" />
@@ -239,7 +239,7 @@
                         android:layout_marginLeft="3dp"
                         android:singleLine="true"
                         android:text="555"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -266,7 +266,7 @@
                         android:layout_marginLeft="3dp"
                         android:singleLine="true"
                         android:text="555"
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 

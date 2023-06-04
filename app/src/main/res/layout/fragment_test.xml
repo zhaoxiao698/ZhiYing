@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         app:sb_rightText="题库"
         app:sb_rightDrawable1="@drawable/change_gray"
-        app:sb_rightDrawable1_height="25dp"
-        app:sb_rightDrawable1_width="25dp"
+        app:sb_rightDrawable1_height="24dp"
+        app:sb_rightDrawable1_width="24dp"
         app:sb_rightDrawable1_marginLeft="0dp"/>
 
     <FrameLayout

@@ -104,6 +104,7 @@ public class TrendListFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
+        pageNum=1;
         getTrendList(0);
     }
 

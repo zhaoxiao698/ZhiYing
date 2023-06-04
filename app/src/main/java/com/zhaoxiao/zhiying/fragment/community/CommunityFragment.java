@@ -78,6 +78,12 @@ public class CommunityFragment extends BaseFragment {
 
             }
         });
+        searchBarView.setOnLeftIconClick(new SearchBarView.onLeftIconClick() {
+            @Override
+            public void leftIconClick(View view) {
+                navigateTo(TrendSearchActivity.class);
+            }
+        });
     }
 
     @Override

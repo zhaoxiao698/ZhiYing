@@ -1,12 +1,17 @@
 package com.zhaoxiao.zhiying.fragment.mine;
 
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.haibin.calendarview.Calendar;
+import com.haibin.calendarview.CalendarLayout;
+import com.haibin.calendarview.CalendarView;
 import com.squareup.picasso.Picasso;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
@@ -21,7 +26,10 @@ import com.zhaoxiao.zhiying.activity.mine.NoteListActivity;
 import com.zhaoxiao.zhiying.activity.mine.SetInfoActivity;
 import com.zhaoxiao.zhiying.activity.mine.SetTimePlanActivity;
 import com.zhaoxiao.zhiying.activity.mine.WrongQuestionActivity;
+import com.zhaoxiao.zhiying.activity.study.CalendarActivity;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.UserService;
+import com.zhaoxiao.zhiying.entity.mine.CalendarInfo;
 import com.zhaoxiao.zhiying.entity.mine.Plan;
 import com.zhaoxiao.zhiying.entity.mine.User;
 import com.zhaoxiao.zhiying.entity.study.Data;
@@ -30,13 +38,19 @@ import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MineLoggedFragment extends BaseFragment {
+public class MineLoggedFragment extends BaseFragment implements
+        CalendarView.OnCalendarSelectListener,
+        CalendarView.OnYearChangeListener {
 
     @BindView(R.id.iv_avatar)
     RadiusImageView ivAvatar;
@@ -94,6 +108,20 @@ public class MineLoggedFragment extends BaseFragment {
 
     private User user;
 
+    //日历
+    @BindView(R.id.calendarView)
+    CalendarView calendarView;
+    @BindView(R.id.calendarLayout)
+    CalendarLayout calendarLayout;
+    @BindView(R.id.tv_more)
+    TextView tvMore;
+
+    private int mYear;
+
+//    private UserService userService;
+//    private String account;
+    private CalendarInfo calendarInfo;
+
     public MineLoggedFragment() {
     }
 
@@ -110,9 +138,17 @@ public class MineLoggedFragment extends BaseFragment {
     protected void initData() {
         userService = (UserService) getService(UserService.class);
         account = SpUtils.getInstance(getContext()).getString("account", "");
+
+        //日历
+        calendarView.setOnCalendarSelectListener(this);
+        calendarView.setOnYearChangeListener(this);
+//        calendarLayout.expand();
+
+        userService = (UserService) getService(UserService.class);
+        getPlanList();
     }
 
-    @OnClick({/*R.id.iv_avatar, */R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong})
+    @OnClick({/*R.id.iv_avatar, */R.id.ll_info, R.id.ll_trend, R.id.ll_attention, R.id.ll_fan, R.id.hpv, R.id.card_plan, R.id.ll_collection, R.id.ll_history, R.id.ll_note, R.id.ll_wrong, R.id.card_calendar})
     public void onClick(View view) {
         switch (view.getId()) {
 //            case R.id.iv_avatar:
@@ -153,6 +189,9 @@ public class MineLoggedFragment extends BaseFragment {
             case R.id.ll_wrong:
 //                XToastUtils.toast("错题");
                 navigateTo(WrongQuestionActivity.class);
+                break;
+            case R.id.card_calendar:
+                navigateTo(CalendarActivity.class);
                 break;
         }
     }
@@ -216,7 +255,7 @@ public class MineLoggedFragment extends BaseFragment {
                     tvName.setText(user.getName());
                     tvSign.setText(user.getSign());
                     Picasso.with(getContext())
-                            .load(user.getAvatar())
+                            .load(ApiConfig.BASE_URl+user.getAvatar())
                             .transform(new CircleCornerTransForm())
                             .into(ivAvatar);
                     tvTrend.setText(NumberUtils.intChange2Str(user.getTrendNum()));
@@ -227,6 +266,66 @@ public class MineLoggedFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<Data<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    //日历
+    private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
+        Calendar calendar = new Calendar();
+        calendar.setYear(year);
+        calendar.setMonth(month);
+        calendar.setDay(day);
+        calendar.setSchemeColor(color);//如果单独标记颜色、则会使用这个颜色
+        calendar.setScheme(text);
+        return calendar;
+    }
+
+    @Override
+    public void onCalendarOutOfRange(Calendar calendar) {
+
+    }
+
+    @Override
+    public void onCalendarSelect(Calendar calendar, boolean isClick) {
+    }
+
+    @Override
+    public void onYearChange(int year) {
+    }
+
+    private void getPlanList() {
+        Call<Data<CalendarInfo>> planListCall = userService.getCalendarInfo(account);
+        planListCall.enqueue(new Callback<Data<CalendarInfo>>() {
+            @Override
+            public void onResponse(Call<Data<CalendarInfo>> call, Response<Data<CalendarInfo>> response) {
+                if (response.body() != null && response.body().getCode() == 10000) {
+                    calendarInfo = response.body().getData();
+
+                    Map<String, Calendar> map = new HashMap<>();
+                    for (Plan plan : calendarInfo.getPlanList()) {
+//                        TimeZone timeZone = TimeZone.getTimeZone("GMT+8");
+//                        TimeZone.setDefault(timeZone);
+                        Date dateTest = new Date();
+                        java.util.Calendar calendar = java.util.Calendar.getInstance();
+                        calendar.setTime(plan.getAddTime());                    //放入Date类型数据
+                        int year = calendar.get(java.util.Calendar.YEAR);
+                        int month = calendar.get(java.util.Calendar.MONTH) + 1;
+                        int day = calendar.get(java.util.Calendar.DATE);
+                        int scheme = (int) ((float) plan.getPlanDo() / plan.getPlan() * 100);
+                        map.put(getSchemeCalendar(year, month, day, 0xFF40db25, Integer.toString(scheme)).toString(),
+                                getSchemeCalendar(year, month, day, 0xFF40db25, Integer.toString(scheme)));
+                    }
+                    calendarView.setSchemeDate(map);
+
+                    tvMore.setText("连续打卡"+calendarInfo.getContinuous()+"天");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data<CalendarInfo>> call, Throwable t) {
 
             }
         });

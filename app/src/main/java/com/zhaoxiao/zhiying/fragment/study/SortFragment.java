@@ -91,12 +91,19 @@ public class SortFragment extends BaseFragment {
 
         account = SpUtils.getInstance(getContext()).getString("account","");
 
-        getChannelList(0);
+//        getChannelList(0);
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(linearLayoutManager);
         channelAdapter = new ChannelAdapter(getContext());
         rv.setAdapter(channelAdapter);
         channelAdapter.setOnItemClickListener(channelId -> navigateTo(ChannelActivity.class,"channelId",channelId));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        pageNum=1;
+        getChannelList(0);
     }
 
     private void getChannelList(int type) {

@@ -179,6 +179,10 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
         if (source==-1){
             source = 1;
         }
+        limitNum = getStringFromSp("question_num", false);
+        if (limitNum==-1){
+            limitNum = 10;
+        }
 
         testService = (TestService) getService(TestService.class);
 //        ftypeList = DataSource.getTestFtype();
@@ -251,9 +255,13 @@ public class SelectedFragment extends BaseFragment implements CircleProgressView
         tvNum.setText(finish + "/" + num);
         if (num>0) {
             progressViewCircleSmall1.setEndProgress((float) finish / num * 100);
+        } else {
+            progressViewCircleSmall1.setEndProgress(0);
         }
         if (finish>0){
             progressViewCircleSmall2.setEndProgress((float) right / finish * 100);
+        } else {
+            progressViewCircleSmall2.setEndProgress(0);
         }
         startProgress();
     }

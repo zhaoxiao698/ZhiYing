@@ -1,5 +1,10 @@
 package com.zhaoxiao.zhiying.fragment.study;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +13,10 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.xuexiang.xui.adapter.simple.XUISimpleAdapter;
+import com.xuexiang.xui.utils.DensityUtils;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIListPopup;
+import com.xuexiang.xui.widget.popupwindow.popup.XUIPopup;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.study.ArticleActivity;
 import com.zhaoxiao.zhiying.adapter.study.ArticleAdapter;
@@ -23,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +43,10 @@ public class ArticleListFragment extends BaseFragment {
     RecyclerView rv;
     @BindView(R.id.srl)
     SmartRefreshLayout srl;
+    @BindView(R.id.ll_type)
+    LinearLayout llType;
+    @BindView(R.id.tv_type)
+    TextView tvType;
 
     private int channelId;
 
@@ -43,6 +57,10 @@ public class ArticleListFragment extends BaseFragment {
     private List<Article> articleList;
     private ArticleAdapter articleAdapter;
     private LinearLayoutManager linearLayoutManager;
+
+    private XUIListPopup mListPopup;
+    private boolean title = false;
+    private boolean asc = false;
 
     private String account;
 
@@ -78,6 +96,10 @@ public class ArticleListFragment extends BaseFragment {
                 getArticleList(2);
             }
         });
+
+        if (channelId==-1||channelId==-2){
+            llType.setVisibility(View.GONE);
+        }
 
         studyService = (StudyService) getService(StudyService.class);
 
@@ -177,7 +199,7 @@ public class ArticleListFragment extends BaseFragment {
                 }
             });
         } else {
-            Call<Data<PageInfo<Article>>> articleCall = studyService.getArticleList(pageNum, 8, channelId, false, false);
+            Call<Data<PageInfo<Article>>> articleCall = studyService.getArticleList(pageNum, 8, channelId, title, asc);
             articleCall.enqueue(new Callback<Data<PageInfo<Article>>>() {
                 @Override
                 public void onResponse(Call<Data<PageInfo<Article>>> call, Response<Data<PageInfo<Article>>> response) {
@@ -217,6 +239,55 @@ public class ArticleListFragment extends BaseFragment {
                 public void onFailure(Call<Data<PageInfo<Article>>> call, Throwable t) {
 
                 }
+            });
+        }
+    }
+
+    @OnClick(R.id.ll_type)
+    public void onClick(View view) {
+        initListPopupIfNeed();
+        mListPopup.setAnimStyle(XUIPopup.ANIM_GROW_FROM_CENTER);
+        mListPopup.setPreferredDirection(XUIPopup.DIRECTION_TOP);
+        mListPopup.show(view);
+    }
+
+    private void initListPopupIfNeed() {
+        if (mListPopup == null) {
+
+            String[] listItems = new String[]{
+                    "按时间降序",
+                    "按时间升序",
+                    "按标题降序",
+                    "按标题升序",
+            };
+
+            XUISimpleAdapter adapter = XUISimpleAdapter.create(getContext(), listItems);
+            mListPopup = new XUIListPopup(getContext(), adapter);
+            mListPopup.create(DensityUtils.dp2px(getContext(), 100), ViewGroup.LayoutParams.WRAP_CONTENT, (adapterView, view, i, l) -> {
+                switch (i) {
+                    case 0:
+                        title = false;
+                        asc = false;
+                        getArticleList(0);
+                        break;
+                    case 1:
+                        title = false;
+                        asc = true;
+                        getArticleList(0);
+                        break;
+                    case 2:
+                        title = true;
+                        asc = false;
+                        getArticleList(0);
+                        break;
+                    case 3:
+                        title = true;
+                        asc = true;
+                        getArticleList(0);
+                        break;
+                }
+                tvType.setText(listItems[i]);
+                mListPopup.dismiss();
             });
         }
     }

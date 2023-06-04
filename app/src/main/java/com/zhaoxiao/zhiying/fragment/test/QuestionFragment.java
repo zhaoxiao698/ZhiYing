@@ -25,9 +25,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.test.QuestionActivity;
 import com.zhaoxiao.zhiying.adapter.test.MyTestAdapter;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.test.BankedM;
 import com.zhaoxiao.zhiying.entity.test.BankedQuestion;
 import com.zhaoxiao.zhiying.entity.test.CarefulM;
@@ -41,9 +43,12 @@ import com.zhaoxiao.zhiying.entity.test.MatchQuestion;
 import com.zhaoxiao.zhiying.entity.test.NewM;
 import com.zhaoxiao.zhiying.entity.test.NewQuestion;
 import com.zhaoxiao.zhiying.entity.test.QuestionM;
+import com.zhaoxiao.zhiying.entity.test.WritingM;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.fragment.study.ListenFragment;
 import com.zhaoxiao.zhiying.fragment.word.SpeechFragment;
+import com.zhaoxiao.zhiying.util.StringUtils;
+import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
 import com.zhaoxiao.zhiying.view.MyVideoView;
 
@@ -91,6 +96,8 @@ public class QuestionFragment extends BaseFragment {
     LinearLayout llCloze;
     @BindView(R.id.dragView)
     LinearLayout dragView;
+    @BindView(R.id.iv_img)
+    ImageView ivImg;
     private QuestionM question;
     RelativeLayout.LayoutParams layoutParams;
     private int position;
@@ -126,20 +133,24 @@ public class QuestionFragment extends BaseFragment {
 //        this.viewEmpty.setVisibility(View.GONE);
 
 //        if (question instanceof CarefulM) {
-        main.setText(Html.fromHtml(question.getInfo()));
+        if (!StringUtils.isEmpty(question.getInfo())) {
+            main.setText(Html.fromHtml(question.getInfo()));
+        }
 //        }
 //        slidingLayout.setAnchorPoint(0.5f);
         if (question instanceof ListeningM) {
             llListening.setVisibility(View.VISIBLE);
         } else if (question instanceof BankedM) {
             flBanked.removeAllViews();
-            for (int i = 0; i < ((BankedM) question).getWordList().length; i++) {
-                ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.layout_test_option, null);
-                TextView child = viewGroup.findViewById(R.id.tv_test_option);
-                viewGroup.removeView(child);
-                char text = (char) ('A' + i);
-                child.setText(text + ") " + ((BankedM) question).getWordList()[i]);
-                flBanked.addView(child);
+            if (((BankedM) question).getWordList() != null) {
+                for (int i = 0; i < ((BankedM) question).getWordList().length; i++) {
+                    ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.layout_test_option, null);
+                    TextView child = viewGroup.findViewById(R.id.tv_test_option);
+                    viewGroup.removeView(child);
+                    char text = (char) ('A' + i);
+                    child.setText(text + ") " + ((BankedM) question).getWordList()[i]);
+                    flBanked.addView(child);
+                }
             }
         } else if (question instanceof NewM) {
             llCloze.removeAllViews();
@@ -173,6 +184,12 @@ public class QuestionFragment extends BaseFragment {
                 }
                 llCloze.addView(child);
             }
+        } else if (question instanceof WritingM && !StringUtils.isEmpty(((WritingM) question).getImg())){
+            ivImg.setVisibility(View.VISIBLE);
+            Picasso.with(getContext())
+                    .load(ApiConfig.BASE_URl+ ((WritingM) question).getImg())
+                    .transform(new CircleCornerTransForm())
+                    .into(ivImg);
         }
         slidingLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
             @Override

@@ -127,6 +127,9 @@ public class TrendSearchActivity extends BaseActivity {
                             trendAdapter.setList(trendList);
                             trendAdapter.notifyDataSetChanged();
                             pageNum = 1;
+                            if (list.size()==0){
+                                XToastUtils.toast("搜索无结果");
+                            }
                             break;
                         case 1:
                             trendList = list;

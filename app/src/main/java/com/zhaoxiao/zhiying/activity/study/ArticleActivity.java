@@ -14,6 +14,7 @@ import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.bottomsheet.BottomSheet;
 import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.activity.BaseActivity;
+import com.zhaoxiao.zhiying.activity.community.PublishTrendActivity;
 import com.zhaoxiao.zhiying.activity.mine.CodeLoginActivity;
 import com.zhaoxiao.zhiying.adapter.study.MyPagerAdapter;
 import com.zhaoxiao.zhiying.api.StudyService;
@@ -26,6 +27,7 @@ import com.zhaoxiao.zhiying.view.FixedViewPager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -168,13 +170,22 @@ public class ArticleActivity extends BaseActivity {
 //            isCollect = ((ReadFragment) fragment).getCollect();
 //        }
         ListenFragment listenFragment = (ListenFragment) mFragments.get(0);
+        boolean isLocate = listenFragment.isLocate();
         boolean isCollect = listenFragment.getCollect();
         int channelId = listenFragment.getChannelId();
         Map<String,Object> map = listenFragment.getMap();
 
         BottomSheet.BottomListSheetBuilder bottomListSheetBuilder = new BottomSheet.BottomListSheetBuilder(this);
         bottomListSheetBuilder
-                .setTitle("更多")
+                .setTitle("更多");
+        if (isLocate){
+            bottomListSheetBuilder
+                    .addItem("关闭定位");
+        } else {
+            bottomListSheetBuilder
+                    .addItem("开启定位");
+        }
+        bottomListSheetBuilder
                 .addItem("笔记")
                 .addItem("查看频道");
         if (isCollect){
@@ -191,6 +202,9 @@ public class ArticleActivity extends BaseActivity {
                     dialog.dismiss();
                     switch (position){
                         case 0:
+                            listenFragment.setLocate(!isLocate);
+                            break;
+                        case 1:
 //                            XToastUtils.toast("笔记");
                             if (!account.equals("") && !account.equals("已过期")) {
                                 map.put("link",false);
@@ -200,19 +214,25 @@ public class ArticleActivity extends BaseActivity {
                                 navigateTo(CodeLoginActivity.class);
                             }
                             break;
-                        case 1:
+                        case 2:
                             navigateTo(ChannelActivity.class,"channelId",channelId);
                             break;
-                        case 2:
+                        case 3:
                             if (!account.equals("") && !account.equals("已过期")) {
                                 collect(!isCollect, listenFragment);
                             } else {
                                 navigateTo(CodeLoginActivity.class);
                             }
                             break;
-                        case 3:
+                        case 4:
                             if (!account.equals("") && !account.equals("已过期")) {
-                                XToastUtils.toast("分享");
+//                                XToastUtils.toast("分享");
+                                Map<String, Object> linkMap = new HashMap<>();
+                                linkMap.put("linkId", articleId);
+                                linkMap.put("info", listenFragment.getTitle());
+                                linkMap.put("type", "文章");
+                                linkMap.put("linkType", 1);
+                                navigateTo(PublishTrendActivity.class, "linkMap", (Serializable) linkMap);
                             } else {
                                 navigateTo(CodeLoginActivity.class);
                             }

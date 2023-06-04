@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:padding="@dimen/config_padding_14dp"
         android:gravity="center_vertical"
-        android:layout_height="80dp">
+        android:layout_height="78dp">
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
             android:id="@+id/btn_pre"
@@ -78,8 +78,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/test_test"
                 app:tint="@color/gray" />
 

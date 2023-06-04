@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="51. Why do people in many cultures prize the egg?"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/ll_a"
@@ -29,12 +29,12 @@
 
         <TextView
             android:id="@+id/iv_a"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:textColor="@color/g_yellow"
             android:background="@drawable/shape_unselected"
-            android:textSize="18dp"
+            android:textSize="17sp"
             android:text="A"/>
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_marginLeft="@dimen/config_margin_10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:text="It is their major source of protein in winter."/>
 
     </LinearLayout>
@@ -56,12 +56,12 @@
 
         <TextView
             android:id="@+id/iv_b"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:textColor="@color/g_yellow"
             android:background="@drawable/shape_unselected"
-            android:textSize="18dp"
+            android:textSize="17sp"
             android:text="B"/>
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_marginLeft="@dimen/config_margin_10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:text="It is a welcome sign of the coming of spring."/>
 
     </LinearLayout>
@@ -83,12 +83,12 @@
 
         <TextView
             android:id="@+id/iv_c"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:textColor="@color/g_yellow"
             android:background="@drawable/shape_unselected"
-            android:textSize="18dp"
+            android:textSize="17sp"
             android:text="C"/>
 
         <TextView
@@ -96,7 +96,7 @@
             android:layout_marginLeft="@dimen/config_margin_10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:text="It can easily be made into a work of art."/>
 
     </LinearLayout>
@@ -110,12 +110,12 @@
 
         <TextView
             android:id="@+id/iv_d"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:textColor="@color/g_yellow"
             android:background="@drawable/shape_unselected"
-            android:textSize="18dp"
+            android:textSize="17sp"
             android:text="D"/>
 
         <TextView
@@ -123,7 +123,7 @@
             android:layout_marginLeft="@dimen/config_margin_10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:text="It can bring wealth and honor to them."/>
 
     </LinearLayout>
@@ -228,16 +228,16 @@
         <com.donkingliang.labels.LabelsView
             android:id="@+id/lv_position"
             android:layout_marginTop="@dimen/config_margin_20dp"
-            android:layout_marginLeft="@dimen/config_margin_20dp"
+            android:layout_marginLeft="15dp"
             app:lineMargin="@dimen/config_margin_20dp"
             app:wordMargin="@dimen/config_margin_20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:labelBackground="@drawable/label_bg_option"
             app:labelTextColor="@drawable/label_text_color_option"
-            app:labelTextWidth="40dp"
-            app:labelTextHeight="40dp"
-            app:labelTextSize="18sp"
+            app:labelTextWidth="35dp"
+            app:labelTextHeight="35dp"
+            app:labelTextSize="17sp"
             app:selectType="SINGLE"/>
 
         <LinearLayout
@@ -252,7 +252,7 @@
                 android:id="@+id/tv_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/green"
                 android:text="正确答案：A"/>
 
@@ -261,7 +261,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/red"
                 android:text="你的答案：B"/>
 

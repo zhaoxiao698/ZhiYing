@@ -5,6 +5,7 @@ import android.os.Build;
 
 import com.danikula.videocache.HttpProxyCacheServer;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.fragment.BaseFragment;
 import com.zhaoxiao.zhiying.util.cache.ProxyVideoCacheManager;
 import com.zhaoxiao.zhiying.view.MyVideoView;
@@ -57,7 +58,7 @@ public class TestListeningFragment extends BaseFragment {
     public void play(String url){
         //缓存
         HttpProxyCacheServer cacheServer = ProxyVideoCacheManager.getProxy(getContext());
-        String proxyUrl = cacheServer.getProxyUrl(url);
+        String proxyUrl = cacheServer.getProxyUrl(ApiConfig.BASE_URl+url);
         player.setUrl(proxyUrl);
         StandardVideoController controller = new StandardVideoController(getContext());
         controller.addDefaultControlComponent("缓存", false);

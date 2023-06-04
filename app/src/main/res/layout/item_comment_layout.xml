@@ -78,8 +78,8 @@
 
             <ImageView
                 android:id="@+id/iv_like"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="19dp"
+                android:layout_height="19dp"
                 android:src="@drawable/like_community"
                 app:tint="@color/gray" />
 
@@ -90,7 +90,7 @@
                 android:layout_marginLeft="3dp"
                 android:singleLine="true"
                 android:text="555"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

@@ -25,6 +25,7 @@ import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Topic;
 import com.zhaoxiao.zhiying.entity.study.Data;
 import com.zhaoxiao.zhiying.fragment.community.TrendListFragment;
+import com.zhaoxiao.zhiying.util.NumberUtils;
 import com.zhaoxiao.zhiying.util.StringUtils;
 import com.zhaoxiao.zhiying.util.spTime.SpUtils;
 import com.zhaoxiao.zhiying.view.FixedViewPager;
@@ -103,8 +104,8 @@ public class TopicDetailActivity extends BaseActivity {
 
     private void afterRequest() {
         tvName.setText("#" + topic.getName());
-        tvJoin.setText(String.valueOf(topic.getJoin()));
-        tvCollection.setText(String.valueOf(topic.getCollection()));
+        tvJoin.setText(NumberUtils.intChange2Str(topic.getJoin()));
+        tvCollection.setText(NumberUtils.intChange2Str(topic.getCollection()));
         if (StringUtils.isEmpty(topic.getInfo())) {
             tvInfo.setVisibility(View.GONE);
         } else {
@@ -114,7 +115,7 @@ public class TopicDetailActivity extends BaseActivity {
 
         //Tab导航
         mFragments.add(TrendListFragment.newInstance(mTitles[0], topicId));
-        mFragments.add(TrendListFragment.newInstance(mTitles[0], topicId));
+        mFragments.add(TrendListFragment.newInstance(mTitles[1], topicId));
         viewPager.setOffscreenPageLimit(mFragments.size());
         slidingTabLayout.setViewPager(viewPager, mTitles, this, mFragments);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

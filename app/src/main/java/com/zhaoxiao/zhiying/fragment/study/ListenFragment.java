@@ -128,6 +128,8 @@ public class ListenFragment extends BaseFragment {
     //倍速
     private XUIListPopup mListPopup;
 
+    private boolean locate = true;
+
     //点击阅读模式暂停音频
     public void readPause() {
         if(!isVideo){
@@ -223,6 +225,7 @@ public class ListenFragment extends BaseFragment {
                         intentFilter.addAction(ACTION_VIDEO_COMPLETE);
                         getContext().registerReceiver(musicReceiver, intentFilter);
                         //播放视频
+                        videoFragment.setTitle(articleDetail.getTitle());
                         videoFragment.play(articleDetail.getVideo());
 //                        XToastUtils.toast("开始播放");
 //                        mHandler.post(mRunnable);
@@ -306,11 +309,12 @@ public class ListenFragment extends BaseFragment {
                 break;
             case R.id.iv_play:
                 if(isVideo){
+                    System.out.println(videoFragment.getCurrentPlayState());
                     if(videoFragment.isPlaying()){
                         videoFragment.pause();
 //                        ivPlay.setImageResource(R.drawable.play1_yellow);
 //                        mHandler.removeCallbacks(mRunnableVideo);
-                    } else if(videoFragment.getCurrentPlayState() == MyVideoView.STATE_PAUSED){
+                    } else if(videoFragment.getCurrentPlayState() == MyVideoView.STATE_PAUSED || videoFragment.getCurrentPlayState() == MyVideoView.STATE_BUFFERED){
                         System.out.println(videoFragment.getCurrentPlayState());
                         videoFragment.resume();
 //                        ivPlay.setImageResource(R.drawable.pause1_yellow);
@@ -498,6 +502,21 @@ public class ListenFragment extends BaseFragment {
         }
     };
 
+    public boolean isLocate() {
+        return locate;
+    }
+
+    public void setLocate(boolean locate) {
+        this.locate = locate;
+        if (locate){
+            locate(1);
+        }
+    }
+
+    public String getTitle() {
+        return articleDetail.getTitle();
+    }
+
     //自定义广播
     public class MusicReceiver extends BroadcastReceiver {
 
@@ -624,6 +643,9 @@ public class ListenFragment extends BaseFragment {
 
     //判断播放的句子并定位
     private void locate(int start, int playPosition) {
+//        if (!locate){
+//            return;
+//        }
         if(sentenceList==null||sentenceList.size()==0)return;
         boolean isLocated = false;
         for (int i = start; i < sentenceList.size() - 1; i++) {
@@ -661,6 +683,11 @@ public class ListenFragment extends BaseFragment {
     }
 
     private void locate(int type) {
+        if (!locate){
+            sentenceAdapter.setLight(position + 1);
+            sentenceAdapter.notifyDataSetChanged();
+            return;
+        }
 //        type=1;
         switch (type) {
             case 1:

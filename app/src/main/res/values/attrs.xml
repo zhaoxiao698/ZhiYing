@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="myBgColor" format="color" />
+
     <declare-styleable name="TitleBarView">
         <attr name="tb_leftText1" format="string"/>
         <attr name="tb_leftTextColor" format="color"/>

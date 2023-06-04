@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.entity.study.Recent;
 import com.zhaoxiao.zhiying.view.CircleCornerTransForm;
 
@@ -61,7 +62,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         viewHolder.tvChannelName.setText(recent.getChannelName());
         viewHolder.tvDuration.setText(recent.getDuration());
         Picasso.with(mContext)
-                .load(recent.getImg())
+                .load(ApiConfig.BASE_URl+recent.getImg())
                 .transform(new CircleCornerTransForm())
                 .into(viewHolder.ivImg);
         viewHolder.recentId = recent.getId();

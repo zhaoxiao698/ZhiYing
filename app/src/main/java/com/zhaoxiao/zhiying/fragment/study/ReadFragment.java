@@ -90,7 +90,7 @@ public class ReadFragment extends BaseFragment {
                     for (Sentence sentence : articleDetail.getSentenceList()) {
                         if (sentence.getFirst() == 1||paragraphList.size()==0) {
                             String paragraph = sentence.getEnglish();
-                            paragraphList.add(paragraph);
+                            paragraphList.add("          "+paragraph);
                         } else {
                             paragraphList.set(paragraphList.size()-1,paragraphList.get(paragraphList.size()-1)+sentence.getEnglish());
                         }
