@@ -89,7 +89,7 @@
         android:layout_marginRight="30dp"
         android:text="交 卷"
         android:textSize="20sp"
-        app:rb_backgroundColor="@color/g_yellow"
+        app:rb_backgroundColor="?attr/myBgColor"
         app:rb_radius="50dp" />
 
 </LinearLayout>

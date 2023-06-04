@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways"
-            android:background="@color/g_yellow"
+            android:background="?attr/myBgColor"
             app:tb_leftImageResource="@drawable/ic_navigation_back_white"
             app:tb_titleText="我的笔记"
             app:tb_useThemeColor="false" />
@@ -27,7 +27,7 @@
             android:id="@+id/slidingTabLayout"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@color/g_yellow"
+            android:background="?attr/myBgColor"
             tl:tl_indicator_color="@color/white"
             tl:tl_indicator_corner_radius="10dp"
             tl:tl_indicator_height="5dp"

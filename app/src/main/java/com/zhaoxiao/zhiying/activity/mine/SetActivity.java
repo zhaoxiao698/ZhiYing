@@ -102,7 +102,7 @@ public class SetActivity extends BaseActivity {
                         .content("确定要退出登录吗？")
                         .positiveText("确定")
                         .negativeText("取消")
-                        .positiveColor(getResources().getColor(R.color.g_yellow))
+                        .positiveColor(getResources().getColor(getMyBgColor()))
                         .negativeColor(getResources().getColor(R.color.gray))
                         .onPositive((dialog, which) -> {
                             SpUtils.getInstance(this).setString("account", "");

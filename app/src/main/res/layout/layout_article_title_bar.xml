@@ -12,7 +12,8 @@
         android:layout_height="25dp"
         android:layout_marginLeft="14dp"
         android:layout_centerVertical="true"
-        android:background="@drawable/left_yellow" />
+        android:background="@drawable/left_yellow"
+        tl:tint="?attr/myBgColor" />
 
 <!--    <com.flyco.tablayout.SegmentTabLayout-->
 <!--        android:id="@+id/segmentTabLayout"-->
@@ -36,7 +37,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_centerInParent="true"
         tl:tl_bar_color="#ffffff"
-        tl:tl_indicator_color="@color/g_yellow"
+        tl:tl_indicator_color="?attr/myBgColor"
         tl:tl_indicator_corner_radius="8dp"
         tl:tl_tab_padding="20dp"/>
 
@@ -47,6 +48,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="14dp"
-        android:background="@drawable/more_yellow" />
+        android:background="@drawable/more_yellow"
+        tl:tint="?attr/myBgColor" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@
         android:background="@drawable/shape_unselected"
         android:gravity="center"
         android:text="B"
-        android:textColor="@color/g_yellow"
+        android:textColor="?attr/myBgColor"
         android:textSize="18dp" />
 
 </LinearLayout>

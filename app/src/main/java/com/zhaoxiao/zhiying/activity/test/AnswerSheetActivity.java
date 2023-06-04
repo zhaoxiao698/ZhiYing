@@ -371,7 +371,7 @@ public class AnswerSheetActivity extends BaseActivity {
                             .content("您确定要交卷吗？")
                             .positiveText(R.string.lab_yes)
                             .negativeText(R.string.lab_no)
-                            .positiveColor(getResources().getColor(R.color.g_yellow))
+                            .positiveColor(getResources().getColor(getMyBgColor()))
                             .negativeColor(getResources().getColor(R.color.gray))
                             .onPositive((dialog, which) -> navigateTo(TestCompleteActivity.class,"questionList", (Serializable) questionList))
                             .show();
@@ -382,7 +382,7 @@ public class AnswerSheetActivity extends BaseActivity {
                             .content("您还有问完成的题目，是否交卷？")
                             .positiveText(R.string.lab_yes)
                             .negativeText(R.string.lab_no)
-                            .positiveColor(getResources().getColor(R.color.g_yellow))
+                            .positiveColor(getResources().getColor(getMyBgColor()))
                             .negativeColor(getResources().getColor(R.color.gray))
                             .onPositive((dialog, which) -> navigateTo(TestCompleteActivity.class,"questionList", (Serializable) questionList))
                             .show();

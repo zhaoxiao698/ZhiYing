@@ -177,6 +177,6 @@ public class TruePaperListActivity extends BaseActivity {
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this,getResources().getColor(R.color.g_yellow),0);
+        StatusBarUtil.setColor(this,getResources().getColor(getMyBgColor()),0);
     }
 }

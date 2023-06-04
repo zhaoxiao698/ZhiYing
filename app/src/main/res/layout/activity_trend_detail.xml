@@ -22,7 +22,8 @@
             android:layout_height="23dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
-            android:background="@drawable/left_yellow" />
+            android:background="@drawable/left_yellow"
+            app:tint="?attr/myBgColor" />
 
         <TextView
             android:id="@+id/tv_top_title"
@@ -42,7 +43,8 @@
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/more_yellow" />
+            android:background="@drawable/more_yellow"
+            app:tint="?attr/myBgColor" />
 
     </RelativeLayout>
 
@@ -470,7 +472,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
             android:text="发送"/>

@@ -49,7 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="cancel"
-                        android:textColor="@color/g_yellow"
+                        android:textColor="?attr/myBgColor"
                         android:textSize="26sp"
                         android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
                     android:id="@+id/iv_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@color/g_yellow" />
+                    android:src="?attr/myBgColor" />
 
             </LinearLayout>
 

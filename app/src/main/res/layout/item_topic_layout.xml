@@ -12,7 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/topic_community"
-        app:tint="@color/g_yellow" />
+        app:tint="?attr/myBgColor" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -41,6 +41,6 @@
         android:src="@drawable/right1_blue"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        app:tint="@color/g_yellow" />
+        app:tint="?attr/myBgColor" />
 
 </RelativeLayout>

@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/g_yellow"
+            app:contentScrim="?attr/myBgColor"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@android:color/transparent">
 
@@ -133,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white"
-            tl:tl_indicator_color="@color/g_yellow"
+            tl:tl_indicator_color="?attr/myBgColor"
             tl:tl_indicator_corner_radius="10dp"
             tl:tl_tab_space_equal="true"
             tl:tl_indicator_height="5dp"
@@ -141,7 +141,7 @@
             tl:tl_indicator_width="25dp"
             tl:tl_indicator_width_equal_title="true"
             tl:tl_textBold="SELECT"
-            tl:tl_textSelectColor="@color/g_yellow"
+            tl:tl_textSelectColor="?attr/myBgColor"
             tl:tl_textUnselectColor="@color/gray"
             tl:tl_textsize="17sp" />
 

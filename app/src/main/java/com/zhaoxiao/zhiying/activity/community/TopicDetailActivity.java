@@ -160,7 +160,7 @@ public class TopicDetailActivity extends BaseActivity {
             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
         } else {
             btnCollect.setText("订阅");
-            btnCollect.setTextColor(getResources().getColor(R.color.g_yellow));
+            btnCollect.setTextColor(getResources().getColor(getMyBgColor()));
             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_topic_collect_btn));
         }
     }
@@ -199,7 +199,7 @@ public class TopicDetailActivity extends BaseActivity {
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
                         } else {
                             btnCollect.setText("收藏话题");
-                            btnCollect.setTextColor(getResources().getColor(R.color.g_yellow));
+                            btnCollect.setTextColor(getResources().getColor(getMyBgColor()));
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_topic_collect_btn));
                         }
                     }

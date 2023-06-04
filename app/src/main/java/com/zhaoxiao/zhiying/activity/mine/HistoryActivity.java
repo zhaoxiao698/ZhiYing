@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.activity.mine;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -79,7 +80,11 @@ public class HistoryActivity extends BaseActivity {
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this,getResources().getColor(R.color.g_yellow),0);
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.myBgColor, typedValue, true);
+        int myBgColor = typedValue.data;
+        StatusBarUtil.setColor(this,getResources().getColor(myBgColor),0);
+//        StatusBarUtil.setColor(this,getResources().getColor(R.color.g_yellow),0);
     }
 
     private void setTextSize(int position) {

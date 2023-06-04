@@ -120,7 +120,7 @@
         android:textSize="20sp"
         android:gravity="top"
         android:visibility="gone"
-        android:background="@color/g_yellow"
+        android:background="?attr/myBgColor"
         android:layout_above="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_weight="1"

@@ -34,7 +34,7 @@
             android:text="保存"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:rb_backgroundColor="@color/g_yellow"
+            app:rb_backgroundColor="?attr/myBgColor"
             app:rb_radius="20dp" />
 
     </RelativeLayout>

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cancel"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:textSize="50dp"
             android:textStyle="bold"/>
 

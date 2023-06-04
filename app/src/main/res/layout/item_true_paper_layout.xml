@@ -39,7 +39,7 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             app:rb_backgroundColor="@color/g_yellow_light"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:text="阅读理解"
             android:textSize="15dp" />
 

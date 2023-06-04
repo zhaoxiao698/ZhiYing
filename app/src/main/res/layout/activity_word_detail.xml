@@ -43,7 +43,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
             android:src="@drawable/star_community"
-            app:tint="@color/g_yellow" />
+            app:tint="?attr/myBgColor" />
 
     </RelativeLayout>
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.zhaoxiao.zhiying.R;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.StudyService;
 
@@ -160,5 +162,11 @@ public abstract class BaseFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(cls);
+    }
+
+    public int getMyBgColor(){
+        TypedValue typedValue = new TypedValue();
+        requireContext().getTheme().resolveAttribute(R.attr.myBgColor, typedValue, true);
+        return typedValue.data;
     }
 }

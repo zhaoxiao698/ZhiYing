@@ -58,6 +58,31 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        int themeColor = getStringFromSp("theme_color",false);
+        switch (themeColor){
+            case -1:
+            case 0:
+                mIconSelectIds = new int[]{
+                        R.drawable.study_yellow, R.drawable.test_yellow,
+                        R.drawable.community_yellow, R.drawable.mine_yellow};
+                break;
+            case 1:
+                mIconSelectIds = new int[]{
+                        R.drawable.study_blue, R.drawable.test_blue,
+                        R.drawable.community_blue, R.drawable.mine_blue};
+                break;
+            case 2:
+                mIconSelectIds = new int[]{
+                        R.drawable.study_red, R.drawable.test_red,
+                        R.drawable.community_red, R.drawable.mine_red};
+                break;
+            case 3:
+                mIconSelectIds = new int[]{
+                        R.drawable.study_green, R.drawable.test_green,
+                        R.drawable.community_green, R.drawable.mine_green};
+                break;
+        }
+
         //设置时区
         TimeZone timeZone = TimeZone.getTimeZone("GMT+8");
         TimeZone.setDefault(timeZone);
@@ -76,7 +101,7 @@ public class HomeActivity extends BaseActivity {
                         .content("登录状态已过期，请重新登录")
                         .positiveText(R.string.lab_yes)
                         .negativeText(R.string.lab_no)
-                        .positiveColor(getResources().getColor(R.color.g_yellow))
+                        .positiveColor(getResources().getColor(getMyBgColor()))
                         .negativeColor(getResources().getColor(R.color.gray))
                         .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
                         .show();

@@ -23,7 +23,7 @@
         android:paddingBottom="@dimen/config_padding_10dp"
         android:paddingStart="@dimen/config_padding_20dp"
         android:paddingEnd="@dimen/config_padding_20dp"
-        app:rb_backgroundColor="@color/g_yellow"
+        app:rb_backgroundColor="?attr/myBgColor"
         app:rb_radius="5dp"
         android:layout_margin="@dimen/config_margin_20dp"
         android:textStyle="bold"

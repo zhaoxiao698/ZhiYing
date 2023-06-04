@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="256"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"/>
 
@@ -130,7 +130,7 @@
             android:paddingEnd="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            app:rb_backgroundColor="@color/g_yellow"
+            app:rb_backgroundColor="?attr/myBgColor"
             android:text="继续复习"/>
 
     </com.google.android.flexbox.FlexboxLayout>

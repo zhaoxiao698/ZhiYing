@@ -68,24 +68,28 @@ public class ThemeActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.iv_back, R.id.rl_yellow, R.id.rl_blue, R.id.rl_red, R.id.rl_green})
+    @OnClick({R.id.iv_back, R.id.rl_yellow, R.id.rl_blue, R.id.rl_red, R.id.rl_green, R.id.btn_yellow, R.id.btn_blue, R.id.btn_red, R.id.btn_green })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.btn_yellow:
             case R.id.rl_yellow:
                 saveStringToSp("theme_color", 0);
                 recreate();
                 break;
+            case R.id.btn_blue:
             case R.id.rl_blue:
                 saveStringToSp("theme_color", 1);
                 recreate();
                 break;
+            case R.id.btn_red:
             case R.id.rl_red:
                 saveStringToSp("theme_color", 2);
                 recreate();
                 break;
+            case R.id.btn_green:
             case R.id.rl_green:
                 saveStringToSp("theme_color", 3);
                 recreate();

@@ -13,7 +13,7 @@
         android:layout_marginTop="@dimen/config_margin_10dp"
         android:gravity="center"
         app:rb_backgroundColor="@color/g_yellow_light"
-        android:textColor="@color/g_yellow"
+        android:textColor="?attr/myBgColor"
         android:text="#话题"
         android:textSize="15dp" />
 

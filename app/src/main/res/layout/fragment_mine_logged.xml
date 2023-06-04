@@ -236,7 +236,7 @@
                             android:layout_height="wrap_content"
                             android:text="5"
                             android:textSize="20sp"
-                            android:textColor="@color/g_yellow"
+                            android:textColor="?attr/myBgColor"
                             android:textStyle="bold"/>
 
                         <TextView

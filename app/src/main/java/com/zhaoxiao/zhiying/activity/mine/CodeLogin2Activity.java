@@ -171,7 +171,7 @@ public class CodeLogin2Activity extends BaseActivity {
                                 .content("请尽快设置密码，设置密码后可使用密码进行登录")
                                 .positiveText(R.string.lab_yes)
                                 .negativeText(R.string.lab_no)
-                                .positiveColor(getResources().getColor(R.color.g_yellow))
+                                .positiveColor(getResources().getColor(getMyBgColor()))
                                 .negativeColor(getResources().getColor(R.color.gray))
                                 .onPositive((dialog, which) -> navigateTo(SetPasswordActivity.class))
                                 .onNegative((dialog, which) -> navigateTo(HomeActivity.class))

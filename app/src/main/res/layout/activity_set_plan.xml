@@ -55,7 +55,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
             android:text="四级真题核心词（图片记忆）"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="1110"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -171,7 +171,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="@dimen/config_margin_30dp"
-        app:rb_backgroundColor="@color/g_yellow"
+        app:rb_backgroundColor="?attr/myBgColor"
         app:rb_radius="50dp"
         android:textSize="20sp"
         android:text="保存"/>

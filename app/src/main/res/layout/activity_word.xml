@@ -21,7 +21,7 @@
             android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
-            android:background="@drawable/left_yellow" />
+            android:background="?attr/myBgColor" />
 
     </RelativeLayout>
 
@@ -119,7 +119,7 @@
                     android:gravity="center"
                     android:padding="3dp"
                     android:text="查看单词列表"
-                    android:textColor="@color/g_yellow"
+                    android:textColor="?attr/myBgColor"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -138,7 +138,7 @@
                     android:gravity="center"
                     android:padding="3dp"
                     android:text="切换词书"
-                    android:textColor="@color/g_yellow"
+                    android:textColor="?attr/myBgColor"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -195,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="10"
-                        android:textColor="@color/g_yellow"
+                        android:textColor="?attr/myBgColor"
                         android:textSize="40sp" />
 
                     <TextView
@@ -306,7 +306,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/g_yellow"
+                app:cardBackgroundColor="?attr/myBgColor"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="2dp"
                 app:cardMaxElevation="3dp"

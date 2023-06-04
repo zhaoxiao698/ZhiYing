@@ -313,22 +313,22 @@ public class SubQuestionFragment extends BaseFragment {
             case 1:
                 ivA.setBackground(getResources().getDrawable(R.drawable.shape_selected));
                 ivA.setTextColor(getResources().getColor(R.color.white));
-                tvA.setTextColor(getResources().getColor(R.color.g_yellow));
+                tvA.setTextColor(getResources().getColor(getMyBgColor()));
                 break;
             case 2:
                 ivB.setBackground(getResources().getDrawable(R.drawable.shape_selected));
                 ivB.setTextColor(getResources().getColor(R.color.white));
-                tvB.setTextColor(getResources().getColor(R.color.g_yellow));
+                tvB.setTextColor(getResources().getColor(getMyBgColor()));
                 break;
             case 3:
                 ivC.setBackground(getResources().getDrawable(R.drawable.shape_selected));
                 ivC.setTextColor(getResources().getColor(R.color.white));
-                tvC.setTextColor(getResources().getColor(R.color.g_yellow));
+                tvC.setTextColor(getResources().getColor(getMyBgColor()));
                 break;
             case 4:
                 ivD.setBackground(getResources().getDrawable(R.drawable.shape_selected));
                 ivD.setTextColor(getResources().getColor(R.color.white));
-                tvD.setTextColor(getResources().getColor(R.color.g_yellow));
+                tvD.setTextColor(getResources().getColor(getMyBgColor()));
                 break;
         }
     }
@@ -337,22 +337,22 @@ public class SubQuestionFragment extends BaseFragment {
         switch (select) {
             case 1:
                 ivA.setBackground(getResources().getDrawable(R.drawable.shape_unselected));
-                ivA.setTextColor(getResources().getColor(R.color.g_yellow));
+                ivA.setTextColor(getResources().getColor(getMyBgColor()));
                 tvA.setTextColor(getResources().getColor(R.color.gray));
                 break;
             case 2:
                 ivB.setBackground(getResources().getDrawable(R.drawable.shape_unselected));
-                ivB.setTextColor(getResources().getColor(R.color.g_yellow));
+                ivB.setTextColor(getResources().getColor(getMyBgColor()));
                 tvB.setTextColor(getResources().getColor(R.color.gray));
                 break;
             case 3:
                 ivC.setBackground(getResources().getDrawable(R.drawable.shape_unselected));
-                ivC.setTextColor(getResources().getColor(R.color.g_yellow));
+                ivC.setTextColor(getResources().getColor(getMyBgColor()));
                 tvC.setTextColor(getResources().getColor(R.color.gray));
                 break;
             case 4:
                 ivD.setBackground(getResources().getDrawable(R.drawable.shape_unselected));
-                ivD.setTextColor(getResources().getColor(R.color.g_yellow));
+                ivD.setTextColor(getResources().getColor(getMyBgColor()));
                 tvD.setTextColor(getResources().getColor(R.color.gray));
                 break;
         }

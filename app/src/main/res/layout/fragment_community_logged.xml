@@ -12,7 +12,7 @@
         android:id="@+id/slidingTabLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/g_yellow"
+        android:background="?attr/myBgColor"
         tl:tl_indicator_color="@color/white"
         tl:tl_indicator_corner_radius="10dp"
         tl:tl_indicator_height="5dp"

@@ -32,7 +32,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:gravity="center"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:background="@drawable/shape_unselected"
             android:textSize="17sp"
             android:text="A"/>
@@ -59,7 +59,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:gravity="center"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:background="@drawable/shape_unselected"
             android:textSize="17sp"
             android:text="B"/>
@@ -86,7 +86,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:gravity="center"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:background="@drawable/shape_unselected"
             android:textSize="17sp"
             android:text="C"/>
@@ -113,7 +113,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:gravity="center"
-            android:textColor="@color/g_yellow"
+            android:textColor="?attr/myBgColor"
             android:background="@drawable/shape_unselected"
             android:textSize="17sp"
             android:text="D"/>

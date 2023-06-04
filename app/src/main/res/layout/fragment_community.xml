@@ -11,7 +11,7 @@
         android:id="@+id/search_bar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/g_yellow"
+        android:background="?attr/myBgColor"
         app:sb_type="Gray"
         app:sb_rightDrawable1="@drawable/add_community"
         app:sb_rightDrawable1_tint="@color/white"/>

@@ -66,7 +66,7 @@
             android:layout_marginLeft="@dimen/config_margin_10dp"
             android:layout_marginRight="@dimen/config_margin_10dp"
             app:rb_radius="8dp"
-            app:rb_backgroundColor="@color/g_yellow"
+            app:rb_backgroundColor="?attr/myBgColor"
             android:textSize="20sp"
             android:text="下一题"/>
 

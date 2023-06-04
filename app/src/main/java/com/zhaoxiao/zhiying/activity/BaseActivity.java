@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.TypedValue;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -164,5 +165,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(cls);
+    }
+
+    public int getMyBgColor(){
+        TypedValue typedValue = new TypedValue();
+        getTheme().resolveAttribute(R.attr.myBgColor, typedValue, true);
+        return typedValue.data;
     }
 }

@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            android:background="@color/g_yellow"
-            app:contentScrim="@color/g_yellow"
+            android:background="?attr/myBgColor"
+            app:contentScrim="?attr/myBgColor"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@android:color/transparent">
 
@@ -46,7 +46,7 @@
                     android:id="@+id/btn_collect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/g_yellow"
+                    android:textColor="?attr/myBgColor"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="@drawable/shape_topic_collect_btn"
@@ -158,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white"
-            tl:tl_indicator_color="@color/g_yellow"
+            tl:tl_indicator_color="?attr/myBgColor"
             tl:tl_indicator_corner_radius="10dp"
             tl:tl_tab_space_equal="true"
             tl:tl_indicator_height="5dp"
@@ -166,7 +166,7 @@
             tl:tl_indicator_width="25dp"
             tl:tl_indicator_width_equal_title="true"
             tl:tl_textBold="SELECT"
-            tl:tl_textSelectColor="@color/g_yellow"
+            tl:tl_textSelectColor="?attr/myBgColor"
             tl:tl_textUnselectColor="@color/gray"
             tl:tl_textsize="17sp" />
 

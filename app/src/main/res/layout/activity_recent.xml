@@ -12,7 +12,7 @@
         android:id="@+id/tb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/g_yellow"
+        android:background="?attr/myBgColor"
         app:tb_leftImageResource="@drawable/ic_navigation_back_white"
         app:tb_titleText="最近更新"
         app:tb_useThemeColor="false" />

@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/config_padding_10dp"
         android:paddingRight="@dimen/config_padding_10dp"
         android:paddingTop="@dimen/config_margin_5dp"
-        android:background="@color/g_yellow"
+        android:background="?attr/myBgColor"
         android:orientation="horizontal">
 
         <ImageView
@@ -23,8 +23,8 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/config_margin_10dp"
-            android:tint="@color/white"
-            android:src="@drawable/setting_community" />
+            android:src="@drawable/setting_community"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/iv_message"
@@ -32,15 +32,15 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/config_margin_10dp"
-            android:tint="@color/white"
-            android:src="@drawable/message_community" />
+            android:src="@drawable/message_community"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/g_yellow"/>
+        android:background="?attr/myBgColor"/>
 
     <FrameLayout
         android:id="@+id/fl_mine"

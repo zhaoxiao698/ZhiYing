@@ -21,7 +21,8 @@
             android:layout_height="23dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="14dp"
-            android:background="@drawable/left_yellow" />
+            android:background="@drawable/left_yellow"
+            app:tint="?attr/myBgColor" />
 
         <TextView
             android:id="@+id/tv_top_title"
@@ -289,7 +290,7 @@
                     android:layout_centerHorizontal="true"
                     android:text="保   存"
                     android:textStyle="bold"
-                    android:textColor="@color/g_yellow"/>
+                    android:textColor="?attr/myBgColor"/>
 
             </RelativeLayout>
 
