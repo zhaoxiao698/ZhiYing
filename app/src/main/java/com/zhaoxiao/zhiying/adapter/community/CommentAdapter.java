@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.adapter.community;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.xuexiang.xui.widget.imageview.nine.NineGridImageViewAdapter;
 import com.xuexiang.xui.widget.imageview.preview.PreviewBuilder;
 import com.xuexiang.xui.widget.textview.ReadMoreTextView;
 import com.zhaoxiao.zhiying.R;
+import com.zhaoxiao.zhiying.activity.BaseActivity;
 import com.zhaoxiao.zhiying.api.ApiConfig;
 import com.zhaoxiao.zhiying.api.CommunityService;
 import com.zhaoxiao.zhiying.entity.community.Comment;
@@ -119,7 +121,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         //点赞状态
         boolean likeStatus = comment.getLikeStatus();
         if(likeStatus){
-            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            viewHolder.ivLike.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
             viewHolder.ivLike.setImageResource(R.drawable.like1_community);
         } else {
             viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
@@ -188,7 +190,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     if (response.body().getData()){
                         comment.setLikeStatus(like);
                         if (like){
-                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            view.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
                             view.setImageResource(R.drawable.like1_community);
                             comment.setLike(comment.getLike()+1);
                             num.setText(NumberUtils.intChange2Str(comment.getLike()));

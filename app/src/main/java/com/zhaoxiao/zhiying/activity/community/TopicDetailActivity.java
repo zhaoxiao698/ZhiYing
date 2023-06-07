@@ -155,12 +155,12 @@ public class TopicDetailActivity extends BaseActivity {
         //收藏状态
         boolean collectStatus = topic.getCollectStatus();
         if (collectStatus) {
-            btnCollect.setText("已订阅");
+            btnCollect.setText("已收藏");
             btnCollect.setTextColor(getResources().getColor(R.color.gray));
             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
         } else {
-            btnCollect.setText("订阅");
-            btnCollect.setTextColor(getResources().getColor(getMyBgColor()));
+            btnCollect.setText("收藏话题");
+            btnCollect.setTextColor(getMyBgColor());
             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_topic_collect_btn));
         }
     }
@@ -199,7 +199,7 @@ public class TopicDetailActivity extends BaseActivity {
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_attention_btn1));
                         } else {
                             btnCollect.setText("收藏话题");
-                            btnCollect.setTextColor(getResources().getColor(getMyBgColor()));
+                            btnCollect.setTextColor(getMyBgColor());
                             btnCollect.setBackground(getResources().getDrawable(R.drawable.shape_topic_collect_btn));
                         }
                     }

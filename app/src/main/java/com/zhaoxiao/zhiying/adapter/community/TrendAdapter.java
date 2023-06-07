@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.adapter.community;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -158,7 +159,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         //点赞状态
         boolean likeStatus = trend.getLikeStatus();
         if(likeStatus){
-            viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            viewHolder.ivLike.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
             viewHolder.ivLike.setImageResource(R.drawable.like1_community);
         } else {
             viewHolder.ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.gray));
@@ -353,7 +354,7 @@ public class TrendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     if (response.body().getData()){
                         trend.setLikeStatus(like);
                         if (like){
-                            view.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            view.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
                             view.setImageResource(R.drawable.like1_community);
                             trend.setLike(trend.getLike()+1);
                             num.setText(NumberUtils.intChange2Str(trend.getLike()));

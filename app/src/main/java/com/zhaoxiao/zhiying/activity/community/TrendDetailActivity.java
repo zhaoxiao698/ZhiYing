@@ -2,6 +2,7 @@ package com.zhaoxiao.zhiying.activity.community;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -346,7 +347,7 @@ public class TrendDetailActivity extends BaseActivity {
         //点赞收藏关注状态
         boolean likeStatus = trend.getLikeStatus();
         if (likeStatus) {
-            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            ivLike.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
             ivLike.setImageResource(R.drawable.like1_community);
 //            trend.setLike(trend.getLike()+1);
 //            tvLike.setText(String.valueOf(trend.getLike()));
@@ -358,7 +359,7 @@ public class TrendDetailActivity extends BaseActivity {
         }
         boolean collectStatus = trend.getCollectStatus();
         if (collectStatus) {
-            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+            ivCollection.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
             ivCollection.setImageResource(R.drawable.star1_community);
 //            trend.setCollection(trend.getCollection()+1);
 //            tvCollection.setText(String.valueOf(trend.getCollection()));
@@ -614,7 +615,7 @@ public class TrendDetailActivity extends BaseActivity {
                     if (response.body().getData()) {
                         trend.setLikeStatus(like);
                         if (like) {
-                            ivLike.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            ivLike.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
                             ivLike.setImageResource(R.drawable.like1_community);
                             trend.setLike(trend.getLike() + 1);
                             tvLike.setText(NumberUtils.intChange2Str(trend.getLike()));
@@ -648,7 +649,7 @@ public class TrendDetailActivity extends BaseActivity {
                     if (response.body().getData()) {
                         trend.setCollectStatus(collect);
                         if (collect) {
-                            ivCollection.setImageTintList(mContext.getResources().getColorStateList(R.color.g_yellow));
+                            ivCollection.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
                             ivCollection.setImageResource(R.drawable.star1_community);
                             trend.setCollection(trend.getCollection() + 1);
                             tvCollection.setText(NumberUtils.intChange2Str(trend.getCollection()));

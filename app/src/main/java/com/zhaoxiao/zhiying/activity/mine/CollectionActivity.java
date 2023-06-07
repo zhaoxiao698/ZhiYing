@@ -85,7 +85,7 @@ public class CollectionActivity extends BaseActivity {
 
     @Override
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this,getResources().getColor(getMyBgColor()),0);
+        StatusBarUtil.setColor(this,getMyBgColor(),0);
     }
 
     private void setTextSize(int position) {

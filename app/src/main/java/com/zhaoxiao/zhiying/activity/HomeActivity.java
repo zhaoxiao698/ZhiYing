@@ -101,7 +101,7 @@ public class HomeActivity extends BaseActivity {
                         .content("登录状态已过期，请重新登录")
                         .positiveText(R.string.lab_yes)
                         .negativeText(R.string.lab_no)
-                        .positiveColor(getResources().getColor(getMyBgColor()))
+                        .positiveColor(getMyBgColor())
                         .negativeColor(getResources().getColor(R.color.gray))
                         .onPositive((dialog, which) -> navigateTo(CodeLoginActivity.class))
                         .show();

@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -328,7 +329,7 @@ public class PublishTrendActivity extends BaseActivity/* implements ImageSelectG
 //                flMore.setVisibility(View.VISIBLE);
                     linearParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                     flMore.setLayoutParams(linearParams);
-                    ivAddMore.setImageTintList(getResources().getColorStateList(R.color.g_yellow));
+                    ivAddMore.setImageTintList(ColorStateList.valueOf(((BaseActivity)mContext).getMyBgColor()));
 //                ivAddMore.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.g_yellow)));
                     EditTextUtil.hideKeyboard(this);
                     isExpand = true;
